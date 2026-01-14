@@ -57,19 +57,10 @@ export function useCalculator() {
     <K extends keyof CalculatorState>(field: K, value: CalculatorState[K]) => {
       setState((prev) => ({ ...prev, [field]: value }));
 
-      // If drug name changes, try to find matching drug and auto-fill concentration
+      // If drug name changes, find matching drug for reference only (no auto-fill)
       if (field === 'drugName') {
         const drug = getDrugByName(value as string);
         setSelectedDrug(drug);
-
-        if (drug && drug.defaultConcentration && drug.concentrationUnit) {
-          setState((prev) => ({
-            ...prev,
-            drugName: value as string,
-            concentration: drug.defaultConcentration!.toString(),
-            concentrationUnit: drug.concentrationUnit!,
-          }));
-        }
       }
 
       // Clear result when input changes

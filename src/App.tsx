@@ -2,7 +2,7 @@
  * Main App Component
  *
  * Veterinary Drug Dosage Calculator
- * וט-חולים - מחשבון מינון תרופות וטרינרי
+ * מחשבון מינון תרופות וטרינרי
  */
 
 import React from 'react';

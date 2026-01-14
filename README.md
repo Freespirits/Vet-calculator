@@ -1,4 +1,4 @@
-# וט-חולים | Veterinary Drug Dosage Calculator
+# Veterinary Drug Dosage Calculator
 
 מחשבון מינון תרופות וטרינרי - חישוב מדויק של נפח מזרק
 
@@ -120,4 +120,4 @@ This calculator is a clinical decision support tool and does not replace profess
 
 ## License
 
-MIT
+אסיסטנטים למען אסיסטנטים כל הזכויות שמורות

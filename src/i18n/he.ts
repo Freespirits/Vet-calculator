@@ -9,8 +9,8 @@
  */
 export const he = {
   // Brand
-  'brand.name': 'וט-חולים',
-  'brand.tagline': 'מחשבון וטרינרי קליני',
+  'brand.name': 'מחשבון וטרינרי',
+  'brand.tagline': 'מחשבון וטרינרי קליני · כלבים וחתולים',
 
   // Header / controls
   'ctl.language': 'English',
@@ -19,7 +19,7 @@ export const he = {
   'ctl.theme.toggle': 'החלף ערכת צבעים',
 
   // Hero
-  'hero.title': 'וט-חולים',
+  'hero.title': 'מחשבון וטרינרי',
   'hero.subtitle': 'מינון תרופות וחישובי רעילות — מדויק, מהיר, בכף היד.',
   'hero.cta': 'התחל חישוב',
   'hero.scroll': 'גלול',

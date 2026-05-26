@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { ArrowDownIcon } from './Icons';
+import { Mascot } from './Mascot';
 
 // Lazy: Three.js never blocks first paint; the CSS gradient shows instantly.
 const AuroraBackground = lazy(() => import('../webgl/AuroraBackground'));
@@ -52,13 +53,17 @@ export function Hero() {
           {t('brand.tagline')}
         </motion.span>
 
-        <motion.h1
-          {...stagger(1)}
-          className="grad-text text-display-lg font-black text-balance"
-          style={{ filter: 'drop-shadow(0 4px 28px rgba(7,11,20,0.7))' }}
-        >
-          {t('hero.title')}
-        </motion.h1>
+        <motion.div {...stagger(1)} className="relative my-3 grid place-items-center">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 blur-3xl"
+            style={{
+              background:
+                'radial-gradient(circle at 50% 50%, rgba(45,212,191,0.5), rgba(139,92,246,0.28) 45%, transparent 70%)',
+            }}
+          />
+          <Mascot size={172} label={t('brand.name')} />
+        </motion.div>
 
         <motion.p
           {...stagger(2)}

@@ -6,8 +6,8 @@ import type { TKey } from './he';
  */
 export const en: Record<TKey, string> = {
   // Brand
-  'brand.name': 'Vet-Holim',
-  'brand.tagline': 'Clinical Veterinary Calculator',
+  'brand.name': 'Veterinary Calculator',
+  'brand.tagline': 'Clinical Veterinary Calculator · Dogs & Cats',
 
   // Header / controls
   'ctl.language': 'עברית',
@@ -16,7 +16,7 @@ export const en: Record<TKey, string> = {
   'ctl.theme.toggle': 'Toggle color theme',
 
   // Hero
-  'hero.title': 'Vet-Holim',
+  'hero.title': 'Veterinary Calculator',
   'hero.subtitle': 'Drug dosing & toxicity math — precise, fast, in the palm of your hand.',
   'hero.cta': 'Start calculating',
   'hero.scroll': 'Scroll',

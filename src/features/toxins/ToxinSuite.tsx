@@ -4,6 +4,7 @@ import { useI18n } from '../../i18n/LanguageProvider';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOXIN_REGISTRY } from '../../toxins/registry';
 import { EmergencyBanner } from '../../components/feedback';
+import { ToxinArt } from '../../components/ToxinArt';
 import { DogIcon, CatIcon, ChevronDownIcon } from '../../components/Icons';
 
 export function ToxinSuite() {
@@ -32,7 +33,6 @@ export function ToxinSuite() {
           >
             {TOXIN_REGISTRY.map((entry, i) => {
               const { meta } = entry;
-              const Icon = meta.Icon;
               return (
                 <motion.button
                   key={meta.id}
@@ -46,10 +46,10 @@ export function ToxinSuite() {
                   className="glass group flex items-center gap-3.5 rounded-4xl p-4 text-start"
                 >
                   <span
-                    className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl transition-transform group-hover:scale-105"
-                    style={{ background: `${meta.accent}22`, color: meta.accent }}
+                    className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl transition-transform group-hover:scale-105"
+                    style={{ background: `${meta.accent}1F` }}
                   >
-                    <Icon size={24} />
+                    <ToxinArt id={meta.id} size={40} />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold text-ink">{meta.name[lang]}</span>

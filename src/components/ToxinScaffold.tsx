@@ -10,6 +10,7 @@ import type { ToxinMeta, ToxinResult, ToxSpecies } from '../types/toxins';
 import { GlassCard, SegmentedControl } from './primitives';
 import { NumberField } from './forms';
 import { ToxinResultView } from './ToxinResultView';
+import { ToxinArt } from './ToxinArt';
 import { DogIcon, CatIcon, ScaleIcon } from './Icons';
 
 export function ToxinScaffold({
@@ -34,7 +35,6 @@ export function ToxinScaffold({
   showWeight?: boolean;
 }) {
   const { t, lang } = useI18n();
-  const Icon = meta.Icon;
 
   const speciesOpts = meta.species.map((s) => ({
     value: s,
@@ -47,10 +47,10 @@ export function ToxinScaffold({
       <GlassCard className="p-5 sm:p-6">
         <div className="mb-5 flex items-center gap-3">
           <span
-            className="grid h-11 w-11 place-items-center rounded-2xl"
-            style={{ background: `${meta.accent}26`, color: meta.accent }}
+            className="grid h-12 w-12 place-items-center rounded-2xl"
+            style={{ background: `${meta.accent}1F` }}
           >
-            <Icon size={22} />
+            <ToxinArt id={meta.id} size={34} />
           </span>
           <div>
             <h2 className="text-lg font-bold text-ink">{meta.name[lang]}</h2>

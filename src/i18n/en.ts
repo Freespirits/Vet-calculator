@@ -125,9 +125,8 @@ export const en: Record<TKey, string> = {
   // Emergency
   'emergency.title': 'An emergency?',
   'emergency.text':
-    'If you suspect poisoning, contact a veterinarian or a poison-control line immediately. Do not wait for signs to appear.',
-  'emergency.aspca': 'ASPCA Animal Poison Control (US)',
-  'emergency.helpline': 'Pet Poison Helpline (US)',
+    "If you suspect poisoning, call one of Israel's 24/7 emergency animal hospitals immediately. Don't wait for signs — and it's best to call ahead before arriving.",
+  'emergency.note': 'Israel has no dedicated pet poison-control hotline. The national poison center (Rambam, 04-7771900) is for humans only.',
   'emergency.callVet': 'Call your veterinarian',
 
   // Disclaimer / footer

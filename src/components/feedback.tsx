@@ -4,6 +4,7 @@
 import { useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
+import { ISRAEL_VET_ER } from '../data/emergencyContacts';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import {
   AlertTriangleIcon,
@@ -53,7 +54,7 @@ export function WarningList({
 }
 
 export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   return (
     <div
       className="rounded-4xl border p-5"
@@ -64,32 +65,31 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
         <h3 className="text-base font-bold">{t('emergency.title')}</h3>
       </div>
       {!compact && <p className="mt-2 text-sm text-ink/80">{t('emergency.text')}</p>}
-      <div className="mt-4 flex flex-col gap-2">
-        <a
-          href="tel:+18884264435"
-          className="btn-ghost justify-between !min-h-[48px] text-sm"
-        >
-          <span className="flex items-center gap-2">
-            <PhoneIcon size={18} />
-            {t('emergency.aspca')}
-          </span>
-          <span className="tnum font-semibold" dir="ltr">
-            888-426-4435
-          </span>
-        </a>
-        <a
-          href="tel:+18557647661"
-          className="btn-ghost justify-between !min-h-[48px] text-sm"
-        >
-          <span className="flex items-center gap-2">
-            <PhoneIcon size={18} />
-            {t('emergency.helpline')}
-          </span>
-          <span className="tnum font-semibold" dir="ltr">
-            855-764-7661
-          </span>
-        </a>
-      </div>
+
+      <ul className="mt-4 flex flex-col gap-2">
+        {ISRAEL_VET_ER.map((c) => (
+          <li key={c.tel}>
+            <a
+              href={`tel:${c.tel}`}
+              className="flex min-h-[52px] items-center justify-between gap-3 rounded-2xl px-4 py-2 transition-colors hover:bg-white/[0.06]"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)' }}
+            >
+              <span className="flex min-w-0 items-center gap-2.5">
+                <PhoneIcon size={18} className="shrink-0 text-rose" />
+                <span className="min-w-0">
+                  <span className="block truncate text-sm font-medium text-ink">{c.name[lang]}</span>
+                  <span className="block truncate text-xs text-muted">{c.region[lang]}</span>
+                </span>
+              </span>
+              <span className="tnum shrink-0 text-sm font-bold text-ink" dir="ltr">
+                {c.phone}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {!compact && <p className="mt-3 text-xs text-muted">{t('emergency.note')}</p>}
     </div>
   );
 }

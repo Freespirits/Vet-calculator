@@ -127,10 +127,10 @@ export const he = {
 
   // Emergency
   'emergency.title': 'מקרה חירום?',
-  'emergency.text': 'במקרה של חשד להרעלה — פנה מיד לרופא וטרינר או למוקד רעלים. אל תמתין להופעת סימנים.',
-  'emergency.aspca': 'ASPCA Animal Poison Control (ארה"ב)',
-  'emergency.helpline': 'Pet Poison Helpline (ארה"ב)',
-  'emergency.callVet': 'התקשר לרופא הווטרינר שלך',
+  'emergency.text':
+    'בחשד להרעלה — התקשר/י מיד לאחד מבתי החולים הווטרינריים הפועלים 24/7. אל תמתין/י להופעת סימנים, ורצוי להתקשר לפני ההגעה.',
+  'emergency.note': 'אין בישראל מוקד רעלים ייעודי לבעלי חיים. מוקד הרעלים הארצי (רמב"ם, 04-7771900) מיועד לבני אדם בלבד.',
+  'emergency.callVet': 'התקשר/י לרופא/ה הווטרינר/ית שלך',
 
   // Disclaimer / footer
   'disclaimer.title': 'כתב ויתור',

@@ -1,6 +1,7 @@
 import { useI18n } from '../i18n/LanguageProvider';
 import { useTheme } from '../hooks/useTheme';
-import { HeartPulseIcon, SunIcon, MoonIcon, LanguagesIcon } from './Icons';
+import { SunIcon, MoonIcon, LanguagesIcon } from './Icons';
+import { Mascot } from './Mascot';
 
 export function Header() {
   const { t, toggleLang } = useI18n();
@@ -10,12 +11,7 @@ export function Header() {
     <header className="sticky top-0 z-40 px-3 pt-3">
       <div className="glass mx-auto flex max-w-3xl items-center justify-between rounded-2xl px-4 py-2.5">
         <a href="#top" className="flex items-center gap-2.5">
-          <span
-            className="grid h-9 w-9 place-items-center rounded-xl"
-            style={{ background: 'linear-gradient(135deg,#2DD4BF,#8B5CF6)' }}
-          >
-            <HeartPulseIcon size={20} className="text-[#04221d]" />
-          </span>
+          <Mascot size={44} />
           <span className="text-lg font-extrabold tracking-tight text-ink">{t('brand.name')}</span>
         </a>
 

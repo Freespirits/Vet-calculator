@@ -93,23 +93,23 @@ const FRAG = /* glsl */ `
 
     // pointer adds a soft luminous swell
     float pd = length(p - ptr * 0.6);
-    float swell = smoothstep(0.9, 0.0, pd) * 0.35;
+    float swell = smoothstep(0.9, 0.0, pd) * 0.3;
     f += swell;
 
-    // build color from the warped field
-    float band = clamp(f * 0.5 + 0.5, 0.0, 1.0);
+    // Deep navy base with ADDITIVE aurora ribbons (moody, not a flat wash).
+    float band = clamp(f * 0.6 + 0.5, 0.0, 1.0);
     vec3 col = NAVY;
-    col = mix(col, EMERALD, smoothstep(0.35, 0.75, band));
-    col = mix(col, TEAL,    smoothstep(0.55, 0.95, band + length(q) * 0.25));
-    col = mix(col, VIOLET,  smoothstep(0.6, 1.05, length(r) + swell));
+    col += EMERALD * smoothstep(0.52, 0.80, band) * 0.40;
+    col += TEAL    * smoothstep(0.62, 0.98, band + length(q) * 0.22) * 0.85;
+    col += VIOLET  * smoothstep(0.60, 1.00, length(r) * 0.85 + swell) * 0.55;
 
     // vertical falloff — aurora concentrates toward the top
-    float vert = smoothstep(-0.55, 0.55, uv.y - 0.15);
-    col *= mix(0.55, 1.15, vert);
+    float vert = smoothstep(-0.5, 0.6, uv.y - 0.10);
+    col *= mix(0.62, 1.10, vert);
 
     // gentle vignette to seat content
-    float vig = smoothstep(1.25, 0.2, length(p));
-    col *= mix(0.7, 1.0, vig);
+    float vig = smoothstep(1.30, 0.25, length(p));
+    col *= mix(0.6, 1.0, vig);
 
     col *= u_intensity;
 
@@ -133,7 +133,7 @@ function AuroraPlane({ pointer }: { pointer: React.MutableRefObject<{ x: number;
       u_time: { value: 0 },
       u_res: { value: new THREE.Vector2(1, 1) },
       u_pointer: { value: new THREE.Vector2(0.5, 0.5) },
-      u_intensity: { value: 1 },
+      u_intensity: { value: 1.0 },
     }),
     [],
   );

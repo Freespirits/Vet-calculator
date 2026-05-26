@@ -12,8 +12,8 @@ function readInitial(): Theme {
   if (typeof window === 'undefined') return 'dark';
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === 'light' || stored === 'dark') return stored;
-  // Default to the dark hero theme unless the OS explicitly prefers light.
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  // Dark "Aurora Clinic" is the intended hero default; light is opt-in.
+  return 'dark';
 }
 
 export function useTheme() {

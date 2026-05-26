@@ -33,13 +33,13 @@ export function Hero() {
         <AuroraBackground active={inView} className="absolute inset-0" />
       </Suspense>
 
-      {/* readability scrim */}
+      {/* readability scrim — darkens edges/top/bottom so the title pops */}
       <div
         className="absolute inset-0"
         aria-hidden="true"
         style={{
           background:
-            'radial-gradient(80% 60% at 50% 55%, transparent, rgb(var(--bg-0) / 0.55) 100%)',
+            'radial-gradient(72% 50% at 50% 46%, transparent, rgb(var(--bg-0) / 0.62) 100%), linear-gradient(to bottom, rgb(var(--bg-0) / 0.40), transparent 30% 60%, rgb(var(--bg-0) / 0.82))',
         }}
       />
 
@@ -55,6 +55,7 @@ export function Hero() {
         <motion.h1
           {...stagger(1)}
           className="grad-text text-display-lg font-black text-balance"
+          style={{ filter: 'drop-shadow(0 4px 28px rgba(7,11,20,0.7))' }}
         >
           {t('hero.title')}
         </motion.h1>

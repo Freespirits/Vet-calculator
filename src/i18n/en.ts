@@ -1,0 +1,139 @@
+import type { TKey } from './he';
+
+/**
+ * English dictionary. Typed as Record<TKey, string> so the compiler
+ * flags any key present in Hebrew but missing here.
+ */
+export const en: Record<TKey, string> = {
+  // Brand
+  'brand.name': 'Vet-Holim',
+  'brand.tagline': 'Clinical Veterinary Calculator',
+
+  // Header / controls
+  'ctl.language': 'עברית',
+  'ctl.theme.toDark': 'Dark',
+  'ctl.theme.toLight': 'Light',
+  'ctl.theme.toggle': 'Toggle color theme',
+
+  // Hero
+  'hero.title': 'Vet-Holim',
+  'hero.subtitle': 'Drug dosing & toxicity math — precise, fast, in the palm of your hand.',
+  'hero.cta': 'Start calculating',
+  'hero.scroll': 'Scroll',
+
+  // Tool switcher
+  'tab.dosage': 'Drug Dosage',
+  'tab.toxins': 'Toxins',
+  'tabs.aria': 'Choose calculator',
+
+  // Common
+  'common.calculate': 'Calculate',
+  'common.reset': 'Reset',
+  'common.copy': 'Copy',
+  'common.copied': 'Copied!',
+  'common.share': 'Share',
+  'common.close': 'Close',
+  'common.sources': 'Sources',
+  'common.optional': 'optional',
+  'common.select': 'Select',
+  'common.search': 'Search',
+  'common.required': 'required',
+  'common.back': 'Back',
+  'common.details': 'Details',
+  'common.example': 'e.g.',
+  'common.unit': 'Unit',
+
+  // Species
+  'species.label': 'Species',
+  'species.dog': 'Dog',
+  'species.cat': 'Cat',
+  'species.other': 'Other',
+
+  // Units / fields
+  'field.weight': 'Body weight',
+  'unit.kg': 'kg',
+  'unit.g': 'g',
+  'unit.oz': 'oz',
+  'unit.mg': 'mg',
+  'unit.ml': 'mL',
+  'unit.mgkg': 'mg/kg',
+  'unit.gkg': 'g/kg',
+  'unit.tablets': 'tablets',
+  'unit.pieces': 'pieces',
+  'unit.perDay': 'per day',
+
+  // Dosage calculator
+  'dose.title': 'Drug Dosage Calculator',
+  'dose.subtitle': 'Volume to draw, from weight, dose and concentration.',
+  'dose.drug': 'Drug name',
+  'dose.drugPlaceholder': 'Search or type a drug name…',
+  'dose.perKg': 'Dose per kg',
+  'dose.doseUnit': 'Dose unit',
+  'dose.concentration': 'Concentration',
+  'dose.concUnit': 'Conc. unit',
+  'dose.route': 'Route',
+  'dose.rounding': 'Rounding',
+  'dose.frequency': 'Frequency',
+  'dose.freqPlaceholder': 'e.g. every 8 h',
+  'dose.duration': 'Duration',
+  'dose.durationPlaceholder': 'e.g. 7 days',
+  'dose.volumeToDraw': 'Volume to draw',
+  'dose.totalDose': 'Total dose',
+  'dose.therapeuticRange': 'Therapeutic range',
+  'dose.belowRange': 'Below range',
+  'dose.inRange': 'In range',
+  'dose.aboveRange': 'Above range',
+  'dose.noRange': 'No reference range for this combination',
+  'dose.breakdown': 'Calculation breakdown',
+  'dose.bodyWeight': 'Body weight',
+  'dose.doseGiven': 'Dose given',
+  'dose.rawVolume': 'Raw volume',
+  'dose.roundedVolume': 'Rounded volume',
+  'dose.warnings': 'Warnings',
+  'dose.noWarnings': 'No warnings',
+  'dose.enterToCalc': 'Enter weight, dose and concentration to calculate.',
+
+  // Routes
+  'route.IV': 'Intravenous (IV)',
+  'route.IM': 'Intramuscular (IM)',
+  'route.SC': 'Subcutaneous (SC)',
+  'route.PO': 'Oral (PO)',
+
+  // Toxicity suite
+  'tox.title': 'Toxicity Calculators',
+  'tox.subtitle': 'Risk estimate from weight and amount eaten. A support tool — not a substitute for a vet.',
+  'tox.choose': 'Choose a toxin',
+  'tox.amount': 'Amount eaten',
+  'tox.source': 'Type / source',
+  'tox.riskLevel': 'Risk level',
+  'tox.dosePerKg': 'Estimated dose',
+  'tox.expectedSigns': 'Expected clinical signs',
+  'tox.action': 'Recommended action',
+  'tox.decon': 'Decontamination window',
+  'tox.context': 'Clinical context',
+  'tox.notForSpecies': 'This calculation does not apply to this species.',
+  'tox.idiosyncratic': 'Idiosyncratic toxicity — no safe threshold',
+
+  // Risk bands
+  'risk.minimal': 'Minimal',
+  'risk.mild': 'Mild',
+  'risk.moderate': 'Moderate',
+  'risk.severe': 'Severe',
+  'risk.critical': 'Critical',
+  'risk.emergency': 'Emergency',
+
+  // Emergency
+  'emergency.title': 'An emergency?',
+  'emergency.text':
+    'If you suspect poisoning, contact a veterinarian or a poison-control line immediately. Do not wait for signs to appear.',
+  'emergency.aspca': 'ASPCA Animal Poison Control (US)',
+  'emergency.helpline': 'Pet Poison Helpline (US)',
+  'emergency.callVet': 'Call your veterinarian',
+
+  // Disclaimer / footer
+  'disclaimer.title': 'Disclaimer',
+  'disclaimer.text':
+    'This calculator is a clinical decision-support tool and does not replace professional veterinary judgment or poison control. Verify every calculation against drug references before treatment. Idiosyncratic toxins (grapes, lilies) never display a "safe" result.',
+  'footer.text': 'Assistants for Assistants · All rights reserved',
+  'footer.madeWith': 'Built with clinical care',
+};

@@ -1,48 +1,44 @@
-/**
- * Header Component
- *
- * App header with title and theme toggle
- */
+import { useI18n } from '../i18n/LanguageProvider';
+import { useTheme } from '../hooks/useTheme';
+import { HeartPulseIcon, SunIcon, MoonIcon, LanguagesIcon } from './Icons';
 
-import React from 'react';
-import { t } from '../utils/translations';
-import { SunIcon, MoonIcon, PawIcon } from './Icons';
+export function Header() {
+  const { t, toggleLang } = useI18n();
+  const { isDark, toggleTheme } = useTheme();
 
-interface HeaderProps {
-  isDark: boolean;
-  onToggleTheme: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
-      <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary-600 rounded-xl text-white">
-            <PawIcon size={24} />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              {t('appTitle')}
-            </h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {t('appSubtitle')}
-            </p>
-          </div>
-        </div>
+    <header className="sticky top-0 z-40 px-3 pt-3">
+      <div className="glass mx-auto flex max-w-3xl items-center justify-between rounded-2xl px-4 py-2.5">
+        <a href="#top" className="flex items-center gap-2.5">
+          <span
+            className="grid h-9 w-9 place-items-center rounded-xl"
+            style={{ background: 'linear-gradient(135deg,#2DD4BF,#8B5CF6)' }}
+          >
+            <HeartPulseIcon size={20} className="text-[#04221d]" />
+          </span>
+          <span className="text-lg font-extrabold tracking-tight text-ink">{t('brand.name')}</span>
+        </a>
 
-        <button
-          onClick={onToggleTheme}
-          className="p-2 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-          aria-label={t('toggleDarkMode')}
-        >
-          {isDark ? (
-            <SunIcon size={20} className="text-yellow-500" />
-          ) : (
-            <MoonIcon size={20} className="text-gray-600" />
-          )}
-        </button>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={toggleLang}
+            className="flex h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-muted transition-colors hover:text-ink"
+            aria-label={t('ctl.language')}
+          >
+            <LanguagesIcon size={18} />
+            {t('ctl.language')}
+          </button>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="grid h-11 w-11 place-items-center rounded-xl text-muted transition-colors hover:text-ink"
+            aria-label={t('ctl.theme.toggle')}
+          >
+            {isDark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+          </button>
+        </div>
       </div>
     </header>
   );
-};
+}

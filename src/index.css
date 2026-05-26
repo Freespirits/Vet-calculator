@@ -2,133 +2,208 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RTL Support */
-[dir="rtl"] {
-  text-align: right;
+/* ============================================================
+   Aurora Clinic — design tokens
+   Dark is the default/hero theme; light "Clinic Day" is opt-in
+   via [data-theme="light"]. Colors are stored as space-separated
+   RGB channels so Tailwind's <alpha-value> works (rgb(var(--x) / a)).
+   ============================================================ */
+:root,
+[data-theme='dark'] {
+  --bg-0: 7 11 20; /* #070B14 page */
+  --bg-1: 12 19 32; /* #0C1320 raised */
+  --bg-2: 17 26 43; /* #111A2B raised+ */
+  --text-hi: 232 238 245; /* #E8EEF5 */
+  --text-lo: 147 164 189; /* #93A4BD */
+  --hairline: 255 255 255; /* used at low alpha */
+
+  --glass-bg: rgba(18, 26, 42, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 16px;
+  color-scheme: dark;
 }
 
-/* Base styles */
+[data-theme='light'] {
+  --bg-0: 244 247 251; /* bone */
+  --bg-1: 255 255 255;
+  --bg-2: 238 243 249;
+  --text-hi: 15 23 42; /* slate-900 */
+  --text-lo: 71 85 105; /* slate-600 */
+  --hairline: 15 23 42;
+
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(15, 23, 42, 0.08);
+  --glass-blur: 14px;
+  color-scheme: light;
+}
+
 @layer base {
   html {
-    font-family: 'Heebo', system-ui, sans-serif;
-    direction: rtl;
+    font-family: theme('fontFamily.sans');
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html[dir='rtl'] {
+    font-family: theme('fontFamily.hebrew');
   }
 
   body {
-    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
-    @apply min-h-screen;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-bg0 text-ink min-h-[100dvh] antialiased;
+    background-image: radial-gradient(
+        120% 80% at 50% -10%,
+        rgba(45, 212, 191, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(90% 60% at 100% 0%, rgba(139, 92, 246, 0.07), transparent 55%);
   }
 
-  /* Custom scrollbar for dark mode */
+  /* Visible, on-brand focus rings (accessibility backbone) */
+  :focus-visible {
+    outline: 2px solid #2dd4bf;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgba(45, 212, 191, 0.3);
+    color: rgb(var(--text-hi));
+  }
+
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
+    height: 10px;
   }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-800;
-  }
-
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+    background: rgba(147, 164, 189, 0.3);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 164, 189, 0.5);
+    background-clip: padding-box;
+  }
+
+  /* Hide number input spinners */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
   }
 }
 
-/* Component styles */
 @layer components {
-  .input-field {
-    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700;
-    @apply bg-white dark:bg-gray-800;
-    @apply text-gray-900 dark:text-gray-100;
-    @apply focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
-    @apply transition-all duration-200;
-    @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+  /* Glassmorphic surface — the workhorse card */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+    box-shadow: theme('boxShadow.glass');
   }
 
+  .glass-input {
+    @apply w-full rounded-2xl px-4 py-3.5 text-base text-ink;
+    @apply transition-all duration-200;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid var(--glass-border);
+  }
+  [data-theme='light'] .glass-input {
+    background: rgba(15, 23, 42, 0.03);
+  }
+  .glass-input::placeholder {
+    @apply text-muted/70;
+  }
+  .glass-input:focus {
+    border-color: #2dd4bf;
+    box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.2);
+    outline: none;
+  }
+
+  /* Buttons — min 44px touch target */
   .btn-primary {
-    @apply px-6 py-3 rounded-xl font-semibold;
-    @apply bg-primary-600 hover:bg-primary-700;
-    @apply text-white;
-    @apply transition-all duration-200;
-    @apply active:scale-95;
-    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 font-semibold;
+    @apply min-h-[52px] text-base text-[#04221d];
+    @apply transition-transform duration-200 active:scale-[0.97];
+    @apply disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100;
+    background: linear-gradient(135deg, #2dd4bf, #10b981);
+    box-shadow: 0 8px 24px -8px rgba(16, 185, 129, 0.6);
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 font-medium;
+    @apply min-h-[52px] text-ink;
+    @apply transition-all duration-200 active:scale-[0.97];
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+  }
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.09);
   }
 
-  .btn-secondary {
-    @apply px-6 py-3 rounded-xl font-semibold;
-    @apply bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600;
-    @apply text-gray-800 dark:text-gray-200;
-    @apply transition-all duration-200;
-    @apply active:scale-95;
-  }
-
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-lg;
-    @apply border border-gray-100 dark:border-gray-700;
-  }
-
-  .warning-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full;
-    @apply bg-warning-100 dark:bg-warning-500/20 text-warning-600 dark:text-warning-500;
-    @apply text-sm font-medium;
-  }
-
-  .danger-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full;
-    @apply bg-danger-100 dark:bg-danger-500/20 text-danger-600 dark:text-danger-500;
-    @apply text-sm font-medium;
-  }
-
-  .success-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full;
-    @apply bg-success-100 dark:bg-success-500/20 text-success-600 dark:text-success-500;
-    @apply text-sm font-medium;
+  /* Severity chips */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium;
   }
 }
 
-/* Animation utilities */
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out;
+  .text-balance {
+    text-wrap: balance;
   }
-
-  .animate-slide-up {
-    animation: slideUp 0.3s ease-out;
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
   }
-
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+  /* Logical-direction helpers used in a few RTL-sensitive spots */
+  .grad-text {
+    background: linear-gradient(120deg, #2dd4bf, #8b5cf6 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Honor reduced-motion globally: kill long/auto animations & smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Number input hide arrows */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+html {
+  scroll-behavior: smooth;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+/* Static aurora gradient — first-paint placeholder and the WebGL
+   fallback for context-loss / reduced-motion. Drifts slowly; the
+   reduced-motion media rule above freezes it. */
+.aurora-fallback {
+  background:
+    radial-gradient(60% 50% at 20% 0%, rgba(45, 212, 191, 0.28), transparent 60%),
+    radial-gradient(55% 45% at 80% 10%, rgba(139, 92, 246, 0.24), transparent 60%),
+    radial-gradient(70% 60% at 50% 100%, rgba(16, 185, 129, 0.18), transparent 65%),
+    rgb(var(--bg-0));
+  background-size: 200% 200%;
+  animation: aurora-drift 24s ease-in-out infinite alternate;
+}
+[data-theme='light'] .aurora-fallback {
+  background:
+    radial-gradient(60% 50% at 20% 0%, rgba(45, 212, 191, 0.22), transparent 60%),
+    radial-gradient(55% 45% at 80% 10%, rgba(139, 92, 246, 0.16), transparent 60%),
+    radial-gradient(70% 60% at 50% 100%, rgba(16, 185, 129, 0.14), transparent 65%),
+    rgb(var(--bg-0));
+  background-size: 200% 200%;
+  animation: aurora-drift 24s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }

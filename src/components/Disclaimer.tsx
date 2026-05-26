@@ -1,30 +1,19 @@
-/**
- * Disclaimer Component
- *
- * Medical disclaimer shown at the bottom of the calculator
- */
+import { useI18n } from '../i18n/LanguageProvider';
+import { ShieldIcon } from './Icons';
 
-import React from 'react';
-import { t } from '../utils/translations';
-import { AlertCircleIcon } from './Icons';
-
-export const Disclaimer: React.FC = () => {
+export function Disclaimer() {
+  const { t } = useI18n();
   return (
-    <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
+    <div className="rounded-4xl bg-white/4 p-5">
       <div className="flex items-start gap-3">
-        <AlertCircleIcon
-          size={20}
-          className="text-gray-400 dark:text-gray-500 flex-shrink-0 mt-0.5"
-        />
+        <span className="mt-0.5 shrink-0 text-muted">
+          <ShieldIcon size={20} />
+        </span>
         <div>
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            {t('disclaimer')}
-          </h4>
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-            {t('disclaimerText')}
-          </p>
+          <h4 className="mb-1 text-sm font-semibold text-ink/80">{t('disclaimer.title')}</h4>
+          <p className="text-xs leading-relaxed text-muted">{t('disclaimer.text')}</p>
         </div>
       </div>
     </div>
   );
-};
+}

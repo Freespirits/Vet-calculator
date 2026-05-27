@@ -7,7 +7,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { searchDrugs } from '../data/drugDatabase';
 import type { DrugInfo } from '../types';
-import { SearchIcon, XIcon } from './Icons';
+import { SearchIcon, XIcon, AlertTriangleIcon } from './Icons';
 import { t } from '../utils/translations';
 
 interface DrugSearchProps {
@@ -26,7 +26,6 @@ export const DrugSearch: React.FC<DrugSearchProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Update search results when value changes
   useEffect(() => {
     if (value.trim()) {
       setSearchResults(searchDrugs(value));
@@ -35,7 +34,6 @@ export const DrugSearch: React.FC<DrugSearchProps> = ({
     }
   }, [value]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -93,17 +91,49 @@ export const DrugSearch: React.FC<DrugSearchProps> = ({
         </div>
       </div>
 
-      {/* Selected drug info badge */}
+      {/* Selected drug info */}
       {selectedDrug && (
-        <div className="mt-2 flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            {selectedDrug.categoryHe}
-          </span>
-          {selectedDrug.isHighRisk && (
-            <span className="danger-badge text-xs">
-              {t('highRiskMedication')}
+        <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {selectedDrug.genericNameHe}
             </span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              ({selectedDrug.genericName})
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-400">
+              {selectedDrug.categoryHe}
+            </span>
+            {selectedDrug.isHighRisk && (
+              <span className="danger-badge text-xs">
+                {t('highRiskMedication')}
+              </span>
+            )}
+            {selectedDrug.isControlled && (
+              <span className="warning-badge text-xs">
+                {t('controlledSubstance')}
+              </span>
+            )}
+          </div>
+
+          {selectedDrug.brandNames && selectedDrug.brandNames.length > 0 && (
+            <div className="text-xs text-gray-500 dark:text-gray-400">
+              {t('brandNames')}: {selectedDrug.brandNames.join(', ')}
+            </div>
           )}
+
+          {/* Plumb's warning */}
+          <div className="mt-3 p-2 bg-warning-50 dark:bg-warning-500/10 rounded-lg border border-warning-200 dark:border-warning-500/30">
+            <div className="flex items-start gap-2">
+              <AlertTriangleIcon size={16} className="text-warning-500 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-warning-700 dark:text-warning-400">
+                {t('plumbsWarningText')}
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
@@ -122,15 +152,18 @@ export const DrugSearch: React.FC<DrugSearchProps> = ({
                   {drug.nameHe}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {drug.name}
+                  {drug.genericName}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-400 dark:text-gray-500">
                   {drug.categoryHe}
                 </span>
+                {drug.isControlled && (
+                  <span className="w-2 h-2 bg-warning-500 rounded-full" title={t('controlledSubstance')} />
+                )}
                 {drug.isHighRisk && (
-                  <span className="w-2 h-2 bg-danger-500 rounded-full" />
+                  <span className="w-2 h-2 bg-danger-500 rounded-full" title={t('highRiskMedication')} />
                 )}
               </div>
             </button>

@@ -30,7 +30,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const text = `${t('withdrawVolume')} ${formatVolume(result.volumeMl, result.calculationBreakdown.roundingPrecision)} ${t('ml')}`;
+    const text = `${t('withdrawVolume')} ${formatVolume(result.volumeMl)} ${t('ml')}`;
     await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -41,7 +41,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
       try {
         await navigator.share({
           title: t('appTitle'),
-          text: `${t('withdrawVolume')} ${formatVolume(result.volumeMl, result.calculationBreakdown.roundingPrecision)} ${t('ml')}`,
+          text: `${t('withdrawVolume')} ${formatVolume(result.volumeMl)} ${t('ml')}`,
         });
       } catch {
         // User cancelled or share failed
@@ -111,7 +111,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
 
         <div className="text-center py-4">
           <span className="text-6xl font-bold tracking-tight">
-            {formatVolume(result.volumeMl, result.calculationBreakdown.roundingPrecision)}
+            {formatVolume(result.volumeMl)}
           </span>
           <span className="text-3xl font-medium mr-2">{t('ml')}</span>
         </div>
@@ -185,21 +185,12 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({
             </div>
 
             <div className="border-t border-gray-200 dark:border-gray-700 my-2 pt-2">
-              <div className="flex justify-between">
-                <span className="text-gray-500 dark:text-gray-400">
-                  {t('rawVolume')}:
-                </span>
-                <span className="font-medium text-gray-900 dark:text-gray-100">
-                  {result.calculationBreakdown.rawVolumeMl.toFixed(4)} {t('ml')}
-                </span>
-              </div>
-
               <div className="flex justify-between text-primary-600 dark:text-primary-400">
                 <span className="font-medium">
-                  {t('roundedVolume')} ({result.calculationBreakdown.roundingPrecision} {t('ml')}):
+                  {t('finalVolume')}:
                 </span>
                 <span className="font-bold">
-                  {formatVolume(result.volumeMl, result.calculationBreakdown.roundingPrecision)} {t('ml')}
+                  {formatVolume(result.volumeMl)} {t('ml')}
                 </span>
               </div>
             </div>

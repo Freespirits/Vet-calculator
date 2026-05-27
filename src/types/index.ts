@@ -15,9 +15,6 @@ export type DoseUnit = 'mg/kg' | 'mcg/kg' | 'IU/kg' | 'mL/kg';
 // Concentration units
 export type ConcentrationUnit = 'mg/mL' | 'mcg/mL' | 'IU/mL';
 
-// Rounding precision for volume output
-export type RoundingPrecision = 0.01 | 0.05 | 0.1;
-
 // Warning severity levels
 export type WarningSeverity = 'info' | 'warning' | 'danger';
 
@@ -31,7 +28,6 @@ export interface CalculationInput {
   concentration: number;
   concentrationUnit: ConcentrationUnit;
   route: AdministrationRoute;
-  roundingPrecision: RoundingPrecision;
   frequency?: string;
   duration?: string;
 }
@@ -66,7 +62,18 @@ export interface CalculationBreakdown {
   concentrationUnit: string;
   rawVolumeMl: number;
   roundedVolumeMl: number;
-  roundingPrecision: RoundingPrecision;
+}
+
+// Plumb's standard dosing information
+export interface PlumbsDosing {
+  species: Species;
+  route: AdministrationRoute;
+  minDose: number;
+  maxDose: number;
+  unit: DoseUnit;
+  frequency?: string;
+  notes?: string;
+  notesHe?: string;
 }
 
 // Drug information from database
@@ -74,18 +81,14 @@ export interface DrugInfo {
   id: string;
   name: string;
   nameHe: string;
+  genericName: string;
+  genericNameHe: string;
+  brandNames?: string[];
   category: string;
   categoryHe: string;
-  defaultConcentration?: number;
-  concentrationUnit?: ConcentrationUnit;
-  commonDoses: {
-    species: Species;
-    route: AdministrationRoute;
-    minDose: number;
-    maxDose: number;
-    unit: DoseUnit;
-  }[];
+  plumbsDosing: PlumbsDosing[];
   isHighRisk: boolean;
+  isControlled?: boolean;
   warnings?: string[];
   warningsHe?: string[];
 }
@@ -105,7 +108,6 @@ export interface ValidationError {
 // App settings
 export interface AppSettings {
   darkMode: boolean;
-  defaultRoundingPrecision: RoundingPrecision;
   showCalculationBreakdown: boolean;
   language: 'he' | 'en';
 }

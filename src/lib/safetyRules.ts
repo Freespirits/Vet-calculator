@@ -4,6 +4,8 @@
  * Clinical safety guardrails for veterinary drug dosing.
  * These rules provide soft warnings (non-blocking) to help
  * clinicians catch potential errors.
+ *
+ * Dosing information based on Plumb's Veterinary Drug Handbook.
  */
 
 import type {
@@ -18,18 +20,17 @@ import type {
 
 /**
  * Maximum weight limits by species (kg)
- * Used to flag potentially erroneous weight entries
  */
 const MAX_WEIGHT_BY_SPECIES: Record<Species, number> = {
-  dog: 100,    // Large breeds like Great Danes
-  cat: 15,     // Very large cats
-  other: 500,  // Horses, cattle, etc.
+  dog: 100,
+  cat: 15,
+  other: 500,
 };
 
 /**
  * Minimum practical weight for dosing (kg)
  */
-const MIN_WEIGHT = 0.1; // 100g - for very small animals
+const MIN_WEIGHT = 0.1;
 
 /**
  * Validates all input fields before calculation
@@ -37,7 +38,6 @@ const MIN_WEIGHT = 0.1; // 100g - for very small animals
 export function validateInput(input: Partial<CalculationInput>): ValidationResult {
   const errors: ValidationError[] = [];
 
-  // Weight validation
   if (input.weightKg === undefined || input.weightKg === null) {
     errors.push({
       field: 'weightKg',
@@ -58,7 +58,6 @@ export function validateInput(input: Partial<CalculationInput>): ValidationResul
     });
   }
 
-  // Dose validation
   if (input.dosePerKg === undefined || input.dosePerKg === null) {
     errors.push({
       field: 'dosePerKg',
@@ -73,7 +72,6 @@ export function validateInput(input: Partial<CalculationInput>): ValidationResul
     });
   }
 
-  // Concentration validation (not required for mL/kg dosing)
   if (input.doseUnit !== 'mL/kg') {
     if (input.concentration === undefined || input.concentration === null) {
       errors.push({
@@ -90,7 +88,6 @@ export function validateInput(input: Partial<CalculationInput>): ValidationResul
     }
   }
 
-  // Drug name validation
   if (!input.drugName || input.drugName.trim() === '') {
     errors.push({
       field: 'drugName',
@@ -127,7 +124,7 @@ export function generateSpeciesWarnings(
 }
 
 /**
- * Generates drug-specific warnings based on drug database
+ * Generates drug-specific warnings based on Plumb's dosing data
  */
 export function generateDrugWarnings(
   input: CalculationInput,
@@ -149,8 +146,18 @@ export function generateDrugWarnings(
     });
   }
 
-  // Check dose against known therapeutic ranges
-  const relevantDose = drugInfo.commonDoses.find(
+  // Controlled substance warning
+  if (drugInfo.isControlled) {
+    warnings.push({
+      id: 'controlled_substance',
+      severity: 'warning',
+      message: `${drugInfo.name} is a controlled substance - document usage`,
+      messageHe: `${drugInfo.nameHe} הוא חומר מפוקח - יש לתעד שימוש`,
+    });
+  }
+
+  // Check dose against Plumb's therapeutic ranges
+  const relevantDose = drugInfo.plumbsDosing.find(
     (d) => d.species === input.species && d.route === input.route
   );
 
@@ -159,15 +166,35 @@ export function generateDrugWarnings(
       warnings.push({
         id: 'dose_below_range',
         severity: 'warning',
-        message: `Dose is below typical range (${relevantDose.minDose}-${relevantDose.maxDose} ${relevantDose.unit})`,
-        messageHe: `המינון נמוך מהטווח האופייני (${relevantDose.minDose}-${relevantDose.maxDose} ${relevantDose.unit})`,
+        message: `Dose is below Plumb's range (${relevantDose.minDose}-${relevantDose.maxDose} ${relevantDose.unit})`,
+        messageHe: `המינון נמוך מטווח Plumb's (${relevantDose.minDose}-${relevantDose.maxDose} ${relevantDose.unit})`,
       });
     } else if (input.dosePerKg > relevantDose.maxDose) {
       warnings.push({
         id: 'dose_above_range',
         severity: 'danger',
-        message: `Dose exceeds typical maximum (${relevantDose.maxDose} ${relevantDose.unit})`,
-        messageHe: `המינון עולה על המקסימום האופייני (${relevantDose.maxDose} ${relevantDose.unit})`,
+        message: `Dose exceeds Plumb's maximum (${relevantDose.maxDose} ${relevantDose.unit})`,
+        messageHe: `המינון עולה על מקסימום Plumb's (${relevantDose.maxDose} ${relevantDose.unit})`,
+      });
+    }
+
+    // Show Plumb's dosing notes if available
+    if (relevantDose.notesHe) {
+      warnings.push({
+        id: 'plumbs_note',
+        severity: 'info',
+        message: relevantDose.notes || relevantDose.notesHe,
+        messageHe: relevantDose.notesHe,
+      });
+    }
+
+    // Show frequency if available
+    if (relevantDose.frequency) {
+      warnings.push({
+        id: 'plumbs_frequency',
+        severity: 'info',
+        message: `Recommended frequency: ${relevantDose.frequency}`,
+        messageHe: `תדירות מומלצת: ${relevantDose.frequency}`,
       });
     }
   }
@@ -177,7 +204,7 @@ export function generateDrugWarnings(
     drugInfo.warningsHe.forEach((warning, index) => {
       warnings.push({
         id: `drug_warning_${index}`,
-        severity: 'info',
+        severity: 'warning',
         message: drugInfo.warnings?.[index] || warning,
         messageHe: warning,
       });
@@ -196,7 +223,6 @@ export function generateRouteWarnings(
 ): CalculationWarning[] {
   const warnings: CalculationWarning[] = [];
 
-  // SC injection volume limits
   if (route === 'SC' && volumeMl > 10) {
     warnings.push({
       id: 'sc_volume_high',
@@ -206,7 +232,6 @@ export function generateRouteWarnings(
     });
   }
 
-  // IM injection volume limits
   if (route === 'IM' && volumeMl > 5) {
     warnings.push({
       id: 'im_volume_high',

@@ -45,12 +45,6 @@ export const translations = {
   mcgPerMl: 'מק"ג/מ"ל',
   iuPerMl: 'IU/מ"ל',
 
-  // Rounding
-  roundingPrecision: 'דיוק עיגול',
-  precision001: '0.01 מ"ל',
-  precision005: '0.05 מ"ל',
-  precision01: '0.1 מ"ל',
-
   // Buttons
   calculate: 'חשב',
   reset: 'אפס',
@@ -70,8 +64,7 @@ export const translations = {
   doseGiven: 'מינון שניתן',
   totalDose: 'מינון כולל',
   drugConcentration: 'ריכוז התרופה',
-  rawVolume: 'נפח לפני עיגול',
-  roundedVolume: 'נפח מעוגל',
+  finalVolume: 'נפח סופי',
 
   // Warnings
   warnings: 'אזהרות',
@@ -91,6 +84,12 @@ export const translations = {
   disclaimer: 'כתב ויתור',
   disclaimerText:
     'מחשבון זה הוא כלי תמיכה קלינית ואינו מחליף שיקול דעת וטרינרי מקצועי. יש לאמת את החישובים ולעיין בהפניות תרופתיות לפני מתן התרופה.',
+
+  // Plumb's warning
+  plumbsWarning: 'אזהרה חשובה',
+  plumbsWarningText: 'המינון המקובל מבוסס על Plumb\'s Veterinary Drug Handbook ומיועד לשימוש וטרינרי מקצועי בלבד. יש לאמת כל מינון לפני מתן התרופה.',
+  plumbsDosing: 'מינון מקובל (Plumb\'s)',
+  controlledSubstance: 'חומר מפוקח',
 
   // Footer
   footer: 'אסיסטנטים למען אסיסטנטים כל הזכויות שמורות',
@@ -124,7 +123,9 @@ export const translations = {
   categoryDiuretic: 'משתן',
   categoryAntihistamine: 'אנטיהיסטמין',
 
-  // Misc
+  // Drug info
+  genericName: 'שם גנרי',
+  brandNames: 'שמות מסחריים',
   highRiskMedication: 'תרופה בסיכון גבוה',
   verifyDose: 'אמת מינון',
   optional: 'אופציונלי',

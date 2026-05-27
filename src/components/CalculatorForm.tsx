@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import type { DoseUnit, ConcentrationUnit, RoundingPrecision, DrugInfo } from '../types';
+import type { DoseUnit, ConcentrationUnit, DrugInfo } from '../types';
 import { SpeciesSelector } from './SpeciesSelector';
 import { DrugSearch } from './DrugSearch';
 import { RouteSelector } from './RouteSelector';
@@ -21,7 +21,6 @@ interface CalculatorState {
   concentration: string;
   concentrationUnit: ConcentrationUnit;
   route: 'IV' | 'IM' | 'SC' | 'PO';
-  roundingPrecision: RoundingPrecision;
   frequency: string;
   duration: string;
 }
@@ -47,12 +46,6 @@ const concentrationUnits: { value: ConcentrationUnit; label: string }[] = [
   { value: 'mg/mL', label: 'מ"ג/מ"ל' },
   { value: 'mcg/mL', label: 'מק"ג/מ"ל' },
   { value: 'IU/mL', label: 'IU/מ"ל' },
-];
-
-const roundingOptions: { value: RoundingPrecision; label: string }[] = [
-  { value: 0.01, label: '0.01 מ"ל' },
-  { value: 0.05, label: '0.05 מ"ל' },
-  { value: 0.1, label: '0.1 מ"ל' },
 ];
 
 export const CalculatorForm: React.FC<CalculatorFormProps> = ({
@@ -127,32 +120,6 @@ export const CalculatorForm: React.FC<CalculatorFormProps> = ({
         value={state.route}
         onChange={(value) => updateField('route', value)}
       />
-
-      {/* Rounding precision */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          {t('roundingPrecision')}
-        </label>
-        <div className="flex gap-2">
-          {roundingOptions.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => updateField('roundingPrecision', option.value)}
-              className={`
-                flex-1 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200
-                ${
-                  state.roundingPrecision === option.value
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }
-              `}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-      </div>
 
       {/* Optional fields */}
       <div className="grid grid-cols-2 gap-4">

@@ -75,7 +75,6 @@ export const he = {
   'dose.concentration': 'ריכוז התרופה',
   'dose.concUnit': 'יחידת ריכוז',
   'dose.route': 'דרך מתן',
-  'dose.rounding': 'דיוק עיגול',
   'dose.frequency': 'תדירות',
   'dose.freqPlaceholder': 'לדוג׳: כל 8 שעות',
   'dose.duration': 'משך טיפול',

@@ -12,7 +12,6 @@ import type {
   DoseUnit,
   ConcentrationUnit,
   AdministrationRoute,
-  RoundingPrecision,
   DrugInfo,
 } from '../types';
 import { calculateDosage } from '../lib/calculationEngine';
@@ -28,7 +27,6 @@ interface CalculatorState {
   concentration: string;
   concentrationUnit: ConcentrationUnit;
   route: AdministrationRoute;
-  roundingPrecision: RoundingPrecision;
   frequency: string;
   duration: string;
 }
@@ -42,7 +40,6 @@ const initialState: CalculatorState = {
   concentration: '',
   concentrationUnit: 'mg/mL',
   route: 'SC',
-  roundingPrecision: 0.1,
   frequency: '',
   duration: '',
 };
@@ -80,7 +77,6 @@ export function useCalculator() {
       concentration: state.concentration ? parseFloat(state.concentration) : undefined,
       concentrationUnit: state.concentrationUnit,
       route: state.route,
-      roundingPrecision: state.roundingPrecision,
       frequency: state.frequency || undefined,
       duration: state.duration || undefined,
     };

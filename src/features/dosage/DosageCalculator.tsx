@@ -4,7 +4,7 @@ import { useI18n } from '../../i18n/LanguageProvider';
 import { useCalculator } from '../../hooks/useCalculator';
 import { DRUG_DATABASE } from '../../data/drugDatabase';
 import { formatVolume } from '../../lib/calculationEngine';
-import type { DoseUnit, ConcentrationUnit, AdministrationRoute, RoundingPrecision, Species } from '../../types';
+import type { DoseUnit, ConcentrationUnit, AdministrationRoute, Species } from '../../types';
 import { GlassCard, CountUp, SegmentedControl } from '../../components/primitives';
 import { NumberField, TextField, SelectField } from '../../components/forms';
 import { RangeGauge } from '../../components/gauges';
@@ -14,7 +14,6 @@ import { DogIcon, CatIcon, PawIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIco
 const DOSE_UNITS: DoseUnit[] = ['mg/kg', 'mcg/kg', 'IU/kg', 'mL/kg'];
 const CONC_UNITS: ConcentrationUnit[] = ['mg/mL', 'mcg/mL', 'IU/mL'];
 const ROUTES: AdministrationRoute[] = ['IV', 'IM', 'SC', 'PO'];
-const ROUNDING: RoundingPrecision[] = [0.01, 0.05, 0.1];
 
 export function DosageCalculator() {
   const { t, lang } = useI18n();
@@ -39,19 +38,19 @@ export function DosageCalculator() {
   // Therapeutic reference range for the current species + route.
   const range = useMemo(() => {
     if (!selectedDrug) return null;
-    const d = selectedDrug.commonDoses.find(
+    const d = selectedDrug.plumbsDosing.find(
       (x) => x.species === state.species && x.route === state.route,
     );
     if (!d || d.unit !== state.doseUnit) return null;
     return d;
   }, [selectedDrug, state.species, state.route, state.doseUnit]);
 
-  const decimals = state.roundingPrecision === 0.1 ? 1 : 2;
+  const decimals = 2;
 
   const handleCopy = async () => {
     if (!result) return;
     const drug = selectedDrug ? (lang === 'he' ? selectedDrug.nameHe : selectedDrug.name) : state.drugName;
-    const text = `${drug} — ${formatVolume(result.volumeMl, state.roundingPrecision)} ${t('unit.ml')} (${state.weightKg} ${t('unit.kg')} × ${state.dosePerKg} ${state.doseUnit})`;
+    const text = `${drug} — ${formatVolume(result.volumeMl)} ${t('unit.ml')} (${state.weightKg} ${t('unit.kg')} × ${state.dosePerKg} ${state.doseUnit})`;
     try {
       if (canShare) await navigator.share({ text });
       else {
@@ -159,20 +158,12 @@ export function DosageCalculator() {
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-3">
-            <SelectField
-              label={t('dose.route')}
-              value={state.route}
-              onChange={(v) => updateField('route', v as AdministrationRoute)}
-              options={ROUTES.map((r) => ({ value: r, label: t(`route.${r}`) }))}
-            />
-            <SelectField
-              label={t('dose.rounding')}
-              value={String(state.roundingPrecision)}
-              onChange={(v) => updateField('roundingPrecision', Number(v) as RoundingPrecision)}
-              options={ROUNDING.map((r) => ({ value: String(r), label: `${r} ${t('unit.ml')}` }))}
-            />
-          </div>
+          <SelectField
+            label={t('dose.route')}
+            value={state.route}
+            onChange={(v) => updateField('route', v as AdministrationRoute)}
+            options={ROUTES.map((r) => ({ value: r, label: t(`route.${r}`) }))}
+          />
 
           <div className="grid grid-cols-2 gap-3">
             <TextField

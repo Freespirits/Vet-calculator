@@ -1,11 +1,5 @@
 /**
  * Unit Tests for Safety Rules
- *
- * Tests cover:
- * - Input validation
- * - Species warnings
- * - Drug warnings
- * - Route warnings
  */
 
 import { describe, it, expect } from 'vitest';
@@ -27,7 +21,6 @@ describe('validateInput', () => {
       concentration: 5,
       concentrationUnit: 'mg/mL' as const,
       route: 'SC' as const,
-      roundingPrecision: 0.1 as const,
     };
 
     const result = validateInput(input);
@@ -97,7 +90,6 @@ describe('validateInput', () => {
       drugName: 'Fluid',
       dosePerKg: 10,
       doseUnit: 'mL/kg' as const,
-      // No concentration - should be OK
     };
 
     const result = validateInput(input);
@@ -107,7 +99,7 @@ describe('validateInput', () => {
   it('should fail for very low weight', () => {
     const input = {
       species: 'cat' as const,
-      weightKg: 0.05, // 50g - too small
+      weightKg: 0.05,
       drugName: 'Test',
       dosePerKg: 1,
       concentration: 10,
@@ -123,14 +115,13 @@ describe('generateSpeciesWarnings', () => {
   it('should warn for excessive dog weight', () => {
     const input: CalculationInput = {
       species: 'dog',
-      weightKg: 120, // Very large
+      weightKg: 120,
       drugName: 'Test',
       dosePerKg: 1,
       doseUnit: 'mg/kg',
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
-      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);
@@ -140,14 +131,13 @@ describe('generateSpeciesWarnings', () => {
   it('should warn for excessive cat weight', () => {
     const input: CalculationInput = {
       species: 'cat',
-      weightKg: 20, // Very large cat
+      weightKg: 20,
       drugName: 'Test',
       dosePerKg: 1,
       doseUnit: 'mg/kg',
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
-      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);
@@ -164,7 +154,6 @@ describe('generateSpeciesWarnings', () => {
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
-      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);

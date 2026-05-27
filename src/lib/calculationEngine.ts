@@ -8,7 +8,6 @@
  * - Weight is in kilograms (kg)
  * - Doses are typically mg/kg, mcg/kg, or IU/kg
  * - Output volume is in milliliters (mL)
- * - Rounding is applied to make clinical measurement practical
  */
 
 import type {
@@ -16,7 +15,6 @@ import type {
   CalculationResult,
   CalculationBreakdown,
   CalculationWarning,
-  RoundingPrecision,
   DoseUnit,
   ConcentrationUnit,
 } from '../types';
@@ -27,15 +25,15 @@ import type {
  */
 const DOSE_CONVERSION_TO_MG: Record<DoseUnit, number> = {
   'mg/kg': 1,
-  'mcg/kg': 0.001,    // 1 mcg = 0.001 mg
-  'IU/kg': 1,         // IU treated as-is (drug specific)
-  'mL/kg': 1,         // Direct volume - special handling
+  'mcg/kg': 0.001,
+  'IU/kg': 1,
+  'mL/kg': 1,
 };
 
 const CONCENTRATION_CONVERSION_TO_MG_ML: Record<ConcentrationUnit, number> = {
   'mg/mL': 1,
-  'mcg/mL': 0.001,    // 1 mcg = 0.001 mg
-  'IU/mL': 1,         // IU treated as-is
+  'mcg/mL': 0.001,
+  'IU/mL': 1,
 };
 
 /**
@@ -83,26 +81,17 @@ export function calculateVolume(
 }
 
 /**
- * Rounds volume to specified precision for practical clinical use
- *
- * Precision options:
- * - 0.01 mL: For insulin syringes, precise dosing
- * - 0.05 mL: Common syringe markings
- * - 0.1 mL: Standard syringe increments
+ * Rounds volume to 2 decimal places (0.01 mL precision)
  */
-export function roundVolume(volume: number, precision: RoundingPrecision): number {
+export function roundVolume(volume: number): number {
   if (volume <= 0) {
     return 0;
   }
-  const factor = 1 / precision;
-  return Math.round(volume * factor) / factor;
+  return Math.round(volume * 100) / 100;
 }
 
 /**
  * Main calculation function - orchestrates the dosage calculation
- *
- * This is a pure function that takes input and returns a result
- * with no side effects.
  */
 export function calculateDosage(input: CalculationInput): CalculationResult {
   const warnings: CalculationWarning[] = [];
@@ -125,8 +114,8 @@ export function calculateDosage(input: CalculationInput): CalculationResult {
     rawVolumeMl = calculateVolume(totalDose, normalizedConcentration);
   }
 
-  // Step 4: Round to clinical precision
-  const roundedVolumeMl = roundVolume(rawVolumeMl, input.roundingPrecision);
+  // Step 4: Round to 0.01 mL precision
+  const roundedVolumeMl = roundVolume(rawVolumeMl);
 
   // Step 5: Generate warnings
   warnings.push(...generateVolumeWarnings(rawVolumeMl, roundedVolumeMl));
@@ -142,7 +131,6 @@ export function calculateDosage(input: CalculationInput): CalculationResult {
     concentrationUnit: input.concentrationUnit,
     rawVolumeMl: rawVolumeMl,
     roundedVolumeMl: roundedVolumeMl,
-    roundingPrecision: input.roundingPrecision,
   };
 
   return {
@@ -166,7 +154,6 @@ function generateVolumeWarnings(
 ): CalculationWarning[] {
   const warnings: CalculationWarning[] = [];
 
-  // Warn if volume is very small (may be difficult to measure accurately)
   if (roundedVolume > 0 && roundedVolume < 0.05) {
     warnings.push({
       id: 'volume_very_small',
@@ -176,7 +163,6 @@ function generateVolumeWarnings(
     });
   }
 
-  // Warn if volume is impractically large
   if (roundedVolume > 20) {
     warnings.push({
       id: 'volume_large',
@@ -186,7 +172,6 @@ function generateVolumeWarnings(
     });
   }
 
-  // Warn if rounding caused significant change
   const roundingDifference = Math.abs(rawVolume - roundedVolume);
   const roundingPercentage = rawVolume > 0 ? (roundingDifference / rawVolume) * 100 : 0;
 
@@ -212,7 +197,6 @@ function generateDoseWarnings(
 ): CalculationWarning[] {
   const warnings: CalculationWarning[] = [];
 
-  // Generic high dose warning (drug-specific limits should come from drug database)
   if (doseUnit === 'mg/kg' && dosePerKg > 50) {
     warnings.push({
       id: 'high_dose_generic',
@@ -227,18 +211,15 @@ function generateDoseWarnings(
 
 /**
  * Validates that units are compatible for calculation
- * Returns true if the units can be used together
  */
 export function areUnitsCompatible(
   doseUnit: DoseUnit,
   concentrationUnit: ConcentrationUnit
 ): boolean {
-  // mL/kg doesn't need concentration
   if (doseUnit === 'mL/kg') {
     return true;
   }
 
-  // mg-based units work together
   if (
     (doseUnit === 'mg/kg' || doseUnit === 'mcg/kg') &&
     (concentrationUnit === 'mg/mL' || concentrationUnit === 'mcg/mL')
@@ -246,7 +227,6 @@ export function areUnitsCompatible(
     return true;
   }
 
-  // IU units work together
   if (doseUnit === 'IU/kg' && concentrationUnit === 'IU/mL') {
     return true;
   }
@@ -255,9 +235,8 @@ export function areUnitsCompatible(
 }
 
 /**
- * Formats volume for display with appropriate decimal places
+ * Formats volume for display (2 decimal places)
  */
-export function formatVolume(volumeMl: number, precision: RoundingPrecision): string {
-  const decimals = precision === 0.01 ? 2 : precision === 0.05 ? 2 : 1;
-  return volumeMl.toFixed(decimals);
+export function formatVolume(volumeMl: number): string {
+  return volumeMl.toFixed(2);
 }

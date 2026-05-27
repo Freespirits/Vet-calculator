@@ -72,7 +72,6 @@ export const en: Record<TKey, string> = {
   'dose.concentration': 'Concentration',
   'dose.concUnit': 'Conc. unit',
   'dose.route': 'Route',
-  'dose.rounding': 'Rounding',
   'dose.frequency': 'Frequency',
   'dose.freqPlaceholder': 'e.g. every 8 h',
   'dose.duration': 'Duration',

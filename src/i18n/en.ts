@@ -82,6 +82,9 @@ export const en: Record<TKey, string> = {
   'dose.belowRange': 'Below range',
   'dose.inRange': 'In range',
   'dose.aboveRange': 'Above range',
+  'dose.plumbsRef': "Plumb's reference dose",
+  'dose.plumbsRefNone': "No Plumb's dog/cat reference dose for this species",
+  'dose.plumbsRefHint': 'Reference only — verify before dosing, at your own professional responsibility.',
   'dose.vetOnly':
     'For licensed veterinary use only. Clinical responsibility rests with the treating veterinarian. Plumb\'s reference doses are a guide and must be independently verified before administration — use at your own professional risk.',
   'dose.noRange': 'No reference range for this combination',

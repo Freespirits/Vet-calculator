@@ -45,6 +45,14 @@ export function DosageCalculator() {
     return d;
   }, [selectedDrug, state.species, state.route, state.doseUnit]);
 
+  // All Plumb's dose rows for the selected drug + current species, shown as an
+  // up-front reference so the clinician sees the recommended dose before
+  // entering their own.
+  const speciesDosing = useMemo(
+    () => selectedDrug?.plumbsDosing.filter((d) => d.species === state.species) ?? [],
+    [selectedDrug, state.species],
+  );
+
   const decimals = state.roundingPrecision === 0.1 ? 1 : 2;
 
   const handleCopy = async () => {
@@ -123,6 +131,37 @@ export function DosageCalculator() {
               <option key={d.id} value={lang === 'he' ? d.nameHe : d.name} />
             ))}
           </datalist>
+
+          {/* Plumb's reference dose — shown up front, before the clinician enters their own dose */}
+          {selectedDrug && (
+            <div className="rounded-2xl border border-teal/25 bg-teal/[0.08] p-3.5">
+              <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-teal">
+                <PillIcon size={15} />
+                {t('dose.plumbsRef')}
+              </div>
+              {speciesDosing.length === 0 ? (
+                <p className="text-xs text-muted">{t('dose.plumbsRefNone')}</p>
+              ) : (
+                <ul className="flex flex-col gap-1.5">
+                  {speciesDosing.map((d, i) => {
+                    const dose = d.minDose === d.maxDose ? `${d.minDose}` : `${d.minDose}–${d.maxDose}`;
+                    const note = lang === 'he' ? d.notesHe : (d.notes ?? d.notesHe);
+                    return (
+                      <li key={i} className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-sm">
+                        <span className="inline-flex min-w-[2.6rem] justify-center rounded-md bg-white/10 px-1.5 py-0.5 text-xs font-bold text-ink">
+                          {t(`route.${d.route}`)}
+                        </span>
+                        <span className="tnum font-semibold text-ink">{dose} {d.unit}</span>
+                        {d.frequency && <span className="text-xs text-muted">· {d.frequency}</span>}
+                        {note && <span className="w-full text-xs leading-snug text-muted">{note}</span>}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+              <p className="mt-2 text-[11px] leading-snug text-muted">{t('dose.plumbsRefHint')}</p>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-3">
             <NumberField

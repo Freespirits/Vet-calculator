@@ -17,6 +17,7 @@ import type {
   CalculationWarning,
   DoseUnit,
   ConcentrationUnit,
+  RoundingPrecision,
 } from '../types';
 
 /**
@@ -81,13 +82,17 @@ export function calculateVolume(
 }
 
 /**
- * Rounds volume to 2 decimal places (0.01 mL precision)
+ * Rounds volume to the chosen clinical precision.
+ * - 0.01 mL: insulin / precise syringes
+ * - 0.05 mL: fine syringe markings
+ * - 0.1 mL: standard syringe increments
  */
-export function roundVolume(volume: number): number {
+export function roundVolume(volume: number, precision: RoundingPrecision): number {
   if (volume <= 0) {
     return 0;
   }
-  return Math.round(volume * 100) / 100;
+  const factor = 1 / precision;
+  return Math.round(volume * factor) / factor;
 }
 
 /**
@@ -114,8 +119,8 @@ export function calculateDosage(input: CalculationInput): CalculationResult {
     rawVolumeMl = calculateVolume(totalDose, normalizedConcentration);
   }
 
-  // Step 4: Round to 0.01 mL precision
-  const roundedVolumeMl = roundVolume(rawVolumeMl);
+  // Step 4: Round to the chosen clinical precision
+  const roundedVolumeMl = roundVolume(rawVolumeMl, input.roundingPrecision);
 
   // Step 5: Generate warnings
   warnings.push(...generateVolumeWarnings(rawVolumeMl, roundedVolumeMl));
@@ -131,6 +136,7 @@ export function calculateDosage(input: CalculationInput): CalculationResult {
     concentrationUnit: input.concentrationUnit,
     rawVolumeMl: rawVolumeMl,
     roundedVolumeMl: roundedVolumeMl,
+    roundingPrecision: input.roundingPrecision,
   };
 
   return {
@@ -235,8 +241,9 @@ export function areUnitsCompatible(
 }
 
 /**
- * Formats volume for display (2 decimal places)
+ * Formats volume for display at the chosen precision
  */
-export function formatVolume(volumeMl: number): string {
-  return volumeMl.toFixed(2);
+export function formatVolume(volumeMl: number, precision: RoundingPrecision): string {
+  const decimals = precision === 0.1 ? 1 : 2;
+  return volumeMl.toFixed(decimals);
 }

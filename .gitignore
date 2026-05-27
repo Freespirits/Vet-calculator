@@ -24,3 +24,8 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Copyrighted source material — used locally to source dose facts, never committed
+Plumb_39_s_veterinary_drug_handbook_7th.pdf
+*.pdf
+plumbs_extracted.txt

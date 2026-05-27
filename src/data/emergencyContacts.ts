@@ -21,6 +21,12 @@ export interface EmergencyContact {
 
 export const ISRAEL_VET_ER: EmergencyContact[] = [
   {
+    name: L('וט-חולים', 'Vet-Holim'),
+    region: L('קו חירום נייד', 'Emergency mobile line'),
+    phone: '054-561-3377',
+    tel: '+972545613377',
+  },
+  {
     name: L('בית החולים הווטרינרי האוניברסיטאי', 'University Veterinary Hospital'),
     region: L('בית דגן · מרכז', 'Beit Dagan · Center'),
     phone: '03-9688588',

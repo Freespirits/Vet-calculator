@@ -122,6 +122,7 @@ describe('generateSpeciesWarnings', () => {
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
+      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);
@@ -138,6 +139,7 @@ describe('generateSpeciesWarnings', () => {
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
+      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);
@@ -154,6 +156,7 @@ describe('generateSpeciesWarnings', () => {
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
+      roundingPrecision: 0.1,
     };
 
     const warnings = generateSpeciesWarnings(input);

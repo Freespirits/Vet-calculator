@@ -47,7 +47,6 @@ export const en: Record<TKey, string> = {
   'species.label': 'Species',
   'species.dog': 'Dog',
   'species.cat': 'Cat',
-  'species.other': 'Other',
 
   // Units / fields
   'field.weight': 'Body weight',
@@ -72,16 +71,19 @@ export const en: Record<TKey, string> = {
   'dose.concentration': 'Concentration',
   'dose.concUnit': 'Conc. unit',
   'dose.route': 'Route',
+  'dose.rounding': 'Rounding',
   'dose.frequency': 'Frequency',
   'dose.freqPlaceholder': 'e.g. every 8 h',
   'dose.duration': 'Duration',
   'dose.durationPlaceholder': 'e.g. 7 days',
   'dose.volumeToDraw': 'Volume to draw',
   'dose.totalDose': 'Total dose',
-  'dose.therapeuticRange': 'Therapeutic range',
+  'dose.therapeuticRange': 'Plumb\'s reference range',
   'dose.belowRange': 'Below range',
   'dose.inRange': 'In range',
   'dose.aboveRange': 'Above range',
+  'dose.vetOnly':
+    'For licensed veterinary use only. Clinical responsibility rests with the treating veterinarian. Plumb\'s reference doses are a guide and must be independently verified before administration — use at your own professional risk.',
   'dose.noRange': 'No reference range for this combination',
   'dose.breakdown': 'Calculation breakdown',
   'dose.bodyWeight': 'Body weight',

@@ -4,16 +4,17 @@ import { useI18n } from '../../i18n/LanguageProvider';
 import { useCalculator } from '../../hooks/useCalculator';
 import { DRUG_DATABASE } from '../../data/drugDatabase';
 import { formatVolume } from '../../lib/calculationEngine';
-import type { DoseUnit, ConcentrationUnit, AdministrationRoute, Species } from '../../types';
+import type { DoseUnit, ConcentrationUnit, AdministrationRoute, RoundingPrecision, Species } from '../../types';
 import { GlassCard, CountUp, SegmentedControl } from '../../components/primitives';
 import { NumberField, TextField, SelectField } from '../../components/forms';
 import { RangeGauge } from '../../components/gauges';
 import { WarningList, SourceList, StatPill, type Severity } from '../../components/feedback';
-import { DogIcon, CatIcon, PawIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIcon, CopyIcon, CheckIcon } from '../../components/Icons';
+import { DogIcon, CatIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIcon, CopyIcon, CheckIcon, AlertTriangleIcon } from '../../components/Icons';
 
 const DOSE_UNITS: DoseUnit[] = ['mg/kg', 'mcg/kg', 'IU/kg', 'mL/kg'];
 const CONC_UNITS: ConcentrationUnit[] = ['mg/mL', 'mcg/mL', 'IU/mL'];
 const ROUTES: AdministrationRoute[] = ['IV', 'IM', 'SC', 'PO'];
+const ROUNDING: RoundingPrecision[] = [0.01, 0.05, 0.1];
 
 export function DosageCalculator() {
   const { t, lang } = useI18n();
@@ -25,7 +26,6 @@ export function DosageCalculator() {
   const speciesOpts = [
     { value: 'dog' as Species, label: t('species.dog'), icon: <DogIcon size={20} /> },
     { value: 'cat' as Species, label: t('species.cat'), icon: <CatIcon size={20} /> },
-    { value: 'other' as Species, label: t('species.other'), icon: <PawIcon size={20} /> },
   ];
 
   // Localised inline error for a field (only once the field has a value).
@@ -45,12 +45,12 @@ export function DosageCalculator() {
     return d;
   }, [selectedDrug, state.species, state.route, state.doseUnit]);
 
-  const decimals = 2;
+  const decimals = state.roundingPrecision === 0.1 ? 1 : 2;
 
   const handleCopy = async () => {
     if (!result) return;
     const drug = selectedDrug ? (lang === 'he' ? selectedDrug.nameHe : selectedDrug.name) : state.drugName;
-    const text = `${drug} — ${formatVolume(result.volumeMl)} ${t('unit.ml')} (${state.weightKg} ${t('unit.kg')} × ${state.dosePerKg} ${state.doseUnit})`;
+    const text = `${drug} — ${formatVolume(result.volumeMl, state.roundingPrecision)} ${t('unit.ml')} (${state.weightKg} ${t('unit.kg')} × ${state.dosePerKg} ${state.doseUnit})`;
     try {
       if (canShare) await navigator.share({ text });
       else {
@@ -158,12 +158,20 @@ export function DosageCalculator() {
             </div>
           )}
 
-          <SelectField
-            label={t('dose.route')}
-            value={state.route}
-            onChange={(v) => updateField('route', v as AdministrationRoute)}
-            options={ROUTES.map((r) => ({ value: r, label: t(`route.${r}`) }))}
-          />
+          <div className="grid grid-cols-2 gap-3">
+            <SelectField
+              label={t('dose.route')}
+              value={state.route}
+              onChange={(v) => updateField('route', v as AdministrationRoute)}
+              options={ROUTES.map((r) => ({ value: r, label: t(`route.${r}`) }))}
+            />
+            <SelectField
+              label={t('dose.rounding')}
+              value={String(state.roundingPrecision)}
+              onChange={(v) => updateField('roundingPrecision', Number(v) as RoundingPrecision)}
+              options={ROUNDING.map((r) => ({ value: String(r), label: `${r} ${t('unit.ml')}` }))}
+            />
+          </div>
 
           <div className="grid grid-cols-2 gap-3">
             <TextField
@@ -215,6 +223,17 @@ export function DosageCalculator() {
                   </span>
                   <span className="text-2xl font-bold text-ink/70">{t('unit.ml')}</span>
                 </div>
+              </div>
+
+              {/* licensed-vet / own-risk disclaimer */}
+              <div
+                className="mt-5 flex items-start gap-2.5 rounded-2xl p-3 text-xs leading-relaxed"
+                style={{ background: 'rgba(245,158,11,0.12)', color: 'var(--ink)' }}
+              >
+                <span className="mt-0.5 shrink-0 text-amber">
+                  <AlertTriangleIcon size={16} />
+                </span>
+                <span className="text-ink/90">{t('dose.vetOnly')}</span>
               </div>
 
               {/* therapeutic range gauge */}

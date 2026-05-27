@@ -24,7 +24,6 @@ import type {
 const MAX_WEIGHT_BY_SPECIES: Record<Species, number> = {
   dog: 100,
   cat: 15,
-  other: 500,
 };
 
 /**
@@ -251,7 +250,6 @@ function getSpeciesNameHe(species: Species): string {
   const names: Record<Species, string> = {
     dog: 'כלב',
     cat: 'חתול',
-    other: 'אחר',
   };
   return names[species];
 }

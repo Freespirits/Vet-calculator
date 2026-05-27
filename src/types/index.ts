@@ -4,7 +4,7 @@
  */
 
 // Species supported by the calculator
-export type Species = 'dog' | 'cat' | 'other';
+export type Species = 'dog' | 'cat';
 
 // Route of administration
 export type AdministrationRoute = 'IV' | 'IM' | 'SC' | 'PO';
@@ -14,6 +14,9 @@ export type DoseUnit = 'mg/kg' | 'mcg/kg' | 'IU/kg' | 'mL/kg';
 
 // Concentration units
 export type ConcentrationUnit = 'mg/mL' | 'mcg/mL' | 'IU/mL';
+
+// Volume rounding precision (mL) for practical syringe measurement
+export type RoundingPrecision = 0.01 | 0.05 | 0.1;
 
 // Warning severity levels
 export type WarningSeverity = 'info' | 'warning' | 'danger';
@@ -28,6 +31,7 @@ export interface CalculationInput {
   concentration: number;
   concentrationUnit: ConcentrationUnit;
   route: AdministrationRoute;
+  roundingPrecision: RoundingPrecision;
   frequency?: string;
   duration?: string;
 }
@@ -62,6 +66,7 @@ export interface CalculationBreakdown {
   concentrationUnit: string;
   rawVolumeMl: number;
   roundedVolumeMl: number;
+  roundingPrecision: RoundingPrecision;
 }
 
 // Plumb's standard dosing information

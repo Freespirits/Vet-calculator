@@ -89,23 +89,40 @@ describe('calculateVolume', () => {
 });
 
 describe('roundVolume', () => {
-  it('should round to 2 decimal places', () => {
-    expect(roundVolume(0.234)).toBe(0.23);
-    expect(roundVolume(0.235)).toBe(0.24);
-    expect(roundVolume(0.239)).toBe(0.24);
+  it('should round to 0.01 mL precision', () => {
+    expect(roundVolume(0.234, 0.01)).toBe(0.23);
+    expect(roundVolume(0.235, 0.01)).toBe(0.24);
+    expect(roundVolume(0.239, 0.01)).toBe(0.24);
+  });
+
+  it('should round to 0.05 mL precision', () => {
+    expect(roundVolume(0.23, 0.05)).toBe(0.25);
+    expect(roundVolume(0.11, 0.05)).toBe(0.1);
+    expect(roundVolume(0.13, 0.05)).toBe(0.15);
+  });
+
+  it('should round to 0.1 mL precision', () => {
+    expect(roundVolume(0.23, 0.1)).toBe(0.2);
+    expect(roundVolume(0.26, 0.1)).toBe(0.3);
+    expect(roundVolume(1.04, 0.1)).toBe(1);
   });
 
   it('should return 0 for zero or negative volume', () => {
-    expect(roundVolume(0)).toBe(0);
-    expect(roundVolume(-1)).toBe(0);
+    expect(roundVolume(0, 0.01)).toBe(0);
+    expect(roundVolume(-1, 0.1)).toBe(0);
   });
 });
 
 describe('formatVolume', () => {
-  it('should format to 2 decimals', () => {
-    expect(formatVolume(0.23)).toBe('0.23');
-    expect(formatVolume(1.5)).toBe('1.50');
-    expect(formatVolume(0.2)).toBe('0.20');
+  it('should format to 2 decimals for fine precision', () => {
+    expect(formatVolume(0.23, 0.01)).toBe('0.23');
+    expect(formatVolume(1.5, 0.05)).toBe('1.50');
+    expect(formatVolume(0.2, 0.01)).toBe('0.20');
+  });
+
+  it('should format to 1 decimal for 0.1 mL precision', () => {
+    expect(formatVolume(0.2, 0.1)).toBe('0.2');
+    expect(formatVolume(1, 0.1)).toBe('1.0');
   });
 });
 
@@ -119,6 +136,7 @@ describe('calculateDosage - integration tests', () => {
     concentration: 5,
     concentrationUnit: 'mg/mL',
     route: 'SC',
+    roundingPrecision: 0.01,
   };
 
   it('should calculate correctly for standard case', () => {
@@ -168,6 +186,7 @@ describe('calculateDosage - integration tests', () => {
       concentration: 100,
       concentrationUnit: 'IU/mL',
       route: 'SC',
+      roundingPrecision: 0.01,
     };
 
     const result = calculateDosage(insulinInput);
@@ -212,6 +231,7 @@ describe('calculateDosage - integration tests', () => {
       concentration: 0,
       concentrationUnit: 'mg/mL',
       route: 'IV',
+      roundingPrecision: 0.01,
     };
 
     const result = calculateDosage(fluidInput);
@@ -252,7 +272,7 @@ describe('areUnitsCompatible', () => {
 describe('Edge Cases', () => {
   it('should handle very large weights', () => {
     const input: CalculationInput = {
-      species: 'other',
+      species: 'dog',
       weightKg: 500,
       drugName: 'Test Drug',
       dosePerKg: 1,
@@ -260,6 +280,7 @@ describe('Edge Cases', () => {
       concentration: 100,
       concentrationUnit: 'mg/mL',
       route: 'IV',
+      roundingPrecision: 0.01,
     };
 
     const result = calculateDosage(input);
@@ -277,6 +298,7 @@ describe('Edge Cases', () => {
       concentration: 10,
       concentrationUnit: 'mg/mL',
       route: 'SC',
+      roundingPrecision: 0.01,
     };
 
     const result = calculateDosage(input);
@@ -294,6 +316,7 @@ describe('Edge Cases', () => {
       concentration: 0.3,
       concentrationUnit: 'mg/mL',
       route: 'IM',
+      roundingPrecision: 0.01,
     };
 
     const result = calculateDosage(input);

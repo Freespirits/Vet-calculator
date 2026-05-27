@@ -50,7 +50,6 @@ export const he = {
   'species.label': 'סוג בעל החיים',
   'species.dog': 'כלב',
   'species.cat': 'חתול',
-  'species.other': 'אחר',
 
   // Units / fields
   'field.weight': 'משקל גוף',
@@ -75,16 +74,19 @@ export const he = {
   'dose.concentration': 'ריכוז התרופה',
   'dose.concUnit': 'יחידת ריכוז',
   'dose.route': 'דרך מתן',
+  'dose.rounding': 'דיוק עיגול',
   'dose.frequency': 'תדירות',
   'dose.freqPlaceholder': 'לדוג׳: כל 8 שעות',
   'dose.duration': 'משך טיפול',
   'dose.durationPlaceholder': 'לדוג׳: 7 ימים',
   'dose.volumeToDraw': 'נפח לשאיבה',
   'dose.totalDose': 'מינון כולל',
-  'dose.therapeuticRange': 'טווח תרפויטי',
+  'dose.therapeuticRange': 'טווח ייחוס לפי Plumb\'s',
   'dose.belowRange': 'מתחת לטווח',
   'dose.inRange': 'בטווח',
   'dose.aboveRange': 'מעל הטווח',
+  'dose.vetOnly':
+    'מיועד לשימוש וטרינרי מורשה בלבד. האחריות הקלינית חלה על הרופא/ה הווטרינר/ית המטפל/ת. מינוני הייחוס של Plumb\'s הם להכוונה בלבד ויש לאמתם באופן עצמאי לפני מתן הטיפול — השימוש על אחריותך המקצועית.',
   'dose.noRange': 'אין טווח ייחוס לשילוב זה',
   'dose.breakdown': 'פירוט החישוב',
   'dose.bodyWeight': 'משקל גוף',

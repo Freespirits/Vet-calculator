@@ -10,6 +10,15 @@ export function Footer() {
         <span className="text-xs font-medium">{t('footer.madeWith')}</span>
       </div>
       <p className="text-xs text-muted">{t('footer.text')}</p>
+      <p className="mt-3 text-xs text-muted" dir="rtl">
+        לדיווח על שגיאות או לפרסום · Report errors or publishing inquiries
+      </p>
+      <a
+        href="mailto:admin@hack-tech.org"
+        className="text-xs font-medium text-teal hover:underline"
+      >
+        admin@hack-tech.org
+      </a>
     </footer>
   );
 }

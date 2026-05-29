@@ -36,7 +36,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'קרפרופן',
     genericName: 'Carprofen',
     genericNameHe: 'קרפרופן',
-    brandNames: ['Rimadyl', 'Novox', 'Quellin'],
+    brandNames: ['Rimadyl', 'רימדיל', 'Novox', 'Quellin'],
     category: 'NSAID',
     categoryHe: 'נוגד דלקת לא סטרואידי',
     plumbsDosing: [
@@ -73,7 +73,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'אנרופלוקסצין',
     genericName: 'Enrofloxacin',
     genericNameHe: 'אנרופלוקסצין',
-    brandNames: ['Baytril'],
+    brandNames: ['Baytril', 'בייטריל'],
     category: 'Antibiotic - Fluoroquinolone',
     categoryHe: 'אנטיביוטיקה - פלואורוקינולון',
     plumbsDosing: [
@@ -111,7 +111,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'מטרונידזול',
     genericName: 'Metronidazole',
     genericNameHe: 'מטרונידזול',
-    brandNames: ['Flagyl'],
+    brandNames: ['Flagyl', 'פלאג׳יל'],
     category: 'Antibiotic/Antiprotozoal',
     categoryHe: 'אנטיביוטיקה/נוגד טפילים',
     plumbsDosing: [
@@ -131,7 +131,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'מרופיטנט',
     genericName: 'Maropitant Citrate',
     genericNameHe: 'מרופיטנט ציטראט',
-    brandNames: ['Cerenia'],
+    brandNames: ['Cerenia', 'סרניה'],
     category: 'Antiemetic',
     categoryHe: 'נוגד הקאות',
     plumbsDosing: [
@@ -171,7 +171,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'אונדנסטרון',
     genericName: 'Ondansetron HCl',
     genericNameHe: 'אונדנסטרון הידרוכלוריד',
-    brandNames: ['Zofran'],
+    brandNames: ['Zofran', 'זופרן', 'אודנטרון'],
     category: 'Antiemetic',
     categoryHe: 'נוגד הקאות',
     plumbsDosing: [
@@ -293,7 +293,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'קטמין',
     genericName: 'Ketamine HCl',
     genericNameHe: 'קטמין הידרוכלוריד',
-    brandNames: ['Ketaset', 'Vetalar'],
+    brandNames: ['Ketaset', 'Vetalar', 'קטמין מדי-מרקט'],
     category: 'Dissociative Anesthetic',
     categoryHe: 'חומר הרדמה דיסוציאטיבי',
     plumbsDosing: [
@@ -313,7 +313,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'פרופופול',
     genericName: 'Propofol',
     genericNameHe: 'פרופופול',
-    brandNames: ['Diprivan', 'PropoFlo'],
+    brandNames: ['Diprivan', 'PropoFlo', 'פרופופול ליפורו', 'ריפול'],
     category: 'Injectable Anesthetic',
     categoryHe: 'חומר הרדמה להזרקה',
     plumbsDosing: [
@@ -353,7 +353,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'פימובנדן',
     genericName: 'Pimobendan',
     genericNameHe: 'פימובנדן',
-    brandNames: ['Vetmedin'],
+    brandNames: ['Vetmedin', 'וטמדין'],
     category: 'Inodilator',
     categoryHe: 'אינודילטור',
     plumbsDosing: [
@@ -391,7 +391,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'פמוטידין',
     genericName: 'Famotidine',
     genericNameHe: 'פמוטידין',
-    brandNames: ['Pepcid'],
+    brandNames: ['Pepcid', 'פמוטידין טבע'],
     category: 'H2 Receptor Antagonist',
     categoryHe: 'אנטגוניסט לקולטן H2',
     plumbsDosing: [
@@ -408,7 +408,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'אומפרזול',
     genericName: 'Omeprazole',
     genericNameHe: 'אומפרזול',
-    brandNames: ['Prilosec', 'GastroGard'],
+    brandNames: ['Prilosec', 'GastroGard', 'אומפרדקס', 'לוסק'],
     category: 'Proton Pump Inhibitor',
     categoryHe: 'מעכב משאבת פרוטונים',
     plumbsDosing: [
@@ -484,7 +484,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'דיאזפאם',
     genericName: 'Diazepam',
     genericNameHe: 'דיאזפאם',
-    brandNames: ['Valium'],
+    brandNames: ['Valium', 'אסיוול'],
     category: 'Benzodiazepine',
     categoryHe: 'בנזודיאזפין',
     plumbsDosing: [
@@ -526,7 +526,7 @@ export const DRUG_DATABASE: DrugInfo[] = [
     nameHe: 'אפינפרין',
     genericName: 'Epinephrine (Adrenaline)',
     genericNameHe: 'אפינפרין (אדרנלין)',
-    brandNames: ['Adrenalin'],
+    brandNames: ['Adrenalin', 'אדרנלין סינטטיקא', 'EpiPen', 'אפיפן'],
     category: 'Sympathomimetic',
     categoryHe: 'סימפטומימטי',
     plumbsDosing: [

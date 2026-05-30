@@ -1,5 +1,6 @@
 import { useI18n } from '../i18n/LanguageProvider';
 import { HeartPulseIcon } from './Icons';
+import { TEDDYVETS_CLINICS_URL } from '../data/emergencyContacts';
 
 export function Footer() {
   const { t } = useI18n();
@@ -9,7 +10,18 @@ export function Footer() {
         <HeartPulseIcon size={18} />
         <span className="text-xs font-medium">{t('footer.madeWith')}</span>
       </div>
-      <p className="text-xs text-muted">{t('footer.text')}</p>
+      <p className="text-xs text-muted">
+        {t('footer.partner')} ·{' '}
+        <a
+          href={TEDDYVETS_CLINICS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-teal hover:underline"
+        >
+          TeddyVets
+        </a>
+      </p>
+      <p className="mt-1 text-xs text-muted">{t('footer.text')}</p>
       <p className="mt-3 text-xs text-muted" dir="rtl">
         לדיווח על שגיאות או לפרסום · Report errors or publishing inquiries
       </p>

@@ -129,8 +129,10 @@ export const en: Record<TKey, string> = {
   // Emergency
   'emergency.title': 'An emergency?',
   'emergency.text':
-    "If you suspect poisoning, call one of Israel's 24/7 emergency animal hospitals immediately. Don't wait for signs — and it's best to call ahead before arriving.",
-  'emergency.note': 'Israel has no dedicated pet poison-control hotline. The national poison center (Rambam, 04-7771900) is for humans only.',
+    "If you suspect poisoning, call your nearest TeddyVets clinic right away. Don't wait for signs — and call ahead to confirm hours and availability.",
+  'emergency.network': 'TeddyVets clinic network',
+  'emergency.allClinics': 'All TeddyVets clinics',
+  'emergency.note': 'TeddyVets clinics operate within the hours shown. Outside those hours, or for a life-threatening case, call ahead to check availability. Israel has no dedicated pet poison-control hotline (the national poison center, Rambam 04-7771900, is for humans only).',
   'emergency.callVet': 'Call your veterinarian',
 
   // Disclaimer / footer
@@ -139,4 +141,5 @@ export const en: Record<TKey, string> = {
     'This calculator is a clinical decision-support tool and does not replace professional veterinary judgment or poison control. Verify every calculation against drug references before treatment. Idiosyncratic toxins (grapes, lilies) never display a "safe" result.',
   'footer.text': 'Assistants for Assistants · All rights reserved',
   'footer.madeWith': 'Built with clinical care',
+  'footer.partner': 'Clinical partner',
 };

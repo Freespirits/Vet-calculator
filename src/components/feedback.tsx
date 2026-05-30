@@ -4,14 +4,16 @@
 import { useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
-import { ISRAEL_VET_ER } from '../data/emergencyContacts';
+import { ISRAEL_VET_ER, TEDDYVETS_CLINICS_URL } from '../data/emergencyContacts';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import {
   AlertTriangleIcon,
   AlertOctagonIcon,
   InfoIcon,
   PhoneIcon,
+  ClockIcon,
   ChevronDownIcon,
+  ExternalLinkIcon,
 } from './Icons';
 
 export type Severity = 'info' | 'warning' | 'danger';
@@ -66,12 +68,16 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
       </div>
       {!compact && <p className="mt-2 text-sm text-ink/80">{t('emergency.text')}</p>}
 
-      <ul className="mt-4 flex flex-col gap-2">
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-rose/90">
+        {t('emergency.network')}
+      </p>
+
+      <ul className="mt-2 flex flex-col gap-2">
         {ISRAEL_VET_ER.map((c) => (
           <li key={c.tel}>
             <a
               href={`tel:${c.tel}`}
-              className="flex min-h-[52px] items-center justify-between gap-3 rounded-2xl px-4 py-2 transition-colors hover:bg-white/[0.06]"
+              className="flex min-h-[52px] items-center justify-between gap-3 rounded-2xl px-4 py-2.5 transition-colors hover:bg-white/[0.06]"
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)' }}
             >
               <span className="flex min-w-0 items-center gap-2.5">
@@ -79,6 +85,10 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-medium text-ink">{c.name[lang]}</span>
                   <span className="block truncate text-xs text-muted">{c.region[lang]}</span>
+                  <span className="mt-0.5 flex items-start gap-1 text-[11px] leading-tight text-muted/80">
+                    <ClockIcon size={12} className="mt-0.5 shrink-0" />
+                    <span>{c.hours[lang]}</span>
+                  </span>
                 </span>
               </span>
               <span className="tnum shrink-0 text-sm font-bold text-ink" dir="ltr">
@@ -88,6 +98,16 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
           </li>
         ))}
       </ul>
+
+      <a
+        href={TEDDYVETS_CLINICS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-rose hover:underline"
+      >
+        <span>{t('emergency.allClinics')}</span>
+        <ExternalLinkIcon size={13} className="shrink-0" />
+      </a>
 
       {!compact && <p className="mt-3 text-xs text-muted">{t('emergency.note')}</p>}
     </div>

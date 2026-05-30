@@ -172,6 +172,21 @@ export const PhoneIcon = ({ size = 22, ...p }: IconProps) => (
   </svg>
 );
 
+export const ClockIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7.5V12l3 2" />
+  </svg>
+);
+
+export const ExternalLinkIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M14 4h6v6" />
+    <path d="M20 4 11 13" />
+    <path d="M18 13.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5.5" />
+  </svg>
+);
+
 export const CopyIcon = ({ size = 20, ...p }: IconProps) => (
   <svg {...base(size)} {...p}>
     <rect x="9" y="9" width="11" height="11" rx="2.5" />

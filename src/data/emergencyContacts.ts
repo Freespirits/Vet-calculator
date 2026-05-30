@@ -1,59 +1,80 @@
 /**
- * Major 24/7 emergency veterinary hospitals in Israel.
+ * TeddyVets clinic network — the veterinary clinics this app refers to.
  *
- * Numbers verified against each clinic's official site (2026). There is NO
- * dedicated pet poison-control hotline in Israel — these round-the-clock
- * hospitals are the right emergency contacts. Hours can change; call ahead.
+ * TeddyVets (טדי) is the clinical partner / buyer of this web-app, so the
+ * app directs exclusively to their branches. These are full-service clinics
+ * with set opening hours (NOT round-the-clock ER hospitals) — always call
+ * ahead to confirm availability before arriving.
  *
- * Sources: vethospital.huji.ac.il/emergency · chavatdaat.co.il/branches ·
- * emergency-veterinary.co.il · vetcenter.co.il/emergency
+ * Names, addresses, phones and hours sourced from the official directory:
+ * https://teddyvets.co.il/our-clinics/ (read 2026). Hours change — verify.
  */
 import { L, type LocalizedText } from '../types/toxins';
 
 export interface EmergencyContact {
   name: LocalizedText;
+  /** City / area shown under the name. */
   region: LocalizedText;
-  /** Display form, e.g. "03-9688588". */
+  /** Street address for context. */
+  address: LocalizedText;
+  /** Opening hours, short form. */
+  hours: LocalizedText;
+  /** Display form, e.g. "08-6744200". */
   phone: string;
-  /** E.164 for the tel: link, e.g. "+97239688588". */
+  /** E.164 for the tel: link, e.g. "+97286744200". */
   tel: string;
 }
 
+/** Public directory of all branches, linked from the emergency banner. */
+export const TEDDYVETS_CLINICS_URL = 'https://teddyvets.co.il/our-clinics/';
+
 export const ISRAEL_VET_ER: EmergencyContact[] = [
   {
-    name: L('וט-חולים', 'Vet-Holim'),
-    region: L('קו חירום נייד', 'Emergency mobile line'),
-    phone: '054-561-3377',
-    tel: '+972545613377',
+    name: L('טדי מודיעין', 'TeddyVets Modi’in'),
+    region: L('מודיעין · מרכז', 'Modi’in · Center'),
+    address: L('רא״ל יגאל ידין 51', '51 Yigal Yadin'),
+    hours: L("א׳-ה׳ 09:00-21:00 · ו׳ 09:00-15:00 · ש׳ 18:00-21:00", 'Sun–Thu 09:00–21:00 · Fri 09:00–15:00 · Sat 18:00–21:00'),
+    phone: '08-6744200',
+    tel: '+97286744200',
   },
   {
-    name: L('בית החולים הווטרינרי האוניברסיטאי', 'University Veterinary Hospital'),
-    region: L('בית דגן · מרכז', 'Beit Dagan · Center'),
-    phone: '03-9688588',
-    tel: '+97239688588',
+    name: L('טדי חולון', 'TeddyVets Holon'),
+    region: L('חולון · מרכז', 'Holon · Center'),
+    address: L('בילינסון 1', '1 Beilinson'),
+    hours: L("א׳-ה׳ 09:00-19:00 · ו׳ 09:00-13:00", 'Sun–Thu 09:00–19:00 · Fri 09:00–13:00'),
+    phone: '03-6511770',
+    tel: '+97236511770',
   },
   {
-    name: L('בית החולים חוות דעת', 'Chavat Da’at Hospital'),
-    region: L('כפר סבא · השרון', 'Kfar Saba · Sharon'),
-    phone: '09-7431117',
-    tel: '+97297431117',
+    name: L('טדי נתניה', 'TeddyVets Netanya'),
+    region: L('נתניה · השרון', 'Netanya · Sharon'),
+    address: L('א.ד. גורדון 2', '2 A.D. Gordon'),
+    hours: L("א׳-ה׳ 09:00-20:00 · ו׳ 08:30-14:00", 'Sun–Thu 09:00–20:00 · Fri 08:30–14:00'),
+    phone: '09-7720370',
+    tel: '+97297720370',
   },
   {
-    name: L('חוות דעת חיפה', 'Chavat Da’at Haifa'),
-    region: L('חיפה · צפון', 'Haifa · North'),
-    phone: '04-8342887',
-    tel: '+97248342887',
+    name: L('טדי נווה צדק', 'TeddyVets Neve Tzedek'),
+    region: L('תל אביב · מרכז', 'Tel Aviv · Center'),
+    address: L('יעב״ץ 32', '32 Ya’avetz'),
+    hours: L("א׳-ה׳ 09:00-20:00 · ו׳ 09:00-13:00", 'Sun–Thu 09:00–20:00 · Fri 09:00–13:00'),
+    phone: '03-5160257',
+    tel: '+97235160257',
   },
   {
-    name: L('חוות דעת רחובות', 'Chavat Da’at Rehovot'),
-    region: L('רחובות · מרכז', 'Rehovot · Center'),
-    phone: '08-9390738',
-    tel: '+97289390738',
+    name: L('טדי כפר רות', 'TeddyVets Kfar Ruth'),
+    region: L('כפר רות · מרכז', 'Kfar Ruth · Center'),
+    address: L('כפר רות', 'Kfar Ruth'),
+    hours: L("א׳,ג׳,ה׳ 08:30-20:00 · ב׳,ד׳ 08:30-15:00 · ו׳ 08:30-13:00", 'Sun/Tue/Thu 08:30–20:00 · Mon/Wed 08:30–15:00 · Fri 08:30–13:00'),
+    phone: '08-9763366',
+    tel: '+97289763366',
   },
   {
-    name: L('וט-סנטר ראש העין', 'Vet-Center Rosh HaAyin'),
-    region: L('ראש העין · מרכז', 'Rosh HaAyin · Center'),
-    phone: '09-9668133',
-    tel: '+97299668133',
+    name: L('טדי אור יהודה', 'TeddyVets Or Yehuda'),
+    region: L('אור יהודה · מרכז', 'Or Yehuda · Center'),
+    address: L('היוצרים 4', '4 HaYotzrim'),
+    hours: L("א׳-ה׳ 09:00-19:00 · ו׳ 09:00-13:00", 'Sun–Thu 09:00–19:00 · Fri 09:00–13:00'),
+    phone: '050-9040801',
+    tel: '+972509040801',
   },
 ];

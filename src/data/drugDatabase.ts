@@ -1892,26 +1892,33 @@ export function getDrugById(id: string): DrugInfo | null {
  */
 export function getDrugByName(name: string): DrugInfo | null {
   const normalizedName = name.toLowerCase().trim();
+  if (!normalizedName) return null;
 
-  const exactMatch = DRUG_DATABASE.find(
-    (drug) =>
-      drug.name.toLowerCase() === normalizedName ||
-      drug.nameHe === name ||
-      drug.genericName.toLowerCase() === normalizedName
+  // Every searchable label for a drug: canonical name, Hebrew name, generic
+  // (English + Hebrew) and any brand / commercial ("given") name. Lower-casing
+  // makes the match case-insensitive; it is a no-op for the Hebrew labels, so
+  // they are matched correctly too.
+  const labelsOf = (drug: DrugInfo): string[] =>
+    [
+      drug.name,
+      drug.nameHe,
+      drug.genericName,
+      drug.genericNameHe,
+      ...(drug.brandNames ?? []),
+    ].map((label) => label.toLowerCase());
+
+  const exactMatch = DRUG_DATABASE.find((drug) =>
+    labelsOf(drug).some((label) => label === normalizedName)
   );
-
   if (exactMatch) {
     return exactMatch;
   }
 
-  const partialMatch = DRUG_DATABASE.find(
-    (drug) =>
-      drug.name.toLowerCase().includes(normalizedName) ||
-      drug.nameHe.includes(name) ||
-      drug.genericName.toLowerCase().includes(normalizedName)
+  const partialMatch = DRUG_DATABASE.find((drug) =>
+    labelsOf(drug).some((label) => label.includes(normalizedName))
   );
 
-  return partialMatch || null;
+  return partialMatch ?? null;
 }
 
 /**

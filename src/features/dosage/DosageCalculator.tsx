@@ -53,6 +53,16 @@ export function DosageCalculator() {
     [selectedDrug, state.species],
   );
 
+  // The medicine the entered text resolved to. A brand / commercial ("given")
+  // name resolves to its drug too, so we surface the canonical name — otherwise
+  // a brand-name entry shows doses without ever naming the medicine.
+  const drugLabel = selectedDrug ? (lang === 'he' ? selectedDrug.nameHe : selectedDrug.name) : '';
+  const genericLabel = selectedDrug
+    ? lang === 'he'
+      ? selectedDrug.genericNameHe
+      : selectedDrug.genericName
+    : '';
+
   const decimals = state.roundingPrecision === 0.1 ? 1 : 2;
 
   const handleCopy = async () => {
@@ -127,9 +137,17 @@ export function DosageCalculator() {
             list="drug-list"
           />
           <datalist id="drug-list">
-            {DRUG_DATABASE.map((d) => (
-              <option key={d.id} value={lang === 'he' ? d.nameHe : d.name} />
-            ))}
+            {DRUG_DATABASE.flatMap((d) => {
+              const canonical = lang === 'he' ? d.nameHe : d.name;
+              return [
+                <option key={d.id} value={canonical} />,
+                // Brand / commercial ("given") names resolve to the same drug,
+                // labelled with the medicine so the suggestion is recognisable.
+                ...(d.brandNames ?? []).map((brand) => (
+                  <option key={`${d.id}:${brand}`} value={brand} label={canonical} />
+                )),
+              ];
+            })}
           </datalist>
 
           {/* Plumb's reference dose — shown up front, before the clinician enters their own dose */}
@@ -138,6 +156,13 @@ export function DosageCalculator() {
               <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-teal">
                 <PillIcon size={15} />
                 {t('dose.plumbsRef')}
+              </div>
+              {/* Name the resolved medicine, so a brand / "given" name entry is identified. */}
+              <div className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <span className="font-semibold text-ink">{drugLabel}</span>
+                {genericLabel && genericLabel !== drugLabel && (
+                  <span className="text-xs text-muted">· {genericLabel}</span>
+                )}
               </div>
               {speciesDosing.length === 0 ? (
                 <p className="text-xs text-muted">{t('dose.plumbsRefNone')}</p>

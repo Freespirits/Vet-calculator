@@ -33,7 +33,7 @@ export const en: Record<TKey, string> = {
   'common.copied': 'Copied!',
   'common.share': 'Share',
   'common.close': 'Close',
-  'common.sources': 'Sources',
+  'common.sources': 'Medical Sources',
   'common.optional': 'optional',
   'common.select': 'Select',
   'common.search': 'Search',

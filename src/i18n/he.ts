@@ -36,7 +36,7 @@ export const he = {
   'common.copied': 'הועתק!',
   'common.share': 'שתף',
   'common.close': 'סגור',
-  'common.sources': 'מקורות',
+  'common.sources': 'מקורות רפואיים',
   'common.optional': 'אופציונלי',
   'common.select': 'בחר',
   'common.search': 'חיפוש',

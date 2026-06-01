@@ -359,7 +359,7 @@ export function DosageCalculator() {
 
               <p className="mt-4 text-center text-xs text-muted">{t('dose.subtitle')}</p>
               <div className="mt-2">
-                <SourceList sources={[lang === 'he' ? 'מינונים להמחשה בלבד — יש לאמת מול Plumb\'s Veterinary Drug Handbook ומקורות קליניים.' : "Reference doses for illustration — verify against Plumb's Veterinary Drug Handbook and clinical sources."]} />
+                <SourceList sources={[lang === 'he' ? 'מינונים מבוססי Plumb\'s Veterinary Drug Handbook מהדורה 10 (Budde & McCluskey, 2024) — יש לאמת לפני מתן טיפול.' : "Doses sourced from Plumb's Veterinary Drug Handbook 10th ed. (Budde & McCluskey, 2024) — verify before administration."]} />
               </div>
             </GlassCard>
           </motion.div>

@@ -1,6 +1,7 @@
 /**
  * Drug Database - dog/cat dose ranges referenced from
- * Plumb's Veterinary Drug Handbook, 7th ed.
+ * Plumb's Veterinary Drug Handbook, 10th ed. (Budde & McCluskey, 2024)
+ * with select entries cross-checked against the 7th ed.
  *
  * Only factual dose figures (dose, route, frequency) are encoded; notes are
  * summarised, not reproduced. For licensed veterinary use only — every dose
@@ -1836,6 +1837,169 @@ export const DRUG_DATABASE: DrugInfo[] = [
     isHighRisk: false,
     warnings: ['Primary antidote for acetaminophen (paracetamol) toxicosis — especially cats', 'Give IV slowly through a filter to reduce reactions', 'Start as early as possible'],
     warningsHe: ['נוגדן עיקרי להרעלת פרצטמול - במיוחד בחתולים', 'יש לתת IV לאט דרך מסנן להפחתת תגובות', 'יש להתחיל מוקדם ככל האפשר'],
+  },
+
+  // ─── Added from Plumb's 10th ed. ────────────────────────────────────────────
+
+  // Analgesic – opioid (DEA C-IV)
+  {
+    id: 'tramadol',
+    name: 'Tramadol',
+    nameHe: 'טרמדול',
+    genericName: 'Tramadol HCl',
+    genericNameHe: 'טרמדול הידרוכלוריד',
+    brandNames: ['Ultram', 'טרמדול'],
+    category: 'Analgesic - Opioid (DEA C-IV)',
+    categoryHe: 'משכך כאב - אופיואיד (מפוקח)',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 4, maxDose: 10, unit: 'mg/kg', frequency: 'כל 6-8 שעות', notes: 'Evidence of efficacy as sole analgesic is conflicting; long-term efficacy may decrease. Combine with NSAIDs', notesHe: 'ראיות ליעילות כמשכך כאב יחיד סותרות; יעילות לאורך זמן עשויה לרדת. שלב עם NSAIDs' },
+      { species: 'cat', route: 'PO', minDose: 2, maxDose: 4, unit: 'mg/kg', frequency: 'כל 12-24 שעות', notes: 'More robust evidence of efficacy in cats than dogs', notesHe: 'ראיות טובות יותר ליעילות בחתולים מאשר כלבים' },
+    ],
+    isHighRisk: false,
+    isControlled: true,
+    warnings: ['DEA Schedule IV controlled substance', 'Do not combine with SSRIs or MAOIs — serotonin syndrome risk', 'Use with caution in seizure-prone patients'],
+    warningsHe: ['חומר מפוקח C-IV', 'אין לשלב עם SSRI או MAOI — סכנת תסמונת סרוטונין', 'זהירות בחולים עם נטייה לפרכוסים'],
+  },
+
+  // Anticonvulsant / analgesic
+  {
+    id: 'gabapentin',
+    name: 'Gabapentin',
+    nameHe: 'גבפנטין',
+    genericName: 'Gabapentin',
+    genericNameHe: 'גבפנטין',
+    brandNames: ['Neurontin'],
+    category: 'Anticonvulsant; Neuropathic Pain Analgesic; Anxiolytic',
+    categoryHe: 'נוגד פרכוסים; משכך כאב נוירופתי; חרדה',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 10, maxDose: 20, unit: 'mg/kg', frequency: 'כל 8 שעות', notes: 'For refractory seizures — administer q8h. For pain/anxiety: 5–10 mg/kg q8–12h', notesHe: 'לפרכוסים עמידים — כל 8 ש׳. לכאב/חרדה: 5-10 מ"ג/ק"ג כל 8-12 ש׳' },
+      { species: 'cat', route: 'PO', minDose: 5, maxDose: 10, unit: 'mg/kg', frequency: 'כל 8-12 שעות', notes: 'Single 100 mg dose PO reduces fear response during vet exams', notesHe: 'מינון חד-פעמי 100 מ"ג PO מפחית תגובת פחד בבדיקה וטרינרית' },
+    ],
+    isHighRisk: false,
+    warnings: ['Avoid xylitol-containing oral liquid in dogs', 'Sedation and ataxia are the most likely adverse effects', 'Administer q8h for best seizure control — q12h may not be adequate'],
+    warningsHe: ['הימנע מנוזל פה המכיל קסיליטול בכלבים', 'הרדמה ואטקסיה הם תופעות הלוואי הנפוצות', 'תן כל 8 ש׳ לשליטה מיטבית בפרכוסים — כל 12 ש׳ עשוי להיות בלתי מספק'],
+  },
+
+  // Antiemetic (NK-1 antagonist)
+  {
+    id: 'maropitant',
+    name: 'Maropitant',
+    nameHe: 'מרופיטנט',
+    genericName: 'Maropitant Citrate',
+    genericNameHe: 'מרופיטנט ציטראט',
+    brandNames: ['Cerenia', 'סרניה'],
+    category: 'Antiemetic - NK-1 Receptor Antagonist',
+    categoryHe: 'נוגד הקאות - אנטגוניסט NK-1',
+    plumbsDosing: [
+      { species: 'dog', route: 'SC', minDose: 1, maxDose: 1, unit: 'mg/kg', frequency: 'פעם ביום עד 5 ימים', notes: 'FDA-approved; refrigerate before injection to reduce injection-site pain', notesHe: 'מאושר FDA; קרר לפני הזרקה להפחתת כאב' },
+      { species: 'dog', route: 'PO', minDose: 2, maxDose: 8, unit: 'mg/kg', frequency: 'פעם ביום', notes: '2 mg/kg for acute vomiting; 8 mg/kg for motion sickness (min. age 4 months)', notesHe: '2 מ"ג/ק"ג להקאה חריפה; 8 מ"ג/ק"ג למחלת ים (גיל מינימלי 4 חודשים)' },
+      { species: 'cat', route: 'SC', minDose: 1, maxDose: 1, unit: 'mg/kg', frequency: 'פעם ביום עד 5 ימים', notes: 'FDA-approved for vomiting in cats ≥4 months', notesHe: 'מאושר FDA לחתולים מגיל 4 חודשים' },
+    ],
+    isHighRisk: false,
+    warnings: ['Not for use in patients with suspected toxin ingestion', 'Caution with cardiac arrhythmia — QT prolongation risk', 'Reduce dose by 50% in hepatic dysfunction'],
+    warningsHe: ['לא לשימוש בחשד לבליעת רעל', 'זהירות עם הפרעות קצב לב — סיכון להארכת QT', 'הפחת מינון ב-50% בפגיעת כבד'],
+  },
+
+  // Antiemetic (5-HT3 antagonist)
+  {
+    id: 'ondansetron',
+    name: 'Ondansetron',
+    nameHe: 'אונדנסטרון',
+    genericName: 'Ondansetron HCl',
+    genericNameHe: 'אונדנסטרון הידרוכלוריד',
+    brandNames: ['Zofran', 'זופרן'],
+    category: 'Antiemetic - 5-HT3 Receptor Antagonist',
+    categoryHe: 'נוגד הקאות - אנטגוניסט 5-HT3',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 0.5, maxDose: 1, unit: 'mg/kg', frequency: 'כל 8-12 שעות', notes: 'IV preferred when actively vomiting; give slowly over 2–5 min IV', notesHe: 'IV עדיף בהקאה פעילה; תן לאט על פני 2-5 דקות IV' },
+      { species: 'dog', route: 'IV', minDose: 0.3, maxDose: 0.5, unit: 'mg/kg', frequency: 'כל 8-12 שעות', notes: 'Give slowly over 2–5 min; for chemo nausea: 30 min before treatment', notesHe: 'תן לאט 2-5 דקות; לבחילת כימו: 30 דקות לפני טיפול' },
+      { species: 'cat', route: 'PO', minDose: 0.1, maxDose: 1, unit: 'mg/kg', frequency: 'כל 6-12 שעות', notes: 'Oral doses may need to be toward the high end; SC or IV preferred', notesHe: 'מינוני פה עשויים להיות בצד הגבוה; SC או IV עדיפים' },
+      { species: 'cat', route: 'IV', minDose: 0.1, maxDose: 0.5, unit: 'mg/kg', frequency: 'כל 6-12 שעות', notes: 'Give slowly; reduce dose in CKD stage 3–4', notesHe: 'תן לאט; הפחת מינון ב-CKD שלב 3-4' },
+    ],
+    isHighRisk: false,
+    warnings: ['Caution with other serotonergic drugs — serotonin syndrome risk', 'Administer IV slowly (over 2–5 min) to avoid arrhythmia'],
+    warningsHe: ['זהירות עם תרופות סרוטונרגיות אחרות — סכנת תסמונת סרוטונין', 'תן IV לאט (2-5 דקות) למניעת הפרעות קצב'],
+  },
+
+  // Anticonvulsant (barbiturate, controlled)
+  {
+    id: 'phenobarbital',
+    name: 'Phenobarbital',
+    nameHe: 'פנוברביטל',
+    genericName: 'Phenobarbital',
+    genericNameHe: 'פנוברביטל',
+    brandNames: ['Luminal'],
+    category: 'Anticonvulsant - Barbiturate (DEA C-IV)',
+    categoryHe: 'נוגד פרכוסים - ברביטורט (מפוקח)',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 2.5, maxDose: 3, unit: 'mg/kg', frequency: 'כל 12 שעות', notes: 'Start 2.5–3 mg/kg q12h; adjust based on serum levels. Loading dose: 12–20 mg/kg IV slow', notesHe: 'התחל 2.5-3 מ"ג/ק"ג כל 12 ש׳; כיוון לפי רמות בדם. מינון העמסה: 12-20 מ"ג/ק"ג IV לאט' },
+      { species: 'dog', route: 'IV', minDose: 4, maxDose: 8, unit: 'mg/kg', frequency: 'חד-פעמי לסטטוס אפילפטיקוס', notes: 'For status epilepticus after benzodiazepines; max 20–24 mg/kg IV total', notesHe: 'לסטטוס לאחר בנזודיאזפינים; מקסימום 20-24 מ"ג/ק"ג IV סה"כ' },
+      { species: 'cat', route: 'PO', minDose: 1, maxDose: 3, unit: 'mg/kg', frequency: 'כל 12 שעות', notes: 'Monitor for hepatotoxicity; use lowest effective dose', notesHe: 'נטר רעילות כבדית; השתמש במינון היעיל הנמוך ביותר' },
+    ],
+    isHighRisk: true,
+    isControlled: true,
+    warnings: ['DEA Schedule IV controlled substance', 'Monitor serum levels — therapeutic range 20–40 mcg/mL (dogs)', 'Hepatotoxicity risk with chronic use — monitor LFTs q6 months', 'Induces hepatic CYP enzymes — many drug interactions'],
+    warningsHe: ['חומר מפוקח C-IV', 'נטר רמות בסרום — טווח טיפולי 20-40 מק"ג/מ"ל (כלבים)', 'סיכון רעילות כבדית בשימוש כרוני — נטר כבד כל 6 חודשים', 'מגרה אנזימי CYP כבדי — אינטראקציות רבות'],
+  },
+
+  // Diuretic (loop)
+  {
+    id: 'furosemide',
+    name: 'Furosemide',
+    nameHe: 'פורוסמיד',
+    genericName: 'Furosemide',
+    genericNameHe: 'פורוסמיד',
+    brandNames: ['Lasix', 'Salix', 'לסיקס'],
+    category: 'Diuretic - Loop',
+    categoryHe: 'משתן - לולאה',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 2.2, maxDose: 5.5, unit: 'mg/kg', frequency: 'כל 6-12 שעות', notes: 'FDA-approved for pulmonary/cardiac edema; adjust to lowest effective dose', notesHe: 'מאושר FDA לבצקת ריאות/לב; כיוון למינון היעיל הנמוך' },
+      { species: 'dog', route: 'IV', minDose: 1, maxDose: 3, unit: 'mg/kg', frequency: 'כל 1-2 שעות (חירום)', notes: 'Acute cardiogenic pulmonary edema; reduce dose sharply once respiratory rate improves', notesHe: 'בצקת ריאות לבבית חריפה; הפחת מינון חדות עם שיפור נשימה' },
+      { species: 'cat', route: 'PO', minDose: 1, maxDose: 2, unit: 'mg/kg', frequency: 'כל 8-72 שעות', notes: 'Cats need lower doses than dogs; start 1 mg/kg; many cats receive 6.25 mg (½ tab) increments', notesHe: 'חתולים זקוקים למינונים נמוכים יותר מכלבים; התחל 1 מ"ג/ק"ג' },
+      { species: 'cat', route: 'IV', minDose: 1, maxDose: 2, unit: 'mg/kg', frequency: 'כל 1-2 שעות (חירום)', notes: 'IV onset 5 min in cats (vs 30 min IM); administer slowly', notesHe: 'תחילת פעולה IV תוך 5 דקות (לעומת 30 דקות IM); תן לאט' },
+    ],
+    isHighRisk: false,
+    warnings: ['Monitor electrolytes (K+, Na+) with chronic use — hypokalemia risk', 'Incompatible with many drugs in solution — check before mixing', 'Renal function must be monitored'],
+    warningsHe: ['נטר אלקטרוליטים (K+, Na+) בשימוש כרוני — סיכון היפוקלמיה', 'אינו תואם לתמיסה עם תרופות רבות — בדוק לפני ערבוב', 'יש לנטר תפקוד כלייתי'],
+  },
+
+  // GI protectant (PPI)
+  {
+    id: 'omeprazole',
+    name: 'Omeprazole',
+    nameHe: 'אומפרזול',
+    genericName: 'Omeprazole',
+    genericNameHe: 'אומפרזול',
+    brandNames: ['Prilosec', 'GastroGard', 'פריאוסק'],
+    category: 'GI Protectant - Proton Pump Inhibitor',
+    categoryHe: 'מגן מערכת עיכול - מעכב משאבת פרוטון',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 0.7, maxDose: 1, unit: 'mg/kg', frequency: 'כל 24 שעות', notes: 'Give on empty stomach; delayed-release capsules should not be crushed. 1–1.5 mg/kg q12h for NSAID-induced ulcers', notesHe: 'תן על בטן ריקה; אין לרסק קפסולות שחרור מושהה. 1-1.5 מ"ג/ק"ג כל 12 ש׳ לכיב הנגרם מ-NSAID' },
+      { species: 'cat', route: 'PO', minDose: 0.7, maxDose: 1, unit: 'mg/kg', frequency: 'כל 24 שעות', notes: 'Give on empty stomach; 1 mg/kg q24h for esophagitis', notesHe: 'תן על בטן ריקה; 1 מ"ג/ק"ג כל 24 ש׳ לדלקת ושט' },
+    ],
+    isHighRisk: false,
+    warnings: ['Administer on empty stomach 30 min before feeding', 'Allow 2 hours between omeprazole and sucralfate', 'Long-term use may cause hypomagnesemia and increased infection risk'],
+    warningsHe: ['תן על בטן ריקה 30 דקות לפני האכלה', 'השאר 2 שעות בין אומפרזול לסוקרלפט', 'שימוש ארוך-טווח עלול לגרום להיפומגנזמיה ולהגדיל סיכון לזיהום'],
+  },
+
+  // Antibiotic / antiprotozoal
+  {
+    id: 'metronidazole',
+    name: 'Metronidazole',
+    nameHe: 'מטרונידזול',
+    genericName: 'Metronidazole',
+    genericNameHe: 'מטרונידזול',
+    brandNames: ['Flagyl', 'פלגיל'],
+    category: 'Antibiotic - Nitroimidazole; Antiprotozoal',
+    categoryHe: 'אנטיביוטיקה - נירואימידזול; נוגד פרוטוזואה',
+    plumbsDosing: [
+      { species: 'dog', route: 'PO', minDose: 10, maxDose: 15, unit: 'mg/kg', frequency: 'כל 12 שעות', notes: 'Giardia/GI anaerobes. Max 62 mg/kg/day — higher doses cause neurotoxicity', notesHe: 'ג׳יארדיה/אנאירובים במערכת העיכול. מקסימום 62 מ"ג/ק"ג/יום — מינונים גבוהים גורמים לנוירוטוקסיות' },
+      { species: 'dog', route: 'IV', minDose: 7.5, maxDose: 15, unit: 'mg/kg', frequency: 'כל 12 שעות', notes: 'Diluted IV infusion over 30–60 min for serious anaerobic infections', notesHe: 'עירוי IV מדולל על פני 30-60 דקות לזיהומים אנאירוביים קשים' },
+      { species: 'cat', route: 'PO', minDose: 10, maxDose: 25, unit: 'mg/kg', frequency: 'כל 12-24 שעות', notes: 'Giardia/anaerobes; metronidazole benzoate compounded form may be more palatable', notesHe: 'ג׳יארדיה/אנאירובים; תכשיר מורכב של מטרונידזול בנזואט טעים יותר' },
+    ],
+    isHighRisk: false,
+    warnings: ['Use with extreme caution in pregnancy — potential teratogen', 'Neurotoxicity at high doses — ataxia, seizures, nystagmus', 'Prohibited by FDA for use in food animals'],
+    warningsHe: ['זהירות מרבית בהריון — עלול להיות ממין-גנוזי', 'נוירוטוקסיות במינונים גבוהים — אטקסיה, פרכוסים, ניסטגמוס', 'אסור לשימוש בבעלי חיים לצריכת מזון'],
   },
 
   // Appetite stimulant

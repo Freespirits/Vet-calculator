@@ -12,7 +12,6 @@ import {
   InfoIcon,
   PhoneIcon,
   ClockIcon,
-  ChevronDownIcon,
   ExternalLinkIcon,
 } from './Icons';
 
@@ -127,12 +126,11 @@ export function SourceList({ sources }: { sources: string[] }) {
         className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-muted hover:text-ink"
       >
         <span>
-          {t('common.sources')} ({sources.length})
+          {t('common.sources')}
         </span>
-        <ChevronDownIcon
-          size={18}
-          className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
-        />
+        <span className={`flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold transition-colors duration-200 ${open ? 'bg-white/20 text-ink' : 'bg-primary/20 text-primary'}`}>
+          {open ? '−' : '+'}
+        </span>
       </button>
       {open && (
         <ul className="flex list-disc flex-col gap-1.5 px-7 pb-3 pt-1 text-xs leading-relaxed text-muted">

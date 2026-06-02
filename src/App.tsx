@@ -3,6 +3,7 @@
  * Aurora-Clinic shell: sticky header, WebGL hero, tool switcher
  * (drug dosage ⇄ toxicity suite), disclaimer and footer.
  */
+import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Tools } from './features/Tools';
@@ -21,6 +22,7 @@ export default function App() {
         </div>
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }

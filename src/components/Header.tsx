@@ -1,7 +1,6 @@
 import { useI18n } from '../i18n/LanguageProvider';
 import { useTheme } from '../hooks/useTheme';
 import { SunIcon, MoonIcon, LanguagesIcon } from './Icons';
-import { Mascot } from './Mascot';
 
 export function Header() {
   const { t, toggleLang } = useI18n();
@@ -10,9 +9,32 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
       <div className="glass mx-auto flex max-w-3xl items-center justify-between rounded-2xl px-4 py-2.5">
-        <a href="#top" className="flex items-center gap-2.5" aria-label={t('brand.name')}>
-          <Mascot size={44} label={t('brand.name')} />
-        </a>
+        {/* Brand: TeddyVets logo on the left, animated dotLottie "face" on the right */}
+        <div className="flex items-center gap-3" dir="ltr">
+          <a
+            href="https://teddyvets.co.il"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TeddyVets"
+            className="flex items-center"
+          >
+            <img
+              src="https://teddyvets.co.il/wp-content/uploads/2025/06/logo-teddi.svg"
+              alt="TeddyVets"
+              className="h-9 w-auto"
+            />
+          </a>
+          <a href="#top" className="flex items-center" aria-label={t('brand.name')}>
+            <dotlottie-player
+              src="https://lottie.host/1f0f6d6a-1500-46cf-9a39-a4648defc99f/On3JNxxQmV.lottie"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              style={{ width: 44, height: 44 }}
+            />
+          </a>
+        </div>
 
         <div className="flex items-center gap-1.5">
           <button

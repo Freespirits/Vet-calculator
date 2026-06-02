@@ -53,19 +53,7 @@ export function Hero() {
           {t('brand.tagline')}
         </motion.span>
 
-        {/* dotLottie accent — centered in the headline, above the mascot */}
-        <motion.div {...stagger(1)} className="flex justify-center" aria-hidden="true">
-          <dotlottie-player
-            src="https://lottie.host/1f0f6d6a-1500-46cf-9a39-a4648defc99f/On3JNxxQmV.lottie"
-            background="transparent"
-            speed="1"
-            loop
-            autoplay
-            style={{ width: 60, height: 60 }}
-          />
-        </motion.div>
-
-        <motion.div {...stagger(2)} className="relative my-3 grid place-items-center">
+        <motion.div {...stagger(1)} className="relative my-3 grid place-items-center">
           <div
             aria-hidden="true"
             className="absolute inset-0 -z-10 blur-3xl"
@@ -78,13 +66,13 @@ export function Hero() {
         </motion.div>
 
         <motion.p
-          {...stagger(3)}
+          {...stagger(2)}
           className="mt-5 max-w-md text-lg text-ink/75 text-balance"
         >
           {t('hero.subtitle')}
         </motion.p>
 
-        <motion.a {...stagger(4)} href="#tools" className="btn-primary mt-9 px-8 text-lg">
+        <motion.a {...stagger(3)} href="#tools" className="btn-primary mt-9 px-8 text-lg">
           {t('hero.cta')}
         </motion.a>
       </div>

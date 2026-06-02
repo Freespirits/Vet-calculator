@@ -9,7 +9,8 @@ import { GlassCard, CountUp, SegmentedControl } from '../../components/primitive
 import { NumberField, TextField, SelectField } from '../../components/forms';
 import { RangeGauge } from '../../components/gauges';
 import { WarningList, SourceList, StatPill, type Severity } from '../../components/feedback';
-import { DogIcon, CatIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIcon, CopyIcon, CheckIcon, AlertTriangleIcon } from '../../components/Icons';
+import { DogIcon, CatIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIcon, CopyIcon, CheckIcon, AlertTriangleIcon, PawIcon } from '../../components/Icons';
+import { usePatientSessionContext } from '../patient/PatientSessionContext';
 
 const DOSE_UNITS: DoseUnit[] = ['mg/kg', 'mcg/kg', 'IU/kg', 'mL/kg'];
 const CONC_UNITS: ConcentrationUnit[] = ['mg/mL', 'mcg/mL', 'IU/mL'];
@@ -20,7 +21,9 @@ export function DosageCalculator() {
   const { t, lang } = useI18n();
   const { state, result, selectedDrug, validation, isValid, hasInput, updateField, calculate, reset } =
     useCalculator();
+  const { session, addMedication } = usePatientSessionContext();
   const [copied, setCopied] = useState(false);
+  const [added, setAdded] = useState(false);
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
 
   const speciesOpts = [
@@ -79,6 +82,23 @@ export function DosageCalculator() {
     } catch {
       /* user dismissed share sheet */
     }
+  };
+
+  const addToPatient = () => {
+    if (!result) return;
+    const drugName = selectedDrug ? (lang === 'he' ? selectedDrug.nameHe : selectedDrug.name) : state.drugName;
+    addMedication({
+      drugName: drugName || state.drugName || '—',
+      dosePerKg: parseFloat(state.dosePerKg) || 0,
+      doseUnit: state.doseUnit,
+      route: state.route,
+      volumeMl: result.volumeMl,
+      concentration: parseFloat(state.concentration) || 0,
+      concentrationUnit: state.concentrationUnit,
+      frequency: state.frequency || undefined,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1800);
   };
 
   const warnings = (result?.warnings ?? []).map((w) => ({
@@ -351,6 +371,13 @@ export function DosageCalculator() {
                   <dd className="tnum text-end text-ink">{result.calculationBreakdown.roundedVolumeMl} {t('unit.ml')}</dd>
                 </dl>
               </details>
+
+              {session && (
+                <button type="button" onClick={addToPatient} className="btn-primary mt-4 w-full">
+                  {added ? <CheckIcon size={18} /> : <PawIcon size={18} />}
+                  {added ? t('patient.added') : t('patient.addMed')}
+                </button>
+              )}
 
               <button onClick={handleCopy} className="btn-ghost mt-4 w-full">
                 {copied ? <CheckIcon size={18} /> : <CopyIcon size={18} />}

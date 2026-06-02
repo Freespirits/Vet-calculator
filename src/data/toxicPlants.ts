@@ -1,0 +1,256 @@
+/**
+ * Toxic plant library data (web).
+ *
+ * Ported from the mobile app's constants/Plants.ts, made self-contained:
+ * the mobile copy depended on a native Colors module and an icon-name field;
+ * here the colour is derived from the toxicity level and images resolve to the
+ * staged photos in public/plants/<imageKey>.webp.
+ */
+
+export type PlantToxicityLevel = 'mild' | 'moderate' | 'severe' | 'deadly';
+
+export type PlantSpecies = 'dog' | 'cat' | 'both';
+
+export interface ToxicPlant {
+  id: string;
+  name: { en: string; he: string };
+  latinName: string;
+  toxicityLevel: PlantToxicityLevel;
+  affectedSpecies: PlantSpecies[];
+  toxin: { en: string; he: string };
+  symptoms: { en: string; he: string };
+  action: { en: string; he: string };
+  /** Maps to public/plants/<imageKey>.webp */
+  imageKey: string;
+}
+
+/** Toxicity level → on-brand accent (matches the web risk ramp). */
+export const PLANT_LEVEL_COLOR: Record<PlantToxicityLevel, string> = {
+  mild: '#2DD4BF', // teal
+  moderate: '#F59E0B', // amber
+  severe: '#FB923C', // orange
+  deadly: '#F43F5E', // rose
+};
+
+export const TOXIC_PLANTS: ToxicPlant[] = [
+  {
+    id: 'lily',
+    name: { en: 'Lily (True lily)', he: 'לילך / שושנה (Lilium)' },
+    latinName: 'Lilium spp. / Hemerocallis spp.',
+    toxicityLevel: 'deadly',
+    affectedSpecies: ['cat'],
+    toxin: { en: 'Unknown nephrotoxin', he: 'רעלן כלייתי לא מזוהה' },
+    symptoms: { en: 'Vomiting, lethargy, acute kidney failure within 24–72 h', he: 'הקאות, רפיון, אי-ספיקת כליות חריפה תוך 24–72 שעות' },
+    action: { en: 'EMERGENCY — any ingestion by a cat requires immediate vet care', he: 'חירום — כל בליעה על ידי חתול דורשת טיפול וטרינרי מיידי' },
+    imageKey: 'lily',
+  },
+  {
+    id: 'sago_palm',
+    name: { en: 'Sago Palm', he: 'דקל סאגו' },
+    latinName: 'Cycas revoluta',
+    toxicityLevel: 'deadly',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Cycasin (hepatotoxin)', he: 'ציקסין (רעלן כבדי)' },
+    symptoms: { en: 'Vomiting, diarrhea, seizures, liver failure', he: 'הקאות, שלשול, פרכוסים, אי-ספיקת כבד' },
+    action: { en: 'EMERGENCY — all parts extremely toxic, seeds most dangerous', he: 'חירום — כל חלקי הצמח רעילים מאוד, הזרעים הכי מסוכנים' },
+    imageKey: 'sago_palm',
+  },
+  {
+    id: 'oleander',
+    name: { en: 'Oleander', he: 'הרדוף הנחלים' },
+    latinName: 'Nerium oleander',
+    toxicityLevel: 'deadly',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Oleandrin (cardiac glycoside)', he: 'אולאנדרין (גליקוזיד לבבי)' },
+    symptoms: { en: 'Vomiting, arrhythmia, bradycardia, sudden death', he: 'הקאות, הפרעות קצב, ברדיקרדיה, מוות פתאומי' },
+    action: { en: 'EMERGENCY — cardiac emergency, all parts lethal', he: 'חירום לבבי — כל חלקי הצמח קטלניים' },
+    imageKey: 'oleander',
+  },
+  {
+    id: 'azalea',
+    name: { en: 'Azalea / Rhododendron', he: 'אזליה / רודודנדרון' },
+    latinName: 'Rhododendron spp.',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Grayanotoxins', he: 'גריאנוטוקסינים' },
+    symptoms: { en: 'Drooling, vomiting, low BP, cardiac arrhythmia, coma', he: 'ריור, הקאות, לחץ דם נמוך, הפרעות קצב, תרדמת' },
+    action: { en: 'Seek immediate vet care — even a few leaves can be fatal', he: 'פנה לרופא וטרינר מיידית — אפילו כמה עלים עלולים להיות קטלניים' },
+    imageKey: 'azalea',
+  },
+  {
+    id: 'yew',
+    name: { en: 'Yew', he: 'טקסוס / אורן הטקסוס' },
+    latinName: 'Taxus spp.',
+    toxicityLevel: 'deadly',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Taxine alkaloids', he: 'אלקלואידים של טקסין' },
+    symptoms: { en: 'Sudden collapse, bradycardia, arrhythmia, death within hours', he: 'התמוטטות פתאומית, ברדיקרדיה, הפרעות קצב, מוות בתוך שעות' },
+    action: { en: 'EMERGENCY — extremely rapid onset, prognosis poor', he: 'חירום — הופעה מהירה מאוד, פרוגנוזה גרועה' },
+    imageKey: 'yew',
+  },
+  {
+    id: 'autumn_crocus',
+    name: { en: 'Autumn Crocus', he: 'כרכום הסתווי (Colchicum)' },
+    latinName: 'Colchicum autumnale',
+    toxicityLevel: 'deadly',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Colchicine', he: 'קולכיצין' },
+    symptoms: { en: 'Vomiting, GI bleeding, bone marrow suppression, multi-organ failure', he: 'הקאות, דימום במערכת העיכול, דיכוי מח עצמות, כשל רב-איברי' },
+    action: { en: 'EMERGENCY — delayed signs 2–3 days, often fatal', he: 'חירום — סימנים מתעכבים 2–3 ימים, לעיתים קרובות קטלני' },
+    imageKey: 'autumn_crocus',
+  },
+  {
+    id: 'foxglove',
+    name: { en: 'Foxglove', he: 'אצבעונית / דיגיטליס' },
+    latinName: 'Digitalis purpurea',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Cardiac glycosides (digitalis)', he: 'גליקוזידים לבביים (דיגיטליס)' },
+    symptoms: { en: 'Vomiting, arrhythmia, bradycardia, weakness', he: 'הקאות, הפרעות קצב, ברדיקרדיה, חולשה' },
+    action: { en: 'Seek vet care immediately — cardiac monitoring required', he: 'פנה לרופא וטרינר מיידית — נדרש ניטור לבבי' },
+    imageKey: 'foxglove',
+  },
+  {
+    id: 'daffodil',
+    name: { en: 'Daffodil / Narcissus', he: 'נרקיס' },
+    latinName: 'Narcissus spp.',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Lycorine, oxalates (especially bulb)', he: 'ליקורין, אוקסלטים (בעיקר פקעת)' },
+    symptoms: { en: 'Vomiting, diarrhea, drooling, tremors (bulb most toxic)', he: 'הקאות, שלשול, ריור, רעד (הפקעת הכי רעילה)' },
+    action: { en: 'Contact a vet — especially if bulb was ingested', he: 'פנה לרופא וטרינר — במיוחד אם נאכלה הפקעת' },
+    imageKey: 'daffodil',
+  },
+  {
+    id: 'aloe_vera',
+    name: { en: 'Aloe Vera', he: 'אלוורה' },
+    latinName: 'Aloe barbadensis',
+    toxicityLevel: 'mild',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Saponins, anthraquinones (in gel)', he: 'סאפונינים, אנתראקינונים (בג\'ל)' },
+    symptoms: { en: 'Vomiting, diarrhea, lethargy, tremors (rare)', he: 'הקאות, שלשול, רפיון, רעד (נדיר)' },
+    action: { en: 'Monitor — contact vet if vomiting persists', he: 'נטר — פנה לרופא אם ההקאות נמשכות' },
+    imageKey: 'aloe',
+  },
+  {
+    id: 'dieffenbachia',
+    name: { en: 'Dieffenbachia / Dumb Cane', he: 'דיפנבכיה' },
+    latinName: 'Dieffenbachia spp.',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Insoluble calcium oxalate crystals', he: 'גבישי סידן אוקסלט בלתי מסיסים' },
+    symptoms: { en: 'Severe oral pain, drooling, swelling of mouth/throat, dysphagia', he: 'כאב פה חמור, ריור, נפיחות בפה/גרון, קושי בבליעה' },
+    action: { en: 'Rinse mouth with water, contact vet — rarely life-threatening', he: 'שטוף פה במים, פנה לרופא — לרוב אינו מסכן חיים' },
+    imageKey: 'dieffenbachia',
+  },
+  {
+    id: 'pothos',
+    name: { en: 'Pothos / Golden Pothos', he: 'פותוס / שרביטן' },
+    latinName: 'Epipremnum aureum',
+    toxicityLevel: 'mild',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Insoluble calcium oxalates', he: 'אוקסלטים בלתי מסיסים' },
+    symptoms: { en: 'Oral irritation, drooling, vomiting', he: 'גירוי בפה, ריור, הקאות' },
+    action: { en: 'Monitor — contact vet if severe symptoms', he: 'נטר — פנה לרופא אם סימנים חמורים' },
+    imageKey: 'pothos',
+  },
+  {
+    id: 'peace_lily',
+    name: { en: 'Peace Lily', he: 'שושן השלום (ספטיפילום)' },
+    latinName: 'Spathiphyllum spp.',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Calcium oxalate crystals', he: 'גבישי סידן אוקסלט' },
+    symptoms: { en: 'Oral irritation, drooling, vomiting, dysphagia', he: 'גירוי בפה, ריור, הקאות, קושי בבליעה' },
+    action: { en: 'Rinse mouth, contact vet — watch for respiratory distress', he: 'שטוף פה, פנה לרופא — עקוב אחר קשיי נשימה' },
+    imageKey: 'peace_lily',
+  },
+  {
+    id: 'tulip',
+    name: { en: 'Tulip / Hyacinth', he: 'צבעוני / יקינתון' },
+    latinName: 'Tulipa / Hyacinthus spp.',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Tulipalin A (bulbs most toxic)', he: 'טוליפלין A (הפקעת הכי רעילה)' },
+    symptoms: { en: 'Vomiting, depression, diarrhea, rapid heart rate (bulb)', he: 'הקאות, דיכאון, שלשול, קצב לב מהיר (פקעת)' },
+    action: { en: 'Contact vet if bulb ingested', he: 'פנה לרופא אם נאכלה הפקעת' },
+    imageKey: 'tulip',
+  },
+  {
+    id: 'cyclamen',
+    name: { en: 'Cyclamen', he: 'רקפת' },
+    latinName: 'Cyclamen persicum',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Terpenoid saponins (roots most concentrated)', he: 'סאפונינים טרפנואידיים (שורשים הכי ריכוזיים)' },
+    symptoms: { en: 'Vomiting, diarrhea, seizures, cardiac arrhythmia', he: 'הקאות, שלשול, פרכוסים, הפרעות קצב' },
+    action: { en: 'Seek vet care — tuber ingestion is a medical emergency', he: 'פנה לרופא — בליעת פקעת היא חירום רפואי' },
+    imageKey: 'cyclamen',
+  },
+  {
+    id: 'snake_plant',
+    name: { en: 'Snake Plant / Mother-in-law\'s Tongue', he: 'סנסווריה / לשון החמות' },
+    latinName: 'Sansevieria trifasciata',
+    toxicityLevel: 'mild',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Saponins', he: 'סאפונינים' },
+    symptoms: { en: 'Nausea, vomiting, diarrhea', he: 'בחילה, הקאות, שלשול' },
+    action: { en: 'Monitor — usually mild, contact vet if concerned', he: 'נטר — בדרך כלל קל, פנה לרופא אם מודאג' },
+    imageKey: 'snake_plant',
+  },
+  {
+    id: 'kalanchoe',
+    name: { en: 'Kalanchoe', he: 'קלנכואה' },
+    latinName: 'Kalanchoe spp.',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Bufadienolides (cardiac glycosides)', he: 'בופדיינוליד (גליקוזידים לבביים)' },
+    symptoms: { en: 'Vomiting, diarrhea, cardiac arrhythmia', he: 'הקאות, שלשול, הפרעות קצב' },
+    action: { en: 'Contact vet promptly — cardiac monitoring needed', he: 'פנה לרופא בהקדם — נדרש ניטור לבבי' },
+    imageKey: 'kalanchoe',
+  },
+  {
+    id: 'english_ivy',
+    name: { en: 'English Ivy', he: 'קיסוס החורש' },
+    latinName: 'Hedera helix',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Triterpenoid saponins, polyacetylene compounds', he: 'סאפונינים טריטרפנואידיים, תרכובות פוליאצטילן' },
+    symptoms: { en: 'Vomiting, diarrhea, drooling, ataxia', he: 'הקאות, שלשול, ריור, אטקסיה' },
+    action: { en: 'Contact vet — leaves more toxic than berries', he: 'פנה לרופא — עלים רעילים יותר מפירות' },
+    imageKey: 'english_ivy',
+  },
+  {
+    id: 'wisteria',
+    name: { en: 'Wisteria', he: 'ויסטריה / גליצינה' },
+    latinName: 'Wisteria spp.',
+    toxicityLevel: 'moderate',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Wisterin glycoside (seeds, pods)', he: 'גליקוזיד ויסטרין (זרעים, תרמילים)' },
+    symptoms: { en: 'Vomiting, diarrhea, abdominal pain (seeds/pods most toxic)', he: 'הקאות, שלשול, כאב בטן (זרעים/תרמילים הכי רעילים)' },
+    action: { en: 'Contact vet — multiple seeds may cause severe toxicity', he: 'פנה לרופא — זרעים מרובים עלולים לגרום לרעילות חמורה' },
+    imageKey: 'wisteria',
+  },
+  {
+    id: 'lantana',
+    name: { en: 'Lantana', he: 'לנטנה' },
+    latinName: 'Lantana camara',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Lantadene (liver toxin)', he: 'לנטדן (רעלן כבדי)' },
+    symptoms: { en: 'GI upset, liver failure, photosensitization', he: 'הפרעות עיכוליות, אי-ספיקת כבד, רגישות לאור' },
+    action: { en: 'Seek vet care — unripe berries most toxic', he: 'פנה לרופא — פירות לא בשלים הכי רעילים' },
+    imageKey: 'lantana',
+  },
+  {
+    id: 'cherry_laurel',
+    name: { en: 'Cherry Laurel', he: 'דפנה רפואית / ערבה אצילה' },
+    latinName: 'Prunus laurocerasus',
+    toxicityLevel: 'severe',
+    affectedSpecies: ['both'],
+    toxin: { en: 'Cyanogenic glycosides', he: 'גליקוזידים ציאנוגניים' },
+    symptoms: { en: 'Rapid breathing, panting, weakness, seizures', he: 'נשימה מהירה, קוצר נשימה, חולשה, פרכוסים' },
+    action: { en: 'EMERGENCY — cyanide poisoning, rapid deterioration', he: 'חירום — הרעלת ציאניד, הידרדרות מהירה' },
+    imageKey: 'cherry_laurel',
+  },
+];

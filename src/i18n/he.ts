@@ -43,6 +43,7 @@ export const he = {
   'patient.meds': 'תרופות',
   'patient.medsCount': 'תרופות שנוספו',
   'patient.addMed': 'הוסף לרשימת המטופל',
+  'patient.addMedCta': 'הוסף תרופה',
   'patient.added': 'נוסף לרשימה',
   'patient.noMeds': 'עדיין לא נוספו תרופות — חשב מינון והוסף.',
   'patient.report': 'דוח תרופות',

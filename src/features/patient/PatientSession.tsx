@@ -23,6 +23,7 @@ import {
   CopyIcon,
   CheckIcon,
   RefreshIcon,
+  SyringeIcon,
 } from '../../components/Icons';
 
 function makePatientId(): string {
@@ -101,7 +102,7 @@ function NewPatientForm({ onStart }: { onStart: (p: Patient) => void }) {
   );
 }
 
-export function PatientSession() {
+export function PatientSession({ onAddMedication }: { onAddMedication?: () => void }) {
   const { t, lang } = useI18n();
   const { session, startSession, endSession, removeMedication, clearMedications, exportReport } =
     usePatientSessionContext();
@@ -170,9 +171,15 @@ export function PatientSession() {
         </div>
 
         {medications.length === 0 ? (
-          <p className="rounded-2xl bg-white/4 px-4 py-6 text-center text-sm text-muted">
-            {t('patient.noMeds')}
-          </p>
+          <div className="flex flex-col items-center gap-3 rounded-2xl bg-white/4 px-4 py-7 text-center">
+            <p className="text-sm text-muted">{t('patient.noMeds')}</p>
+            {onAddMedication && (
+              <button type="button" onClick={onAddMedication} className="btn-primary">
+                <SyringeIcon size={18} />
+                {t('patient.addMedCta')}
+              </button>
+            )}
+          </div>
         ) : (
           <ul className="flex flex-col gap-2.5">
             <AnimatePresence initial={false}>
@@ -217,19 +224,27 @@ export function PatientSession() {
         )}
 
         {medications.length > 0 && (
-          <div className="mt-4 flex gap-3">
-            <button onClick={handleExport} className="btn-primary flex-1">
-              {shared ? <CheckIcon size={18} /> : <CopyIcon size={18} />}
-              {shared ? t('common.copied') : canShare ? t('patient.shareReport') : t('patient.copyReport')}
-            </button>
-            <button
-              type="button"
-              onClick={clearMedications}
-              className="btn-ghost !px-4"
-              aria-label={t('patient.clearAll')}
-            >
-              <RefreshIcon size={20} />
-            </button>
+          <div className="mt-4 flex flex-col gap-3">
+            {onAddMedication && (
+              <button type="button" onClick={onAddMedication} className="btn-ghost w-full">
+                <SyringeIcon size={18} />
+                {t('patient.addMedCta')}
+              </button>
+            )}
+            <div className="flex gap-3">
+              <button onClick={handleExport} className="btn-primary flex-1">
+                {shared ? <CheckIcon size={18} /> : <CopyIcon size={18} />}
+                {shared ? t('common.copied') : canShare ? t('patient.shareReport') : t('patient.copyReport')}
+              </button>
+              <button
+                type="button"
+                onClick={clearMedications}
+                className="btn-ghost !px-4"
+                aria-label={t('patient.clearAll')}
+              >
+                <RefreshIcon size={20} />
+              </button>
+            </div>
           </div>
         )}
       </GlassCard>

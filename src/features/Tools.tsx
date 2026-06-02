@@ -44,7 +44,7 @@ export function Tools() {
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           {tool === 'dosage' && <DosageCalculator />}
-          {tool === 'patient' && <PatientSession />}
+          {tool === 'patient' && <PatientSession onAddMedication={() => setTool('dosage')} />}
           {tool === 'toxins' && <ToxinSuite />}
           {tool === 'plants' && <PlantLibrary />}
         </motion.div>

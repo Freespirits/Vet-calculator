@@ -40,6 +40,7 @@ export const en: Record<TKey, string> = {
   'patient.meds': 'Medications',
   'patient.medsCount': 'medications added',
   'patient.addMed': "Add to patient's list",
+  'patient.addMedCta': 'Add a medication',
   'patient.added': 'Added to list',
   'patient.noMeds': 'No medications added yet — calculate a dose and add it.',
   'patient.report': 'Medication report',

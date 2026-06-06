@@ -13,9 +13,43 @@ import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOXIC_PLANTS, PLANT_LEVEL_COLOR, type ToxicPlant, type PlantToxicityLevel } from '../../data/toxicPlants';
 import { tr } from '../../types/toxins';
 import { EmergencyBanner } from '../../components/feedback';
-import { DogIcon, CatIcon, SearchIcon, ChevronDownIcon, AlertTriangleIcon } from '../../components/Icons';
+import { DogIcon, CatIcon, SearchIcon, ChevronDownIcon, AlertTriangleIcon, FlowerIcon } from '../../components/Icons';
 
 type Filter = 'all' | 'deadly' | 'severe' | 'cats';
+
+/**
+ * Plant photo with a graceful fallback. Not every catalogued plant has a
+ * staged photo in public/plants/<imageKey>.webp; when the image is missing we
+ * render a tinted placeholder keyed to the toxicity colour instead of a broken
+ * image.
+ */
+function PlantImage({ plant, alt, className }: { plant: ToxicPlant; alt: string; className?: string }) {
+  const [failed, setFailed] = useState(false);
+  const color = PLANT_LEVEL_COLOR[plant.toxicityLevel];
+
+  if (failed) {
+    return (
+      <div
+        className={`grid place-items-center ${className ?? ''}`}
+        style={{ background: `linear-gradient(135deg, ${color}33, ${color}14)` }}
+        aria-label={alt}
+        role="img"
+      >
+        <FlowerIcon size={44} className="opacity-70" style={{ color }} />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={`/plants/${plant.imageKey}.webp`}
+      alt={alt}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={className}
+    />
+  );
+}
 
 const FILTERS: Filter[] = ['all', 'deadly', 'severe', 'cats'];
 
@@ -159,10 +193,9 @@ export function PlantLibrary() {
                     className="glass group overflow-hidden rounded-4xl text-start"
                   >
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg2">
-                      <img
-                        src={`/plants/${p.imageKey}.webp`}
+                      <PlantImage
+                        plant={p}
                         alt={tr(p.name, lang)}
-                        loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <span className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/55 to-transparent" />
@@ -198,8 +231,8 @@ export function PlantLibrary() {
 
             <div className="glass overflow-hidden rounded-4xl">
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-bg2">
-                <img
-                  src={`/plants/${selected.imageKey}.webp`}
+                <PlantImage
+                  plant={selected}
                   alt={tr(selected.name, lang)}
                   className="h-full w-full object-cover"
                 />

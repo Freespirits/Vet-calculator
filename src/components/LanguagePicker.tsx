@@ -67,8 +67,8 @@ export function LanguagePicker() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: reduced ? 0.12 : 0.18, ease: [0.16, 1, 0.3, 1] }}
-            style={{ transformOrigin: 'top' }}
-            className="glass absolute end-0 z-50 mt-2 max-h-[22rem] w-52 overflow-auto rounded-2xl p-1.5 shadow-2xl"
+            style={{ transformOrigin: 'top', background: 'rgb(var(--bg-1))', borderColor: 'var(--glass-border)' }}
+            className="absolute end-0 z-50 mt-2 max-h-[22rem] w-52 overflow-auto rounded-2xl border p-1.5 shadow-2xl"
           >
             {LANGUAGES.map((l, i) => {
               const active = l.code === lang;

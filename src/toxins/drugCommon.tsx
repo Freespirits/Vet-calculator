@@ -11,9 +11,15 @@ import { SelectField, NumberField } from '../components/forms';
 export interface DrugProduct {
   id: string;
   label: LocalizedText;
-  /** mg per tablet, or mg per mL for liquids. */
+  /** mg per tablet, mg per mL for liquids, or mg per serving. */
   mgPerUnit: number;
-  unit: 'tablet' | 'ml';
+  unit: 'tablet' | 'ml' | 'serving';
+}
+
+function unitSuffixKey(unit: DrugProduct['unit']) {
+  if (unit === 'tablet') return 'unit.tablets' as const;
+  if (unit === 'serving') return 'unit.pieces' as const;
+  return 'unit.ml' as const;
 }
 
 export function DrugToxinCalculator({
@@ -60,7 +66,7 @@ export function DrugToxinCalculator({
         value={qty}
         onChange={setQty}
         placeholder="0"
-        suffix={product.unit === 'tablet' ? t('unit.tablets') : t('unit.ml')}
+        suffix={t(unitSuffixKey(product.unit))}
       />
     </ToxinScaffold>
   );

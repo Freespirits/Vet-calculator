@@ -128,6 +128,86 @@ export function ToxinArt({ id, size = 44 }: Props) {
         </Svg>
       );
 
+    case 'caffeine':
+      return (
+        <Svg size={size}>
+          {/* coffee cup */}
+          <path d="M13 20 h18 v6 a9 9 0 0 1 -9 9 a9 9 0 0 1 -9 -9 z" fill="#6F4E37" />
+          <path d="M31 22 h3 a3 3 0 0 1 0 6 h-3 z" fill="none" stroke="#6F4E37" strokeWidth="2" />
+          <rect x="11" y="36" width="22" height="3" rx="1.5" fill="#8B5E3C" />
+          {/* steam */}
+          <path d="M19 12 q2 2 0 4 M24 11 q2 2 0 4" stroke="#C9B79C" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+        </Svg>
+      );
+
+    case 'ethylene_glycol':
+      return (
+        <Svg size={size}>
+          {/* jug */}
+          <rect x="15" y="16" width="18" height="22" rx="3" fill="#22D3EE" opacity="0.85" />
+          <rect x="20" y="11" width="6" height="6" rx="1.5" fill="#0E7490" />
+          <rect x="17" y="22" width="14" height="9" rx="1.5" fill="#fff" opacity="0.85" />
+          <path d="M19 27 l2.4 -5 2.4 5 z" fill="#DC2626" />
+        </Svg>
+      );
+
+    case 'thc':
+      return (
+        <Svg size={size}>
+          {/* cannabis leaf */}
+          <g fill="#16A34A">
+            <path d="M24 38 V20" stroke="#15803D" strokeWidth="2" />
+            <ellipse cx="24" cy="16" rx="2.6" ry="8" />
+            <ellipse cx="24" cy="18" rx="2.4" ry="7.5" transform="rotate(40 24 24)" />
+            <ellipse cx="24" cy="18" rx="2.4" ry="7.5" transform="rotate(-40 24 24)" />
+            <ellipse cx="24" cy="22" rx="2.2" ry="7" transform="rotate(75 24 24)" />
+            <ellipse cx="24" cy="22" rx="2.2" ry="7" transform="rotate(-75 24 24)" />
+          </g>
+        </Svg>
+      );
+
+    case 'cholecalciferol':
+      return (
+        <Svg size={size}>
+          <circle cx="24" cy="24" r="13" fill="#FACC15" />
+          <circle cx="24" cy="24" r="13" fill="none" stroke="#CA8A04" strokeWidth="1.4" />
+          <text x="24" y="29" textAnchor="middle" fontSize="13" fontWeight="700" fill="#7C5E04">
+            D3
+          </text>
+        </Svg>
+      );
+
+    case 'anticoagulant_rodenticide':
+      return (
+        <Svg size={size}>
+          {/* bait block */}
+          <rect x="13" y="16" width="22" height="16" rx="3" fill="#DC2626" />
+          <g fill="#7F1D1D">
+            <circle cx="19" cy="21" r="1.5" />
+            <circle cx="24" cy="27" r="1.5" />
+            <circle cx="30" cy="21" r="1.5" />
+          </g>
+          {/* mouse silhouette */}
+          <ellipse cx="24" cy="37" rx="6" ry="3" fill="#9CA3AF" />
+          <circle cx="29" cy="36" r="1.6" fill="#9CA3AF" />
+          <path d="M18 37 q-4 0 -5 2" stroke="#9CA3AF" strokeWidth="1.3" fill="none" />
+        </Svg>
+      );
+
+    case 'bromethalin':
+      return (
+        <Svg size={size}>
+          {/* green bait pellet with skull hint */}
+          <rect x="14" y="16" width="20" height="16" rx="3" fill="#7C3AED" />
+          <circle cx="24" cy="24" r="5.5" fill="#EDE9FE" />
+          <circle cx="22" cy="23" r="1.1" fill="#7C3AED" />
+          <circle cx="26" cy="23" r="1.1" fill="#7C3AED" />
+          <rect x="22.4" y="26" width="3.2" height="2.4" rx="0.6" fill="#7C3AED" />
+          <ellipse cx="24" cy="37" rx="6" ry="3" fill="#9CA3AF" />
+          <path d="M18 37 q-4 0 -5 2" stroke="#9CA3AF" strokeWidth="1.3" fill="none" />
+        </Svg>
+      );
+
     default:
       return null;
   }

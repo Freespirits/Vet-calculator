@@ -11,6 +11,12 @@ import { macadamiaMeta, MacadamiaCalculator } from './macadamia/Calculator';
 import { lilyMeta, LilyCalculator } from './lily/Calculator';
 import { acetaminophenMeta, AcetaminophenCalculator } from './acetaminophen/Calculator';
 import { ibuprofenMeta, IbuprofenCalculator } from './ibuprofen/Calculator';
+import { caffeineMeta, CaffeineCalculator } from './caffeine/Calculator';
+import { ethyleneGlycolMeta, EthyleneGlycolCalculator } from './ethyleneGlycol/Calculator';
+import { thcMeta, ThcCalculator } from './thc/Calculator';
+import { cholecalciferolMeta, CholecalciferolCalculator } from './cholecalciferol/Calculator';
+import { anticoagulantMeta, AnticoagulantRodenticideCalculator } from './anticoagulantRodenticide/Calculator';
+import { bromethalinMeta, BromethalinCalculator } from './bromethalin/Calculator';
 
 export interface ToxinEntry {
   meta: ToxinMeta;
@@ -19,11 +25,17 @@ export interface ToxinEntry {
 
 export const TOXIN_REGISTRY: ToxinEntry[] = [
   { meta: chocolateMeta, Component: ChocolateCalculator },
+  { meta: caffeineMeta, Component: CaffeineCalculator },
   { meta: grapesMeta, Component: GrapesCalculator },
   { meta: xylitolMeta, Component: XylitolCalculator },
   { meta: alliumMeta, Component: AlliumCalculator },
   { meta: macadamiaMeta, Component: MacadamiaCalculator },
   { meta: lilyMeta, Component: LilyCalculator },
+  { meta: thcMeta, Component: ThcCalculator },
   { meta: acetaminophenMeta, Component: AcetaminophenCalculator },
   { meta: ibuprofenMeta, Component: IbuprofenCalculator },
+  { meta: ethyleneGlycolMeta, Component: EthyleneGlycolCalculator },
+  { meta: anticoagulantMeta, Component: AnticoagulantRodenticideCalculator },
+  { meta: bromethalinMeta, Component: BromethalinCalculator },
+  { meta: cholecalciferolMeta, Component: CholecalciferolCalculator },
 ];

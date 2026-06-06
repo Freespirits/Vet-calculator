@@ -4,7 +4,7 @@
  */
 import { useMemo, useState } from 'react';
 import { useI18n } from '../i18n/LanguageProvider';
-import type { LocalizedText, ToxinMeta, ToxinResult, ToxSpecies } from '../types/toxins';
+import { tr, type LocalizedText, type ToxinMeta, type ToxinResult, type ToxSpecies } from '../types/toxins';
 import { ToxinScaffold } from '../components/ToxinScaffold';
 import { SelectField, NumberField } from '../components/forms';
 
@@ -53,7 +53,7 @@ export function DrugToxinCalculator({
         label={t('tox.source')}
         value={productId}
         onChange={setProductId}
-        options={products.map((p) => ({ value: p.id, label: p.label[lang] }))}
+        options={products.map((p) => ({ value: p.id, label: tr(p.label, lang) }))}
       />
       <NumberField
         label={t('tox.amount')}

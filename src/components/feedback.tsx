@@ -4,7 +4,12 @@
 import { useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
-import { ISRAEL_VET_ER, TEDDYVETS_CLINICS_URL } from '../data/emergencyContacts';
+import {
+  ISRAEL_VET_ER,
+  TEDDYVETS_CLINICS_URL,
+  SUBMIT_CLINIC_EMAIL,
+} from '../data/emergencyContacts';
+import { tr } from '../types/toxins';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import {
   AlertTriangleIcon,
@@ -55,6 +60,17 @@ export function WarningList({
 }
 
 export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
+  const { lang } = useI18n();
+  // The TeddyVets directory is Israel-only, so it's shown for Hebrew. Every
+  // other language gets a generic warning plus a submit-your-clinic CTA.
+  return lang === 'he' ? (
+    <TeddyVetsBanner compact={compact} />
+  ) : (
+    <SubmitClinicBanner compact={compact} />
+  );
+}
+
+function TeddyVetsBanner({ compact }: { compact: boolean }) {
   const { t, lang } = useI18n();
   return (
     <div
@@ -82,11 +98,11 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
               <span className="flex min-w-0 items-center gap-2.5">
                 <PhoneIcon size={18} className="shrink-0 text-rose" />
                 <span className="min-w-0">
-                  <span className="block truncate text-sm font-medium text-ink">{c.name[lang]}</span>
-                  <span className="block truncate text-xs text-muted">{c.region[lang]}</span>
+                  <span className="block truncate text-sm font-medium text-ink">{tr(c.name, lang)}</span>
+                  <span className="block truncate text-xs text-muted">{tr(c.region, lang)}</span>
                   <span className="mt-0.5 flex items-start gap-1 text-[11px] leading-tight text-muted/80">
                     <ClockIcon size={12} className="mt-0.5 shrink-0" />
-                    <span>{c.hours[lang]}</span>
+                    <span>{tr(c.hours, lang)}</span>
                   </span>
                 </span>
               </span>
@@ -109,6 +125,45 @@ export function EmergencyBanner({ compact = false }: { compact?: boolean }) {
       </a>
 
       {!compact && <p className="mt-3 text-xs text-muted">{t('emergency.note')}</p>}
+    </div>
+  );
+}
+
+function SubmitClinicBanner({ compact }: { compact: boolean }) {
+  const { t } = useI18n();
+  const subject = encodeURIComponent('Emergency vet clinic listing');
+  const body = encodeURIComponent(
+    'Clinic name:\nArea / city:\nPhone:\nOpening hours:\nWebsite:',
+  );
+  return (
+    <div
+      className="rounded-4xl border p-5"
+      style={{ background: 'rgba(244,63,94,0.10)', borderColor: 'rgba(244,63,94,0.3)' }}
+    >
+      <div className="flex items-center gap-2.5 text-rose">
+        <AlertOctagonIcon size={22} />
+        <h3 className="text-base font-bold">{t('emergency.generic.title')}</h3>
+      </div>
+      {!compact && <p className="mt-2 text-sm text-ink/80">{t('emergency.generic.text')}</p>}
+
+      <div
+        className="mt-4 rounded-2xl p-4"
+        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)' }}
+      >
+        <p className="text-sm font-semibold text-ink">{t('emergency.submit.title')}</p>
+        <p className="mt-1 text-xs text-muted">{t('emergency.submit.text')}</p>
+        <a
+          href={`mailto:${SUBMIT_CLINIC_EMAIL}?subject=${subject}&body=${body}`}
+          className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold text-white transition-colors"
+          style={{ background: 'rgb(244,63,94)' }}
+        >
+          <PhoneIcon size={16} className="shrink-0" />
+          <span>{t('emergency.submit.cta')}</span>
+        </a>
+        <p className="mt-2 tnum text-xs text-muted" dir="ltr">
+          {SUBMIT_CLINIC_EMAIL}
+        </p>
+      </div>
     </div>
   );
 }

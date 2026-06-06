@@ -9,17 +9,45 @@ import {
 } from 'react';
 import { he, type TKey } from './he';
 import { en } from './en';
+import { ar } from './ar';
+import { es } from './es';
+import { fr } from './fr';
+import { de } from './de';
+import { ru } from './ru';
+import { pt } from './pt';
+import { it } from './it';
+import { zh } from './zh';
+import { hi } from './hi';
+import { ja } from './ja';
+import { tr } from './tr';
+import { pl } from './pl';
+import { dirOf, isLang, LANGUAGES, type Dir, type Lang } from './languages';
 
-export type Lang = 'he' | 'en';
-export type Dir = 'rtl' | 'ltr';
+export type { Lang, Dir } from './languages';
 
-const DICTS: Record<Lang, Record<TKey, string>> = { he, en };
+const DICTS: Record<Lang, Record<TKey, string>> = {
+  he,
+  en,
+  ar,
+  es,
+  fr,
+  de,
+  ru,
+  pt,
+  it,
+  zh,
+  hi,
+  ja,
+  tr,
+  pl,
+};
 const STORAGE_KEY = 'vh.lang';
 
 interface LanguageContextValue {
   lang: Lang;
   dir: Dir;
   setLang: (lang: Lang) => void;
+  /** Cycle to the next language in the picker order (kept for convenience). */
   toggleLang: () => void;
   /** Translate a key, with optional {placeholder} interpolation. */
   t: (key: TKey, vars?: Record<string, string | number>) => string;
@@ -27,15 +55,29 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+function detectBrowserLang(): Lang | null {
+  if (typeof navigator === 'undefined') return null;
+  const candidates = navigator.languages?.length
+    ? navigator.languages
+    : [navigator.language];
+  for (const raw of candidates) {
+    const base = raw.toLowerCase().split('-')[0];
+    if (isLang(base)) return base;
+  }
+  return null;
+}
+
 function readInitialLang(): Lang {
   if (typeof window === 'undefined') return 'he';
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === 'en' || stored === 'he' ? stored : 'he';
+  if (isLang(stored)) return stored;
+  // First visit: honour the browser language if we support it, else Hebrew.
+  return detectBrowserLang() ?? 'he';
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(readInitialLang);
-  const dir: Dir = lang === 'he' ? 'rtl' : 'ltr';
+  const dir: Dir = dirOf(lang);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -45,11 +87,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [lang, dir]);
 
   const setLang = useCallback((next: Lang) => setLangState(next), []);
-  const toggleLang = useCallback(() => setLangState((p) => (p === 'he' ? 'en' : 'he')), []);
+  const toggleLang = useCallback(
+    () =>
+      setLangState((prev) => {
+        const i = LANGUAGES.findIndex((l) => l.code === prev);
+        return LANGUAGES[(i + 1) % LANGUAGES.length].code;
+      }),
+    [],
+  );
 
   const t = useCallback(
     (key: TKey, vars?: Record<string, string | number>) => {
-      let str = DICTS[lang][key] ?? key;
+      // English is the canonical fallback; the key itself is the last resort.
+      let str = DICTS[lang]?.[key] ?? en[key] ?? key;
       if (vars) {
         for (const [k, v] of Object.entries(vars)) {
           str = str.replace(new RegExp(`\\{${k}\\}`, 'g'), String(v));

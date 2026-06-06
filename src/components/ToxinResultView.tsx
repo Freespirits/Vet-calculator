@@ -4,7 +4,7 @@
  */
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
-import type { ToxinResult, LocalizedText } from '../types/toxins';
+import { tr, type ToxinResult, type LocalizedText } from '../types/toxins';
 import type { RiskLevel } from './gauges';
 import { RiskGauge } from './gauges';
 import { EmergencyBanner, SourceList, StatPill } from './feedback';
@@ -41,7 +41,7 @@ function Section({
 
 export function ToxinResultView({ result }: { result: ToxinResult }) {
   const { t, lang } = useI18n();
-  const pick = (l: LocalizedText) => l[lang];
+  const pick = (l: LocalizedText) => tr(l, lang);
   const bandLabel = result.bandLabel
     ? pick(result.bandLabel)
     : t(`risk.${result.level}` as `risk.${RiskLevel}`);

@@ -7,6 +7,8 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Lang } from '../i18n/languages';
+import { tr } from '../types/toxins';
 
 const STORAGE_KEY = '@vetcalc_web_patient_session';
 
@@ -111,10 +113,10 @@ export function usePatientSession() {
 
   /** Clean bilingual plain-text report mirroring the mobile app's layout. */
   const generateReport = useCallback(
-    (lang: 'he' | 'en'): string => {
+    (lang: Lang): string => {
       if (!session) return '';
       const { patient, medications } = session;
-      const speciesLabel = SPECIES_LABEL[patient.species][lang];
+      const speciesLabel = tr(SPECIES_LABEL[patient.species], lang);
 
       const lines: string[] = [];
 
@@ -152,7 +154,7 @@ export function usePatientSession() {
    * and always offer a downloadable .txt as a last resort. Fully guarded.
    */
   const exportReport = useCallback(
-    async (lang: 'he' | 'en'): Promise<void> => {
+    async (lang: Lang): Promise<void> => {
       if (!session) return;
       const report = generateReport(lang);
       const title =

@@ -1,9 +1,10 @@
 import { useI18n } from '../i18n/LanguageProvider';
 import { useTheme } from '../hooks/useTheme';
-import { SunIcon, MoonIcon, LanguagesIcon } from './Icons';
+import { SunIcon, MoonIcon } from './Icons';
+import { LanguagePicker } from './LanguagePicker';
 
 export function Header() {
-  const { t, toggleLang } = useI18n();
+  const { t } = useI18n();
   const { isDark, toggleTheme } = useTheme();
 
   return (
@@ -37,15 +38,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={toggleLang}
-            className="flex h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-muted transition-colors hover:text-ink"
-            aria-label={t('ctl.language')}
-          >
-            <LanguagesIcon size={18} />
-            {t('ctl.language')}
-          </button>
+          <LanguagePicker />
           <button
             type="button"
             onClick={toggleTheme}

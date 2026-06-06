@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
+import { L, tr, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
 import { ToxinScaffold, gramsFrom } from '../../components/ToxinScaffold';
 import { SelectField, NumberField, MeasureField } from '../../components/forms';
 import { ChocolateIcon } from '../../components/Icons';
@@ -48,7 +48,7 @@ export function ChocolateCalculator() {
         label={t('tox.source')}
         value={typeId}
         onChange={setTypeId}
-        options={CHOCOLATE_TYPES.map((c) => ({ value: c.id, label: c.name[lang] }))}
+        options={CHOCOLATE_TYPES.map((c) => ({ value: c.id, label: tr(c.name, lang) }))}
       />
 
       {isDark && (

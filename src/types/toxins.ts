@@ -5,6 +5,7 @@
  */
 import type { ReactNode } from 'react';
 import type { RiskLevel } from '../components/gauges';
+import type { Lang } from '../i18n/languages';
 
 export type ToxSpecies = 'dog' | 'cat';
 
@@ -15,6 +16,17 @@ export interface LocalizedText {
 }
 
 export const L = (he: string, en: string): LocalizedText => ({ he, en });
+
+/**
+ * Resolve a bilingual value for the active UI language.
+ *
+ * Clinical data is authored in Hebrew + English only. Every other supported
+ * language falls back to English (the canonical clinical text), so non-Hebrew
+ * locales never show an empty field.
+ */
+export function tr(text: { he: string; en: string }, lang: Lang): string {
+  return lang === 'he' ? text.he : text.en;
+}
 
 export interface ToxinResult {
   /** Severity band controlling gauge color + needle. */

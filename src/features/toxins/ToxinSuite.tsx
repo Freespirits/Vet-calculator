@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../../i18n/LanguageProvider';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOXIN_REGISTRY } from '../../toxins/registry';
+import { tr } from '../../types/toxins';
 import { EmergencyBanner } from '../../components/feedback';
 import { ToxinArt } from '../../components/ToxinArt';
 import { DogIcon, CatIcon, ChevronDownIcon } from '../../components/Icons';
@@ -52,8 +53,8 @@ export function ToxinSuite() {
                     <ToxinArt id={meta.id} size={40} />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate font-semibold text-ink">{meta.name[lang]}</span>
-                    <span className="block truncate text-xs text-muted">{meta.blurb[lang]}</span>
+                    <span className="block truncate font-semibold text-ink">{tr(meta.name, lang)}</span>
+                    <span className="block truncate text-xs text-muted">{tr(meta.blurb, lang)}</span>
                   </span>
                   <span className="flex shrink-0 items-center gap-1 text-muted/70">
                     {meta.species.includes('dog') && <DogIcon size={16} />}

@@ -13,7 +13,8 @@ export const he = {
   'brand.tagline': 'מחשבון וטרינרי קליני · כלבים וחתולים',
 
   // Header / controls
-  'ctl.language': 'English',
+  'ctl.language': 'שפה',
+  'ctl.language.select': 'בחירת שפה',
   'ctl.theme.toDark': 'מצב כהה',
   'ctl.theme.toLight': 'מצב בהיר',
   'ctl.theme.toggle': 'החלף ערכת צבעים',
@@ -181,6 +182,13 @@ export const he = {
   'emergency.allClinics': 'כל המרפאות באתר טדי',
   'emergency.note': 'מרפאות טדי פועלות בשעות הפעילות המצוינות. מחוץ לשעות אלו, או במקרה מסכן חיים, התקשר/י מראש לבירור זמינות. אין בישראל מוקד רעלים ייעודי לבעלי חיים (מוקד הרעלים הארצי, רמב"ם 04-7771900, מיועד לבני אדם בלבד).',
   'emergency.callVet': 'התקשר/י לרופא/ה הווטרינר/ית שלך',
+  'emergency.generic.title': 'מקרה חירום?',
+  'emergency.generic.text':
+    'בחשד להרעלה, פנה/י מיד למרפאה הווטרינרית או למוקד החירום הקרוב אליך. אל תמתין/י להופעת סימנים — והתקשר/י מראש לבירור זמינות.',
+  'emergency.submit.title': 'מפעיל/ה מרפאת חירום וטרינרית?',
+  'emergency.submit.text':
+    'אנו מרחיבים את ספריית מרפאות החירום לאזורך. אם ברצונך שהמרפאה שלך תופיע, שלח/י לנו אימייל עם השם, האזור, הטלפון ושעות הפעילות.',
+  'emergency.submit.cta': 'שלחו לנו אימייל',
 
   // Disclaimer / footer
   'disclaimer.title': 'כתב ויתור',

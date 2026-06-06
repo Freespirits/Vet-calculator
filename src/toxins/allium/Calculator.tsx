@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
+import { L, tr, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
 import { ToxinScaffold, gramsFrom } from '../../components/ToxinScaffold';
 import { SelectField, MeasureField } from '../../components/forms';
 import { OnionIcon } from '../../components/Icons';
@@ -43,7 +43,7 @@ export function AlliumCalculator() {
         label={t('tox.source')}
         value={formId}
         onChange={setFormId}
-        options={ALLIUM_FORMS.map((f) => ({ value: f.id, label: f.name[lang] }))}
+        options={ALLIUM_FORMS.map((f) => ({ value: f.id, label: tr(f.name, lang) }))}
       />
       <MeasureField
         label={t('tox.amount')}

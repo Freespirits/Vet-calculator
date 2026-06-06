@@ -6,7 +6,7 @@
 import { type ReactNode } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
-import type { ToxinMeta, ToxinResult, ToxSpecies } from '../types/toxins';
+import { tr, type ToxinMeta, type ToxinResult, type ToxSpecies } from '../types/toxins';
 import { GlassCard, SegmentedControl } from './primitives';
 import { NumberField } from './forms';
 import { ToxinResultView } from './ToxinResultView';
@@ -53,8 +53,8 @@ export function ToxinScaffold({
             <ToxinArt id={meta.id} size={34} />
           </span>
           <div>
-            <h2 className="text-lg font-bold text-ink">{meta.name[lang]}</h2>
-            <p className="text-sm text-muted">{meta.blurb[lang]}</p>
+            <h2 className="text-lg font-bold text-ink">{tr(meta.name, lang)}</h2>
+            <p className="text-sm text-muted">{tr(meta.blurb, lang)}</p>
           </div>
         </div>
 

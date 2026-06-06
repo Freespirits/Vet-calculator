@@ -10,7 +10,8 @@ export const en: Record<TKey, string> = {
   'brand.tagline': 'Clinical Veterinary Calculator · Dogs & Cats',
 
   // Header / controls
-  'ctl.language': 'עברית',
+  'ctl.language': 'Language',
+  'ctl.language.select': 'Select language',
   'ctl.theme.toDark': 'Dark',
   'ctl.theme.toLight': 'Light',
   'ctl.theme.toggle': 'Toggle color theme',
@@ -178,6 +179,13 @@ export const en: Record<TKey, string> = {
   'emergency.allClinics': 'All TeddyVets clinics',
   'emergency.note': 'TeddyVets clinics operate within the hours shown. Outside those hours, or for a life-threatening case, call ahead to check availability. Israel has no dedicated pet poison-control hotline (the national poison center, Rambam 04-7771900, is for humans only).',
   'emergency.callVet': 'Call your veterinarian',
+  'emergency.generic.title': 'An emergency?',
+  'emergency.generic.text':
+    'If you suspect poisoning, contact your nearest veterinary clinic or emergency service right away. Don\'t wait for signs — and call ahead to confirm availability.',
+  'emergency.submit.title': 'Run an emergency vet clinic?',
+  'emergency.submit.text':
+    'We\'re expanding our emergency-clinic directory for your region. To have your clinic listed, email us its name, area, phone and opening hours.',
+  'emergency.submit.cta': 'Email us',
 
   // Disclaimer / footer
   'disclaimer.title': 'Disclaimer',

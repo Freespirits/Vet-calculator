@@ -1,0 +1,194 @@
+import type { TKey } from './he';
+
+/** Arabic dictionary (RTL). UI chrome only; clinical data falls back to English. */
+export const ar: Record<TKey, string> = {
+  // Brand
+  'brand.name': 'حاسبة بيطرية',
+  'brand.tagline': 'حاسبة بيطرية سريرية · للكلاب والقطط',
+
+  // Header / controls
+  'ctl.language': 'اللغة',
+  'ctl.language.select': 'اختيار اللغة',
+  'ctl.theme.toDark': 'داكن',
+  'ctl.theme.toLight': 'فاتح',
+  'ctl.theme.toggle': 'تبديل نمط الألوان',
+
+  // Hero
+  'hero.title': 'حاسبة بيطرية',
+  'hero.subtitle': 'حساب جرعات الأدوية والسمّية — دقيق وسريع وفي متناول يدك.',
+  'hero.cta': 'ابدأ الحساب',
+  'hero.scroll': 'مرّر',
+
+  // Tool switcher
+  'tab.dosage': 'الجرعة',
+  'tab.toxins': 'السموم',
+  'tab.patient': 'المريض',
+  'tab.plants': 'النباتات',
+  'tabs.aria': 'اختيار الحاسبة',
+
+  // Patient session
+  'patient.title': 'جلسة المريض',
+  'patient.subtitle': 'احسب عدّة أدوية لمريض واحد ثم صدّر تقريرًا موحّدًا.',
+  'patient.new': 'مريض جديد',
+  'patient.name': 'اسم المريض',
+  'patient.namePlaceholder': 'مثال: ريكس',
+  'patient.start': 'بدء الجلسة',
+  'patient.active': 'المريض النشط',
+  'patient.end': 'إنهاء الجلسة',
+  'patient.meds': 'الأدوية',
+  'patient.medsCount': 'أدوية مضافة',
+  'patient.addMed': 'أضف إلى قائمة المريض',
+  'patient.addMedCta': 'أضف دواءً',
+  'patient.added': 'أُضيف إلى القائمة',
+  'patient.noMeds': 'لم تُضَف أدوية بعد — احسب جرعة وأضفها.',
+  'patient.report': 'تقرير الأدوية',
+  'patient.shareReport': 'مشاركة التقرير',
+  'patient.copyReport': 'نسخ التقرير',
+  'patient.clearAll': 'مسح الكل',
+  'patient.remove': 'إزالة',
+  'patient.draw': 'السحب',
+
+  // Plant library
+  'plants.title': 'مكتبة النباتات السامة',
+  'plants.subtitle': 'تعرّف على النباتات الخطرة على الكلاب والقطط، بالصور.',
+  'plants.search': 'ابحث عن نبات…',
+  'plants.filter.all': 'الكل',
+  'plants.filter.deadly': 'قاتل ☠',
+  'plants.filter.severe': 'شديد',
+  'plants.filter.cats': 'للقطط فقط',
+  'plants.level.mild': 'خفيف',
+  'plants.level.moderate': 'متوسط',
+  'plants.level.severe': 'شديد',
+  'plants.level.deadly': 'قاتل',
+  'plants.toxin': 'السمّ',
+  'plants.symptoms': 'الأعراض',
+  'plants.action': 'ما العمل',
+  'plants.affected': 'المعرّض للخطر',
+  'plants.noResults': 'لا توجد نباتات مطابقة.',
+  'plants.catsOnly': 'القطط',
+  'plants.both': 'الكلاب والقطط',
+
+  // Common
+  'common.calculate': 'احسب',
+  'common.reset': 'إعادة ضبط',
+  'common.copy': 'نسخ',
+  'common.copied': 'تم النسخ!',
+  'common.share': 'مشاركة',
+  'common.close': 'إغلاق',
+  'common.sources': 'المصادر الطبية',
+  'common.optional': 'اختياري',
+  'common.select': 'اختر',
+  'common.search': 'بحث',
+  'common.required': 'مطلوب',
+  'common.back': 'رجوع',
+  'common.details': 'التفاصيل',
+  'common.example': 'مثال',
+  'common.unit': 'الوحدة',
+
+  // Species
+  'species.label': 'النوع',
+  'species.dog': 'كلب',
+  'species.cat': 'قطة',
+
+  // Units / fields
+  'field.weight': 'وزن الجسم',
+  'unit.kg': 'كغ',
+  'unit.g': 'غ',
+  'unit.oz': 'أونصة',
+  'unit.mg': 'ملغ',
+  'unit.ml': 'مل',
+  'unit.mgkg': 'ملغ/كغ',
+  'unit.gkg': 'غ/كغ',
+  'unit.tablets': 'أقراص',
+  'unit.pieces': 'قطع',
+  'unit.perDay': 'يوميًا',
+
+  // Dosage calculator
+  'dose.title': 'حاسبة جرعة الدواء',
+  'dose.subtitle': 'حساب الحجم المطلوب سحبه من الوزن والجرعة والتركيز.',
+  'dose.drug': 'اسم الدواء',
+  'dose.drugPlaceholder': 'ابحث أو اكتب اسم دواء…',
+  'dose.perKg': 'الجرعة لكل كغ',
+  'dose.doseUnit': 'وحدة الجرعة',
+  'dose.concentration': 'التركيز',
+  'dose.concUnit': 'وحدة التركيز',
+  'dose.route': 'طريق الإعطاء',
+  'dose.rounding': 'التقريب',
+  'dose.frequency': 'التكرار',
+  'dose.freqPlaceholder': 'مثال: كل 8 ساعات',
+  'dose.duration': 'المدة',
+  'dose.durationPlaceholder': 'مثال: 7 أيام',
+  'dose.volumeToDraw': 'الحجم المطلوب سحبه',
+  'dose.totalDose': 'الجرعة الإجمالية',
+  'dose.therapeuticRange': 'النطاق المرجعي من Plumb\'s',
+  'dose.belowRange': 'دون النطاق',
+  'dose.inRange': 'ضمن النطاق',
+  'dose.aboveRange': 'فوق النطاق',
+  'dose.plumbsRef': 'الجرعة المرجعية من Plumb\'s',
+  'dose.plumbsRefNone': 'لا توجد جرعة مرجعية من Plumb\'s لهذا النوع',
+  'dose.plumbsRefHint': 'للمرجعية فقط — تحقّق قبل الإعطاء، على مسؤوليتك المهنية.',
+  'dose.vetOnly':
+    'للاستخدام البيطري المرخّص فقط. تقع المسؤولية السريرية على الطبيب البيطري المعالج. جرعات Plumb\'s المرجعية للإرشاد ويجب التحقق منها بشكل مستقل قبل الإعطاء — الاستخدام على مسؤوليتك المهنية.',
+  'dose.noRange': 'لا يوجد نطاق مرجعي لهذا المزيج',
+  'dose.breakdown': 'تفصيل الحساب',
+  'dose.bodyWeight': 'وزن الجسم',
+  'dose.doseGiven': 'الجرعة المُعطاة',
+  'dose.rawVolume': 'الحجم قبل التقريب',
+  'dose.roundedVolume': 'الحجم بعد التقريب',
+  'dose.warnings': 'تحذيرات',
+  'dose.noWarnings': 'لا توجد تحذيرات',
+  'dose.enterToCalc': 'أدخل الوزن والجرعة والتركيز للحساب.',
+
+  // Routes
+  'route.IV': 'وريدي (IV)',
+  'route.IM': 'عضلي (IM)',
+  'route.SC': 'تحت الجلد (SC)',
+  'route.PO': 'فموي (PO)',
+
+  // Toxicity suite
+  'tox.title': 'حاسبات السمّية',
+  'tox.subtitle': 'تقدير الخطر من الوزن والكمية المتناولة. أداة مساعدة — وليست بديلاً عن الطبيب.',
+  'tox.choose': 'اختر سمًّا',
+  'tox.amount': 'الكمية المتناولة',
+  'tox.source': 'النوع / المصدر',
+  'tox.riskLevel': 'مستوى الخطر',
+  'tox.dosePerKg': 'الجرعة المقدّرة',
+  'tox.expectedSigns': 'العلامات السريرية المتوقعة',
+  'tox.action': 'الإجراء الموصى به',
+  'tox.decon': 'نافذة إزالة التلوث',
+  'tox.context': 'السياق السريري',
+  'tox.notForSpecies': 'هذا الحساب لا ينطبق على هذا النوع.',
+  'tox.idiosyncratic': 'سمّية تفرّدية — لا توجد عتبة آمنة',
+
+  // Risk bands
+  'risk.minimal': 'ضئيل',
+  'risk.mild': 'خفيف',
+  'risk.moderate': 'متوسط',
+  'risk.severe': 'شديد',
+  'risk.critical': 'حرِج',
+  'risk.emergency': 'طارئ',
+
+  // Emergency
+  'emergency.title': 'حالة طارئة؟',
+  'emergency.text':
+    'عند الاشتباه في التسمّم، اتصل فورًا بأقرب عيادة بيطرية. لا تنتظر ظهور العلامات — واتصل مسبقًا للتأكد من ساعات العمل والتوافر.',
+  'emergency.network': 'شبكة عيادات TeddyVets',
+  'emergency.allClinics': 'جميع عيادات TeddyVets',
+  'emergency.note': 'تعمل العيادات ضمن ساعات العمل المعروضة. خارج هذه الساعات أو في الحالات المهدِّدة للحياة، اتصل مسبقًا للتحقق من التوافر.',
+  'emergency.callVet': 'اتصل بطبيبك البيطري',
+  'emergency.generic.title': 'حالة طارئة؟',
+  'emergency.generic.text':
+    'عند الاشتباه في التسمّم، تواصل فورًا مع أقرب عيادة بيطرية أو خدمة طوارئ. لا تنتظر ظهور العلامات — واتصل مسبقًا للتأكد من التوافر.',
+  'emergency.submit.title': 'هل تدير عيادة بيطرية للطوارئ؟',
+  'emergency.submit.text':
+    'نوسّع دليل عيادات الطوارئ في منطقتك. لإدراج عيادتك، راسلنا بالاسم والمنطقة والهاتف وساعات العمل.',
+  'emergency.submit.cta': 'راسلنا عبر البريد',
+
+  // Disclaimer / footer
+  'disclaimer.title': 'إخلاء مسؤولية',
+  'disclaimer.text':
+    'هذه الحاسبة أداة لدعم القرار السريري ولا تُغني عن الحكم البيطري المهني أو مركز السموم. تحقّق من كل حساب مقابل المراجع الدوائية قبل العلاج. السموم التفرّدية (العنب، الزنابق) لا تُظهر أبدًا نتيجة "آمنة".',
+  'footer.text': 'مساعدون من أجل المساعدين · جميع الحقوق محفوظة',
+  'footer.madeWith': 'بُني بعناية سريرية',
+  'footer.partner': 'الشريك السريري',
+};

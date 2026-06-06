@@ -28,6 +28,13 @@ export interface EmergencyContact {
 /** Public directory of all branches, linked from the emergency banner. */
 export const TEDDYVETS_CLINICS_URL = 'https://teddyvets.co.il/our-clinics/';
 
+/**
+ * Where clinics outside the TeddyVets (Israel) network can ask to be listed.
+ * Shown in the emergency banner for every non-Hebrew language, since we don't
+ * yet carry a local emergency directory for those regions.
+ */
+export const SUBMIT_CLINIC_EMAIL = 'admin@hack-tech.org';
+
 export const ISRAEL_VET_ER: EmergencyContact[] = [
   {
     name: L('טדי מודיעין', 'TeddyVets Modi’in'),

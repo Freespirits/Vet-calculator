@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../../i18n/LanguageProvider';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOXIC_PLANTS, PLANT_LEVEL_COLOR, type ToxicPlant, type PlantToxicityLevel } from '../../data/toxicPlants';
+import { tr } from '../../types/toxins';
 import { EmergencyBanner } from '../../components/feedback';
 import { DogIcon, CatIcon, SearchIcon, ChevronDownIcon, AlertTriangleIcon } from '../../components/Icons';
 
@@ -160,7 +161,7 @@ export function PlantLibrary() {
                     <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg2">
                       <img
                         src={`/plants/${p.imageKey}.webp`}
-                        alt={p.name[lang]}
+                        alt={tr(p.name, lang)}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
@@ -170,7 +171,7 @@ export function PlantLibrary() {
                       </span>
                     </div>
                     <div className="p-3">
-                      <span className="block truncate text-sm font-semibold text-ink">{p.name[lang]}</span>
+                      <span className="block truncate text-sm font-semibold text-ink">{tr(p.name, lang)}</span>
                       <span className="block truncate text-xs italic text-muted">{p.latinName}</span>
                     </div>
                   </motion.button>
@@ -199,13 +200,13 @@ export function PlantLibrary() {
               <div className="relative aspect-[16/9] w-full overflow-hidden bg-bg2">
                 <img
                   src={`/plants/${selected.imageKey}.webp`}
-                  alt={selected.name[lang]}
+                  alt={tr(selected.name, lang)}
                   className="h-full w-full object-cover"
                 />
                 <span className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/65 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4">
                   <div className="min-w-0">
-                    <h3 className="truncate text-lg font-bold text-white">{selected.name[lang]}</h3>
+                    <h3 className="truncate text-lg font-bold text-white">{tr(selected.name, lang)}</h3>
                     <p className="truncate text-xs italic text-white/80">{selected.latinName}</p>
                   </div>
                   <LevelBadge level={selected.toxicityLevel} label={t(`plants.level.${selected.toxicityLevel}`)} />
@@ -220,15 +221,15 @@ export function PlantLibrary() {
 
                 <div>
                   <div className="mb-1 text-sm font-semibold text-teal">{t('plants.toxin')}</div>
-                  <p className="text-sm text-ink/90">{selected.toxin[lang]}</p>
+                  <p className="text-sm text-ink/90">{tr(selected.toxin, lang)}</p>
                 </div>
                 <div>
                   <div className="mb-1 text-sm font-semibold text-teal">{t('plants.symptoms')}</div>
-                  <p className="text-sm text-ink/90">{selected.symptoms[lang]}</p>
+                  <p className="text-sm text-ink/90">{tr(selected.symptoms, lang)}</p>
                 </div>
                 <div>
                   <div className="mb-1 text-sm font-semibold text-teal">{t('plants.action')}</div>
-                  <p className="text-sm text-ink/90">{selected.action[lang]}</p>
+                  <p className="text-sm text-ink/90">{tr(selected.action, lang)}</p>
                 </div>
               </div>
             </div>

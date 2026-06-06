@@ -1,0 +1,194 @@
+import type { TKey } from './he';
+
+/** Portuguese dictionary. UI chrome only; clinical data falls back to English. */
+export const pt: Record<TKey, string> = {
+  // Brand
+  'brand.name': 'Calculadora Veterinária',
+  'brand.tagline': 'Calculadora veterinária clínica · Cães e gatos',
+
+  // Header / controls
+  'ctl.language': 'Idioma',
+  'ctl.language.select': 'Selecionar idioma',
+  'ctl.theme.toDark': 'Escuro',
+  'ctl.theme.toLight': 'Claro',
+  'ctl.theme.toggle': 'Alternar tema de cor',
+
+  // Hero
+  'hero.title': 'Calculadora Veterinária',
+  'hero.subtitle': 'Doses de medicamentos e cálculos de toxicidade — precisos, rápidos, na palma da mão.',
+  'hero.cta': 'Começar a calcular',
+  'hero.scroll': 'Rolar',
+
+  // Tool switcher
+  'tab.dosage': 'Dose',
+  'tab.toxins': 'Tóxicos',
+  'tab.patient': 'Paciente',
+  'tab.plants': 'Plantas',
+  'tabs.aria': 'Escolher calculadora',
+
+  // Patient session
+  'patient.title': 'Sessão do paciente',
+  'patient.subtitle': 'Calcule vários medicamentos para um paciente e exporte um único relatório.',
+  'patient.new': 'Novo paciente',
+  'patient.name': 'Nome do paciente',
+  'patient.namePlaceholder': 'ex. Rex',
+  'patient.start': 'Iniciar sessão',
+  'patient.active': 'Paciente ativo',
+  'patient.end': 'Encerrar sessão',
+  'patient.meds': 'Medicamentos',
+  'patient.medsCount': 'medicamentos adicionados',
+  'patient.addMed': 'Adicionar à lista do paciente',
+  'patient.addMedCta': 'Adicionar um medicamento',
+  'patient.added': 'Adicionado à lista',
+  'patient.noMeds': 'Nenhum medicamento adicionado — calcule uma dose e adicione.',
+  'patient.report': 'Relatório de medicação',
+  'patient.shareReport': 'Compartilhar relatório',
+  'patient.copyReport': 'Copiar relatório',
+  'patient.clearAll': 'Limpar tudo',
+  'patient.remove': 'Remover',
+  'patient.draw': 'Aspirar',
+
+  // Plant library
+  'plants.title': 'Biblioteca de plantas tóxicas',
+  'plants.subtitle': 'Identifique plantas perigosas para cães e gatos, com fotos.',
+  'plants.search': 'Pesquisar uma planta…',
+  'plants.filter.all': 'Todas',
+  'plants.filter.deadly': 'Mortal ☠',
+  'plants.filter.severe': 'Grave',
+  'plants.filter.cats': 'Apenas gatos',
+  'plants.level.mild': 'Leve',
+  'plants.level.moderate': 'Moderado',
+  'plants.level.severe': 'Grave',
+  'plants.level.deadly': 'Mortal',
+  'plants.toxin': 'Toxina',
+  'plants.symptoms': 'Sintomas',
+  'plants.action': 'O que fazer',
+  'plants.affected': 'Em risco',
+  'plants.noResults': 'Nenhuma planta correspondente.',
+  'plants.catsOnly': 'Gatos',
+  'plants.both': 'Cães e gatos',
+
+  // Common
+  'common.calculate': 'Calcular',
+  'common.reset': 'Redefinir',
+  'common.copy': 'Copiar',
+  'common.copied': 'Copiado!',
+  'common.share': 'Compartilhar',
+  'common.close': 'Fechar',
+  'common.sources': 'Fontes médicas',
+  'common.optional': 'opcional',
+  'common.select': 'Selecionar',
+  'common.search': 'Pesquisar',
+  'common.required': 'obrigatório',
+  'common.back': 'Voltar',
+  'common.details': 'Detalhes',
+  'common.example': 'ex.',
+  'common.unit': 'Unidade',
+
+  // Species
+  'species.label': 'Espécie',
+  'species.dog': 'Cão',
+  'species.cat': 'Gato',
+
+  // Units / fields
+  'field.weight': 'Peso corporal',
+  'unit.kg': 'kg',
+  'unit.g': 'g',
+  'unit.oz': 'oz',
+  'unit.mg': 'mg',
+  'unit.ml': 'ml',
+  'unit.mgkg': 'mg/kg',
+  'unit.gkg': 'g/kg',
+  'unit.tablets': 'comprimidos',
+  'unit.pieces': 'unidades',
+  'unit.perDay': 'por dia',
+
+  // Dosage calculator
+  'dose.title': 'Calculadora de dose de medicamentos',
+  'dose.subtitle': 'Volume a aspirar a partir do peso, dose e concentração.',
+  'dose.drug': 'Nome do medicamento',
+  'dose.drugPlaceholder': 'Pesquise ou digite um medicamento…',
+  'dose.perKg': 'Dose por kg',
+  'dose.doseUnit': 'Unidade de dose',
+  'dose.concentration': 'Concentração',
+  'dose.concUnit': 'Unidade de conc.',
+  'dose.route': 'Via',
+  'dose.rounding': 'Arredondamento',
+  'dose.frequency': 'Frequência',
+  'dose.freqPlaceholder': 'ex. a cada 8 h',
+  'dose.duration': 'Duração',
+  'dose.durationPlaceholder': 'ex. 7 dias',
+  'dose.volumeToDraw': 'Volume a aspirar',
+  'dose.totalDose': 'Dose total',
+  'dose.therapeuticRange': 'Faixa de referência Plumb\'s',
+  'dose.belowRange': 'Abaixo da faixa',
+  'dose.inRange': 'Na faixa',
+  'dose.aboveRange': 'Acima da faixa',
+  'dose.plumbsRef': 'Dose de referência Plumb\'s',
+  'dose.plumbsRefNone': 'Sem dose de referência Plumb\'s para esta espécie',
+  'dose.plumbsRefHint': 'Apenas para referência — verifique antes de dosar, sob sua responsabilidade profissional.',
+  'dose.vetOnly':
+    'Apenas para uso veterinário licenciado. A responsabilidade clínica é do veterinário responsável. As doses de referência Plumb\'s são um guia e devem ser verificadas de forma independente antes da administração — uso sob sua responsabilidade profissional.',
+  'dose.noRange': 'Sem faixa de referência para esta combinação',
+  'dose.breakdown': 'Detalhamento do cálculo',
+  'dose.bodyWeight': 'Peso corporal',
+  'dose.doseGiven': 'Dose administrada',
+  'dose.rawVolume': 'Volume antes do arredondamento',
+  'dose.roundedVolume': 'Volume arredondado',
+  'dose.warnings': 'Alertas',
+  'dose.noWarnings': 'Sem alertas',
+  'dose.enterToCalc': 'Insira peso, dose e concentração para calcular.',
+
+  // Routes
+  'route.IV': 'Intravenosa (IV)',
+  'route.IM': 'Intramuscular (IM)',
+  'route.SC': 'Subcutânea (SC)',
+  'route.PO': 'Oral (VO)',
+
+  // Toxicity suite
+  'tox.title': 'Calculadoras de toxicidade',
+  'tox.subtitle': 'Estimativa de risco a partir do peso e da quantidade ingerida. Uma ferramenta de apoio — não substitui o veterinário.',
+  'tox.choose': 'Escolha um tóxico',
+  'tox.amount': 'Quantidade ingerida',
+  'tox.source': 'Tipo / fonte',
+  'tox.riskLevel': 'Nível de risco',
+  'tox.dosePerKg': 'Dose estimada',
+  'tox.expectedSigns': 'Sinais clínicos esperados',
+  'tox.action': 'Ação recomendada',
+  'tox.decon': 'Janela de descontaminação',
+  'tox.context': 'Contexto clínico',
+  'tox.notForSpecies': 'Este cálculo não se aplica a esta espécie.',
+  'tox.idiosyncratic': 'Toxicidade idiossincrática — sem limiar seguro',
+
+  // Risk bands
+  'risk.minimal': 'Mínimo',
+  'risk.mild': 'Leve',
+  'risk.moderate': 'Moderado',
+  'risk.severe': 'Grave',
+  'risk.critical': 'Crítico',
+  'risk.emergency': 'Emergência',
+
+  // Emergency
+  'emergency.title': 'Uma emergência?',
+  'emergency.text':
+    'Se suspeitar de envenenamento, ligue imediatamente para a clínica mais próxima. Não espere o surgimento de sinais — e ligue antes para confirmar horário e disponibilidade.',
+  'emergency.network': 'Rede de clínicas TeddyVets',
+  'emergency.allClinics': 'Todas as clínicas TeddyVets',
+  'emergency.note': 'As clínicas funcionam dentro do horário indicado. Fora desse horário, ou em casos com risco de vida, ligue antes para verificar a disponibilidade.',
+  'emergency.callVet': 'Ligue para o seu veterinário',
+  'emergency.generic.title': 'Uma emergência?',
+  'emergency.generic.text':
+    'Se suspeitar de envenenamento, contate imediatamente a clínica veterinária ou o serviço de urgência mais próximo. Não espere o surgimento de sinais — e ligue antes para confirmar a disponibilidade.',
+  'emergency.submit.title': 'Administra uma clínica veterinária de urgência?',
+  'emergency.submit.text':
+    'Estamos ampliando nosso diretório de clínicas de urgência para a sua região. Para listar a sua clínica, envie-nos o nome, a área, o telefone e o horário de funcionamento.',
+  'emergency.submit.cta': 'Envie-nos um e-mail',
+
+  // Disclaimer / footer
+  'disclaimer.title': 'Aviso legal',
+  'disclaimer.text':
+    'Esta calculadora é uma ferramenta de apoio à decisão clínica e não substitui o julgamento veterinário profissional nem um centro de controle de envenenamentos. Verifique cada cálculo com referências farmacológicas antes do tratamento. Tóxicos idiossincráticos (uvas, lírios) nunca mostram um resultado "seguro".',
+  'footer.text': 'Assistentes para assistentes · Todos os direitos reservados',
+  'footer.madeWith': 'Feito com rigor clínico',
+  'footer.partner': 'Parceiro clínico',
+};

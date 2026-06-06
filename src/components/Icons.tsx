@@ -179,6 +179,13 @@ export const ClockIcon = ({ size = 20, ...p }: IconProps) => (
   </svg>
 );
 
+export const MailIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+    <path d="M3.5 7l8.5 6 8.5-6" />
+  </svg>
+);
+
 export const ExternalLinkIcon = ({ size = 20, ...p }: IconProps) => (
   <svg {...base(size)} {...p}>
     <path d="M14 4h6v6" />

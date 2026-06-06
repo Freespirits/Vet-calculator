@@ -18,6 +18,7 @@ import {
   PhoneIcon,
   ClockIcon,
   ExternalLinkIcon,
+  MailIcon,
 } from './Icons';
 
 export type Severity = 'info' | 'warning' | 'danger';
@@ -150,17 +151,24 @@ function SubmitClinicBanner({ compact }: { compact: boolean }) {
         className="mt-4 rounded-2xl p-4"
         style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--glass-border)' }}
       >
-        <p className="text-sm font-semibold text-ink">{t('emergency.submit.title')}</p>
-        <p className="mt-1 text-xs text-muted">{t('emergency.submit.text')}</p>
-        <a
+        <p className="flex items-center gap-2 text-sm font-semibold text-ink">
+          <MailIcon size={16} className="shrink-0 text-rose" />
+          {t('emergency.submit.title')}
+        </p>
+        <p className="mt-1 text-xs leading-relaxed text-muted">{t('emergency.submit.text')}</p>
+        <motion.a
           href={`mailto:${SUBMIT_CLINIC_EMAIL}?subject=${subject}&body=${body}`}
-          className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold text-white transition-colors"
-          style={{ background: 'rgb(244,63,94)' }}
+          whileTap={{ scale: 0.97 }}
+          className="group mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-2xl px-4 py-2 text-sm font-bold text-white"
+          style={{
+            background: 'linear-gradient(135deg, #FB7185, #F43F5E)',
+            boxShadow: '0 8px 24px -8px rgba(244,63,94,0.6)',
+          }}
         >
-          <PhoneIcon size={16} className="shrink-0" />
+          <MailIcon size={16} className="shrink-0 transition-transform group-hover:-translate-y-px" />
           <span>{t('emergency.submit.cta')}</span>
-        </a>
-        <p className="mt-2 tnum text-xs text-muted" dir="ltr">
+        </motion.a>
+        <p className="mt-2.5 tnum text-xs text-muted/90" dir="ltr">
           {SUBMIT_CLINIC_EMAIL}
         </p>
       </div>

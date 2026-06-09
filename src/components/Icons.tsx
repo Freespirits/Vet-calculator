@@ -251,3 +251,84 @@ export const ShieldIcon = ({ size = 22, ...p }: IconProps) => (
     <path d="M9 11.5 11 13.5 15.5 9" />
   </svg>
 );
+
+/* ---------- Accessibility (IS 5568 widget) ---------- */
+
+/** Universal access symbol — person with outstretched arms. */
+export const AccessibilityIcon = ({ size = 22, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <circle cx="12" cy="4" r="1.7" />
+    <path d="M5 8.4c2.2.9 4.4 1.3 7 1.3s4.8-.4 7-1.3" />
+    <path d="M12 9.7V14M12 14l-2.6 6.3M12 14l2.6 6.3" />
+  </svg>
+);
+
+export const PlusIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
+
+export const MinusIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M5 12h14" />
+  </svg>
+);
+
+/** Capital A — text-size control. */
+export const TextSizeIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M5 19 12 5l7 14M8 14h8" />
+  </svg>
+);
+
+/** Half-filled circle — contrast. */
+export const ContrastIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+/** Two overlapping circles — monochrome / grayscale. */
+export const GrayscaleIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <circle cx="9" cy="12" r="6" />
+    <circle cx="15" cy="12" r="6" />
+  </svg>
+);
+
+export const LinkChainIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1.5 1.5" />
+    <path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1.5-1.5" />
+  </svg>
+);
+
+/** Capital H — highlight headings. */
+export const HeadingIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M6 5v14M18 5v14M6 12h12" />
+  </svg>
+);
+
+/** Open book — readable font. */
+export const BookOpenIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M12 6.5C10.5 5.5 8.5 5 6 5H3v13h3c2.5 0 4.5.5 6 1.5M12 6.5c1.5-1 3.5-1.5 6-1.5h3v13h-3c-2.5 0-4.5.5-6 1.5M12 6.5v13" />
+  </svg>
+);
+
+/** Arrow pointer — large cursor. */
+export const PointerIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M5 4l5.6 15 2-6.4 6.4-2L5 4z" />
+  </svg>
+);
+
+/** Pause bars — stop animations. */
+export const PauseIcon = ({ size = 20, ...p }: IconProps) => (
+  <svg {...base(size)} {...p}>
+    <path d="M9 5v14M15 5v14" />
+  </svg>
+);

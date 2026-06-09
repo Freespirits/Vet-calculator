@@ -1,0 +1,446 @@
+/* ============================================================
+   Accessibility (IS 5568 / WCAG 2.0 AA) — widget chrome + the
+   display-adjustment modes it toggles via data-* on <html>.
+
+   Visual "content" modes (grayscale, readable font, highlight
+   links/headings) are scoped to #app-content so the accessibility
+   widget itself stays pristine and usable. Grayscale in particular
+   MUST avoid `filter` on <html>/<body>, which would break the
+   position:fixed widget — hence #app-content.
+   ============================================================ */
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -130%);
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  border-radius: 0 0 0.85rem 0.85rem;
+  background: #2dd4bf;
+  color: #04221d;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.18s ease;
+}
+.skip-link:focus {
+  transform: translate(-50%, 0);
+  outline: 3px solid #04221d;
+  outline-offset: 2px;
+}
+
+/* ---------- Display-adjustment modes ---------- */
+
+/* Text scaling — multiply the root font size; rem-based UI reflows with it. */
+html[data-a11y-font='on'] {
+  font-size: calc(100% * var(--a11y-font-scale, 1));
+}
+
+/* Monochrome — scoped to content so the fixed widget is unaffected. */
+html[data-a11y-grayscale='on'] #app-content {
+  filter: grayscale(100%);
+}
+
+/* Readable font — swap the decorative variable faces for a legible stack. */
+html[data-a11y-readable='on'] #app-content,
+html[data-a11y-readable='on'] #app-content * {
+  font-family: Arial, 'Helvetica Neue', Helvetica, system-ui, sans-serif !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.7 !important;
+}
+
+/* Highlight links — underline + ring every in-content link. */
+html[data-a11y-links='on'] #app-content a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Highlight titles — outline every heading. */
+html[data-a11y-headings='on'] #app-content :is(h1, h2, h3, h4, h5, h6) {
+  outline: 2px dashed currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Large cursor — oversized arrow + pointer, visible on any background. */
+html[data-a11y-cursor='on'],
+html[data-a11y-cursor='on'] * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M6 4 30 18l-9 2.5L26 33l-4 1.7-5-12.5L6 28z' fill='%23000' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E") 6 4, auto !important;
+}
+html[data-a11y-cursor='on'] :is(a, button, [role='button'], [role='tab'], [role='option'], label, select, summary),
+html[data-a11y-cursor='on'] :is(a, button, [role='button'], [role='tab'], [role='option'], label, select, summary) * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M14 4c-1.5 0-2.5 1-2.5 2.5V20l-2-2.2c-1-1.1-2.7-1-3.6 0-.8.9-.7 2 0 2.9L11 30c1.2 1.6 2.8 2.4 5 2.4h6c2.5 0 4.5-2 4.5-4.5V14c0-1.4-1.1-2.5-2.5-2.5-.5 0-1 .2-1.4.4-.2-1.2-1.2-2-2.4-2-.6 0-1.1.2-1.5.5-.3-1-1.2-1.7-2.3-1.7-.5 0-1 .2-1.4.4V6.5C16.5 5 15.5 4 14 4z' fill='%23000' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E") 10 4, pointer !important;
+}
+
+/* Stop animations — manual twin of the prefers-reduced-motion rule. */
+html[data-a11y-motion='off'] *,
+html[data-a11y-motion='off'] *::before,
+html[data-a11y-motion='off'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* High contrast — hard black/white with yellow links; flat (no glass/aurora). */
+html[data-a11y-contrast='on'] {
+  --bg-0: 0 0 0;
+  --bg-1: 0 0 0;
+  --bg-2: 18 18 18;
+  --text-hi: 255 255 255;
+  --text-lo: 235 235 235;
+  --glass-bg: #000;
+  --glass-border: #ffffff;
+}
+html[data-a11y-contrast='on'] body {
+  background: #000 !important;
+  background-image: none !important;
+}
+html[data-a11y-contrast='on'] .glass,
+html[data-a11y-contrast='on'] .glass-input,
+html[data-a11y-contrast='on'] .btn-ghost {
+  background: #000 !important;
+  border: 1px solid #fff !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+html[data-a11y-contrast='on'] .btn-primary {
+  background: #ffff00 !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+html[data-a11y-contrast='on'] #app-content a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+html[data-a11y-contrast='on'] .grad-text {
+  -webkit-text-fill-color: #fff !important;
+  color: #fff !important;
+  background: none !important;
+}
+/* The decorative aurora field only hurts contrast — hide it. */
+html[data-a11y-contrast='on'] .aurora-fallback,
+html[data-a11y-contrast='on'] #app-content canvas {
+  display: none !important;
+}
+
+/* ---------- Floating action button ---------- */
+.a11y-root {
+  position: fixed;
+  inset-block-end: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 60;
+}
+.a11y-fab {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  color: #04221d;
+  background: linear-gradient(135deg, #2dd4bf, #10b981);
+  box-shadow: 0 10px 28px -8px rgba(16, 185, 129, 0.7);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.a11y-fab:hover {
+  transform: translateY(-2px);
+}
+.a11y-fab:active {
+  transform: scale(0.95);
+}
+/* Keep the trigger unmistakable in high contrast. */
+html[data-a11y-contrast='on'] .a11y-fab {
+  background: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #fff;
+}
+
+/* ---------- Panel ---------- */
+.a11y-panel {
+  position: absolute;
+  inset-block-end: 4rem;
+  inset-inline-start: 0;
+  width: min(20rem, calc(100vw - 1.5rem));
+  max-height: min(34rem, calc(100dvh - 6rem));
+  overflow-y: auto;
+  padding: 0.9rem;
+  border-radius: 1.25rem;
+  animation: a11y-pop 0.18s ease-out both;
+}
+@keyframes a11y-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.a11y-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 0.5rem;
+}
+.a11y-panel-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: rgb(var(--text-hi));
+}
+
+.a11y-section-label {
+  margin: 0.35rem 0.15rem 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--text-lo));
+}
+
+/* Shared small icon button (close, steppers). */
+.a11y-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.7rem;
+  color: rgb(var(--text-lo));
+  background: rgba(127, 127, 127, 0.12);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.a11y-icon-btn:hover:not(:disabled) {
+  color: rgb(var(--text-hi));
+  background: rgba(127, 127, 127, 0.22);
+}
+.a11y-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Text-size stepper row. */
+.a11y-fontrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.9rem;
+  background: rgba(127, 127, 127, 0.1);
+  margin-block-end: 0.7rem;
+}
+.a11y-fontrow-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgb(var(--text-hi));
+}
+.a11y-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.a11y-fontval {
+  min-width: 2.9rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgb(var(--text-hi));
+}
+
+/* Toggle tiles. */
+.a11y-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.a11y-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  min-height: 5rem;
+  padding: 0.7rem;
+  border-radius: 0.9rem;
+  text-align: start;
+  color: rgb(var(--text-lo));
+  background: rgba(127, 127, 127, 0.1);
+  border: 1.5px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.a11y-tile:hover {
+  color: rgb(var(--text-hi));
+  background: rgba(127, 127, 127, 0.18);
+}
+.a11y-tile-icon {
+  display: grid;
+  place-items: center;
+}
+.a11y-tile-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+.a11y-tile-state {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.a11y-tile.is-on {
+  color: #04221d;
+  background: linear-gradient(135deg, #2dd4bf, #10b981);
+  border-color: transparent;
+}
+.a11y-tile.is-on .a11y-tile-state {
+  opacity: 0.9;
+}
+html[data-a11y-contrast='on'] .a11y-tile.is-on {
+  background: #ffff00 !important;
+  color: #000 !important;
+}
+
+/* Footer actions. */
+.a11y-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-block-start: 0.8rem;
+  padding-block-start: 0.7rem;
+  border-block-start: 1px solid var(--glass-border);
+}
+.a11y-foot-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.6rem;
+  padding: 0 0.8rem;
+  border-radius: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgb(var(--text-lo));
+  background: rgba(127, 127, 127, 0.12);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.a11y-foot-btn:hover:not(:disabled) {
+  color: rgb(var(--text-hi));
+  background: rgba(127, 127, 127, 0.2);
+}
+.a11y-foot-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.a11y-foot-btn--statement {
+  color: #2dd4bf;
+}
+
+/* ---------- Statement modal ---------- */
+.a11y-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: a11y-fade 0.2s ease-out both;
+}
+@keyframes a11y-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.a11y-statement {
+  width: min(42rem, 100%);
+  max-height: min(85dvh, 48rem);
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  padding: 1.25rem 1.4rem 1.6rem;
+}
+.a11y-statement-head {
+  position: sticky;
+  top: -0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.2rem 0.6rem;
+  margin-block-end: 0.4rem;
+  background: var(--glass-bg);
+}
+.a11y-statement-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: rgb(var(--text-hi));
+}
+.a11y-statement-body {
+  color: rgb(var(--text-lo));
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.a11y-statement-body h3 {
+  margin-block: 1.1rem 0.35rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--text-hi));
+}
+.a11y-statement-body p {
+  margin-block: 0.35rem;
+}
+.a11y-statement-body ul {
+  margin: 0.4rem 0;
+  padding-inline-start: 1.2rem;
+  list-style: disc;
+}
+.a11y-statement-body li {
+  margin-block: 0.25rem;
+}
+.a11y-statement-updated {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgb(var(--text-lo));
+  opacity: 0.8;
+}
+.a11y-statement-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-block-start: 0.6rem !important;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.9rem;
+  background: rgba(45, 212, 191, 0.1);
+  color: rgb(var(--text-hi));
+}
+.a11y-statement-role {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgb(var(--text-lo));
+}
+.a11y-statement-contact a {
+  font-weight: 700;
+  color: #2dd4bf;
+  text-decoration: none;
+}
+.a11y-statement-contact a:hover {
+  text-decoration: underline;
+}

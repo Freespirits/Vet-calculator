@@ -88,7 +88,13 @@ export function ToxinScaffold({
       </GlassCard>
 
       <AnimatePresence mode="wait">
-        {result && <ToxinResultView key={`${meta.id}-${result.level}-${result.doseLabel}`} result={result} />}
+        {result && (
+          <ToxinResultView
+            key={`${meta.id}-${result.level}-${result.doseLabel}`}
+            result={result}
+            title={tr(meta.name, lang)}
+          />
+        )}
       </AnimatePresence>
     </div>
   );

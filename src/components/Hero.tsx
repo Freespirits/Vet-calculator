@@ -30,9 +30,15 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-5 text-center"
     >
-      <Suspense fallback={<div className="absolute inset-0 aurora-fallback" aria-hidden="true" />}>
-        <AuroraBackground active={inView} className="absolute inset-0" />
-      </Suspense>
+      {reduced ? (
+        // Reduced motion: skip the WebGL field (and the Three.js download)
+        // entirely — the static gradient stands in.
+        <div className="absolute inset-0 aurora-fallback" aria-hidden="true" />
+      ) : (
+        <Suspense fallback={<div className="absolute inset-0 aurora-fallback" aria-hidden="true" />}>
+          <AuroraBackground active={inView} className="absolute inset-0" />
+        </Suspense>
+      )}
 
       {/* readability scrim — darkens edges/top/bottom so the title pops */}
       <div

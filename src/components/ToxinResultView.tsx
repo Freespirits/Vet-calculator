@@ -2,13 +2,16 @@
  * Renders a ToxinResult into the shared result layout:
  * animated risk gauge + clinical sections + stats + emergency + sources.
  */
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
 import { tr, type ToxinResult, type LocalizedText } from '../types/toxins';
 import type { RiskLevel } from './gauges';
 import { RiskGauge } from './gauges';
 import { EmergencyBanner, SourceList, StatPill } from './feedback';
-import { HeartPulseIcon, SyringeIcon, ShieldIcon, InfoIcon } from './Icons';
+import { HeartPulseIcon, SyringeIcon, ShieldIcon, InfoIcon, CopyIcon, CheckIcon } from './Icons';
+
+const SITE_URL = 'https://vet-holim.work';
 
 function Section({
   title,
@@ -39,12 +42,29 @@ function Section({
   );
 }
 
-export function ToxinResultView({ result }: { result: ToxinResult }) {
+export function ToxinResultView({ result, title }: { result: ToxinResult; title?: string }) {
   const { t, lang } = useI18n();
+  const [copied, setCopied] = useState(false);
+  const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
   const pick = (l: LocalizedText) => tr(l, lang);
   const bandLabel = result.bandLabel
     ? pick(result.bandLabel)
     : t(`risk.${result.level}` as `risk.${RiskLevel}`);
+
+  const handleShare = async () => {
+    const head = [title, result.doseLabel, bandLabel].filter(Boolean).join(' · ');
+    const text = `${head}\n${pick(result.action)}\n${SITE_URL}`;
+    try {
+      if (canShare) await navigator.share({ text });
+      else {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1800);
+      }
+    } catch {
+      /* user dismissed share sheet */
+    }
+  };
 
   return (
     <motion.div
@@ -89,6 +109,11 @@ export function ToxinResultView({ result }: { result: ToxinResult }) {
           <EmergencyBanner compact />
         </div>
       )}
+
+      <button onClick={handleShare} className="btn-ghost mt-4 w-full">
+        {copied ? <CheckIcon size={18} /> : <CopyIcon size={18} />}
+        {copied ? t('common.copied') : canShare ? t('common.share') : t('common.copy')}
+      </button>
 
       <div className="mt-4">
         <SourceList sources={result.sources} />

@@ -67,6 +67,7 @@ export const ar: Record<TKey, string> = {
   'plants.noResults': 'لا توجد نباتات مطابقة.',
   'plants.catsOnly': 'القطط',
   'plants.both': 'الكلاب والقطط',
+  'plants.photoCredit': 'حقوق الصور: ويكيميديا كومنز',
 
   // Common
   'common.calculate': 'احسب',

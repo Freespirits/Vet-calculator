@@ -67,6 +67,7 @@ export const tr: Record<TKey, string> = {
   'plants.noResults': 'Eşleşen bitki yok.',
   'plants.catsOnly': 'Kediler',
   'plants.both': 'Köpekler ve kediler',
+  'plants.photoCredit': 'Fotoğraf kaynağı: Wikimedia Commons',
 
   // Common
   'common.calculate': 'Hesapla',

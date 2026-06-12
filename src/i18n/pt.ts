@@ -67,6 +67,7 @@ export const pt: Record<TKey, string> = {
   'plants.noResults': 'Nenhuma planta correspondente.',
   'plants.catsOnly': 'Gatos',
   'plants.both': 'Cães e gatos',
+  'plants.photoCredit': 'Créditos das fotos: Wikimedia Commons',
 
   // Common
   'common.calculate': 'Calcular',

@@ -73,6 +73,7 @@ export const he = {
   'plants.noResults': 'לא נמצאו צמחים תואמים.',
   'plants.catsOnly': 'חתולים',
   'plants.both': 'כלבים וחתולים',
+  'plants.photoCredit': 'קרדיט תמונות: ויקישיתוף (Wikimedia Commons)',
 
   // Common
   'common.calculate': 'חשב',

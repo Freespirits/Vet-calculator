@@ -61,6 +61,12 @@ export interface ToxinMeta {
   id: string;
   name: LocalizedText;
   blurb: LocalizedText;
+  /**
+   * Plain-language explainer shown inside the calculator: what the substance
+   * is, where pets encounter it, and why it is dangerous — so the tool never
+   * presents a bare name.
+   */
+  about: LocalizedText;
   species: ToxSpecies[];
   accent: string;
   Icon: (p: { size?: number; className?: string }) => ReactNode;

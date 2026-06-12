@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { useHashRoute, type ToolId } from '../hooks/useHashRoute';
 import { SegmentedControl } from '../components/primitives';
 import { DosageCalculator } from './dosage/DosageCalculator';
 import { ToxinSuite } from './toxins/ToxinSuite';
@@ -10,12 +11,21 @@ import { PatientSessionProvider } from './patient/PatientSessionContext';
 import { PlantLibrary } from './plants/PlantLibrary';
 import { SyringeIcon, AlertTriangleIcon, PawIcon, FlowerIcon } from '../components/Icons';
 
-type Tool = 'dosage' | 'patient' | 'toxins' | 'plants';
-
 export function Tools() {
   const { t } = useI18n();
   const reduced = useReducedMotion();
-  const [tool, setTool] = useState<Tool>('dosage');
+  // Deep-linkable: #/dosage, #/patient, #/tox/<id>, #/plants/<id>.
+  const { tool: routeTool, sub, navigate } = useHashRoute();
+  const tool: ToolId = routeTool ?? 'dosage';
+
+  // Arriving on a deep link: bring the tools into view (the URL hash has no
+  // matching element id, so the browser won't have scrolled by itself).
+  const landedOnDeepLink = useRef(routeTool !== null);
+  useEffect(() => {
+    if (!landedOnDeepLink.current) return;
+    landedOnDeepLink.current = false;
+    document.getElementById('tools')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }, []);
 
   return (
     <PatientSessionProvider>
@@ -31,7 +41,7 @@ export function Tools() {
             { value: 'plants', label: t('tab.plants'), icon: <FlowerIcon size={18} /> },
           ]}
           value={tool}
-          onChange={setTool}
+          onChange={(next) => navigate(next)}
         />
       </div>
 
@@ -44,9 +54,13 @@ export function Tools() {
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           {tool === 'dosage' && <DosageCalculator />}
-          {tool === 'patient' && <PatientSession onAddMedication={() => setTool('dosage')} />}
-          {tool === 'toxins' && <ToxinSuite />}
-          {tool === 'plants' && <PlantLibrary />}
+          {tool === 'patient' && <PatientSession onAddMedication={() => navigate('dosage')} />}
+          {tool === 'toxins' && (
+            <ToxinSuite selectedId={sub} onSelect={(id) => navigate('toxins', id)} />
+          )}
+          {tool === 'plants' && (
+            <PlantLibrary selectedId={sub} onSelect={(id) => navigate('plants', id)} />
+          )}
         </motion.div>
       </AnimatePresence>
     </section>

@@ -67,6 +67,7 @@ export const ja: Record<TKey, string> = {
   'plants.noResults': '一致する植物がありません。',
   'plants.catsOnly': '猫',
   'plants.both': '犬と猫',
+  'plants.photoCredit': '写真提供：ウィキメディア・コモンズ',
 
   // Common
   'common.calculate': '計算',

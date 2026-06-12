@@ -19,6 +19,28 @@ identity — rather than bolting on unrelated features. Phases are ordered by
   `WebApplication` structured data, and a branded 1200×630 OG image
   (`public/og.png`, source `public/og.svg`) so shared links unfurl beautifully.
 
+## Phase 0.5 — shipped (WebGL2 v3 + content + platform)
+
+- **WebGL2 hero v3** — raw-three.js engine (react-three-fiber dropped from the
+  bundle): GPGPU curl-noise particle flow field (positions live in ping-pong
+  RGBA16F targets, advected on-GPU along the aurora field, pointer vortex +
+  tap shockwave), selective bloom (bright-pass → separable blur → filmic
+  composite), a "Clinic Day" light-theme aurora variant, and an adaptive
+  quality ladder (lux → flow → classic) that degrades on weak GPUs and
+  missing float-buffer support.
+- **Toxic-plant photo set complete (35/35)** — 15 missing species staged from
+  Wikimedia Commons (botanically verified, recognizable cultivars), licenses
+  recorded in `docs/PLANT_PHOTO_CREDITS.md`, credit link in the plant detail
+  view. `scripts/fetch-plant-images.mjs` re-stages everything.
+- **"What is it" explainers on every toxin** — `ToxinMeta.about` (he/en) shown
+  inside each calculator; grid blurbs no longer truncate to nothing.
+- **Per-tool deep links** — `#/dosage`, `#/patient`, `#/tox/<id>`,
+  `#/plants/<id>` (Phase 1 item 5, done early to multiply the share loop).
+- **PWA / offline** — installable, full clinical core precached (Phase 2
+  item 2, done early: poison emergencies happen where signal doesn't).
+- **Risk-gauge shimmer** — critical/emergency results glow and breathe
+  (Phase 3 item 4); reduced-motion safe.
+
 ## Phase 1 — content depth (extends the cited clinical core)
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:

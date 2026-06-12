@@ -10,6 +10,10 @@ export const cholecalciferolMeta: ToxinMeta = {
   id: 'cholecalciferol',
   name: L('כולקלציפרול (ויטמין D3)', 'Cholecalciferol (vitamin D3)'),
   blurb: L('פיתיון מכרסמים, תוספי ויטמין D', 'Rodenticide bait, vitamin-D supplements'),
+  about: L(
+    'כולקלציפרול (ויטמין D3) נמצא גם בפתיונות נגד מכרסמים וגם בתוספי תזונה לבני אדם. מנת יתר מזניקה את הסידן בדם ומסיידת את הכליות והלב; הסימנים מופיעים רק אחרי 12–36 שעות והטיפול ממושך. מרעלי המכרסמים המסוכנים ביותר לגרם.',
+    'Cholecalciferol (vitamin D3) appears both in rodent baits and in human vitamin supplements. Overdose drives blood calcium sky-high, calcifying the kidneys and heart; signs only appear after 12–36 hours and treatment is prolonged. Per gram, one of the most dangerous rodenticides.',
+  ),
   species: ['dog', 'cat'],
   accent: '#FACC15',
   Icon: PillIcon,

@@ -67,6 +67,7 @@ export const ru: Record<TKey, string> = {
   'plants.noResults': 'Подходящих растений нет.',
   'plants.catsOnly': 'Кошки',
   'plants.both': 'Собаки и кошки',
+  'plants.photoCredit': 'Фото: Wikimedia Commons',
 
   // Common
   'common.calculate': 'Рассчитать',

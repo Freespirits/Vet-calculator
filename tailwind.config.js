@@ -61,12 +61,17 @@ export default {
           '0%,100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-6px)' },
         },
+        'gauge-breathe': {
+          '0%,100%': { opacity: '1' },
+          '50%': { opacity: '0.72' },
+        },
       },
       animation: {
         'fade-in': 'fade-in 0.4s ease-out both',
         'slide-up': 'slide-up 0.5s cubic-bezier(0.16,1,0.3,1) both',
         'pulse-ring': 'pulse-ring 2s cubic-bezier(0.4,0,0.6,1) infinite',
         float: 'float 6s ease-in-out infinite',
+        'gauge-breathe': 'gauge-breathe 2.4s ease-in-out infinite',
       },
     },
   },

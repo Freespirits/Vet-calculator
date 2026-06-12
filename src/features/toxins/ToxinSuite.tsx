@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../../i18n/LanguageProvider';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
@@ -8,10 +7,16 @@ import { EmergencyBanner } from '../../components/feedback';
 import { ToxinArt } from '../../components/ToxinArt';
 import { DogIcon, CatIcon, ChevronDownIcon } from '../../components/Icons';
 
-export function ToxinSuite() {
+/** Selection is lifted to the hash route so every toxin is deep-linkable. */
+export function ToxinSuite({
+  selectedId,
+  onSelect,
+}: {
+  selectedId: string | null;
+  onSelect: (id: string | null) => void;
+}) {
   const { t, lang, dir } = useI18n();
   const reduced = useReducedMotion();
-  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selected = TOXIN_REGISTRY.find((e) => e.meta.id === selectedId);
 
@@ -38,7 +43,7 @@ export function ToxinSuite() {
                 <motion.button
                   key={meta.id}
                   type="button"
-                  onClick={() => setSelectedId(meta.id)}
+                  onClick={() => onSelect(meta.id)}
                   initial={reduced ? false : { opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: reduced ? 0 : i * 0.04, duration: 0.4 }}
@@ -53,8 +58,10 @@ export function ToxinSuite() {
                     <ToxinArt id={meta.id} size={40} />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate font-semibold text-ink">{tr(meta.name, lang)}</span>
-                    <span className="block truncate text-xs text-muted">{tr(meta.blurb, lang)}</span>
+                    <span className="block font-semibold text-ink">{tr(meta.name, lang)}</span>
+                    <span className="mt-0.5 block text-xs leading-snug text-muted line-clamp-2">
+                      {tr(meta.blurb, lang)}
+                    </span>
                   </span>
                   <span className="flex shrink-0 items-center gap-1 text-muted/70">
                     {meta.species.includes('dog') && <DogIcon size={16} />}
@@ -74,7 +81,7 @@ export function ToxinSuite() {
           >
             <button
               type="button"
-              onClick={() => setSelectedId(null)}
+              onClick={() => onSelect(null)}
               className="mb-3 flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-ink"
             >
               <ChevronDownIcon size={18} className={dir === 'rtl' ? '-rotate-90' : 'rotate-90'} />

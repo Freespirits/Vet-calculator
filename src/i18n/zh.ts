@@ -67,6 +67,7 @@ export const zh: Record<TKey, string> = {
   'plants.noResults': '没有匹配的植物。',
   'plants.catsOnly': '猫',
   'plants.both': '犬与猫',
+  'plants.photoCredit': '图片来源：维基共享资源',
 
   // Common
   'common.calculate': '计算',

@@ -43,6 +43,9 @@ function RiskGauge({
   const f = Math.max(0, Math.min(1, fraction ?? (idiosyncratic ? 1 : 0)));
   const track = `M ${CX - R} ${CY} A ${R} ${R} 0 0 1 ${CX + R} ${CY}`;
   const dashOffset = idiosyncratic ? 0 : ARC_LEN * (1 - f);
+  // High-severity results glow harder and breathe (reduced-motion safe:
+  // the pulse is a CSS animation, killed globally by the media query).
+  const grave = level === 'critical' || level === 'emergency';
 
   // Needle tip: polar angle 180° (left) at f=0 → 0° (right) at f=1.
   const NEEDLE = R - 12;
@@ -83,7 +86,12 @@ function RiskGauge({
           initial={{ strokeDashoffset: ARC_LEN }}
           animate={{ strokeDashoffset: dashOffset }}
           transition={reduced ? { duration: 0 } : { duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          style={{ filter: 'drop-shadow(0 0 8px rgba(244,63,94,0.25))' }}
+          className={grave && !reduced ? 'animate-gauge-breathe' : undefined}
+          style={{
+            filter: grave
+              ? `drop-shadow(0 0 14px ${color}66)`
+              : 'drop-shadow(0 0 8px rgba(244,63,94,0.25))',
+          }}
         />
 
         {/* needle */}

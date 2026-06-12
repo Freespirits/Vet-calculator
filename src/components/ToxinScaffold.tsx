@@ -45,7 +45,7 @@ export function ToxinScaffold({
   return (
     <div>
       <GlassCard className="p-5 sm:p-6">
-        <div className="mb-5 flex items-center gap-3">
+        <div className="mb-3 flex items-center gap-3">
           <span
             className="grid h-12 w-12 place-items-center rounded-2xl"
             style={{ background: `${meta.accent}1F` }}
@@ -57,6 +57,14 @@ export function ToxinScaffold({
             <p className="text-sm text-muted">{tr(meta.blurb, lang)}</p>
           </div>
         </div>
+
+        {/* What is this? — plain-language explainer, never just a name */}
+        <p
+          className="mb-5 border-s-2 ps-3 text-sm leading-relaxed text-ink/85"
+          style={{ borderColor: meta.accent }}
+        >
+          {tr(meta.about, lang)}
+        </p>
 
         <div className="flex flex-col gap-4">
           {meta.species.length > 1 && (

@@ -70,6 +70,7 @@ export const en: Record<TKey, string> = {
   'plants.noResults': 'No matching plants.',
   'plants.catsOnly': 'Cats',
   'plants.both': 'Dogs & cats',
+  'plants.photoCredit': 'Photo credits: Wikimedia Commons',
 
   // Common
   'common.calculate': 'Calculate',

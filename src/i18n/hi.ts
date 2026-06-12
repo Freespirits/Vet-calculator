@@ -67,6 +67,7 @@ export const hi: Record<TKey, string> = {
   'plants.noResults': 'कोई मिलता-जुलता पौधा नहीं।',
   'plants.catsOnly': 'बिल्लियाँ',
   'plants.both': 'कुत्ते और बिल्लियाँ',
+  'plants.photoCredit': 'फ़ोटो श्रेय: विकिमीडिया कॉमन्स',
 
   // Common
   'common.calculate': 'गणना करें',

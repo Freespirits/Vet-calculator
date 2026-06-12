@@ -102,14 +102,26 @@ function SpeciesTag({ plant }: { plant: ToxicPlant }) {
   );
 }
 
-export function PlantLibrary() {
+/** Selection is lifted to the hash route so every plant is deep-linkable. */
+export function PlantLibrary({
+  selectedId,
+  onSelect,
+}: {
+  selectedId: string | null;
+  onSelect: (id: string | null) => void;
+}) {
   const { t, lang, dir } = useI18n();
   const reduced = useReducedMotion();
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<Filter>('all');
-  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const selected = TOXIC_PLANTS.find((p) => p.id === selectedId) ?? null;
+
+  const counts = useMemo(() => {
+    const c: Record<Filter, number> = { all: 0, deadly: 0, severe: 0, cats: 0 };
+    for (const f of FILTERS) c[f] = TOXIC_PLANTS.filter((p) => matchesFilter(p, f)).length;
+    return c;
+  }, []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -171,6 +183,9 @@ export function PlantLibrary() {
                     }`}
                   >
                     {t(`plants.filter.${f}`)}
+                    <span className={`ms-1.5 tnum text-xs ${active ? 'opacity-70' : 'opacity-50'}`}>
+                      {counts[f]}
+                    </span>
                   </button>
                 );
               })}
@@ -184,7 +199,7 @@ export function PlantLibrary() {
                   <motion.button
                     key={p.id}
                     type="button"
-                    onClick={() => setSelectedId(p.id)}
+                    onClick={() => onSelect(p.id)}
                     initial={reduced ? false : { opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: reduced ? 0 : i * 0.03, duration: 0.35 }}
@@ -222,7 +237,7 @@ export function PlantLibrary() {
           >
             <button
               type="button"
-              onClick={() => setSelectedId(null)}
+              onClick={() => onSelect(null)}
               className="mb-3 flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-ink"
             >
               <ChevronDownIcon size={18} className={dir === 'rtl' ? '-rotate-90' : 'rotate-90'} />
@@ -264,6 +279,15 @@ export function PlantLibrary() {
                   <div className="mb-1 text-sm font-semibold text-teal">{t('plants.action')}</div>
                   <p className="text-sm text-ink/90">{tr(selected.action, lang)}</p>
                 </div>
+
+                <a
+                  href="https://github.com/Freespirits/Vet-calculator/blob/claude/website-content-ui-ux-1sgjyx/docs/PLANT_PHOTO_CREDITS.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="self-start text-[11px] text-muted/70 underline-offset-2 hover:underline"
+                >
+                  {t('plants.photoCredit')}
+                </a>
               </div>
             </div>
 

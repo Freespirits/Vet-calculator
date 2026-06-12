@@ -68,6 +68,14 @@ export const pl: Record<TKey, string> = {
   'plants.catsOnly': 'Koty',
   'plants.both': 'Psy i koty',
   'plants.photoCredit': 'Źródło zdjęć: Wikimedia Commons',
+  'treat.title': 'Lecz teraz — dawki weterynaryjne',
+  'treat.emesis': 'Wywołanie wymiotów',
+  'treat.charcoal': 'Węgiel aktywowany',
+  'treat.monitoring': 'Monitorowanie',
+  'treat.status.indicated': 'Wskazane',
+  'treat.status.caution': 'Ostrożnie',
+  'treat.status.no': 'Niezalecane',
+  'treat.disclaimer': 'Dawki dla lekarzy weterynarii — przed podaniem zweryfikuj z cytowanym źródłem.',
 
   // Common
   'common.calculate': 'Oblicz',

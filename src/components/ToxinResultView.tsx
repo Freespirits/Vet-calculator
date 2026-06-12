@@ -9,6 +9,7 @@ import { tr, type ToxinResult, type LocalizedText } from '../types/toxins';
 import type { RiskLevel } from './gauges';
 import { RiskGauge } from './gauges';
 import { EmergencyBanner, SourceList, StatPill } from './feedback';
+import { TreatNowPanel } from './TreatNowPanel';
 import { HeartPulseIcon, SyringeIcon, ShieldIcon, InfoIcon, CopyIcon, CheckIcon } from './Icons';
 
 const SITE_URL = 'https://vet-holim.work';
@@ -42,7 +43,18 @@ function Section({
   );
 }
 
-export function ToxinResultView({ result, title }: { result: ToxinResult; title?: string }) {
+export function ToxinResultView({
+  result,
+  title,
+  toxinId,
+  weightKg = null,
+}: {
+  result: ToxinResult;
+  title?: string;
+  /** Enables the "Treat now" panel when a treatment plan exists for the id. */
+  toxinId?: string;
+  weightKg?: number | null;
+}) {
   const { t, lang } = useI18n();
   const [copied, setCopied] = useState(false);
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
@@ -103,6 +115,10 @@ export function ToxinResultView({ result, title }: { result: ToxinResult; title?
           <Section title={t('tox.context')} icon={<InfoIcon size={16} />} text={pick(result.context)} />
         )}
       </div>
+
+      {toxinId && (
+        <TreatNowPanel toxinId={toxinId} weightKg={weightKg} emergency={result.emergency} />
+      )}
 
       {result.emergency && (
         <div className="mt-4">

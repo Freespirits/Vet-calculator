@@ -68,6 +68,14 @@ export const ar: Record<TKey, string> = {
   'plants.catsOnly': 'القطط',
   'plants.both': 'الكلاب والقطط',
   'plants.photoCredit': 'حقوق الصور: ويكيميديا كومنز',
+  'treat.title': 'العلاج الفوري — جرعات بيطرية',
+  'treat.emesis': 'تحفيز القيء',
+  'treat.charcoal': 'الفحم النشط',
+  'treat.monitoring': 'المراقبة',
+  'treat.status.indicated': 'موصى به',
+  'treat.status.caution': 'بحذر',
+  'treat.status.no': 'غير موصى به',
+  'treat.disclaimer': 'الجرعات مخصصة للأطباء البيطريين — تحقق من المصدر المذكور قبل الإعطاء.',
 
   // Common
   'common.calculate': 'احسب',

@@ -68,6 +68,14 @@ export const zh: Record<TKey, string> = {
   'plants.catsOnly': '猫',
   'plants.both': '犬与猫',
   'plants.photoCredit': '图片来源：维基共享资源',
+  'treat.title': '立即治疗 — 兽医剂量',
+  'treat.emesis': '催吐',
+  'treat.charcoal': '活性炭',
+  'treat.monitoring': '监测',
+  'treat.status.indicated': '建议',
+  'treat.status.caution': '谨慎',
+  'treat.status.no': '不建议',
+  'treat.disclaimer': '剂量供兽医专业人员使用——给药前请核对引用来源。',
 
   // Common
   'common.calculate': '计算',

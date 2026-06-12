@@ -101,6 +101,8 @@ export function ToxinScaffold({
             key={`${meta.id}-${result.level}-${result.doseLabel}`}
             result={result}
             title={tr(meta.name, lang)}
+            toxinId={meta.id}
+            weightKg={parseFloat(weightKg) > 0 ? parseFloat(weightKg) : null}
           />
         )}
       </AnimatePresence>

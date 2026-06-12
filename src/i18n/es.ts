@@ -68,6 +68,14 @@ export const es: Record<TKey, string> = {
   'plants.catsOnly': 'Gatos',
   'plants.both': 'Perros y gatos',
   'plants.photoCredit': 'Créditos de fotos: Wikimedia Commons',
+  'treat.title': 'Tratar ahora — dosis veterinarias',
+  'treat.emesis': 'Inducir emesis',
+  'treat.charcoal': 'Carbón activado',
+  'treat.monitoring': 'Monitorización',
+  'treat.status.indicated': 'Indicado',
+  'treat.status.caution': 'Precaución',
+  'treat.status.no': 'No recomendado',
+  'treat.disclaimer': 'Dosis para profesionales veterinarios: verifique la fuente citada antes de administrar.',
 
   // Common
   'common.calculate': 'Calcular',

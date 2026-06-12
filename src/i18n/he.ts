@@ -74,6 +74,14 @@ export const he = {
   'plants.catsOnly': 'חתולים',
   'plants.both': 'כלבים וחתולים',
   'plants.photoCredit': 'קרדיט תמונות: ויקישיתוף (Wikimedia Commons)',
+  'treat.title': 'טיפול מיידי — מינונים וטרינריים',
+  'treat.emesis': 'השראת הקאה',
+  'treat.charcoal': 'פחם פעיל',
+  'treat.monitoring': 'ניטור',
+  'treat.status.indicated': 'מומלץ',
+  'treat.status.caution': 'זהירות',
+  'treat.status.no': 'לא מומלץ',
+  'treat.disclaimer': 'המינונים מיועדים לאנשי מקצוע וטרינריים — יש לאמת מול המקור המצוטט לפני מתן.',
 
   // Common
   'common.calculate': 'חשב',

@@ -68,6 +68,14 @@ export const tr: Record<TKey, string> = {
   'plants.catsOnly': 'Kediler',
   'plants.both': 'Köpekler ve kediler',
   'plants.photoCredit': 'Fotoğraf kaynağı: Wikimedia Commons',
+  'treat.title': 'Hemen tedavi — veteriner dozları',
+  'treat.emesis': 'Kusturma',
+  'treat.charcoal': 'Aktif kömür',
+  'treat.monitoring': 'İzlem',
+  'treat.status.indicated': 'Önerilir',
+  'treat.status.caution': 'Dikkat',
+  'treat.status.no': 'Önerilmez',
+  'treat.disclaimer': 'Dozlar veteriner hekimler içindir — uygulamadan önce belirtilen kaynaktan doğrulayın.',
 
   // Common
   'common.calculate': 'Hesapla',

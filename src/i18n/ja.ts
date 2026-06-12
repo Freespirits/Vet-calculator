@@ -68,6 +68,14 @@ export const ja: Record<TKey, string> = {
   'plants.catsOnly': '猫',
   'plants.both': '犬と猫',
   'plants.photoCredit': '写真提供：ウィキメディア・コモンズ',
+  'treat.title': '今すぐ治療 — 獣医用投与量',
+  'treat.emesis': '催吐',
+  'treat.charcoal': '活性炭',
+  'treat.monitoring': 'モニタリング',
+  'treat.status.indicated': '推奨',
+  'treat.status.caution': '注意',
+  'treat.status.no': '非推奨',
+  'treat.disclaimer': '投与量は獣医療従事者向けです。投与前に引用元をご確認ください。',
 
   // Common
   'common.calculate': '計算',

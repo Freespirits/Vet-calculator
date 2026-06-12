@@ -68,6 +68,14 @@ export const ru: Record<TKey, string> = {
   'plants.catsOnly': 'Кошки',
   'plants.both': 'Собаки и кошки',
   'plants.photoCredit': 'Фото: Wikimedia Commons',
+  'treat.title': 'Лечить сейчас — ветеринарные дозы',
+  'treat.emesis': 'Вызвать рвоту',
+  'treat.charcoal': 'Активированный уголь',
+  'treat.monitoring': 'Мониторинг',
+  'treat.status.indicated': 'Показано',
+  'treat.status.caution': 'С осторожностью',
+  'treat.status.no': 'Не рекомендуется',
+  'treat.disclaimer': 'Дозы предназначены для ветеринарных специалистов — сверьтесь с указанным источником перед применением.',
 
   // Common
   'common.calculate': 'Рассчитать',

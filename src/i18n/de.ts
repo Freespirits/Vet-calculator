@@ -68,6 +68,14 @@ export const de: Record<TKey, string> = {
   'plants.catsOnly': 'Katzen',
   'plants.both': 'Hunde & Katzen',
   'plants.photoCredit': 'Bildnachweise: Wikimedia Commons',
+  'treat.title': 'Sofort behandeln — Veterinärdosen',
+  'treat.emesis': 'Erbrechen auslösen',
+  'treat.charcoal': 'Aktivkohle',
+  'treat.monitoring': 'Überwachung',
+  'treat.status.indicated': 'Indiziert',
+  'treat.status.caution': 'Vorsicht',
+  'treat.status.no': 'Nicht empfohlen',
+  'treat.disclaimer': 'Dosen für Tierärztinnen und Tierärzte — vor der Gabe mit der zitierten Quelle abgleichen.',
 
   // Common
   'common.calculate': 'Berechnen',

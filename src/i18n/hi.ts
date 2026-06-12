@@ -68,6 +68,14 @@ export const hi: Record<TKey, string> = {
   'plants.catsOnly': 'बिल्लियाँ',
   'plants.both': 'कुत्ते और बिल्लियाँ',
   'plants.photoCredit': 'फ़ोटो श्रेय: विकिमीडिया कॉमन्स',
+  'treat.title': 'तुरंत उपचार — पशु-चिकित्सा खुराक',
+  'treat.emesis': 'उल्टी कराना',
+  'treat.charcoal': 'सक्रिय चारकोल',
+  'treat.monitoring': 'निगरानी',
+  'treat.status.indicated': 'अनुशंसित',
+  'treat.status.caution': 'सावधानी',
+  'treat.status.no': 'अनुशंसित नहीं',
+  'treat.disclaimer': 'खुराक पशु-चिकित्सा पेशेवरों के लिए हैं — देने से पहले उद्धृत स्रोत से पुष्टि करें।',
 
   // Common
   'common.calculate': 'गणना करें',

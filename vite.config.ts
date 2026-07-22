@@ -47,9 +47,10 @@ const config: SSGUserConfig = {
         globIgnores: ['**/og.png', '**/node_modules/**'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: '/index.html',
-        // /en has its own prerendered page — the SPA fallback must not
-        // hijack it and serve the Hebrew shell (breaks hydration + SEO).
-        navigateFallbackDenylist: [/^\/en/],
+        // Every /<lang>/ page is its own prerendered page — the SPA fallback
+        // must not hijack them and serve the Hebrew shell (breaks hydration
+        // + SEO). Keep in sync with SUPPORTED_LANGS in src/i18n/languages.ts.
+        navigateFallbackDenylist: [/^\/(en|ar|es|fr|de|ru|pt|it|zh|hi|ja|tr|pl)(\/|$)/],
       },
     }),
   ],

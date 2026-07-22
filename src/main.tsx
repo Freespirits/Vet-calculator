@@ -18,13 +18,15 @@ import './a11y/a11y.css';
 import App from './App';
 import { LanguageProvider } from './i18n/LanguageProvider';
 import { AccessibilityProvider } from './a11y/AccessibilityProvider';
-import { SeoHead, type PageLang } from './components/SeoHead';
+import { SeoHead, pathFor, type PageLang } from './components/SeoHead';
+import { SUPPORTED_LANGS } from './i18n/languages';
 
 function Shell({ page }: { page: PageLang }) {
   return (
     <StrictMode>
-      {/* / keeps the stored/browser language on the client; /en is pinned. */}
-      <LanguageProvider initial={page === 'en' ? 'en' : undefined}>
+      {/* / keeps the stored/browser language on the client; every /<code>/
+          page is pinned to its language so static HTML and hydration match. */}
+      <LanguageProvider initial={page === 'he' ? undefined : page}>
         <AccessibilityProvider>
           <SeoHead page={page} />
           <App />
@@ -34,9 +36,9 @@ function Shell({ page }: { page: PageLang }) {
   );
 }
 
-const routes: RouteRecord[] = [
-  { path: '/', element: <Shell page="he" /> },
-  { path: '/en', element: <Shell page="en" /> },
-];
+const routes: RouteRecord[] = SUPPORTED_LANGS.map((code) => ({
+  path: pathFor(code),
+  element: <Shell page={code} />,
+}));
 
 export const createRoot = ViteReactSSG({ routes });

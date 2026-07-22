@@ -1,10 +1,21 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type UserConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// vite-react-ssg reads this extra key from the vite config; vite's own
+// UserConfig type doesn't know it, hence the widened cast on export.
+interface SSGUserConfig extends UserConfig {
+  ssgOptions?: { dirStyle?: 'flat' | 'nested' }
+}
+
 // https://vite.dev/config/
 // base stays '/' for root-domain hosting (Vercel / vet-holim.work).
-export default defineConfig({
+const config: SSGUserConfig = {
+  // vite-react-ssg: emit en/index.html (not en.html) so /en serves
+  // statically on Vercel with no rewrite config.
+  ssgOptions: {
+    dirStyle: 'nested',
+  },
   plugins: [
     react(),
     // Installable + offline-first: the whole clinical core (drug DB, toxin
@@ -36,7 +47,12 @@ export default defineConfig({
         globIgnores: ['**/og.png', '**/node_modules/**'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: '/index.html',
+        // /en has its own prerendered page — the SPA fallback must not
+        // hijack it and serve the Hebrew shell (breaks hydration + SEO).
+        navigateFallbackDenylist: [/^\/en/],
       },
     }),
   ],
-})
+}
+
+export default defineConfig(config)

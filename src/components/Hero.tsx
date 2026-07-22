@@ -71,14 +71,22 @@ export function Hero() {
           <Mascot size={172} label={t('brand.name')} />
         </motion.div>
 
-        <motion.p
+        {/* The page's single h1 — crawlers had no heading to anchor on. */}
+        <motion.h1
           {...stagger(2)}
-          className="mt-5 max-w-md text-lg text-ink/75 text-balance"
+          className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl text-balance"
+        >
+          {t('brand.name')}
+        </motion.h1>
+
+        <motion.p
+          {...stagger(3)}
+          className="mt-4 max-w-md text-lg text-ink/75 text-balance"
         >
           {t('hero.subtitle')}
         </motion.p>
 
-        <motion.a {...stagger(3)} href="#tools" className="btn-primary mt-9 px-8 text-lg">
+        <motion.a {...stagger(4)} href="#tools" className="btn-primary mt-9 px-8 text-lg">
           {t('hero.cta')}
         </motion.a>
       </div>

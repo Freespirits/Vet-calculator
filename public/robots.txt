@@ -1,0 +1,7 @@
+# vet-holim.work — everyone welcome, including AI search crawlers
+# (OAI-SearchBot / Claude-SearchBot / PerplexityBot decide citation
+# eligibility in ChatGPT, Claude and Perplexity — never block them).
+User-agent: *
+Allow: /
+
+Sitemap: https://vet-holim.work/sitemap.xml

@@ -67,7 +67,7 @@ function detectBrowserLang(): Lang | null {
   return null;
 }
 
-function readInitialLang(): Lang {
+function readPreferredLang(): Lang {
   if (typeof window === 'undefined') return 'he';
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (isLang(stored)) return stored;
@@ -75,9 +75,25 @@ function readInitialLang(): Lang {
   return detectBrowserLang() ?? 'he';
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readInitialLang);
+export function LanguageProvider({
+  children,
+  initial,
+}: {
+  children: ReactNode;
+  /** Pin the initial language (used by the /en prerendered route). */
+  initial?: Lang;
+}) {
+  // Two-pass language pick: first render always matches the prerendered HTML
+  // (Hebrew on /, pinned language on /en) so hydration never mismatches; the
+  // visitor's stored/browser preference is adopted right after mount.
+  const [lang, setLangState] = useState<Lang>(initial ?? 'he');
   const dir: Dir = dirOf(lang);
+
+  // Must run BEFORE the persistence effect below: it reads localStorage,
+  // which that effect overwrites.
+  useEffect(() => {
+    if (!initial) setLangState(readPreferredLang());
+  }, [initial]);
 
   useEffect(() => {
     const root = document.documentElement;

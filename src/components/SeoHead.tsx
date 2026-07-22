@@ -76,6 +76,7 @@ export function SeoHead({ page }: { page: PageLang }) {
   return (
     <Head>
       <html lang={m.lang} dir={m.dir} data-theme="dark" />
+      <meta name="google-site-verification" content="_jEDp9adv4E7AlXwWmvQf1Y6Hi-SjTLJr5LzAl4IgWU" />
       <title>{m.title}</title>
       <meta name="description" content={m.description} />
       <link rel="canonical" href={m.url} />

@@ -10,7 +10,9 @@ export function Disclaimer() {
           <ShieldIcon size={20} />
         </span>
         <div>
-          <h4 className="mb-1 text-sm font-semibold text-ink/80">{t('disclaimer.title')}</h4>
+          {/* h2, not h4: the page's outline is h1 (hero) then sections — skipping
+              levels fails the Lighthouse heading-order audit. Styling unchanged. */}
+          <h2 className="mb-1 text-sm font-semibold text-ink/80">{t('disclaimer.title')}</h2>
           <p className="text-xs leading-relaxed text-muted">{t('disclaimer.text')}</p>
         </div>
       </div>

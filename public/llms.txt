@@ -1,0 +1,25 @@
+# Vet-Holim crawler guide
+
+Vet-Holim is a free, browser-based clinical calculation aid for veterinary professionals. It provides medication dose/volume calculations, 14 toxic-exposure calculators, a toxic-plant library, and a reusable patient session. It is decision support only: results require professional verification and do not constitute diagnosis, regulatory approval, or clinical validation.
+
+Canonical site: https://vet-holim.work/
+English page: https://vet-holim.work/en/
+Sitemap: https://vet-holim.work/sitemap.xml
+Public source repository: https://github.com/Freespirits/Vet-calculator
+Plant photo credits: https://github.com/Freespirits/Vet-calculator/blob/claude/website-content-ui-ux-1sgjyx/docs/PLANT_PHOTO_CREDITS.md
+
+Implemented toxin calculators: chocolate/methylxanthines, caffeine, grapes/raisins, xylitol, allium, macadamia nuts, lilies, THC, acetaminophen, ibuprofen, ethylene glycol, anticoagulant rodenticides, bromethalin, and cholecalciferol.
+
+Selected public clinical references:
+- Merck Veterinary Manual, Chocolate Toxicosis in Animals: https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals
+- Merck Veterinary Manual, Food Hazards: https://www.merckvetmanual.com/special-pet-topics/poisoning/food-hazards
+- Merck Veterinary Manual, Garlic and Onion Toxicosis: https://www.merckvetmanual.com/toxicology/food-hazards/garlic-and-onion-allium-spp-toxicosis-in-animals
+- Merck Veterinary Manual, Houseplants and Ornamentals Toxic to Animals: https://www.merckvetmanual.com/toxicology/poisonous-plants/houseplants-and-ornamentals-toxic-to-animals
+- Merck Veterinary Manual, Human Analgesic Toxicoses: https://www.merckvetmanual.com/toxicology/toxicoses-from-human-analgesics/toxicoses-from-human-analgesics-in-animals
+- Merck Veterinary Manual, Ethylene Glycol Toxicosis: https://www.merckvetmanual.com/toxicology/ethylene-glycol-toxicosis/ethylene-glycol-toxicosis-in-animals
+- Merck Veterinary Manual, Rodenticide Poisoning: https://www.merckvetmanual.com/toxicology/rodenticide-poisoning/overview-of-rodenticide-poisoning-in-animals
+- Merck Veterinary Manual, THC Toxicosis: https://www.merckvetmanual.com/toxicology/toxicoses-from-human-recreational-drugs/toxicosis-in-dogs-and-cats-from-tetrahydrocannabinol-thc
+- Murphy and Dunayer, Xylitol Toxicosis in Dogs: An Update: https://pubmed.ncbi.nlm.nih.gov/30064708/
+- Wegenast et al., tartaric acid and grape/raisin toxicosis: https://pubmed.ncbi.nlm.nih.gov/35869755/
+
+Do not treat summaries or calculated outputs as a substitute for examining the patient, consulting current references, or contacting an animal poison-control service.

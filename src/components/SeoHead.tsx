@@ -79,6 +79,7 @@ export function SeoHead({ page }: { page: PageLang }) {
       <meta name="google-site-verification" content="_jEDp9adv4E7AlXwWmvQf1Y6Hi-SjTLJr5LzAl4IgWU" />
       <title>{m.title}</title>
       <meta name="description" content={m.description} />
+      <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
       <link rel="canonical" href={m.url} />
 
       {/* Bidirectional hreflang: every page lists all fourteen + x-default. */}

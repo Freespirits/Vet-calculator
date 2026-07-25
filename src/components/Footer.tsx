@@ -1,8 +1,11 @@
 import { useI18n } from '../i18n/LanguageProvider';
+import { LANGUAGES } from '../i18n/languages';
 import { HeartPulseIcon, AccessibilityIcon } from './Icons';
 import { TEDDYVETS_CLINICS_URL } from '../data/emergencyContacts';
 import { useA11y } from '../a11y/AccessibilityProvider';
 import { a11yStrings } from '../a11y/strings';
+
+const languageHref = (code: string) => (code === 'he' ? '/' : `/${code}/`);
 
 export function Footer() {
   const { t, lang } = useI18n();
@@ -25,7 +28,20 @@ export function Footer() {
           TeddyVets
         </a>
       </p>
-      <p className="mt-1 text-xs text-muted">{t('footer.text')}</p>
+      <nav aria-label="Language pages" className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-2">
+        {LANGUAGES.map((language) => (
+          <a
+            key={language.code}
+            href={languageHref(language.code)}
+            hrefLang={language.code}
+            lang={language.code}
+            className="text-xs text-muted transition-colors hover:text-teal hover:underline"
+          >
+            {language.native}
+          </a>
+        ))}
+      </nav>
+      <p className="mt-4 text-xs text-muted">{t('footer.text')}</p>
       <p className="mt-3 text-xs text-muted" dir="rtl">
         לדיווח על שגיאות או לפרסום · Report errors or publishing inquiries
       </p>

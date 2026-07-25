@@ -7,6 +7,18 @@ Clinical veterinary calculators for medication dosing and common toxic exposures
 > [!WARNING]
 > Vet-Holim is a clinical decision-support and triage aid. It does not replace veterinary judgment, a current formulary, or consultation with an animal poison-control service. Verify every calculation before treatment.
 
+## Interface
+
+### English toxic-plant library
+
+![Vet-Holim English toxic-plant library showing searchable plant cards and severity filters](docs/screenshots/toxic-plants-en.png)
+
+### Chocolate toxicity calculator
+
+![Vet-Holim chocolate toxicity calculator showing a moderate methylxanthine risk result](docs/screenshots/chocolate-toxicity-en.png)
+
+The screenshot uses an illustrative exposure of a 10 kg dog ingesting 50 g of 70% dark chocolate. It demonstrates the calculation interface and is not a diagnosis or treatment recommendation.
+
 ## What it includes
 
 - A medication dosage calculator with weight and concentration conversion, dose-range guidance, route selection, rounding, warnings, and a transparent calculation breakdown.

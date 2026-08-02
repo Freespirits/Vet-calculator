@@ -15,7 +15,8 @@ export const pt: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Calculadora Veterinária',
-  'hero.subtitle': 'Doses de medicamentos e cálculos de toxicidade — precisos, rápidos, na palma da mão.',
+  'hero.subtitle':
+    'Cálculos de dose e toxicidade para cães e gatos: mais de 130 faixas de dose de referência, 14 calculadoras de toxicidade com fontes e uma biblioteca fotográfica de plantas tóxicas. Grátis e funciona offline.',
   'hero.cta': 'Começar a calcular',
   'hero.scroll': 'Rolar',
 
@@ -200,4 +201,43 @@ export const pt: Record<TKey, string> = {
   'footer.text': 'Assistentes para assistentes · Todos os direitos reservados',
   'footer.madeWith': 'Feito com rigor clínico',
   'footer.partner': 'Parceiro clínico',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'Sobre esta calculadora veterinária',
+  'about.lead':
+    'O Vet-Holim é uma ferramenta gratuita de apoio à decisão clínica para médicos-veterinários, enfermeiros e técnicos que tratam cães e gatos. Reúne quatro coisas numa só página: uma calculadora de dose que devolve o volume a aspirar, um conjunto de calculadoras de toxicidade com fontes, uma biblioteca fotográfica de plantas tóxicas e uma sessão de paciente com vários medicamentos que pode exportar como um único relatório. Tudo corre no seu navegador — sem conta, sem envio e sem que os dados do paciente saiam do dispositivo.',
+  'about.dosage.title': 'Calculadora de dose',
+  'about.dosage.body':
+    "Indique espécie, peso corporal, dose por quilograma e concentração do frasco, e a calculadora devolve o volume exato a aspirar, arredondado à precisão de seringa escolhida (0,01, 0,05 ou 0,1 ml). Cobre mais de 130 fármacos com faixas de referência do Plumb's Veterinary Drug Handbook, assinala doses fora da faixa publicada e aceita mg/kg, mcg/kg, UI/kg e ml/kg, além das vias IV, IM, SC e PO.",
+  'about.toxins.title': 'Calculadoras de toxicidade',
+  'about.toxins.body':
+    'Catorze ferramentas de toxicidade com fontes estimam o risco a partir do peso corporal e da quantidade ingerida: chocolate e outras metilxantinas, uvas e passas, xilitol, cebola e alho, nozes de macadâmia, ibuprofeno, paracetamol, permetrina, lírios, rodenticidas, etilenoglicol, canábis, álcool e cafeína. Cada resultado indica um nível de risco, os sinais clínicos esperados, a janela de descontaminação e uma ação recomendada. Tóxicos idiossincráticos nunca devolvem um veredicto seguro.',
+  'about.plants.title': 'Biblioteca de plantas tóxicas',
+  'about.plants.body':
+    'Uma biblioteca pesquisável e ilustrada de plantas de interior e de jardim perigosas para cães e gatos, filtrável por gravidade, do ligeiro ao mortal. Cada ficha indica o princípio tóxico, as partes da planta envolvidas, os sinais clínicos esperados e a urgência com que o animal deve ser observado.',
+  'about.patient.title': 'Sessão de paciente',
+  'about.patient.body':
+    'Um caso com vários medicamentos? Inicie uma sessão de paciente, acrescente cada dose calculada à lista e depois copie ou partilhe um relatório de medicação único com nomes, doses, volumes a aspirar, vias e frequências — útil para a passagem de turno, folhas de tratamento e instruções ao tutor.',
+  'about.who.title': 'A quem se destina',
+  'about.who.body':
+    'Feita para profissionais veterinários licenciados e estudantes. A responsabilidade clínica é sempre do médico-veterinário assistente: verifique cada valor nas suas próprias referências antes de administrar. Tutores que suspeitem de intoxicação devem contactar de imediato uma clínica veterinária ou serviço de urgência, em vez de agir com base num cálculo.',
+  'faq.title': 'Perguntas frequentes',
+  'faq.q1': 'A calculadora veterinária é gratuita?',
+  'faq.a1':
+    'Sim. Todas as calculadoras, a biblioteca de plantas e a sessão de paciente são de uso gratuito, sem conta e sem registo.',
+  'faq.q2': 'Que animais abrange?',
+  'faq.a2':
+    'Cães e gatos. As faixas de dose, os limiares de toxicidade e os sinais clínicos diferem entre as duas espécies, por isso escolha primeiro a espécie — alguns cálculos de toxicidade aplicam-se apenas a uma delas e indicam-no.',
+  'faq.q3': 'De onde vêm as faixas de dose?',
+  'faq.a3':
+    "As faixas de referência vêm do Plumb's Veterinary Drug Handbook e os limiares de toxicidade de fontes publicadas de toxicologia veterinária citadas dentro de cada ferramenta. São apenas orientação e devem ser verificadas de forma independente antes do tratamento.",
+  'faq.q4': 'Posso usar offline?',
+  'faq.a4':
+    'Sim. O site é uma aplicação web progressiva instalável: adicione-o uma vez ao ecrã inicial e as calculadoras continuam a funcionar sem ligação à rede.',
+  'faq.q5': 'Os dados do paciente ficam guardados algures?',
+  'faq.a5':
+    'Não. Todos os cálculos correm localmente no seu navegador e nada é enviado para um servidor. A sessão de paciente existe apenas no separador atual.',
+  'faq.q6': 'O que fazer perante suspeita de intoxicação?',
+  'faq.a6':
+    'Contacte imediatamente o seu médico-veterinário ou a urgência mais próxima, antes de surgirem sinais. Use a calculadora de toxicidade para estimar a exposição e sustentar essa conversa — nunca para decidir não procurar assistência.',
 };

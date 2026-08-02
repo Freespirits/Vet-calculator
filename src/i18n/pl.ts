@@ -15,7 +15,8 @@ export const pl: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Kalkulator Weterynaryjny',
-  'hero.subtitle': 'Dawkowanie leków i obliczenia toksyczności — precyzyjnie, szybko, w zasięgu ręki.',
+  'hero.subtitle':
+    'Obliczenia dawek i toksyczności dla psów i kotów: ponad 130 referencyjnych zakresów dawek, 14 udokumentowanych kalkulatorów toksyczności i ilustrowana biblioteka roślin trujących. Za darmo i również offline.',
   'hero.cta': 'Zacznij obliczać',
   'hero.scroll': 'Przewiń',
 
@@ -200,4 +201,43 @@ export const pl: Record<TKey, string> = {
   'footer.text': 'Asystenci dla asystentów · Wszelkie prawa zastrzeżone',
   'footer.madeWith': 'Stworzono z kliniczną starannością',
   'footer.partner': 'Partner kliniczny',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'O tym kalkulatorze weterynaryjnym',
+  'about.lead':
+    'Vet-Holim to bezpłatne narzędzie wspomagania decyzji klinicznych dla lekarzy weterynarii, pielęgniarek i techników leczących psy i koty. Łączy cztery rzeczy na jednej stronie: kalkulator dawki zwracający objętość do nabrania, zestaw udokumentowanych kalkulatorów toksyczności, ilustrowaną bibliotekę roślin trujących oraz sesję pacjenta z wieloma lekami, którą można wyeksportować jako jeden raport. Wszystko działa w przeglądarce — bez konta, bez wysyłania danych, dane pacjenta nie opuszczają urządzenia.',
+  'about.dosage.title': 'Kalkulator dawek leków',
+  'about.dosage.body':
+    "Podaj gatunek, masę ciała, dawkę na kilogram i stężenie preparatu, a kalkulator zwróci dokładną objętość do nabrania, zaokrągloną do wybranej dokładności strzykawki (0,01, 0,05 lub 0,1 ml). Obejmuje ponad 130 leków z zakresami referencyjnymi z Plumb's Veterinary Drug Handbook, oznacza dawki spoza opublikowanego zakresu i obsługuje mg/kg, mcg/kg, j.m./kg i ml/kg oraz drogi IV, IM, SC i PO.",
+  'about.toxins.title': 'Kalkulatory toksyczności',
+  'about.toxins.body':
+    'Czternaście udokumentowanych narzędzi szacuje ryzyko na podstawie masy ciała i zjedzonej ilości: czekolada i inne metyloksantyny, winogrona i rodzynki, ksylitol, cebula i czosnek, orzechy makadamia, ibuprofen, paracetamol, permetryna, lilie, rodentycydy, glikol etylenowy, konopie, alkohol i kofeina. Każdy wynik podaje poziom ryzyka, spodziewane objawy kliniczne, okno dekontaminacji i zalecane postępowanie. Toksyny idiosynkratyczne nigdy nie dają werdyktu bezpiecznego.',
+  'about.plants.title': 'Biblioteka roślin trujących',
+  'about.plants.body':
+    'Przeszukiwalna, ilustrowana zdjęciami biblioteka roślin domowych i ogrodowych niebezpiecznych dla psów i kotów, z filtrem według ciężkości — od łagodnych po śmiertelne. Każdy wpis podaje substancję toksyczną, części rośliny, spodziewane objawy kliniczne i pilność wizyty u lekarza.',
+  'about.patient.title': 'Sesja pacjenta',
+  'about.patient.body':
+    'Przypadek z kilkoma lekami? Rozpocznij sesję pacjenta, dodawaj każdą obliczoną dawkę do listy, a następnie skopiuj lub udostępnij jeden zbiorczy raport leków z nazwami, dawkami, objętościami do nabrania, drogami i częstotliwością podania — przydatne przy przekazaniu dyżuru, karcie leczenia i zaleceniach dla właściciela.',
+  'about.who.title': 'Dla kogo jest to narzędzie',
+  'about.who.body':
+    'Stworzone dla uprawnionych profesjonalistów weterynaryjnych i studentów. Odpowiedzialność kliniczna zawsze spoczywa na lekarzu prowadzącym: przed podaniem sprawdź każdą wartość we własnych źródłach farmakologicznych. Właściciele podejrzewający zatrucie powinni natychmiast skontaktować się z lecznicą weterynaryjną lub pogotowiem, a nie działać na podstawie obliczenia.',
+  'faq.title': 'Najczęstsze pytania',
+  'faq.q1': 'Czy kalkulator weterynaryjny jest darmowy?',
+  'faq.a1':
+    'Tak. Wszystkie kalkulatory, biblioteka roślin i sesja pacjenta są bezpłatne, bez konta i bez rejestracji.',
+  'faq.q2': 'Jakie zwierzęta obejmuje?',
+  'faq.a2':
+    'Psy i koty. Zakresy dawek, progi toksyczności i objawy kliniczne różnią się między gatunkami, dlatego najpierw wybierz gatunek — część obliczeń toksyczności dotyczy tylko jednego z nich i wyraźnie to zaznacza.',
+  'faq.q3': 'Skąd pochodzą zakresy dawek?',
+  'faq.a3':
+    "Referencyjne zakresy dawek pochodzą z Plumb's Veterinary Drug Handbook, a progi toksyczności z opublikowanych źródeł toksykologii weterynaryjnej cytowanych w każdym narzędziu. Mają charakter wyłącznie orientacyjny i przed leczeniem należy je samodzielnie zweryfikować.",
+  'faq.q4': 'Czy mogę używać offline?',
+  'faq.a4':
+    'Tak. Strona jest instalowalną progresywną aplikacją webową: dodaj ją raz do ekranu głównego, a kalkulatory będą działać także bez połączenia z siecią.',
+  'faq.q5': 'Czy dane pacjenta są gdzieś przechowywane?',
+  'faq.a5':
+    'Nie. Wszystkie obliczenia wykonują się lokalnie w przeglądarce i nic nie jest wysyłane na serwer. Sesja pacjenta istnieje wyłącznie w bieżącej karcie.',
+  'faq.q6': 'Co zrobić przy podejrzeniu zatrucia?',
+  'faq.a6':
+    'Natychmiast skontaktuj się ze swoim lekarzem weterynarii lub najbliższą lecznicą całodobową, zanim pojawią się objawy. Kalkulatora toksyczności używaj do oszacowania ekspozycji i wsparcia tej rozmowy — nigdy do rezygnacji z wizyty.',
 };

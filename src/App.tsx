@@ -12,6 +12,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Tools } from './features/Tools';
+import { AboutSection } from './components/AboutSection';
 import { Disclaimer } from './components/Disclaimer';
 import { Footer } from './components/Footer';
 import { useI18n } from './i18n/LanguageProvider';
@@ -33,6 +34,7 @@ export default function App() {
         <main id="main" tabIndex={-1} className="flex-1 outline-none">
           <Hero />
           <Tools />
+          <AboutSection />
           <div className="mx-auto max-w-2xl px-4 pb-4">
             <Disclaimer />
           </div>

@@ -15,7 +15,8 @@ export const tr: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Veteriner Hesaplayıcı',
-  'hero.subtitle': 'İlaç dozu ve toksisite hesapları — hassas, hızlı, avucunuzun içinde.',
+  'hero.subtitle':
+    "Köpek ve kediler için doz ve toksisite hesapları: 130'dan fazla referans doz aralığı, kaynaklı 14 toksisite hesaplayıcısı ve fotoğraflı zehirli bitki kütüphanesi. Ücretsiz ve çevrimdışı çalışır.",
   'hero.cta': 'Hesaplamaya başla',
   'hero.scroll': 'Kaydır',
 
@@ -200,4 +201,43 @@ export const tr: Record<TKey, string> = {
   'footer.text': 'Asistanlar için asistanlar · Tüm hakları saklıdır',
   'footer.madeWith': 'Klinik özenle yapıldı',
   'footer.partner': 'Klinik ortak',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'Bu veteriner hesaplayıcı hakkında',
+  'about.lead':
+    'Vet-Holim; köpek ve kedi tedavi eden veteriner hekimler, hemşireler ve teknisyenler için ücretsiz bir klinik karar destek aracıdır. Dört şeyi tek sayfada bir araya getirir: çekilecek hacmi veren doz hesaplayıcısı, kaynaklı toksisite hesaplayıcıları seti, fotoğraflı zehirli bitki kütüphanesi ve tek rapor olarak dışa aktarılabilen çok ilaçlı hasta oturumu. Her şey tarayıcınızda çalışır — hesap yok, yükleme yok, hasta verisi cihazdan çıkmaz.',
+  'about.dosage.title': 'İlaç doz hesaplayıcısı',
+  'about.dosage.body':
+    "Tür, vücut ağırlığı, kilogram başına doz ve flakon konsantrasyonunu girin; hesaplayıcı çekilecek tam hacmi, seçtiğiniz enjektör hassasiyetine (0,01, 0,05 veya 0,1 mL) yuvarlayarak verir. Plumb's Veterinary Drug Handbook kaynaklı referans aralıklarıyla 130'dan fazla ilacı kapsar, yayımlanmış aralığın dışındaki dozları işaretler ve IV, IM, SC, PO yollarının yanı sıra mg/kg, mcg/kg, IU/kg ve mL/kg birimlerini destekler.",
+  'about.toxins.title': 'Toksisite hesaplayıcıları',
+  'about.toxins.body':
+    'Kaynaklı on dört toksisite aracı, vücut ağırlığı ve alınan miktardan riski tahmin eder: çikolata ve diğer metilksantinler, üzüm ve kuru üzüm, ksilitol, soğan ve sarımsak, makadamya cevizi, ibuprofen, parasetamol, permetrin, zambaklar, rodentisitler, etilen glikol, kenevir, alkol ve kafein. Her sonuç bir risk düzeyi, beklenen klinik bulgular, dekontaminasyon penceresi ve önerilen eylem verir. İdiyosenkratik toksinler asla güvenli sonuç göstermez.',
+  'about.plants.title': 'Zehirli bitki kütüphanesi',
+  'about.plants.body':
+    'Köpek ve kediler için tehlikeli ev ve bahçe bitkilerinin aranabilir, fotoğraflı kütüphanesi; hafiften ölümcüle kadar şiddete göre filtrelenebilir. Her kayıt toksik etken maddeyi, bitkinin ilgili kısımlarını, beklenen klinik bulguları ve hayvanın ne kadar acil görülmesi gerektiğini belirtir.',
+  'about.patient.title': 'Hasta oturumu',
+  'about.patient.body':
+    'Birden fazla ilaç içeren bir vaka mı? Bir hasta oturumu başlatın, hesaplanan her dozu listeye ekleyin, ardından ilaç adları, dozlar, çekilecek hacimler, uygulama yolları ve sıklıkları içeren tek bir birleşik ilaç raporunu kopyalayın veya paylaşın — nöbet devri, tedavi çizelgesi ve sahip talimatları için pratiktir.',
+  'about.who.title': 'Kimler için',
+  'about.who.body':
+    'Ruhsatlı veteriner sağlık profesyonelleri ve öğrenciler için geliştirilmiştir. Klinik sorumluluk daima tedaviyi yürüten veteriner hekime aittir: uygulamadan önce her değeri kendi ilaç kaynaklarınızdan doğrulayın. Zehirlenmeden şüphelenen hayvan sahipleri, bir hesaba göre hareket etmek yerine derhal bir veteriner kliniğine veya acil servise başvurmalıdır.',
+  'faq.title': 'Sık sorulan sorular',
+  'faq.q1': 'Veteriner hesaplayıcı ücretsiz mi?',
+  'faq.a1':
+    'Evet. Tüm hesaplayıcılar, bitki kütüphanesi ve hasta oturumu hesap açmadan ve kayıt olmadan ücretsiz kullanılabilir.',
+  'faq.q2': 'Hangi hayvanları kapsıyor?',
+  'faq.a2':
+    'Köpek ve kedi. Doz aralıkları, toksisite eşikleri ve klinik bulgular iki tür arasında farklıdır; bu yüzden önce türü seçin — bazı toksisite hesapları yalnızca birine uygulanır ve bunu belirtir.',
+  'faq.q3': 'Doz aralıkları nereden geliyor?',
+  'faq.a3':
+    "Referans doz aralıkları Plumb's Veterinary Drug Handbook'tan, toksisite eşikleri ise her aracın içinde kaynak gösterilen yayımlanmış veteriner toksikoloji kaynaklarından alınmıştır. Bunlar yalnızca yol göstericidir ve tedaviden önce bağımsız olarak doğrulanmalıdır.",
+  'faq.q4': 'Çevrimdışı kullanabilir miyim?',
+  'faq.a4':
+    'Evet. Site kurulabilir bir progresif web uygulamasıdır: ana ekranınıza bir kez ekleyin, hesaplayıcılar ağ bağlantısı olmadan da çalışmaya devam eder.',
+  'faq.q5': 'Hasta verilerim bir yerde saklanıyor mu?',
+  'faq.a5':
+    'Hayır. Tüm hesaplamalar tarayıcınızda yerel olarak çalışır ve hiçbir şey sunucuya yüklenmez. Hasta oturumu yalnızca mevcut sekmede bulunur.',
+  'faq.q6': 'Zehirlenme şüphesinde ne yapmalıyım?',
+  'faq.a6':
+    'Bulgular ortaya çıkmadan önce derhal veteriner hekiminize veya en yakın acil kliniğe başvurun. Toksisite hesaplayıcısını maruziyeti tahmin etmek ve bu görüşmeyi beslemek için kullanın — asla tedaviye başvurmama kararı için değil.',
 };

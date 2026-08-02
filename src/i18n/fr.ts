@@ -15,7 +15,8 @@ export const fr: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Calculateur Vétérinaire',
-  'hero.subtitle': 'Posologie des médicaments et calculs de toxicité — précis, rapides, au creux de la main.',
+  'hero.subtitle':
+    'Calculs de posologie et de toxicité pour chiens et chats : plus de 130 fourchettes de doses de référence, 14 calculateurs de toxicité sourcés et une bibliothèque photo de plantes toxiques. Gratuit et utilisable hors ligne.',
   'hero.cta': 'Commencer le calcul',
   'hero.scroll': 'Faire défiler',
 
@@ -200,4 +201,43 @@ export const fr: Record<TKey, string> = {
   'footer.text': 'Assistants pour assistants · Tous droits réservés',
   'footer.madeWith': 'Conçu avec rigueur clinique',
   'footer.partner': 'Partenaire clinique',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'À propos de ce calculateur vétérinaire',
+  'about.lead':
+    "Vet-Holim est un outil gratuit d'aide à la décision clinique destiné aux vétérinaires, infirmiers et techniciens qui soignent chiens et chats. Il réunit quatre choses sur une seule page : un calculateur de dose qui renvoie le volume à prélever, une série de calculateurs de toxicité sourcés, une bibliothèque photo de plantes toxiques et une session patient multi-médicaments exportable en un seul rapport. Tout s'exécute dans votre navigateur : aucun compte, aucun envoi, aucune donnée patient ne quitte l'appareil.",
+  'about.dosage.title': 'Calculateur de posologie',
+  'about.dosage.body':
+    "Saisissez l'espèce, le poids corporel, la dose par kilogramme et la concentration du flacon : le calculateur renvoie le volume exact à prélever, arrondi à la précision de seringue choisie (0,01, 0,05 ou 0,1 ml). Il couvre plus de 130 médicaments avec des fourchettes de référence issues du Plumb's Veterinary Drug Handbook, signale les doses hors fourchette publiée et gère mg/kg, mcg/kg, UI/kg et ml/kg ainsi que les voies IV, IM, SC et PO.",
+  'about.toxins.title': 'Calculateurs de toxicité',
+  'about.toxins.body':
+    "Quatorze outils de toxicité sourcés estiment le risque à partir du poids et de la quantité ingérée : chocolat et autres méthylxanthines, raisins et raisins secs, xylitol, oignon et ail, noix de macadamia, ibuprofène, paracétamol, perméthrine, lis, rodenticides, éthylène glycol, cannabis, alcool et caféine. Chaque résultat donne un niveau de risque, les signes cliniques attendus, la fenêtre de décontamination et une conduite à tenir. Les toxiques idiosyncrasiques n'affichent jamais de verdict sûr.",
+  'about.plants.title': 'Bibliothèque de plantes toxiques',
+  'about.plants.body':
+    "Une bibliothèque illustrée et consultable des plantes d'intérieur et de jardin dangereuses pour les chiens et les chats, filtrable par gravité, du bénin au mortel. Chaque fiche précise le principe toxique, les parties de la plante concernées, les signes cliniques attendus et l'urgence de la consultation.",
+  'about.patient.title': 'Session patient',
+  'about.patient.body':
+    'Un cas avec plusieurs médicaments ? Ouvrez une session patient, ajoutez chaque dose calculée à la liste, puis copiez ou partagez un rapport de médication unique avec les noms, doses, volumes à prélever, voies et fréquences : pratique pour la transmission, la feuille de soins et les consignes au propriétaire.',
+  'about.who.title': "À qui s'adresse l'outil",
+  'about.who.body':
+    "Conçu pour les professionnels vétérinaires diplômés et les étudiants. La responsabilité clinique incombe toujours au vétérinaire traitant : vérifiez chaque valeur dans vos propres références avant administration. Un propriétaire qui suspecte une intoxication doit contacter immédiatement une clinique vétérinaire ou un service d'urgence plutôt que d'agir sur la base d'un calcul.",
+  'faq.title': 'Questions fréquentes',
+  'faq.q1': 'Le calculateur vétérinaire est-il gratuit ?',
+  'faq.a1':
+    'Oui. Tous les calculateurs, la bibliothèque de plantes et la session patient sont gratuits, sans compte ni inscription.',
+  'faq.q2': 'Quelles espèces sont couvertes ?',
+  'faq.a2':
+    "Les chiens et les chats. Les fourchettes de doses, les seuils de toxicité et les signes cliniques diffèrent entre les deux espèces : choisissez donc l'espèce en premier — certains calculs de toxicité ne concernent qu'une seule d'entre elles et le précisent.",
+  'faq.q3': "D'où viennent les fourchettes de doses ?",
+  'faq.a3':
+    "Les fourchettes de référence proviennent du Plumb's Veterinary Drug Handbook et les seuils de toxicité de sources publiées en toxicologie vétérinaire, citées dans chaque outil. Elles sont indicatives et doivent être vérifiées de façon indépendante avant tout traitement.",
+  'faq.q4': "Puis-je l'utiliser hors ligne ?",
+  'faq.a4':
+    "Oui. Le site est une application web progressive installable : ajoutez-le une fois à votre écran d'accueil et les calculateurs continuent de fonctionner sans connexion réseau.",
+  'faq.q5': 'Les données patient sont-elles stockées quelque part ?',
+  'faq.a5':
+    "Non. Tous les calculs s'exécutent localement dans votre navigateur et rien n'est envoyé à un serveur. La session patient n'existe que dans l'onglet en cours.",
+  'faq.q6': "Que faire en cas de suspicion d'intoxication ?",
+  'faq.a6':
+    "Contactez immédiatement votre vétérinaire ou la clinique d'urgence la plus proche, avant l'apparition des signes. Servez-vous du calculateur de toxicité pour estimer l'exposition et nourrir cette conversation, jamais pour renoncer à consulter.",
 };

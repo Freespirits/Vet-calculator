@@ -18,7 +18,8 @@ export const en: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Veterinary Calculator',
-  'hero.subtitle': 'Drug dosing & toxicity math — precise, fast, in the palm of your hand.',
+  'hero.subtitle':
+    'Drug dosing and toxicity math for dogs and cats — 130+ reference dose ranges, 14 cited toxicity calculators and a photo library of toxic plants, free and offline-capable.',
   'hero.cta': 'Start calculating',
   'hero.scroll': 'Scroll',
 
@@ -203,4 +204,43 @@ export const en: Record<TKey, string> = {
   'footer.text': 'Assistants for Assistants · All rights reserved',
   'footer.madeWith': 'Built with clinical care',
   'footer.partner': 'Clinical partner',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'About this veterinary calculator',
+  'about.lead':
+    'Vet-Holim is a free clinical decision-support tool for veterinarians, veterinary nurses and technicians treating dogs and cats. It brings four things onto one page: an injection-volume dosage calculator, a suite of cited toxicity calculators, a photo library of toxic plants, and a multi-medication patient session you can export as a single report. Everything runs in your browser — no account, no upload, no patient data leaving the device.',
+  'about.dosage.title': 'Drug dosage calculator',
+  'about.dosage.body':
+    "Enter species, body weight, dose per kilogram and vial concentration, and the calculator returns the exact volume to draw, rounded to your chosen syringe precision (0.01, 0.05 or 0.1 mL). It covers more than 130 drugs with reference ranges from Plumb's Veterinary Drug Handbook, flags doses that fall outside the published range, and supports mg/kg, mcg/kg, IU/kg and mL/kg alongside the IV, IM, SC and PO routes.",
+  'about.toxins.title': 'Toxicity calculators',
+  'about.toxins.body':
+    'Fourteen cited toxicity tools estimate risk from body weight and the amount ingested: chocolate and other methylxanthines, grapes and raisins, xylitol, onion and garlic, macadamia nuts, ibuprofen, paracetamol, permethrin, lilies, rodenticides, ethylene glycol, cannabis, alcohol and caffeine. Each result gives a risk band, the expected clinical signs, the decontamination window and a recommended action. Idiosyncratic toxins never return a safe verdict.',
+  'about.plants.title': 'Toxic plant library',
+  'about.plants.body':
+    'A searchable, photo-illustrated library of house and garden plants that are dangerous to dogs and cats, filterable by severity from mild to deadly. Each entry lists the toxic principle, the parts of the plant involved, the clinical signs to expect and how urgently the animal needs to be seen.',
+  'about.patient.title': 'Patient session',
+  'about.patient.body':
+    'Working a case with several medications? Start a patient session, add each calculated dose to the list, then copy or share one consolidated medication report with drug names, doses, volumes to draw, routes and frequencies — useful for handover, treatment sheets and owner instructions.',
+  'about.who.title': 'Who it is for',
+  'about.who.body':
+    'Built for licensed veterinary professionals and students. Clinical responsibility always rests with the treating veterinarian: verify every number against your own drug references before administration. Owners who suspect a poisoning should contact a veterinary clinic or emergency service immediately rather than acting on a calculation.',
+  'faq.title': 'Frequently asked questions',
+  'faq.q1': 'Is the veterinary calculator free?',
+  'faq.a1':
+    'Yes. Every calculator, the plant library and the patient session are free to use, with no account and no registration.',
+  'faq.q2': 'Which animals does it cover?',
+  'faq.a2':
+    'Dogs and cats. Dose ranges, toxicity thresholds and clinical signs differ between the two species, so choose the species first — some toxicity calculations apply to only one of them and will say so.',
+  'faq.q3': 'Where do the dose ranges come from?',
+  'faq.a3':
+    "Reference dose ranges come from Plumb's Veterinary Drug Handbook, and toxicity thresholds are drawn from published veterinary toxicology sources cited inside each tool. They are guidance only and must be verified independently before treatment.",
+  'faq.q4': 'Can I use it offline?',
+  'faq.a4':
+    'Yes. The site is an installable progressive web app: add it to your home screen once and the calculators keep working without a network connection.',
+  'faq.q5': 'Is my patient data stored anywhere?',
+  'faq.a5':
+    'No. All calculations run locally in your browser and nothing is uploaded to a server. Patient sessions live only in the current tab.',
+  'faq.q6': 'What should I do in a suspected poisoning?',
+  'faq.a6':
+    'Contact your veterinarian or nearest emergency clinic immediately, before signs appear. Use the toxicity calculator to estimate the exposure and inform that conversation — never to decide against seeking care.',
 };

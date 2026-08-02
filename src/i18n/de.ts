@@ -15,7 +15,8 @@ export const de: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Veterinär-Rechner',
-  'hero.subtitle': 'Medikamentendosierung & Toxizitätsberechnung – präzise, schnell, in deiner Handfläche.',
+  'hero.subtitle':
+    'Dosierungs- und Toxizitätsberechnungen für Hunde und Katzen: über 130 Referenz-Dosisbereiche, 14 belegte Toxizitätsrechner und eine bebilderte Bibliothek giftiger Pflanzen. Kostenlos und offlinefähig.',
   'hero.cta': 'Berechnung starten',
   'hero.scroll': 'Scrollen',
 
@@ -200,4 +201,43 @@ export const de: Record<TKey, string> = {
   'footer.text': 'Assistenten für Assistenten · Alle Rechte vorbehalten',
   'footer.madeWith': 'Mit klinischer Sorgfalt erstellt',
   'footer.partner': 'Klinischer Partner',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'Über diesen Veterinärrechner',
+  'about.lead':
+    'Vet-Holim ist ein kostenloses Werkzeug zur klinischen Entscheidungsunterstützung für Tierärztinnen und Tierärzte, Pflegekräfte und Fachangestellte, die Hunde und Katzen behandeln. Es vereint vier Dinge auf einer Seite: einen Dosisrechner, der das aufzuziehende Volumen liefert, eine Reihe belegter Toxizitätsrechner, eine bebilderte Bibliothek giftiger Pflanzen und eine Patientensitzung für mehrere Medikamente, die sich als ein einziger Bericht exportieren lässt. Alles läuft im Browser — ohne Konto, ohne Upload, ohne dass Patientendaten das Gerät verlassen.',
+  'about.dosage.title': 'Medikamenten-Dosisrechner',
+  'about.dosage.body':
+    "Geben Sie Tierart, Körpergewicht, Dosis pro Kilogramm und Konzentration ein, und der Rechner liefert das genaue aufzuziehende Volumen, gerundet auf die gewählte Spritzengenauigkeit (0,01, 0,05 oder 0,1 ml). Er umfasst über 130 Wirkstoffe mit Referenzbereichen aus Plumb's Veterinary Drug Handbook, markiert Dosen außerhalb des publizierten Bereichs und unterstützt mg/kg, µg/kg, IE/kg und ml/kg sowie die Applikationswege i.v., i.m., s.c. und p.o.",
+  'about.toxins.title': 'Toxizitätsrechner',
+  'about.toxins.body':
+    'Vierzehn belegte Toxizitätswerkzeuge schätzen das Risiko aus Körpergewicht und aufgenommener Menge: Schokolade und andere Methylxanthine, Weintrauben und Rosinen, Xylit, Zwiebel und Knoblauch, Macadamianüsse, Ibuprofen, Paracetamol, Permethrin, Lilien, Rodentizide, Ethylenglykol, Cannabis, Alkohol und Koffein. Jedes Ergebnis nennt eine Risikostufe, die zu erwartenden klinischen Zeichen, das Dekontaminationsfenster und eine Handlungsempfehlung. Idiosynkratische Gifte liefern nie ein sicheres Urteil.',
+  'about.plants.title': 'Bibliothek giftiger Pflanzen',
+  'about.plants.body':
+    'Eine durchsuchbare, bebilderte Bibliothek von Zimmer- und Gartenpflanzen, die für Hunde und Katzen gefährlich sind, filterbar nach Schweregrad von mild bis tödlich. Jeder Eintrag nennt das Giftprinzip, die betroffenen Pflanzenteile, die zu erwartenden klinischen Zeichen und wie dringend das Tier vorgestellt werden muss.',
+  'about.patient.title': 'Patientensitzung',
+  'about.patient.body':
+    'Ein Fall mit mehreren Medikamenten? Starten Sie eine Patientensitzung, fügen Sie jede berechnete Dosis der Liste hinzu und kopieren oder teilen Sie anschließend einen gebündelten Medikationsbericht mit Wirkstoffnamen, Dosen, aufzuziehenden Volumina, Applikationswegen und Frequenzen — praktisch für Übergabe, Behandlungsbogen und Besitzeranweisungen.',
+  'about.who.title': 'Für wen es gedacht ist',
+  'about.who.body':
+    'Entwickelt für approbierte veterinärmedizinische Fachkräfte und Studierende. Die klinische Verantwortung liegt stets bei der behandelnden Tierärztin oder dem behandelnden Tierarzt: Prüfen Sie jeden Wert vor der Verabreichung anhand Ihrer eigenen Arzneimittelreferenzen. Tierhalter mit Vergiftungsverdacht sollten sofort eine Tierarztpraxis oder einen Notdienst kontaktieren, statt nach einer Berechnung zu handeln.',
+  'faq.title': 'Häufige Fragen',
+  'faq.q1': 'Ist der Veterinärrechner kostenlos?',
+  'faq.a1':
+    'Ja. Alle Rechner, die Pflanzenbibliothek und die Patientensitzung sind kostenlos nutzbar, ohne Konto und ohne Registrierung.',
+  'faq.q2': 'Welche Tierarten werden abgedeckt?',
+  'faq.a2':
+    'Hunde und Katzen. Dosisbereiche, Toxizitätsschwellen und klinische Zeichen unterscheiden sich zwischen beiden Arten — wählen Sie daher zuerst die Tierart. Manche Toxizitätsberechnungen gelten nur für eine davon und weisen darauf hin.',
+  'faq.q3': 'Woher stammen die Dosisbereiche?',
+  'faq.a3':
+    "Die Referenzbereiche stammen aus Plumb's Veterinary Drug Handbook, die Toxizitätsschwellen aus publizierten veterinärtoxikologischen Quellen, die in jedem Werkzeug zitiert werden. Sie dienen nur der Orientierung und müssen vor der Behandlung eigenständig überprüft werden.",
+  'faq.q4': 'Kann ich ihn offline nutzen?',
+  'faq.a4':
+    'Ja. Die Seite ist eine installierbare progressive Web-App: einmal zum Startbildschirm hinzufügen, und die Rechner funktionieren auch ohne Netzverbindung weiter.',
+  'faq.q5': 'Werden Patientendaten irgendwo gespeichert?',
+  'faq.a5':
+    'Nein. Alle Berechnungen laufen lokal im Browser, nichts wird auf einen Server hochgeladen. Die Patientensitzung existiert nur im aktuellen Tab.',
+  'faq.q6': 'Was tun bei Vergiftungsverdacht?',
+  'faq.a6':
+    'Kontaktieren Sie sofort Ihre Tierärztin oder die nächste Notfallpraxis, noch bevor Symptome auftreten. Nutzen Sie den Toxizitätsrechner, um die Exposition abzuschätzen und dieses Gespräch zu fundieren — nie, um auf eine Behandlung zu verzichten.',
 };

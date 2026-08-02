@@ -15,7 +15,8 @@ export const it: Record<TKey, string> = {
 
   // Hero
   'hero.title': 'Calcolatrice Veterinaria',
-  'hero.subtitle': 'Dosaggi dei farmaci e calcoli di tossicità — precisi, rapidi, nel palmo della mano.',
+  'hero.subtitle':
+    'Calcoli di dosaggio e tossicità per cani e gatti: oltre 130 intervalli di dose di riferimento, 14 calcolatori di tossicità con fonti e una libreria fotografica di piante tossiche. Gratis e utilizzabile offline.',
   'hero.cta': 'Inizia a calcolare',
   'hero.scroll': 'Scorri',
 
@@ -200,4 +201,43 @@ export const it: Record<TKey, string> = {
   'footer.text': 'Assistenti per assistenti · Tutti i diritti riservati',
   'footer.madeWith': 'Realizzato con cura clinica',
   'footer.partner': 'Partner clinico',
+
+  // About / FAQ — server-rendered SEO content
+  'about.title': 'Informazioni su questo calcolatore veterinario',
+  'about.lead':
+    'Vet-Holim è uno strumento gratuito di supporto alla decisione clinica per medici veterinari, infermieri e tecnici che curano cani e gatti. Riunisce quattro cose in una sola pagina: un calcolatore di dose che restituisce il volume da prelevare, una serie di calcolatori di tossicità con fonti, una libreria fotografica di piante tossiche e una sessione paziente multi-farmaco esportabile come unico referto. Tutto gira nel browser — nessun account, nessun caricamento, nessun dato del paziente lascia il dispositivo.',
+  'about.dosage.title': 'Calcolatore di dosaggio',
+  'about.dosage.body':
+    "Inserisci specie, peso corporeo, dose per chilogrammo e concentrazione del flacone: il calcolatore restituisce il volume esatto da prelevare, arrotondato alla precisione di siringa scelta (0,01, 0,05 o 0,1 ml). Copre oltre 130 farmaci con intervalli di riferimento tratti dal Plumb's Veterinary Drug Handbook, segnala le dosi fuori dall'intervallo pubblicato e supporta mg/kg, mcg/kg, UI/kg e ml/kg oltre alle vie EV, IM, SC e PO.",
+  'about.toxins.title': 'Calcolatori di tossicità',
+  'about.toxins.body':
+    "Quattordici strumenti di tossicità con fonti stimano il rischio a partire dal peso corporeo e dalla quantità ingerita: cioccolato e altre metilxantine, uva e uvetta, xilitolo, cipolla e aglio, noci di macadamia, ibuprofene, paracetamolo, permetrina, gigli, rodenticidi, glicole etilenico, cannabis, alcol e caffeina. Ogni risultato indica un livello di rischio, i segni clinici attesi, la finestra di decontaminazione e l'azione consigliata. I tossici idiosincrasici non restituiscono mai un verdetto sicuro.",
+  'about.plants.title': 'Libreria delle piante tossiche',
+  'about.plants.body':
+    "Una libreria illustrata e ricercabile di piante da appartamento e da giardino pericolose per cani e gatti, filtrabile per gravità, dal lieve al letale. Ogni scheda riporta il principio tossico, le parti della pianta coinvolte, i segni clinici attesi e con quale urgenza l'animale deve essere visitato.",
+  'about.patient.title': 'Sessione paziente',
+  'about.patient.body':
+    "Un caso con più farmaci? Avvia una sessione paziente, aggiungi ogni dose calcolata all'elenco, poi copia o condividi un unico referto farmacologico con nomi, dosi, volumi da prelevare, vie e frequenze — utile per il passaggio di consegne, il foglio terapia e le istruzioni al proprietario.",
+  'about.who.title': 'A chi è rivolto',
+  'about.who.body':
+    "Realizzato per professionisti veterinari abilitati e studenti. La responsabilità clinica resta sempre del medico veterinario curante: verifica ogni valore sulle tue referenze farmacologiche prima della somministrazione. I proprietari che sospettano un avvelenamento devono contattare subito una clinica veterinaria o un servizio d'urgenza, invece di agire in base a un calcolo.",
+  'faq.title': 'Domande frequenti',
+  'faq.q1': 'Il calcolatore veterinario è gratuito?',
+  'faq.a1':
+    'Sì. Tutti i calcolatori, la libreria delle piante e la sessione paziente sono gratuiti, senza account e senza registrazione.',
+  'faq.q2': 'Quali animali copre?',
+  'faq.a2':
+    'Cani e gatti. Intervalli di dose, soglie di tossicità e segni clinici differiscono tra le due specie, quindi scegli prima la specie — alcuni calcoli di tossicità valgono solo per una di esse e lo segnalano.',
+  'faq.q3': 'Da dove provengono gli intervalli di dose?',
+  'faq.a3':
+    "Gli intervalli di riferimento provengono dal Plumb's Veterinary Drug Handbook e le soglie di tossicità da fonti pubblicate di tossicologia veterinaria citate all'interno di ogni strumento. Sono solo indicativi e vanno verificati in modo indipendente prima del trattamento.",
+  'faq.q4': 'Posso usarlo offline?',
+  'faq.a4':
+    'Sì. Il sito è una progressive web app installabile: aggiungilo una volta alla schermata home e i calcolatori continuano a funzionare senza connessione di rete.',
+  'faq.q5': 'I dati del paziente vengono salvati da qualche parte?',
+  'faq.a5':
+    'No. Tutti i calcoli girano localmente nel browser e nulla viene caricato su un server. La sessione paziente esiste solo nella scheda corrente.',
+  'faq.q6': 'Cosa fare in caso di sospetto avvelenamento?',
+  'faq.a6':
+    "Contatta subito il tuo veterinario o il pronto soccorso più vicino, prima che compaiano i segni. Usa il calcolatore di tossicità per stimare l'esposizione e documentare quella conversazione, mai per decidere di non cercare assistenza.",
 };

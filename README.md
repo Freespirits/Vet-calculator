@@ -65,6 +65,11 @@ npm run build
 
 The production build performs TypeScript project compilation and static-site generation. Generated output is written to `dist/` and is intentionally not committed.
 
+All three are expected to pass with no errors or warnings. Two conventions keep them that way:
+
+- **Component files export components only.** Data and helpers that sit beside a component live in a sibling plain `.ts` file (`toxins/<id>/meta.ts`, `components/seoMeta.ts`, `lib/massUnits.ts`), which is what the `react-refresh/only-export-components` lint rule checks.
+- **The first browser render must equal the prerendered HTML.** Anything only the browser knows — the URL hash, a saved theme or language, the reduced-motion setting — is read through `useSyncExternalStore` (see `hooks/useHashRoute.ts`, `useTheme.ts`, `useReducedMotion.ts`, `useHydrated.ts`), never in a `useState` initialiser. `src/hydration.test.tsx` prerenders the page, applies a visitor's state and hydrates it; a mismatch fails the test instead of surfacing as React error #418 on the live site.
+
 ## Project map
 
 ```text

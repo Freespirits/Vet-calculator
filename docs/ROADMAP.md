@@ -84,7 +84,7 @@ identity — rather than bolting on unrelated features. Phases are ordered by
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:
    common, species-specific, life-threatening; fits the existing
-   `toxins/<id>/{calc.ts, Calculator.tsx, calc.test.ts}` pattern exactly.
+   `toxins/<id>/{calc.ts, meta.ts, Calculator.tsx, calc.test.ts}` pattern exactly.
 2. **More household toxins** — metaldehyde (slug bait), raw bread dough /
    ethanol, salt / play-dough, hops, naproxen (the ibuprofen module's sibling).
    Same cited-threshold discipline as the current 14.

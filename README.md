@@ -22,6 +22,7 @@ The screenshot uses an illustrative exposure of a 10 kg dog ingesting 50 g of 70
 ## What it includes
 
 - A medication dosage calculator with weight and concentration conversion, dose-range guidance, route selection, rounding, warnings, and a transparent calculation breakdown.
+- A breed- and genotype-aware MDR1 (P-glycoprotein) check inside the dosage calculator, built on the published pharmacogenetic literature, plus a notice when two P-glycoprotein substrate drugs are on one patient's list.
 - Code Blue, a CPR aid for trained veterinary teams: a 2-minute cycle clock with a pause timer, a compression metronome, weight-based doses and shock energies cited from the 2024 RECOVER Guidelines, a clinic-entered crash cart for draw-up volumes, and a time-stamped event log.
 - Fourteen toxin calculators: chocolate, caffeine, grapes/raisins, xylitol, allium, macadamia, lilies, THC, acetaminophen, ibuprofen, ethylene glycol, anticoagulant rodenticide, bromethalin, and cholecalciferol.
 - A searchable toxic-plant library with credited plant photography.
@@ -133,6 +134,18 @@ Every figure comes from one file, [`src/cpr/recoverGuideline.ts`](src/cpr/recove
 Code Blue is an independent tool. It cites published recommendations from [The RECOVER Initiative](https://recoverinitiative.org); it is not affiliated with, endorsed, or certified by that organisation, uses no RECOVER logo, and does not reproduce the RECOVER CPR algorithm or drug dosing chart (the interface links to the official versions instead).
 
 The organisation's [Brand & Intellectual Property Guidelines](https://recoverinitiative.org/brand-intellectual-property-guidelines/) state that its algorithms and dosing charts are copyrighted, may not be modified or incorporated into products, and that "product integration" counts as commercial use requiring written permission. They also permit quoting and summarising the guidelines with attribution. Whether an independent, cited calculator like this one needs permission is a judgment for the site owner and, ideally, a lawyer. Before Code Blue is published, the owner should consider asking The RECOVER Initiative for written confirmation through the request process described on that page.
+
+## MDR1 (P-glycoprotein) check
+
+When the drug selected in the dosage calculator has species-specific published MDR1 evidence, a card appears under the dose reference. It asks for two optional facts — breed (dogs) and MDR1 genotype — and shows what was observed, the kind of evidence, what the published review recommends, and the sources.
+
+- **Which drugs.** Only drugs with dog- or cat-specific evidence: ivermectin, loperamide, apomorphine, acepromazine, butorphanol, cyclosporine, maropitant, digoxin, mexiletine, and fluralaner in dogs; ivermectin in cats. A drug known to be a P-glycoprotein substrate only in people or mice is not listed.
+- **How loudly it flags.** A tested dog with the mutation gets a warning or a danger flag depending on the drug; an untested dog of a listed breed gets a warning with that breed's published mutation frequency; an untested dog with no breed given gets an informational note; a dog tested normal is cleared.
+- **Dose changes.** A starting reduction (25% with one copy, 50% with two) is shown only for drugs the review names for dose reduction and only for a tested dog. For loperamide and apomorphine the card says to use an alternative, because no safe reduced dose is established. Nothing is inferred from breed alone, and the calculator's dose field is never changed automatically.
+- **Breed figures.** Frequencies are printed exactly as in the review's table; Israeli mutant-allele frequencies are shown separately where published.
+- **Elsewhere.** A dog's medication list shows a notice when it holds two or more P-glycoprotein substrates, and the apomorphine row in the toxin "Treat now" panel carries the MDR1 caution.
+
+Sources (all in [`src/data/mdr1.ts`](src/data/mdr1.ts)): Mealey KL, Owens JG, Freeman E, *J Vet Pharmacol Ther* 2023;46(1):1–16, [doi:10.1111/jvp.13102](https://doi.org/10.1111/jvp.13102) (open access; read in full); Mealey KL et al., *Pharmacogenetics* 2001, [doi:10.1097/00008571-200111000-00012](https://doi.org/10.1097/00008571-200111000-00012); Deshpande D et al., *J Vet Intern Med* 2016, [doi:10.1111/jvim.13827](https://doi.org/10.1111/jvim.13827); Mealey KL et al., *Drug Metab Dispos* 2008, [doi:10.1124/dmd.107.018978](https://doi.org/10.1124/dmd.107.018978); Campbell O et al., *J Small Anim Pract* 2017, [doi:10.1111/jsap.12618](https://doi.org/10.1111/jsap.12618); Mealey KL, *Vet Parasitol* 2008, [doi:10.1016/j.vetpar.2008.09.009](https://doi.org/10.1016/j.vetpar.2008.09.009); Mealey KL, Burke NS, *J Vet Pharmacol Ther* 2015, [doi:10.1111/jvp.12212](https://doi.org/10.1111/jvp.12212); Dekel Y et al., *BMC Vet Res* 2017, [doi:10.1186/s12917-017-1251-9](https://doi.org/10.1186/s12917-017-1251-9); and two case reports in *J Vet Intern Med* (Sartor 2004; Henik 2006). Three further papers are cited as reported in the 2023 review and are marked that way in the data file.
 
 ## Public clinical references
 

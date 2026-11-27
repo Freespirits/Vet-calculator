@@ -11,6 +11,10 @@ import { useI18n } from '../../i18n/LanguageProvider';
 import { usePatientSessionContext } from './PatientSessionContext';
 import type { Patient } from '../../hooks/usePatientSession';
 import type { Species } from '../../types';
+import { L, tr } from '../../types/toxins';
+import { getDrugByName } from '../../data/drugDatabase';
+import { MDR1_SOURCES } from '../../data/mdr1';
+import { pgpCoAdministration } from '../../lib/mdr1';
 import { GlassCard, SegmentedControl } from '../../components/primitives';
 import { TextField, NumberField } from '../../components/forms';
 import { StatPill } from '../../components/feedback';
@@ -102,6 +106,39 @@ function NewPatientForm({ onStart }: { onStart: (p: Patient) => void }) {
   );
 }
 
+const PGP_NOTICE = {
+  label: L('מתן משולב של סובסטרטים ל-P-glycoprotein', 'P-glycoprotein co-administration'),
+  lead: L('ברשימה שתי תרופות או יותר שהן סובסטרט של P-glycoprotein:', 'Two or more P-glycoprotein substrate drugs are on this list:'),
+  body: L(
+    'התרופות מתחרות על אותו נשא, ולכן עלול להיווצר חסר תפקודי של P-glycoprotein בכל כלב, ללא קשר לגזע. אם לאחת מהן טווח בטיחות צר, הסקירה ממליצה לשקול הפחתת מינון או חלופה.',
+    'They compete for the same transporter, which can cause P-glycoprotein dysfunction in any dog, whatever the breed. If either has a narrow safety margin, the review advises considering a dose reduction or an alternative.',
+  ),
+};
+
+/**
+ * Cited notice shown on a dog's medication list when it holds two or more
+ * different drugs the 2023 MDR1 review classes as canine P-glycoprotein
+ * substrates. It names the drugs involved; it does not change any dose.
+ */
+function PgpCoAdministrationNotice({ drugNames }: { drugNames: string[] }) {
+  const { lang } = useI18n();
+  const drugs = drugNames.map((name) => getDrugByName(name)).filter((drug) => drug !== null);
+  const substrateIds = pgpCoAdministration(drugs.map((drug) => drug.id));
+  if (substrateIds.length === 0) return null;
+  const names = drugs
+    .filter((drug) => substrateIds.includes(drug.id))
+    .map((drug) => (lang === 'he' ? drug.nameHe : drug.name));
+  return (
+    <div role="note" aria-label={tr(PGP_NOTICE.label, lang)} className="rounded-2xl border border-amber/45 bg-amber/10 p-3.5 text-sm leading-relaxed text-ink/90">
+      <p className="font-semibold text-amber">
+        {tr(PGP_NOTICE.lead, lang)} {[...new Set(names)].join(', ')}
+      </p>
+      <p className="mt-1">{tr(PGP_NOTICE.body, lang)}</p>
+      <p className="mt-1.5 text-[11px] text-muted">{MDR1_SOURCES.review2023}</p>
+    </div>
+  );
+}
+
 export function PatientSession({ onAddMedication }: { onAddMedication?: () => void }) {
   const { t, lang } = useI18n();
   const { session, startSession, endSession, removeMedication, clearMedications, exportReport } =
@@ -160,6 +197,10 @@ export function PatientSession({ onAddMedication }: { onAddMedication?: () => vo
           <StatPill label={t('field.weight')} value={`${patient.weightKg} ${t('unit.kg')}`} />
         </div>
       </GlassCard>
+
+      {patient.species === 'dog' && (
+        <PgpCoAdministrationNotice drugNames={medications.map((medication) => medication.drugName)} />
+      )}
 
       {/* Medications */}
       <GlassCard className="p-5">

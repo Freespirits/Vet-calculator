@@ -53,6 +53,13 @@ identity — rather than bolting on unrelated features. Phases are ordered by
   RECOVER algorithm or dosing chart — see "Use of RECOVER material" in the
   README for the open owner decision.
 
+- **MDR1 (P-glycoprotein) check** — a card in the dosage calculator for drugs
+  with published species-specific MDR1 evidence: optional breed + genotype,
+  cited finding, evidence type, the review's recommendation, published breed
+  frequencies (worldwide and Israel). Also a P-glycoprotein co-administration
+  notice on a dog's medication list and an MDR1 caution on the apomorphine
+  "Treat now" row. Breed and genotype are stored on the patient session.
+
 ## Phase 1 — content depth (extends the cited clinical core)
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:

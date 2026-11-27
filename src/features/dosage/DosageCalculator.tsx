@@ -11,6 +11,7 @@ import { RangeGauge } from '../../components/gauges';
 import { WarningList, SourceList, StatPill, type Severity } from '../../components/feedback';
 import { DogIcon, CatIcon, SyringeIcon, PillIcon, ScaleIcon, RefreshIcon, CopyIcon, CheckIcon, AlertTriangleIcon, PawIcon } from '../../components/Icons';
 import { usePatientSessionContext } from '../patient/PatientSessionContext';
+import { Mdr1Card } from './Mdr1Card';
 
 const DOSE_UNITS: DoseUnit[] = ['mg/kg', 'mcg/kg', 'IU/kg', 'mL/kg'];
 const CONC_UNITS: ConcentrationUnit[] = ['mg/mL', 'mcg/mL', 'IU/mL'];
@@ -207,6 +208,9 @@ export function DosageCalculator() {
               <p className="mt-2 text-[11px] leading-snug text-muted">{t('dose.plumbsRefHint')}</p>
             </div>
           )}
+
+          {/* Breed / genotype pharmacogenetic check — renders only for drugs with published MDR1 evidence */}
+          <Mdr1Card species={state.species} drugId={selectedDrug?.id ?? null} />
 
           <div className="grid grid-cols-2 gap-3">
             <NumberField

@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Lang } from '../i18n/languages';
 import { tr } from '../types/toxins';
+import type { Mdr1Genotype } from '../data/mdr1';
 
 const STORAGE_KEY = '@vetcalc_web_patient_session';
 
@@ -17,7 +18,14 @@ export interface Patient {
   name: string;
   species: 'dog' | 'cat';
   weightKg: number;
+  /** Id in MDR1_BREEDS; set from the MDR1 check in the dosage calculator. */
+  breedId?: string | null;
+  /** MDR1 (ABCB1) genotype, when the patient has been tested. */
+  mdr1Genotype?: Mdr1Genotype;
 }
+
+/** The patient details the MDR1 check may change after the session has started. */
+export type PatientMdr1Details = Pick<Patient, 'breedId' | 'mdr1Genotype'>;
 
 export interface PatientMedRecord {
   id: string;
@@ -93,6 +101,11 @@ export function usePatientSession() {
 
   const endSession = useCallback(() => {
     setSession(null);
+  }, []);
+
+  /** Merge MDR1 details (breed, genotype) into the active patient; no-op without a session. */
+  const updatePatient = useCallback((changes: Partial<PatientMdr1Details>) => {
+    setSession((prev) => (prev ? { ...prev, patient: { ...prev.patient, ...changes } } : prev));
   }, []);
 
   const addMedication = useCallback((med: Omit<PatientMedRecord, 'id'>) => {
@@ -206,6 +219,7 @@ export function usePatientSession() {
     session,
     startSession,
     endSession,
+    updatePatient,
     addMedication,
     removeMedication,
     clearMedications,

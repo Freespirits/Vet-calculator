@@ -54,8 +54,12 @@ export const EMESIS_DOG: TreatmentRow = {
   name: L('אפומורפין (כלב)', 'Apomorphine (dog)'),
   dose: { min: 0.03, unit: 'mg/kg' },
   route: 'IV',
-  note: L('או 0.04 מ"ג/ק"ג IM. רק במטופל א-סימפטומטי עם הכרה מלאה.', 'or 0.04 mg/kg IM. Only in an asymptomatic, fully conscious patient.'),
-  source: "Plumb's Veterinary Drug Handbook, 10th ed. — Apomorphine.",
+  note: L(
+    'או 0.04 מ"ג/ק"ג IM. רק במטופל א-סימפטומטי עם הכרה מלאה. כלבים עם מוטציית MDR1: אפומורפין גורם לדיכוי מערכת העצבים המרכזית ואין נתונים למינון מופחת בטוח — ההמלצה שפורסמה היא להשתמש בחלופה.',
+    'or 0.04 mg/kg IM. Only in an asymptomatic, fully conscious patient. Dogs with the MDR1 mutation: apomorphine causes CNS depression and no safe reduced dose is established — the published advice is to use an alternative.',
+  ),
+  source:
+    "Plumb's Veterinary Drug Handbook, 10th ed. — Apomorphine. MDR1: Mealey KL, Owens JG, Freeman E. J Vet Pharmacol Ther. 2023;46(1):1–16. doi:10.1111/jvp.13102",
 };
 export const EMESIS_CAT: TreatmentRow = {
   name: L('דקסמדטומידין (חתול)', 'Dexmedetomidine (cat)'),

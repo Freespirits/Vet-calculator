@@ -109,10 +109,3 @@ export function ToxinScaffold({
     </div>
   );
 }
-
-/** Small helper: amount input with a g/oz unit toggle, returns grams. */
-export function gramsFrom(amount: string, unit: 'g' | 'oz'): number {
-  const n = parseFloat(amount);
-  if (!isFinite(n) || n <= 0) return 0;
-  return unit === 'oz' ? n * 28.3495 : n;
-}

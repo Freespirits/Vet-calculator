@@ -1,23 +1,10 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
+import { L, type ToxSpecies } from '../../types/toxins';
 import { ToxinScaffold } from '../../components/ToxinScaffold';
 import { SelectField, NumberField } from '../../components/forms';
-import { AlertOctagonIcon } from '../../components/Icons';
 import { ANTICOAGULANT_AGENTS, computeAnticoagulant } from './calc';
-
-export const anticoagulantMeta: ToxinMeta = {
-  id: 'anticoagulant_rodenticide',
-  name: L('רעל עכברים נוגד קרישה', 'Anticoagulant rodenticide'),
-  blurb: L('ברודיפקום, ברומדיולון ועוד', 'Brodifacoum, bromadiolone & others'),
-  about: L(
-    'פתיונות הדברה נגד מכרסמים מהסוג נוגד־הקרישה (ברודיפקום, ברומדיולון, דיפתיאלון ועוד) חוסמים את מחזור ויטמין K ומונעים קרישת דם. הדימום מתחיל בשקט רק 3–5 ימים אחרי אכילת הפיתיון — אבל קיים אנטידוט יעיל כשמטפלים בזמן.',
-    'Anticoagulant rat and mouse baits (brodifacoum, bromadiolone, difethialone and others) block the vitamin-K cycle and stop blood from clotting. Bleeding starts silently only 3–5 days after the bait is eaten — but an effective antidote exists when treated in time.',
-  ),
-  species: ['dog', 'cat'],
-  accent: '#DC2626',
-  Icon: AlertOctagonIcon,
-};
+import { anticoagulantMeta } from './meta';
 
 /** Common bait active-ingredient concentrations (% w/w). */
 const CONCENTRATIONS = [

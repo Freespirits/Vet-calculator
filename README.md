@@ -61,9 +61,18 @@ The development server prints its local URL after startup.
 npm run lint
 npm run test:run
 npm run build
+npm run test:browser
 ```
 
 The production build performs TypeScript project compilation and static-site generation. Generated output is written to `dist/` and is intentionally not committed.
+
+`npm run test:browser` builds the site and opens it in a real Chromium with [Playwright](https://playwright.dev) (`e2e/`, configured in `playwright.config.ts`). It is separate from the unit tests because it checks what jsdom cannot: that the prerendered page survives hydration for every kind of visitor (deep links, saved theme or language, reduced motion), that `<html lang dir data-theme>` end up matching what is on screen, that deep links open and scroll to their tool, and that the dosage volume never shows a negative number while counting up. The first time, download the browser with:
+
+```bash
+npx playwright install chromium
+```
+
+Set `E2E_BASE_URL` to run the same checks against another copy of the site, such as a deploy preview: `E2E_BASE_URL=https://example.vercel.app npx playwright test`.
 
 All three are expected to pass with no errors or warnings. Two conventions keep them that way:
 

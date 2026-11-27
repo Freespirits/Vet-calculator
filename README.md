@@ -74,6 +74,8 @@ npx playwright install chromium
 
 Set `E2E_BASE_URL` to run the same checks against another copy of the site, such as a deploy preview: `E2E_BASE_URL=https://example.vercel.app npx playwright test`.
 
+Every pull request, and every push to the default branch, runs all four through GitHub Actions (`.github/workflows/ci.yml`).
+
 All three are expected to pass with no errors or warnings. Two conventions keep them that way:
 
 - **Component files export components only.** Data and helpers that sit beside a component live in a sibling plain `.ts` file (`toxins/<id>/meta.ts`, `components/seoMeta.ts`, `lib/massUnits.ts`), which is what the `react-refresh/only-export-components` lint rule checks.

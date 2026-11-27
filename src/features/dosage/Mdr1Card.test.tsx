@@ -133,3 +133,17 @@ describe('apomorphine row in "Treat now"', () => {
     expect(screen.getByText(/MDR1 mutation.*alternative/i)).toBeInTheDocument();
   });
 });
+
+describe('Mdr1Card — right-to-left safety', () => {
+  it('isolates a "<5%" frequency so Hebrew text cannot mirror the symbol', () => {
+    render(
+      <LanguageProvider initial="he">
+        <PatientSessionProvider>
+          <Mdr1Card species="dog" drugId="loperamide" />
+        </PatientSessionProvider>
+      </LanguageProvider>,
+    );
+    fireEvent.change(screen.getAllByRole('combobox')[0], { target: { value: 'border_collie' } });
+    expect(screen.getByText(/⁦<5%⁩/)).toBeInTheDocument();
+  });
+});

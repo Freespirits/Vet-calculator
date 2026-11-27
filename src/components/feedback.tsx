@@ -196,7 +196,7 @@ export function SourceList({ sources }: { sources: string[] }) {
         </span>
       </button>
       {open && (
-        <ul className="flex list-disc flex-col gap-1.5 px-7 pb-3 pt-1 text-xs leading-relaxed text-muted">
+        <ul aria-label={t('common.sources')} className="flex list-disc flex-col gap-1.5 px-7 pb-3 pt-1 text-xs leading-relaxed text-muted">
           {sources.map((s, i) => (
             <li key={i}>{s}</li>
           ))}

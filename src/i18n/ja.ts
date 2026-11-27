@@ -241,4 +241,9 @@ export const ja: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'コードブルー — 心肺蘇生',
   'cpr.open.hint': 'サイクルタイマー、メトロノーム、体重別投与量、イベント記録',
+
+  // Emergency & critical care suite
+  'tab.er': '救急',
+  'er.title': '救急・集中治療',
+  'er.subtitle': '発表済みの獣医学研究にもとづく救急疾患・ベッドサイドスコア・輸液計画——すべての数値に出典付き。',
 };

@@ -250,6 +250,11 @@ export const he = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'קוד כחול — החייאה',
   'cpr.open.hint': 'שעון מחזורים, מטרונום, מינונים לפי משקל ורישום אירועים',
+
+  // Emergency & critical care suite
+  'tab.er': 'חירום',
+  'er.title': 'חירום וטיפול נמרץ',
+  'er.subtitle': 'מצבי חירום, מדדים קליניים ותכנון נוזלים ממחקרים וטרינריים שפורסמו — כל נתון עם מקור.',
 } as const;
 
 export type TKey = keyof typeof he;

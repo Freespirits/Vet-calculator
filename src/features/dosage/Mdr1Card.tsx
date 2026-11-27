@@ -118,9 +118,18 @@ function recommendationText(assessment: Mdr1Assessment, lang: Lang): string | nu
   return guidance === 'reduce' ? reduceText(assessment, lang) : tr(RECOMMENDATION[guidance], lang);
 }
 
+/**
+ * Wraps a left-to-right fragment (e.g. "<5%") in Unicode isolate marks so that
+ * right-to-left text cannot mirror its "<" into ">" or reorder it.
+ */
+function isolateLtr(text: string): string {
+  return `\u2066${text}\u2069`;
+}
+
 function breedText(assessment: Mdr1Assessment, lang: Lang): string {
   const { breed } = assessment;
   if (!breed) return tr(TEXT.unknownNoBreed, lang);
+  const frequency = isolateLtr(breed.frequencyText);
   const israel =
     breed.israelAllelePercent === undefined
       ? ''
@@ -133,8 +142,8 @@ function breedText(assessment: Mdr1Assessment, lang: Lang): string {
         );
   const lead = tr(
     L(
-      `הגנוטיפ אינו ידוע. שכיחות המוטציה שפורסמה ל${breed.name.he}: ${breed.frequencyText} (Mealey ועמיתים 2023).`,
-      `Genotype not known. Published frequency of the mutation in the ${breed.name.en}: ${breed.frequencyText} (Mealey et al. 2023).`,
+      `הגנוטיפ אינו ידוע. שכיחות המוטציה שפורסמה ל${breed.name.he}: ${frequency} (Mealey ועמיתים 2023).`,
+      `Genotype not known. Published frequency of the mutation in the ${breed.name.en}: ${frequency} (Mealey et al. 2023).`,
     ),
     lang,
   );

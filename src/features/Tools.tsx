@@ -10,6 +10,7 @@ import { PatientSession } from './patient/PatientSession';
 import { PatientSessionProvider } from './patient/PatientSessionContext';
 import { PlantLibrary } from './plants/PlantLibrary';
 import { CodeBlue } from './cpr/CodeBlue';
+import { EmergencySuite } from './er/EmergencySuite';
 import { SyringeIcon, AlertTriangleIcon, PawIcon, FlowerIcon, HeartPulseIcon } from '../components/Icons';
 
 /**
@@ -40,7 +41,7 @@ function CodeBlueButton({ active, onOpen }: { active: boolean; onOpen: () => voi
 export function Tools() {
   const { t } = useI18n();
   const reduced = useReducedMotion();
-  // Deep-linkable: #/dosage, #/patient, #/tox/<id>, #/plants/<id>, #/cpr.
+  // Deep-linkable: #/dosage, #/patient, #/tox/<id>, #/plants/<id>, #/er/<id>, #/cpr.
   const { tool: routeTool, sub, navigate } = useHashRoute();
   const tool: ToolId = routeTool ?? 'dosage';
 
@@ -57,7 +58,7 @@ export function Tools() {
     <PatientSessionProvider>
     <section id="tools" className="mx-auto w-full max-w-2xl scroll-mt-20 px-4 py-10">
       <CodeBlueButton active={tool === 'cpr'} onOpen={() => navigate('cpr')} />
-      <div className="mx-auto mb-6 max-w-md">
+      <div className="mx-auto mb-6 max-w-lg">
         <SegmentedControl
           size="lg"
           ariaLabel={t('tabs.aria')}
@@ -66,7 +67,9 @@ export function Tools() {
             { value: 'patient', label: t('tab.patient'), icon: <PawIcon size={18} /> },
             { value: 'toxins', label: t('tab.toxins'), icon: <AlertTriangleIcon size={18} /> },
             { value: 'plants', label: t('tab.plants'), icon: <FlowerIcon size={18} /> },
+            { value: 'er', label: t('tab.er'), icon: <HeartPulseIcon size={18} /> },
           ]}
+          compact
           value={tool}
           onChange={(next) => navigate(next)}
         />
@@ -88,6 +91,7 @@ export function Tools() {
           {tool === 'plants' && (
             <PlantLibrary selectedId={sub} onSelect={(id) => navigate('plants', id)} />
           )}
+          {tool === 'er' && <EmergencySuite selectedId={sub} onSelect={(id) => navigate('er', id)} />}
           {tool === 'cpr' && <CodeBlue />}
         </motion.div>
       </AnimatePresence>

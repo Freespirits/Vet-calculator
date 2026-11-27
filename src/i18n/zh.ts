@@ -238,4 +238,9 @@ export const zh: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': '蓝色警报 — 心肺复苏',
   'cpr.open.hint': '周期计时、节拍器、按体重计算剂量和事件记录',
+
+  // Emergency & critical care suite
+  'tab.er': '急诊',
+  'er.title': '急诊与重症监护',
+  'er.subtitle': '基于已发表兽医研究的急症、床旁评分与输液计划——每个数据均有出处。',
 };

@@ -244,4 +244,9 @@ export const ar: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'الكود الأزرق — الإنعاش القلبي الرئوي',
   'cpr.open.hint': 'مؤقّت الدورات، بندول إيقاع، جرعات حسب الوزن وسجل الأحداث',
+
+  // Emergency & critical care suite
+  'tab.er': 'طوارئ',
+  'er.title': 'الطوارئ والعناية المركزة',
+  'er.subtitle': 'حالات الطوارئ، المقاييس السريرية وتخطيط السوائل من دراسات بيطرية منشورة — كل رقم مع مصدره.',
 };

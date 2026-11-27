@@ -109,15 +109,20 @@ export function SegmentedControl<T extends string>({
   onChange,
   ariaLabel,
   size = 'md',
+  compact = false,
 }: {
   options: SegmentOption<T>[];
   value: T;
   onChange: (value: T) => void;
   ariaLabel?: string;
   size?: 'sm' | 'md' | 'lg';
+  /** Stack icon above a smaller label on narrow screens — for five or more options. */
+  compact?: boolean;
 }) {
   const reduced = useReducedMotion();
   const pad = size === 'lg' ? 'py-3.5' : size === 'sm' ? 'py-2' : 'py-3';
+  const buttonText = compact ? 'px-1 text-[11px] sm:px-3 sm:text-sm' : 'px-3 text-sm';
+  const contentLayout = compact ? 'flex-col gap-0.5 sm:flex-row sm:gap-2' : 'gap-2';
   return (
     <div
       role="tablist"
@@ -133,7 +138,7 @@ export function SegmentedControl<T extends string>({
             type="button"
             aria-selected={selected}
             onClick={() => onChange(opt.value)}
-            className={`relative flex-1 flex items-center justify-center gap-2 rounded-xl px-3 ${pad} text-sm font-semibold transition-colors duration-200 min-h-[44px] ${
+            className={`relative flex-1 flex items-center justify-center gap-2 rounded-xl ${buttonText} ${pad} font-semibold transition-colors duration-200 min-h-[44px] ${
               selected ? 'text-[#04221d]' : 'text-muted hover:text-ink'
             }`}
           >
@@ -149,7 +154,7 @@ export function SegmentedControl<T extends string>({
                 }
               />
             )}
-            <span className="relative z-10 flex items-center gap-2">
+            <span className={`relative z-10 flex items-center ${contentLayout}`}>
               {opt.icon}
               {opt.label}
             </span>

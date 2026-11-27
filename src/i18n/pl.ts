@@ -244,4 +244,9 @@ export const pl: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'Kod niebieski — RKO',
   'cpr.open.hint': 'Minutnik cykli, metronom, dawki według masy ciała i dziennik zdarzeń',
+
+  // Emergency & critical care suite
+  'tab.er': 'Nagłe',
+  'er.title': 'Stany nagłe i intensywna terapia',
+  'er.subtitle': 'Stany nagłe, skale kliniczne i planowanie płynoterapii na podstawie opublikowanych badań weterynaryjnych — każda liczba ze źródłem.',
 };

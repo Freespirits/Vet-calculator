@@ -9,18 +9,21 @@
  *   #/plants          plant library grid
  *   #/plants/lily     a specific plant detail
  *   #/cpr             Code Blue (CPR clock, weight-based doses, event log)
+ *   #/er              emergency & critical-care grid
+ *   #/er/heat         a specific emergency topic or bedside tool
  *
  * Unknown or absent hashes resolve to the default tool with no selection.
  */
 import { useCallback, useEffect, useState } from 'react';
 
-export type ToolId = 'dosage' | 'patient' | 'toxins' | 'plants' | 'cpr';
+export type ToolId = 'dosage' | 'patient' | 'toxins' | 'plants' | 'er' | 'cpr';
 
 const TOOL_TO_SEG: Record<ToolId, string> = {
   dosage: 'dosage',
   patient: 'patient',
   toxins: 'tox',
   plants: 'plants',
+  er: 'er',
   cpr: 'cpr',
 };
 const SEG_TO_TOOL: Record<string, ToolId> = {
@@ -29,13 +32,14 @@ const SEG_TO_TOOL: Record<string, ToolId> = {
   tox: 'toxins',
   toxins: 'toxins',
   plants: 'plants',
+  er: 'er',
   cpr: 'cpr',
 };
 
 export interface HashRoute {
   /** null = no recognized route in the URL (virgin visit). */
   tool: ToolId | null;
-  /** Second segment: toxin id or plant id. */
+  /** Second segment: toxin id, plant id or emergency-topic id. */
   sub: string | null;
 }
 

@@ -244,4 +244,9 @@ export const tr: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'Mavi kod — KPR',
   'cpr.open.hint': 'Döngü zamanlayıcı, metronom, kiloya göre dozlar ve olay kaydı',
+
+  // Emergency & critical care suite
+  'tab.er': 'Acil',
+  'er.title': 'Acil ve yoğun bakım',
+  'er.subtitle': 'Yayımlanmış veteriner çalışmalarından aciller, klinik skorlar ve sıvı planlaması — her değer kaynaklı.',
 };

@@ -244,4 +244,9 @@ export const hi: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'कोड ब्लू — सीपीआर',
   'cpr.open.hint': 'चक्र टाइमर, मेट्रोनोम, वज़न-आधारित खुराक और घटना लॉग',
+
+  // Emergency & critical care suite
+  'tab.er': 'आपातकाल',
+  'er.title': 'आपातकालीन और गहन देखभाल',
+  'er.subtitle': 'प्रकाशित पशु-चिकित्सा अध्ययनों से आपात स्थितियाँ, क्लिनिकल स्कोर और द्रव योजना — हर आँकड़ा स्रोत सहित।',
 };

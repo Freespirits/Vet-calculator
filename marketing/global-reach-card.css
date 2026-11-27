@@ -1,6 +1,6 @@
 /* Hallmark · shape: kept, one fixed 1080x1350 still · genre: editorial · theme: Almanac (deal 2/3, seed social-image-free-veterinary-e185·30173d85·2026-11-27·r0) · redesign: full
  * hero: kept · nav: none · footer: none · imagery: the product's own Search Console figures, set as a table · signature: the top-pages table on the printed sheet, its first row in magenta
- * axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: pass · fold: pass · copy: verbatim (the five page titles are quoted as Search Console lists them, the Japanese one with its own dash) · v2.0.0 */
+ * axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: pass · fold: pass · copy: verbatim (the five page titles are quoted as Search Console lists them, the Japanese one with its own dash) · finish-review: subagent · 7 findings · 7 resolved · gap: the second still shows the real screenshot, so the magenta row is on the first only · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, the log holds no earlier build to differ from, so nothing was changed for it */
 /* Hallmark · waive 26b · no a, button, input or aria-disabled on the card · it is a still picture for a Facebook post, with nothing on it to press */
 /* Hallmark · waive 72 · html and body are fixed at 1080px wide · the card is rendered once to a PNG and never laid out at phone width */
@@ -17,27 +17,29 @@
  * Frank Ruhl Libre carry the Hebrew beside them (see tokens.css).
  */
 html, body { width: 1080px; height: 1350px; }
-body { display: flex; flex-direction: column; padding: 56px var(--gutter) 44px; color: var(--color-ink-2); font-size: 24px; line-height: 1.4; }
+body { display: flex; flex-direction: column; padding: 48px var(--gutter) var(--space-xl); color: var(--color-ink-2); font-size: 24px; line-height: 1.4; }
 .ltr { direction: ltr; unicode-bidi: isolate; }
 
 /* Mast */
 .mast { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: var(--space-md); border-bottom: var(--rule-bar) solid var(--color-rule-2); }
-.wordmark { font: 600 30px/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.wordmark { font: 600 28px/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
 .source { font-size: 20px; font-weight: 500; color: var(--color-muted); }
-h1 { margin-top: 32px; max-width: none; font-size: 72px; color: var(--color-ink); }
+h1 { margin-top: 28px; max-width: none; font-size: 72px; color: var(--color-ink); }
 
 /* The sheet: the figures as the printed page sets them */
-.sheet { margin-top: 32px; padding: var(--space-lg) 28px 20px; background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); }
+.sheet { margin-top: 28px; padding: var(--space-lg) 28px var(--space-md); background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); }
 .figures { width: 100%; border-collapse: collapse; }
-.figures + .figures { margin-top: 28px; }
+.figures + .figures { margin-top: 20px; }
 .figures thead th { padding: 0 0 var(--space-xs); border-bottom: var(--rule-bar) solid var(--color-rule-2); font: 500 20px/1.3 var(--font-body); color: var(--color-muted); text-align: start; }
 .figures tbody th, .figures tbody td { padding: var(--space-sm) 0 var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-ink); }
 .figures tbody tr:first-child > * { border-top: 0; }
 .figures tbody th { font: 500 26px/1.3 var(--font-body); text-align: start; white-space: nowrap; }
-.figures .title { margin-inline-start: var(--space-md); font-size: 20px; font-weight: 400; color: var(--color-muted); }
+.figures .title { margin-inline-start: var(--space-md); font-size: 20px; font-weight: 400; color: var(--color-ink-2); }
 .figures .num { width: 136px; font-family: var(--font-outlier); font-variant-numeric: tabular-nums; text-align: right; direction: ltr; }
 .figures td.num { font-size: 28px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
 .figures td.change { width: 176px; font-size: 22px; font-weight: 400; text-align: left; }
+.figures.totals td.num { font-size: 40px; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.figures.totals td.change { font-size: 26px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
 .figures thead th.num { font-family: var(--font-body); direction: rtl; text-align: right; }
 .figures thead th.change { text-align: left; }
 .figures td.note { width: 176px; font: 500 20px/1 var(--font-body); color: var(--color-muted); text-align: left; }
@@ -50,19 +52,19 @@ h1 { margin-top: 32px; max-width: none; font-size: 72px; color: var(--color-ink)
 .shot img { width: 100%; }
 
 /* What is new: the one ink band */
-.band { margin: 28px calc(var(--gutter) * -1) 0; padding: var(--space-lg) var(--gutter) 28px; background: var(--color-ink); color: var(--color-paper); }
+.band { margin: var(--space-lg) calc(var(--gutter) * -1) 0; padding: 20px var(--gutter) var(--space-md); background: var(--color-ink); color: var(--color-paper); }
 .band h2 { max-width: none; font-size: 30px; color: var(--color-paper); }
 .band ul { margin: var(--space-sm) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gap-columns); }
 .band li { padding: var(--space-xs) 0; border-top: var(--rule-hair) solid color-mix(in oklab, var(--color-paper) 32%, transparent); font-size: 26px; }
 
 /* The standing facts, the source and the address */
-.facts { margin-top: 28px; display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.3fr; }
-.fact { padding-inline: 20px; border-inline-start: var(--rule-hair) solid var(--color-rule-2); }
+.facts { margin-top: var(--space-lg); display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; }
+.fact { padding-inline-start: 20px; border-inline-start: var(--rule-hair) solid var(--color-rule-2); }
 .fact:first-child { padding-inline-start: 0; border-inline-start: 0; }
 .fact-value { font: 500 34px/1.1 var(--font-outlier); font-variant-numeric: tabular-nums; color: var(--color-ink); }
 .fact-value.word { font-family: var(--font-display); font-weight: 600; letter-spacing: var(--tracking-display); }
 .fact-label { margin-top: var(--space-2xs); font-size: 20px; font-weight: 500; line-height: 1.3; color: var(--color-muted); }
-.basis { margin-top: 20px; max-width: none; font-size: 21px; color: var(--color-ink-2); }
+.basis { margin: 20px 0 var(--space-md); max-width: none; font-size: 21px; color: var(--color-ink-2); }
 .foot { margin-top: auto; padding-top: var(--space-md); border-top: var(--rule-bar) solid var(--color-rule-2); display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-xl); }
 .url { font: 600 32px/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
 .fineprint { max-width: 600px; font-size: 18px; line-height: 1.35; color: var(--color-muted); text-align: end; }

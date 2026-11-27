@@ -13,8 +13,16 @@
  *   #/er/heat         a specific emergency topic or bedside tool
  *
  * Unknown or absent hashes resolve to the default tool with no selection.
+ *
+ * Hydration: the pages are prerendered without a hash, so the browser's first
+ * render must also behave as if there were none — otherwise React finds the
+ * linked tool where the prerendered HTML has the default one, discards the
+ * server HTML and logs error #418. The hash is therefore read through
+ * `useSyncExternalStore`: while hydrating React uses the server snapshot (no
+ * hash), and immediately afterwards re-renders with the real one. On a normal
+ * client render the real hash is used from the first render.
  */
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useMemo, useSyncExternalStore } from 'react';
 
 export type ToolId = 'dosage' | 'patient' | 'toxins' | 'plants' | 'er' | 'cpr';
 
@@ -53,18 +61,20 @@ export function hashFor(tool: ToolId, sub?: string | null): string {
   return `#/${TOOL_TO_SEG[tool]}${sub ? `/${encodeURIComponent(sub)}` : ''}`;
 }
 
+function subscribeToHash(onChange: () => void): () => void {
+  window.addEventListener('hashchange', onChange);
+  return () => window.removeEventListener('hashchange', onChange);
+}
+
+const readBrowserHash = (): string => window.location.hash;
+/** What the prerendered HTML was built with: no hash. */
+const readPrerenderedHash = (): string => '';
+
 export function useHashRoute() {
-  const [route, setRoute] = useState<HashRoute>(() =>
-    typeof window === 'undefined' ? { tool: null, sub: null } : parseHash(window.location.hash),
-  );
+  const hash = useSyncExternalStore(subscribeToHash, readBrowserHash, readPrerenderedHash);
+  const route = useMemo(() => parseHash(hash), [hash]);
 
-  useEffect(() => {
-    const onHash = () => setRoute(parseHash(window.location.hash));
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
-  /** Push a new route; state updates via the hashchange event. */
+  /** Push a new route; the hook re-reads the hash on the hashchange event. */
   const navigate = useCallback((tool: ToolId, sub?: string | null) => {
     const next = hashFor(tool, sub);
     if (window.location.hash !== next) window.location.hash = next;

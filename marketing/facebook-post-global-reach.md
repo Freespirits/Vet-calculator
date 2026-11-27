@@ -1,123 +1,124 @@
-# Facebook post — global reach + the new critical-care tools (Hebrew)
+# Facebook post: search reach and the new critical-care tools (Hebrew)
 
-A Hebrew Facebook post with one job: **announce the four tools added in
-[PR #7](https://github.com/Freespirits/Vet-calculator/pull/7)** — Code Blue, the
-MDR1 check, the emergency and critical-care tab, and the bedside calculators —
-framed as the response to the calculator's international search traffic. It also
-states who the calculator is for, what it is based on and its limits.
+A Hebrew Facebook post that announces the four tools added in
+[PR #7](https://github.com/Freespirits/Vet-calculator/pull/7): Code Blue, the
+MDR1 check, the emergency and critical-care tab, and the bedside calculators.
+It opens with the calculator's Google Search Console figures, then says who the
+calculator is for, what it is based on and where its limits are.
 
-The product is presented as a **Vet-Flow** product; the former name is
-deliberately not used anywhere in the post or the images. The only place the old
-wording survives is the site address `vet-holim.work`, which is the real URL
-readers must click.
+The calculator is presented as a Vet-Flow product. The former name appears
+nowhere in the post or the images. The site address `vet-holim.work` stays
+because it is the URL readers click.
 
-> **Publish only after PR #7 is merged and deployed.** At the time of writing the
-> four new tools are on the PR branch and are not on the live site. Until then,
-> delete the "הוספנו למחשבון ארבעה כלים חדשים" block (the four emoji lines under
-> it) and the "חדש" chip row would be wrong too — re-render the images without it.
+Publish after PR #7 is merged and deployed. Today the four tools are on the PR
+branch and not on the live site. To post earlier, delete the paragraph that
+starts "בעקבות זה הוספנו" and the four paragraphs after it, and remove the
+"חדש במחשבון" band from the images.
 
-## Image to attach
+## The post
 
-| File | What it is | When to use |
-|---|---|---|
-| `global-reach-card.png` | The Search Console figures redrawn in the brand style (1080×1350, rendered @2x) | **Recommended** — sharp, readable on a phone |
-| `global-reach-screenshot.png` | The real Search Console screenshot, cut into its two panels and framed | When showing the authentic screenshot matters more |
-
-Both carry a "חדש" (new) chip row naming the four new tools, and a facts line
-(free · 14 languages · 130 drugs · 14 toxicity calculators · Plumb's 10th ed.).
-
-Sources: `global-reach-card.html`, `global-reach-screenshot.html` (shared styles
-in `global-reach-card.css`; `search-console-*.png` are the cuts of the original
-screenshot). To re-render, open the HTML at a 1080×1350 viewport in headless
-Chromium with `deviceScaleFactor: 2` and screenshot the viewport.
-
-Every number and page title in both images is copied from the screenshot. Pages
-whose previous-period value was 0 are labelled "חדש" (new) rather than given a
-percentage, exactly as Search Console reports them. In the framed-screenshot
-variant the small page thumbnails are painted out because they show the former
-product name; nothing else in the screenshot is retouched.
-
-## The post (copy from here)
+Written to read like a person wrote it: plain sentences, no emoji, no dashes,
+no hashtags. Add two or three hashtags when posting if the page normally uses
+them.
 
 ```text
-🌍 המחשבון הווטרינרי של Vet-Flow חוצה גבולות — ובזכותכם הוא ממשיך לגדול!
+המחשבון הווטרינרי של Vet-Flow נכתב קודם כול בעברית. לפי Google Search Console, חמשת העמודים שלו שמקבלים הכי הרבה כניסות מגוגל הם ברוסית, בספרדית, בפולנית, ביפנית ובאיטלקית.
 
-בנינו אותו כדי לעזור לצוותים וטרינריים כאן בארץ. היום מחפשים ומוצאים אותו בגוגל בכל העולם:
+בסך הכול נרשמו כ־2,390 כניסות מגוגל וכ־3,640 הופעות בתוצאות החיפוש. לעומת התקופה הקודמת זו עלייה של 7,033% בכניסות ושל 9,228% בהופעות. תודה לכל מי שמשתמש בו.
 
-📈 כ־2,390 כניסות מגוגל — עלייה של 7,033% לעומת התקופה הקודמת
-👀 כ־3,640 הופעות בתוצאות החיפוש — עלייה של 9,228%
-🗣️ והעמודים המובילים? דווקא ברוסית, בספרדית, בפולנית, ביפנית ובאיטלקית
+בעקבות זה הוספנו למחשבון ארבעה כלים:
 
-ההצלחה הזו מחייבת. אז הוספנו למחשבון ארבעה כלים חדשים, לרגעים הכי דחופים במרפאה:
+קוד כחול, עזר החייאה לצוות וטרינרי. שעון מחזורים של 2 דקות, מטרונום לעיסויים, מינונים לפי משקל ורישום אירועים עם שעה, לפי הנחיות ההחייאה הבינלאומיות לכלבים ולחתולים מ־2024.
 
-🚨 קוד כחול — עזר החייאה לצוות וטרינרי: שעון מחזורים של 2 דקות, מטרונום לעיסויים, מינונים לפי משקל ורישום אירועים עם חותמת זמן, לפי הנחיות ההחייאה הבינלאומיות לכלבים ולחתולים (2024)
-🧬 בדיקת MDR1 בתוך מחשבון המינון: התרעה לפי גזע ולפי תוצאת הבדיקה הגנטית, בתרופות רגישות כמו איברמקטין ולופרמיד
-🆘 לשונית "חירום וטיפול נמרץ": מכת חום, הכשת נחש (כולל צפע ארץ־ישראלי), זחל תהלוכן האורן והרעלת זרחנים אורגניים וקרבמטים — וליד כל קביעה, המחקר שמאחוריה
-🩺 מחשבונים ליד המיטה: מדד הלם לכלבים, סולם כאב לחתולים (Feline Grimace Scale), נפח עירוי דם וקצב עירוי מתמשך (CRI)
+בדיקת MDR1 בתוך מחשבון המינון. אפשר להזין גזע ותוצאה של בדיקה גנטית, ומקבלים התרעה בתרופות כמו איברמקטין ולופרמיד.
 
-וכל זה לצד מה שכבר מחכה לכם: 130 תרופות עם מינוני ייחוס, 14 מחשבוני רעילות וספריית 35 צמחים רעילים — ב־14 שפות, וגם בלי אינטרנט.
+לשונית חירום וטיפול נמרץ: מכת חום, הכשת נחש (כולל צפע ארץ־ישראלי), זחל תהלוכן האורן והרעלת זרחנים אורגניים וקרבמטים. ליד כל משפט מופיע המחקר שהוא לקוח ממנו.
 
-💚 והכול בחינם — בלי הרשמה ובלי חשבון.
-המחשבון פתוח לרופאות ולרופאים וטרינרים, לאחיות, לטכנאים ולאסיסטנטים, לסטודנטים — וגם לקהל הרחב.
+ארבעה מחשבונים ליד המיטה: מדד הלם לכלבים, Feline Grimace Scale להערכת כאב בחתולים, נפח עירוי דם וקצב עירוי מתמשך (CRI).
 
-📚 על מה זה מבוסס?
-מינוני הייחוס לקוחים מתוך Plumb's Veterinary Drug Handbook, מהדורה 10 — ספר המינונים המקובל על וטרינרים בכל העולם לטיפול בכלבים ובחתולים. כל הכלים נשענים על מחקר וספרות וטרינרית קלינית שפורסמו, והמקור מצוטט ליד כל נתון.
+כל זה נוסף על 130 תרופות עם מינוני ייחוס, 14 מחשבוני רעילות וספרייה של 35 צמחים רעילים. הממשק זמין ב־14 שפות ועובד גם בלי אינטרנט.
 
-⚠️ חשוב לדעת: המחשבון הוא כלי עזר מייעץ בלבד. הוא אינו הנחיה לביצוע טיפול מכל סוג, אינו אבחנה ואינו תחליף לבדיקה ולשיקול דעת של רופא/ה וטרינר/ית. יש לאמת כל חישוב מול המקור לפני מתן טיפול, והשימוש בו באחריות המשתמש בלבד.
-חושדים שחיית המחמד נחשפה לרעל, או שהיא במצוקה? לא מחכים לחישוב — פונים מיד לווטרינר/ית או למרפאת חירום.
+השימוש חינם, בלי הרשמה. המחשבון מיועד לרופאים וטרינרים, לאחיות ולטכנאים, וגם מי שאינו איש מקצוע יכול להשתמש בו.
 
-👉 נסו בעצמכם: https://vet-holim.work
-מכירים וטרינר/ית, אחות או סטודנט/ית שזה יכול לעזור להם? תייגו ושתפו 🙏
+מינוני הייחוס לקוחים מ־Plumb's Veterinary Drug Handbook, מהדורה 10, ספר המינונים שווטרינרים בכל העולם עובדים איתו בכלבים ובחתולים. שאר הכלים מבוססים על מחקר וטרינרי קליני שפורסם, והמקור מצוטט ליד כל נתון.
 
-#וטרינריה #רפואה_וטרינרית #וטרינר #כלבים #חתולים #החייאה #רפואת_חירום #הרעלות #VetFlow #veterinary #vetmed #vettech
+המחשבון מייעץ בלבד. הוא אינו הנחיה לביצוע טיפול מכל סוג ואינו מחליף בדיקה של רופא וטרינר. כל חישוב צריך לאמת מול המקור לפני מתן תרופה, והשימוש באחריות המשתמש בלבד. אם יש חשד להרעלה או שהחיה במצוקה, פונים מיד לווטרינר או למרפאת חירום.
+
+vet-holim.work
 ```
 
-## Image alt text (Hebrew)
+## Images
+
+| File | What it shows |
+|---|---|
+| `global-reach-card.png` | The Search Console figures set as a table: site totals, then the five top pages. Recommended. |
+| `global-reach-screenshot.png` | The real Search Console screenshot, cut into its two panels. |
+
+Both are 1080×1350 (rendered at 2x) and carry the "חדש במחשבון" band with the
+four tools, four standing facts (free, 14 languages, 130 drugs, 14 toxicity
+calculators), the Plumb's line and the advisory notice.
+
+Every number and page title is copied from the owner's screenshot. A page whose
+previous-period value was 0 is marked "חדש" instead of a percentage, as Search
+Console reports it. In the screenshot variant the small page thumbnails are
+painted out because they show the former product name, and the cut starts at
+the "מובילים" tab row. Nothing else in the screenshot is retouched.
+
+The images were designed with [Hallmark](https://github.com/nutlope/hallmark)
+(theme: Almanac). Sources: `global-reach-card.html` and
+`global-reach-screenshot.html`, sharing `global-reach-card.css`, which imports
+Hallmark's `tokens.css` and `base.css`; `search-console-*.png` are the two cuts
+of the screenshot. The design decisions and the waived checks are stamped in the
+first lines of `global-reach-card.css`. To re-render, open either HTML file at a
+1080×1350 viewport in headless Chromium with `deviceScaleFactor: 2` and
+screenshot the viewport.
+
+Alt text for the image:
 
 ```text
-נתוני Google Search Console של המחשבון הווטרינרי של Vet-Flow: כ־2,390 קליקים (עלייה של 7,033%) וכ־3,640 הופעות (עלייה של 9,228%). העמודים המובילים: רוסית 50 קליקים, ספרדית 47, פולנית 40, יפנית 25, איטלקית 20. חדש במחשבון: קוד כחול להחייאה, בדיקת MDR1, חירום וטיפול נמרץ ומחשבונים ליד המיטה. חינם, 14 שפות, 130 תרופות, 14 מחשבוני רעילות, מבוסס Plumb's מהדורה 10.
+נתוני Google Search Console של המחשבון הווטרינרי של Vet-Flow: כ־2,390 כניסות מגוגל, עלייה של 7,033%, וכ־3,640 הופעות, עלייה של 9,228%. העמודים המובילים: רוסית 50 כניסות, ספרדית 47, פולנית 40, יפנית 25, איטלקית 20. חדש במחשבון: קוד כחול להחייאה, בדיקת MDR1, חירום וטיפול נמרץ ומחשבונים ליד המיטה. חינם, 14 שפות, 130 תרופות, 14 מחשבוני רעילות. מינוני הייחוס לפי Plumb's, מהדורה 10.
 ```
 
 ## Where each claim comes from
 
-Paths marked *(PR #7)* exist on branch `claude/vibrant-gates-uvq9fh`, not yet on
-the default branch.
+Paths marked (PR #7) are on branch `claude/vibrant-gates-uvq9fh`, not yet on the
+default branch.
 
 | Claim in the post | Source |
 |---|---|
-| ~2,390 clicks (+7,033%), ~3,640 impressions (+9,228%) | Owner's Search Console screenshot (shown as 2.39K / 3.64K). The screenshot does not show the date range, so the post says "the previous period" without naming one |
-| Top pages: Russian 50, Spanish 47, Polish 40, Japanese 25, Italian 20 clicks | Same screenshot, "התוכן שלך → מובילים". These are page *languages*; the screenshot says nothing about visitors' countries, so the post names languages only |
-| Code Blue: 2-minute cycle clock, compression metronome, weight-based doses, time-stamped event log, for veterinary teams, per the 2024 international CPR guidelines | *(PR #7)* `src/cpr/`, `src/features/cpr/strings.ts`, README "Code Blue (CPR aid)" |
-| MDR1 check by breed and genotype inside the dosage calculator; ivermectin and loperamide among the flagged drugs | *(PR #7)* `src/data/mdr1.ts`, README "MDR1 (P-glycoprotein) check" |
-| Emergency tab: heat-related illness, snake envenomation incl. *Vipera palaestinae*, pine processionary caterpillar, organophosphate/carbamate poisoning; a study named beside every statement | *(PR #7)* `src/emergencies/fieldFacts.ts`, `heatIllness.ts`; `fieldFacts.test.ts` fails if a statement lacks a source |
-| Bedside calculators: canine shock index, Feline Grimace Scale, transfusion volume, infusion rate (CRI) | *(PR #7)* `src/features/er/bedsideMeta.ts`, `src/critical/` |
-| 130 drugs with reference doses | `src/data/drugDatabase.ts` (130 entries) |
-| 14 toxicity calculators | `src/toxins/` (14 modules) |
+| The calculator was written in Hebrew first | README: "Hebrew-first" |
+| About 2,390 clicks (up 7,033%) and 3,640 impressions (up 9,228%) | The owner's Search Console screenshot, which shows 2.39K and 3.64K. It shows no date range, so the post says "the previous period" |
+| Top pages: Russian 50, Spanish 47, Polish 40, Japanese 25, Italian 20 | Same screenshot, "התוכן שלך", "מובילים" tab. These are page languages. The screenshot says nothing about visitors' countries, so the post names languages only |
+| Code Blue: 2-minute cycle clock, compression metronome, weight-based doses, time-stamped event log, for veterinary teams, per the 2024 international CPR guidelines | (PR #7) `src/cpr/`, `src/features/cpr/strings.ts`, README "Code Blue (CPR aid)" |
+| MDR1 check by breed and genotype in the dosage calculator, flagging ivermectin and loperamide among others | (PR #7) `src/data/mdr1.ts`, README "MDR1 (P-glycoprotein) check" |
+| Emergency tab: heat-related illness, snake envenomation including *Vipera palaestinae*, pine processionary caterpillar, organophosphate and carbamate poisoning, with the study beside every statement | (PR #7) `src/emergencies/fieldFacts.ts`, `heatIllness.ts`. `fieldFacts.test.ts` fails if a statement lacks a source |
+| Bedside calculators: canine shock index, Feline Grimace Scale, transfusion volume, infusion rate (CRI) | (PR #7) `src/features/er/bedsideMeta.ts`, `src/critical/` |
+| 130 drugs with reference doses | `src/data/drugDatabase.ts`, 130 entries |
+| 14 toxicity calculators | `src/toxins/`, 14 modules |
 | 35 toxic plants | `src/data/toxicPlants.ts`, `public/plants/` |
-| 14 languages | `src/i18n/`. New clinical wording is Hebrew and English; the other 12 languages show it in English with translated tabs and buttons |
-| Works offline | PWA precache; `faq.a4` in `src/i18n/he.ts` |
-| Free, no sign-up, no account | `faq.a1` in `src/i18n/he.ts` |
-| Reference doses from Plumb's Veterinary Drug Handbook, 10th ed. | Header of `src/data/drugDatabase.ts` |
-| A source cited beside every figure | Toxin result views, the `dose.plumbsRef` line, and *(PR #7)* `er.subtitle` ("כל נתון עם מקור") |
+| 14 interface languages | `src/i18n/`. New clinical wording is Hebrew and English. The other 12 languages show it in English with translated tabs and buttons |
+| Works offline | PWA precache, and `faq.a4` in `src/i18n/he.ts` |
+| Free, no sign-up | `faq.a1` in `src/i18n/he.ts` |
+| Reference doses from Plumb's Veterinary Drug Handbook, 10th edition | Header of `src/data/drugDatabase.ts` |
+| A source cited beside every figure | Toxin result views, the `dose.plumbsRef` line, and (PR #7) `er.subtitle` |
 
-## Wording decisions worth knowing
+## Wording decisions
 
-- **Plumb's is described as "the dosing reference accepted by veterinarians
-  worldwide", not as "authorized".** No international body authorizes a drug
-  handbook, and the publisher has not reviewed or endorsed this product, so
-  "authorized" would be a claim we cannot back.
-- **The CPR guidelines are described, not named.** The post says "the
-  international CPR guidelines for dogs and cats (2024)" and leaves the RECOVER
-  name out. PR #7 lists permission to use RECOVER material as an open owner
-  decision, and a promotional post is the place where a brand name is most
-  easily read as an endorsement. The in-app citation still names the paper in
-  full. Once the owner has settled that question, the name can be added.
-- **"Also for the general public" sits next to an explicit safety line, and Code
-  Blue is labelled as a tool for veterinary teams.** The app itself still says it
-  is intended for licensed veterinary use (`dose.vetOnly`, `about.who` in
-  `src/i18n/he.ts`), and Code Blue opens behind a professional-use
-  acknowledgment. The post therefore invites the public in while telling owners
-  to go to a vet immediately instead of acting on a calculation.
-- **Percentages are written out in words** ("עלייה של 7,033%") because a leading
-  `+` sign next to a number tends to jump to the wrong side in right-to-left
-  Facebook text.
+Plumb's is described as the dosing book veterinarians around the world work
+with. It is not called "authorized": no international body authorizes a drug
+handbook, and its publisher has not reviewed or endorsed this product.
+
+The CPR guidelines are described and not named. PR #7 lists permission to use
+RECOVER material as an open owner decision, and a promotional post is where a
+name most easily reads as an endorsement. The in-app citation names the paper
+in full. The name can be added once that question is settled.
+
+The post says people who are not professionals can use the calculator, and the
+app itself says it is intended for licensed veterinary use (`dose.vetOnly` and
+`about.who` in `src/i18n/he.ts`). Code Blue also opens behind a
+professional-use acknowledgment. The post therefore labels Code Blue as a tool
+for veterinary teams and tells owners to go to a vet at once if they suspect
+poisoning.
+
+Percentages are written in words ("עלייה של 7,033%") because a plus sign next
+to a number tends to jump to the wrong side in right-to-left Facebook text.

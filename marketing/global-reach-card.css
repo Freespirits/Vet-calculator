@@ -1,144 +1,68 @@
+/* Hallmark · shape: kept, one fixed 1080x1350 still · genre: editorial · theme: Almanac (deal 2/3, seed social-image-free-veterinary-e185·30173d85·2026-11-27·r0) · redesign: full
+ * hero: kept · nav: none · footer: none · imagery: the product's own Search Console figures, set as a table · signature: the top-pages table on the printed sheet, its first row in magenta
+ * axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: pass · fold: pass · copy: verbatim (the five page titles are quoted as Search Console lists them, the Japanese one with its own dash) · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, the log holds no earlier build to differ from, so nothing was changed for it */
+/* Hallmark · waive 26b · no a, button, input or aria-disabled on the card · it is a still picture for a Facebook post, with nothing on it to press */
+/* Hallmark · waive 72 · html and body are fixed at 1080px wide · the card is rendered once to a PNG and never laid out at phone width */
+/* Hallmark · reworded "המחשבון הווטרינרי חוצה גבולות ושפות" to "חמשת העמודים המובילים בגוגל אינם בעברית" · 38iii named its coloured half, and the owner asked for the slogan to go: the head now states the finding */
+/* Hallmark · dropped the bars, the glow, the pills and the paw mark · the card is a ruled table now, and the paw belonged to the former product name */
+@import url("./tokens.css");
+@import url("./base.css");
+
 /*
- * Shared styles for the "global reach" Facebook cards:
- *   global-reach-card.html        — figures redrawn in the Aurora-Clinic brand style
- *   global-reach-screenshot.html  — the real Search Console screenshot, cut and framed
- * Both are fixed 1080×1350 (Facebook 4:5 portrait) canvases, Hebrew RTL.
+ * Shared by the two Facebook stills of the "global reach" post:
+ *   global-reach-card.html        the Search Console figures, set as a table
+ *   global-reach-screenshot.html  the real Search Console screenshot, cut in two
+ * Hebrew, right to left. The theme's faces carry the Latin; Heebo and
+ * Frank Ruhl Libre carry the Hebrew beside them (see tokens.css).
  */
-  :root {
-    --bg: #070B14;
-    --text-hi: #F4F7FB;
-    --text-mid: #C3D0E3;
-    --text-lo: #8FA3C0;
-    --teal: #2DD4BF;
-    --teal-soft: #7FE9DA;
-    --violet: #8B5CF6;
-    --emerald-soft: #7DE8C0;
-    --surface: rgba(255, 255, 255, 0.055);
-    --hairline: rgba(255, 255, 255, 0.11);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1080px; height: 1350px; }
-  body {
-    position: relative;
-    overflow: hidden;
-    background: var(--bg);
-    color: var(--text-hi);
-    font-family: 'Heebo', 'Inter', sans-serif;
-    padding: 54px 60px 46px;
-    display: flex;
-    flex-direction: column;
-  }
-  /* Aurora glow — same two radial washes as public/og.svg. */
-  body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(900px 700px at 12% -6%, rgba(45, 212, 191, 0.42), transparent 62%),
-      radial-gradient(900px 760px at 96% 4%, rgba(139, 92, 246, 0.42), transparent 64%),
-      radial-gradient(700px 520px at 50% 108%, rgba(16, 185, 129, 0.16), transparent 70%);
-  }
-  body > * { position: relative; }
-  .latin { font-family: 'Inter', sans-serif; }
+html, body { width: 1080px; height: 1350px; }
+body { display: flex; flex-direction: column; padding: 56px var(--gutter) 44px; color: var(--color-ink-2); font-size: 24px; line-height: 1.4; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
 
-  /* Brand row */
-  .brand-row { display: flex; align-items: center; justify-content: space-between; }
-  .brand { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 800; }
-  .brand svg { width: 46px; height: 46px; }
-  .source-pill {
-    font-size: 21px; font-weight: 500; color: var(--text-mid);
-    padding: 9px 20px; border-radius: 999px;
-    background: var(--surface); border: 1px solid var(--hairline);
-  }
+/* Mast */
+.mast { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: var(--space-md); border-bottom: var(--rule-bar) solid var(--color-rule-2); }
+.wordmark { font: 600 30px/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.source { font-size: 20px; font-weight: 500; color: var(--color-muted); }
+h1 { margin-top: 32px; max-width: none; font-size: 72px; color: var(--color-ink); }
 
-  /* Headline */
-  h1 { margin-top: 30px; font-size: 75px; font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; }
-  h1 .accent {
-    background: linear-gradient(90deg, var(--violet) 0%, var(--teal) 78%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .lede { margin-top: 14px; font-size: 27px; line-height: 1.36; color: var(--text-mid); max-width: 900px; }
+/* The sheet: the figures as the printed page sets them */
+.sheet { margin-top: 32px; padding: var(--space-lg) 28px 20px; background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); }
+.figures { width: 100%; border-collapse: collapse; }
+.figures + .figures { margin-top: 28px; }
+.figures thead th { padding: 0 0 var(--space-xs); border-bottom: var(--rule-bar) solid var(--color-rule-2); font: 500 20px/1.3 var(--font-body); color: var(--color-muted); text-align: start; }
+.figures tbody th, .figures tbody td { padding: var(--space-sm) 0 var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-ink); }
+.figures tbody tr:first-child > * { border-top: 0; }
+.figures tbody th { font: 500 26px/1.3 var(--font-body); text-align: start; white-space: nowrap; }
+.figures .title { margin-inline-start: var(--space-md); font-size: 20px; font-weight: 400; color: var(--color-muted); }
+.figures .num { width: 136px; font-family: var(--font-outlier); font-variant-numeric: tabular-nums; text-align: right; direction: ltr; }
+.figures td.num { font-size: 28px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+.figures td.change { width: 176px; font-size: 22px; font-weight: 400; text-align: left; }
+.figures thead th.num { font-family: var(--font-body); direction: rtl; text-align: right; }
+.figures thead th.change { text-align: left; }
+.figures td.note { width: 176px; font: 500 20px/1 var(--font-body); color: var(--color-muted); text-align: left; }
+.figures tr.point th, .figures tr.point td, .figures tr.point .title { color: var(--color-accent); }
+.sheet-note { margin-top: var(--space-sm); font-size: 18px; color: var(--color-muted); }
 
-  /* Headline stat tiles */
-  .stats { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
-  .stat {
-    padding: 18px 26px 16px; border-radius: 28px;
-    background: var(--surface); border: 1px solid var(--hairline);
-  }
-  .stat-label { font-size: 24px; font-weight: 500; color: var(--text-lo); }
-  .stat-line { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-  .stat-change { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-  .stat-value { font-size: 82px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; direction: ltr; }
-  .delta {
-    display: inline-flex; align-items: center; gap: 8px; direction: ltr;
-    font-size: 25px; font-weight: 700; color: var(--emerald-soft);
-    padding: 5px 15px; border-radius: 999px;
-    background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.42);
-  }
-  .delta svg { width: 17px; height: 17px; }
-  .stat-note { font-size: 19px; color: var(--text-lo); white-space: nowrap; }
+/* The real screenshot, cut in two (the second still) */
+.shot { outline: var(--rule-hair) solid var(--color-rule-2); outline-offset: -1px; }
+.shot + .shot { margin-top: var(--space-xs); }
+.shot img { width: 100%; }
 
-  /* Top pages */
-  .pages {
-    margin-top: 22px; padding: 18px 28px 6px; border-radius: 28px;
-    background: var(--surface); border: 1px solid var(--hairline);
-  }
-  .pages-head { display: flex; align-items: baseline; justify-content: space-between; }
-  .pages-title { font-size: 28px; font-weight: 800; }
-  .pages-unit { font-size: 21px; color: var(--text-lo); }
-  .page {
-    display: grid; grid-template-columns: 56px minmax(0, 1fr) 214px; column-gap: 20px; align-items: center;
-    padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .page:first-of-type { border-top: 0; margin-top: 4px; }
-  .lang {
-    width: 56px; height: 56px; border-radius: 50%;
-    display: grid; place-items: center;
-    font-size: 21px; font-weight: 800; letter-spacing: 0.02em; color: var(--text-hi);
-    background: linear-gradient(140deg, rgba(139, 92, 246, 0.5), rgba(45, 212, 191, 0.4));
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  .page-title {
-    font-size: 23px; font-weight: 700; line-height: 1.3;
-    direction: ltr; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .page-title.ja { font-family: 'Noto Sans JP', sans-serif; }
-  .page-meta { margin-top: 1px; font-size: 20px; color: var(--text-lo); }
-  .page-meta .latin { direction: ltr; unicode-bidi: isolate; }
-  /* Magnitude bar: one hue, anchored to the reading-start (right) edge. */
-  .track { margin-top: 8px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.07); }
-  .fill { height: 100%; border-radius: 4px; background: var(--teal); }
-  .page-value { display: flex; align-items: center; justify-content: space-between; gap: 14px; direction: ltr; }
-  .clicks { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; min-width: 58px; text-align: right; }
-  .tag {
-    font-family: 'Heebo', sans-serif; font-size: 20px; font-weight: 700; color: var(--teal-soft);
-    padding: 4px 14px; border-radius: 999px; min-width: 128px; text-align: center;
-    background: rgba(45, 212, 191, 0.13); border: 1px solid rgba(45, 212, 191, 0.4);
-  }
-  .tag.delta { font-family: 'Inter', sans-serif; font-size: 20px; justify-content: center; }
+/* What is new: the one ink band */
+.band { margin: 28px calc(var(--gutter) * -1) 0; padding: var(--space-lg) var(--gutter) 28px; background: var(--color-ink); color: var(--color-paper); }
+.band h2 { max-width: none; font-size: 30px; color: var(--color-paper); }
+.band ul { margin: var(--space-sm) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gap-columns); }
+.band li { padding: var(--space-xs) 0; border-top: var(--rule-hair) solid color-mix(in oklab, var(--color-paper) 32%, transparent); font-size: 26px; }
 
-  /* "New in the calculator" chips, standing facts line, footer */
-  .chips { margin-top: 18px; display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 10px; }
-  .chip {
-    font-size: 22px; font-weight: 700; color: var(--text-hi); white-space: nowrap;
-    padding: 7px 17px; border-radius: 999px;
-    background: var(--surface); border: 1px solid var(--hairline);
-  }
-  .chip.accent { color: #06231F; background: var(--teal); border-color: var(--teal); font-weight: 800; }
-  .facts { margin-top: 14px; font-size: 22px; color: var(--text-mid); }
-  .facts b { color: var(--teal-soft); font-weight: 800; }
-  .footer { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-  .url { font-size: 40px; font-weight: 800; letter-spacing: -0.01em; direction: ltr; }
-  .fineprint { font-size: 19px; line-height: 1.4; color: var(--text-lo); text-align: left; max-width: 560px; }
-
-  /* Variant B (global-reach-screenshot.html): the owner's real Search Console
-     screenshot, cut into its two panels and framed. */
-  .shots { margin-top: 28px; display: flex; flex-direction: column; gap: 20px; }
-  /* White mat around each cut so its edge content clears the rounded corners. */
-  .shot {
-    padding: 4px 18px; border-radius: 26px; background: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.75), 0 0 60px -18px rgba(45, 212, 191, 0.35);
-  }
-  .shot img { display: block; width: 100%; }
-  .shot-caption { margin-top: 14px; font-size: 21px; color: var(--text-lo); text-align: center; }
+/* The standing facts, the source and the address */
+.facts { margin-top: 28px; display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.3fr; }
+.fact { padding-inline: 20px; border-inline-start: var(--rule-hair) solid var(--color-rule-2); }
+.fact:first-child { padding-inline-start: 0; border-inline-start: 0; }
+.fact-value { font: 500 34px/1.1 var(--font-outlier); font-variant-numeric: tabular-nums; color: var(--color-ink); }
+.fact-value.word { font-family: var(--font-display); font-weight: 600; letter-spacing: var(--tracking-display); }
+.fact-label { margin-top: var(--space-2xs); font-size: 20px; font-weight: 500; line-height: 1.3; color: var(--color-muted); }
+.basis { margin-top: 20px; max-width: none; font-size: 21px; color: var(--color-ink-2); }
+.foot { margin-top: auto; padding-top: var(--space-md); border-top: var(--rule-bar) solid var(--color-rule-2); display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-xl); }
+.url { font: 600 32px/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.fineprint { max-width: 600px; font-size: 18px; line-height: 1.35; color: var(--color-muted); text-align: end; }

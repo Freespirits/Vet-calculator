@@ -1,13 +1,16 @@
 <!doctype html>
 <!--
-  Source for marketing/global-reach-card.png — the image attached to the
-  Hebrew Facebook post in marketing/facebook-post-global-reach.md.
+  Source for marketing/global-reach-card.png, the image attached to the Hebrew
+  Facebook post in marketing/facebook-post-global-reach.md.
 
-  It redraws, in the Aurora-Clinic brand style, the figures from the owner's
-  Google Search Console "Insights" screenshot (clicks, impressions and the five
-  top pages). Every number and page title is copied from that screenshot; no
-  figure is estimated. Pages whose previous-period value was 0 are marked "חדש"
-  (new) instead of a percentage, exactly as Search Console reports them.
+  It sets the figures from the owner's Google Search Console "Insights"
+  screenshot as a table (site totals, then the five top pages) and names the
+  four tools added in PR #7. Every number and page title is copied from that
+  screenshot; no figure is estimated. A page whose previous-period value was 0
+  is marked "חדש" (new) instead of a percentage, as Search Console reports it.
+
+  Designed with Hallmark (theme: Almanac); the decisions are stamped at the top
+  of global-reach-card.css.
 
   Render: open at a 1080×1350 viewport (Facebook 4:5 portrait) in headless
   Chromium with deviceScaleFactor 2 and screenshot the viewport.
@@ -15,140 +18,71 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<title>Vet-Flow global reach card</title>
+<title>המחשבון הווטרינרי של Vet-Flow: נתוני החיפוש והכלים החדשים</title>
+<meta name="description" content="נתוני Google Search Console של המחשבון הווטרינרי של Vet-Flow, והכלים החדשים שנוספו לו.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Inter:wght@500;600;700;800&family=Noto+Sans+JP:wght@500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Hanken+Grotesk:wght@600&family=Heebo:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Noto+Serif+JP:wght@400&family=Noto+Serif:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global-reach-card.css">
 </head>
 <body>
 
-  <div class="brand-row">
-    <div class="brand">
-      <svg viewBox="-60 -50 120 110" aria-hidden="true" fill="#2DD4BF">
-        <ellipse cx="0" cy="22" rx="34" ry="28"/>
-        <ellipse cx="-38" cy="-12" rx="13" ry="17" transform="rotate(-18 -38 -12)"/>
-        <ellipse cx="-13" cy="-26" rx="13" ry="17" transform="rotate(-6 -13 -26)"/>
-        <ellipse cx="13" cy="-26" rx="13" ry="17" transform="rotate(6 13 -26)"/>
-        <ellipse cx="38" cy="-12" rx="13" ry="17" transform="rotate(18 38 -12)"/>
-      </svg>
-      <span class="latin">Vet-Flow</span>
-    </div>
-    <div class="source-pill">הנתונים: <span class="latin">Google Search Console</span></div>
+  <header class="mast">
+    <p class="wordmark ltr">Vet-Flow</p>
+    <p class="source">הנתונים מתוך <span class="ltr">Google Search Console</span></p>
+  </header>
+
+  <h1>חמשת העמודים המובילים בגוגל אינם בעברית</h1>
+
+  <section class="sheet">
+    <table class="figures">
+      <thead>
+        <tr><th>המחשבון הווטרינרי, האתר כולו</th><th class="num">סך הכול</th><th class="num change">שינוי</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>כניסות מגוגל</th><td class="num">2.39K</td><td class="num change">+7,033%</td></tr>
+        <tr><th>הופעות בתוצאות החיפוש</th><td class="num">3.64K</td><td class="num change">+9,228%</td></tr>
+      </tbody>
+    </table>
+
+    <table class="figures">
+      <thead>
+        <tr><th>העמודים המובילים, לפי שפה</th><th class="num">כניסות</th><th class="num change">שינוי</th></tr>
+      </thead>
+      <tbody>
+        <tr class="point"><th>רוסית <span class="title ltr">Ветеринарный калькулятор доз и токсичности</span></th><td class="num">50</td><td class="num change">+4,900%</td></tr>
+        <tr><th>ספרדית <span class="title ltr">Calculadora veterinaria: dosis y toxicidad en perros</span></th><td class="num">47</td><td class="note">חדש</td></tr>
+        <tr><th>פולנית <span class="title ltr">Kalkulator weterynaryjny: dawki i toksyczność</span></th><td class="num">40</td><td class="note">חדש</td></tr>
+        <tr><th>יפנית <span class="title ltr">獣医用計算ツール — 犬猫の薬用量と中毒量</span></th><td class="num">25</td><td class="note">חדש</td></tr>
+        <tr><th>איטלקית <span class="title ltr">Calcolatore veterinario: dosaggio e tossicità</span></th><td class="num">20</td><td class="num change">+1,900%</td></tr>
+      </tbody>
+    </table>
+    <p class="sheet-note">השינוי הוא לעומת התקופה הקודמת. חדש: עמוד שלא קיבל כניסות בתקופה הקודמת.</p>
+  </section>
+
+  <!-- The four tools added in PR #7. -->
+  <section class="band">
+    <h2>חדש במחשבון</h2>
+    <ul>
+      <li>קוד כחול: עזר החייאה</li>
+      <li>בדיקת <span class="ltr">MDR1</span> במחשבון המינון</li>
+      <li>לשונית חירום וטיפול נמרץ</li>
+      <li>ארבעה מחשבונים ליד המיטה</li>
+    </ul>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><p class="fact-value word">חינם</p><p class="fact-label">בלי הרשמה ובלי חשבון</p></div>
+    <div class="fact"><p class="fact-value">14</p><p class="fact-label">שפות</p></div>
+    <div class="fact"><p class="fact-value">130</p><p class="fact-label">תרופות</p></div>
+    <div class="fact"><p class="fact-value">14</p><p class="fact-label">מחשבוני רעילות</p></div>
   </div>
+  <p class="basis">מינוני הייחוס לפי <span class="ltr">Plumb’s Veterinary Drug Handbook</span>, מהדורה 10. המקור מצוטט ליד כל נתון.</p>
 
-  <h1>המחשבון הווטרינרי<br><span class="accent">חוצה גבולות ושפות</span></h1>
-  <p class="lede">מחפשים אותנו בגוגל ברוסית, בספרדית, בפולנית, ביפנית ובאיטלקית — ומוצאים מחשבון חינמי לכלבים ולחתולים.</p>
-
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-label">כניסות מגוגל (קליקים)</div>
-      <div class="stat-line">
-        <span class="stat-value latin">2.39K</span>
-        <span class="stat-change">
-          <span class="delta latin"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>7,033%</span>
-          <span class="stat-note">מול התקופה הקודמת</span>
-        </span>
-      </div>
-    </div>
-    <div class="stat">
-      <div class="stat-label">הופעות בתוצאות החיפוש</div>
-      <div class="stat-line">
-        <span class="stat-value latin">3.64K</span>
-        <span class="stat-change">
-          <span class="delta latin"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>9,228%</span>
-          <span class="stat-note">מול התקופה הקודמת</span>
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <div class="pages">
-    <div class="pages-head">
-      <div class="pages-title">העמודים המובילים בחיפוש</div>
-      <div class="pages-unit">קליקים</div>
-    </div>
-
-    <div class="page">
-      <div class="lang latin">RU</div>
-      <div>
-        <div class="page-title latin">Ветеринарный калькулятор доз и токсичности</div>
-        <div class="page-meta">רוסית · <span class="latin">vet-holim.work/ru</span></div>
-        <div class="track"><div class="fill" style="width: 100%"></div></div>
-      </div>
-      <div class="page-value latin">
-        <span class="tag delta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>4,900%</span>
-        <span class="clicks">50</span>
-      </div>
-    </div>
-
-    <div class="page">
-      <div class="lang latin">ES</div>
-      <div>
-        <div class="page-title latin">Calculadora veterinaria: dosis y toxicidad en perros</div>
-        <div class="page-meta">ספרדית · <span class="latin">vet-holim.work/es</span></div>
-        <div class="track"><div class="fill" style="width: 94%"></div></div>
-      </div>
-      <div class="page-value latin">
-        <span class="tag">חדש</span>
-        <span class="clicks">47</span>
-      </div>
-    </div>
-
-    <div class="page">
-      <div class="lang latin">PL</div>
-      <div>
-        <div class="page-title latin">Kalkulator weterynaryjny: dawki i toksyczność</div>
-        <div class="page-meta">פולנית · <span class="latin">vet-holim.work/pl</span></div>
-        <div class="track"><div class="fill" style="width: 80%"></div></div>
-      </div>
-      <div class="page-value latin">
-        <span class="tag">חדש</span>
-        <span class="clicks">40</span>
-      </div>
-    </div>
-
-    <div class="page">
-      <div class="lang latin">JA</div>
-      <div>
-        <div class="page-title ja">獣医用計算ツール — 犬猫の薬用量と中毒量</div>
-        <div class="page-meta">יפנית · <span class="latin">vet-holim.work/ja</span></div>
-        <div class="track"><div class="fill" style="width: 50%"></div></div>
-      </div>
-      <div class="page-value latin">
-        <span class="tag">חדש</span>
-        <span class="clicks">25</span>
-      </div>
-    </div>
-
-    <div class="page">
-      <div class="lang latin">IT</div>
-      <div>
-        <div class="page-title latin">Calcolatore veterinario: dosaggio e tossicità</div>
-        <div class="page-meta">איטלקית · <span class="latin">vet-holim.work/it</span></div>
-        <div class="track"><div class="fill" style="width: 40%"></div></div>
-      </div>
-      <div class="page-value latin">
-        <span class="tag delta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>1,900%</span>
-        <span class="clicks">20</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- The four tools added in PR #7 (Code Blue, MDR1 check, emergency tab, bedside calculators). -->
-  <div class="chips">
-    <span class="chip accent">חדש</span>
-    <span class="chip">קוד כחול — החייאה</span>
-    <span class="chip">בדיקת <span class="latin">MDR1</span></span>
-    <span class="chip">חירום וטיפול נמרץ</span>
-    <span class="chip">מחשבונים ליד המיטה</span>
-  </div>
-  <p class="facts"><b>חינם לגמרי</b> · 14 שפות · 130 תרופות · 14 מחשבוני רעילות · מבוסס <span class="latin">Plumb's</span>, מהדורה 10</p>
-
-  <div class="footer">
-    <div class="url latin">vet-holim.work</div>
-    <div class="fineprint">מידע מייעץ בלבד — אינו תחליף לייעוץ וטרינרי מקצועי. השימוש באחריות המשתמש בלבד.</div>
-  </div>
+  <footer class="foot">
+    <p class="url ltr">vet-holim.work</p>
+    <p class="fineprint">מידע מייעץ בלבד, אינו תחליף לייעוץ וטרינרי מקצועי. השימוש באחריות המשתמש בלבד.</p>
+  </footer>
 
 </body>
 </html>

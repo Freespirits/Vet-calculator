@@ -52,7 +52,7 @@
   }
 
   /* Headline */
-  h1 { margin-top: 32px; font-size: 77px; font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; }
+  h1 { margin-top: 30px; font-size: 75px; font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; }
   h1 .accent {
     background: linear-gradient(90deg, var(--violet) 0%, var(--teal) 78%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -88,7 +88,7 @@
   .pages-unit { font-size: 21px; color: var(--text-lo); }
   .page {
     display: grid; grid-template-columns: 56px minmax(0, 1fr) 214px; column-gap: 20px; align-items: center;
-    padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
   .page:first-of-type { border-top: 0; margin-top: 4px; }
   .lang {
@@ -117,14 +117,16 @@
   }
   .tag.delta { font-family: 'Inter', sans-serif; font-size: 20px; justify-content: center; }
 
-  /* Fact chips + footer */
-  .chips { margin-top: 20px; display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 10px; }
+  /* "New in the calculator" chips, standing facts line, footer */
+  .chips { margin-top: 18px; display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 10px; }
   .chip {
-    font-size: 21px; font-weight: 700; color: var(--text-hi); white-space: nowrap;
-    padding: 7px 16px; border-radius: 999px;
+    font-size: 22px; font-weight: 700; color: var(--text-hi); white-space: nowrap;
+    padding: 7px 17px; border-radius: 999px;
     background: var(--surface); border: 1px solid var(--hairline);
   }
-  .chip.free { color: #06231F; background: var(--teal); border-color: var(--teal); }
+  .chip.accent { color: #06231F; background: var(--teal); border-color: var(--teal); font-weight: 800; }
+  .facts { margin-top: 14px; font-size: 22px; color: var(--text-mid); }
+  .facts b { color: var(--teal-soft); font-weight: 800; }
   .footer { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
   .url { font-size: 40px; font-weight: 800; letter-spacing: -0.01em; direction: ltr; }
   .fineprint { font-size: 19px; line-height: 1.4; color: var(--text-lo); text-align: left; max-width: 560px; }

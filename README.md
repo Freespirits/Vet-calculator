@@ -22,6 +22,7 @@ The screenshot uses an illustrative exposure of a 10 kg dog ingesting 50 g of 70
 ## What it includes
 
 - A medication dosage calculator with weight and concentration conversion, dose-range guidance, route selection, rounding, warnings, and a transparent calculation breakdown.
+- Code Blue, a CPR aid for trained veterinary teams: a 2-minute cycle clock with a pause timer, a compression metronome, weight-based doses and shock energies cited from the 2024 RECOVER Guidelines, a clinic-entered crash cart for draw-up volumes, and a time-stamped event log.
 - Fourteen toxin calculators: chocolate, caffeine, grapes/raisins, xylitol, allium, macadamia, lilies, THC, acetaminophen, ibuprofen, ethylene glycol, anticoagulant rodenticide, bromethalin, and cholecalciferol.
 - A searchable toxic-plant library with credited plant photography.
 - A reusable patient session shared across calculators.
@@ -67,6 +68,7 @@ The production build performs TypeScript project compilation and static-site gen
 src/
 ├── a11y/          accessibility provider, widget, statement, and tests
 ├── components/    shared UI, SEO, result, and treatment components
+├── cpr/           Code Blue logic: cited CPR figures, dose sheet, code clock, record
 ├── data/          drug, toxin-treatment, plant, and emergency-contact data
 ├── features/      dosage, patient-session, plant, and toxin experiences
 ├── i18n/          typed translations and language metadata
@@ -112,6 +114,25 @@ The interface is designed as a professional point-of-care calculation aid for ve
 - The plant library covers 35 common toxic plants with searchable names, dog/cat relevance, affected systems, signs, severity context, and image credits.
 - Results can be copied or shared where the browser supports it, and toxin routes support deep links for returning to a selected calculator.
 - The app is installable and caches its clinical core for offline use after a successful first load. Offline information can become stale and must still be checked against current references.
+
+## Code Blue (CPR aid)
+
+Code Blue is opened from the red button above the calculator tabs, or directly at `#/cpr`. It is a timekeeping, calculation, and record-keeping aid; it never chooses or prompts a treatment.
+
+- **Acknowledgment.** On first use on a device the screen shows only a professional-use acknowledgment. Doses and the clock appear after it is accepted; the acceptance is remembered on that device.
+- **Code clock.** Starting the clock begins cycle 1. Each cycle counts down two minutes of uninterrupted compressions; "Pause & check" starts a pause timer that turns red after ten seconds; "Resume compressions" begins the next cycle. Total time keeps running throughout. A separate line shows the time since the last logged epinephrine or vasopressin against the 3–5 minute interval.
+- **Metronome.** A visual and audible beat, adjustable only within 100–120 per minute.
+- **Dose sheet.** Each intervention shows the dose for the entered weight, with the guideline recommendation number beside it. A drug the guideline suggests not giving to the species (lidocaine in cats) shows that warning instead of a dose.
+- **Crash cart.** Draw-up volumes are calculated only from vial strengths the clinic types in (saved on the device). Nothing is pre-filled, because strengths differ between countries and manufacturers. The only built-in strengths are the two the guideline states itself (10% calcium gluconate and 10% calcium chloride).
+- **Event log.** Drugs, shocks, airway, and access are time-stamped as the team logs them and can be copied as a plain-text record. The log records that something was done, not the dose that was given, and the record says it is not a medical record.
+
+Every figure comes from one file, [`src/cpr/recoverGuideline.ts`](src/cpr/recoverGuideline.ts), read from the open-access paper: Burkitt-Creedon JM, Boller M, Fletcher DJ, et al. *2024 RECOVER Guidelines: Updated treatment recommendations for CPR in dogs and cats.* J Vet Emerg Crit Care 2024;34(S1):104–123. [doi:10.1111/vec.13391](https://doi.org/10.1111/vec.13391).
+
+### Use of RECOVER material — owner decision required
+
+Code Blue is an independent tool. It cites published recommendations from [The RECOVER Initiative](https://recoverinitiative.org); it is not affiliated with, endorsed, or certified by that organisation, uses no RECOVER logo, and does not reproduce the RECOVER CPR algorithm or drug dosing chart (the interface links to the official versions instead).
+
+The organisation's [Brand & Intellectual Property Guidelines](https://recoverinitiative.org/brand-intellectual-property-guidelines/) state that its algorithms and dosing charts are copyrighted, may not be modified or incorporated into products, and that "product integration" counts as commercial use requiring written permission. They also permit quoting and summarising the guidelines with attribution. Whether an independent, cited calculator like this one needs permission is a judgment for the site owner and, ideally, a lawyer. Before Code Blue is published, the owner should consider asking The RECOVER Initiative for written confirmation through the request process described on that page.
 
 ## Public clinical references
 

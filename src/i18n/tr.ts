@@ -240,4 +240,8 @@ export const tr: Record<TKey, string> = {
   'faq.q6': 'Zehirlenme şüphesinde ne yapmalıyım?',
   'faq.a6':
     'Bulgular ortaya çıkmadan önce derhal veteriner hekiminize veya en yakın acil kliniğe başvurun. Toksisite hesaplayıcısını maruziyeti tahmin etmek ve bu görüşmeyi beslemek için kullanın — asla tedaviye başvurmama kararı için değil.',
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Mavi kod — KPR',
+  'cpr.open.hint': 'Döngü zamanlayıcı, metronom, kiloya göre dozlar ve olay kaydı',
 };

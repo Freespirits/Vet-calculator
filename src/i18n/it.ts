@@ -240,4 +240,8 @@ export const it: Record<TKey, string> = {
   'faq.q6': 'Cosa fare in caso di sospetto avvelenamento?',
   'faq.a6':
     "Contatta subito il tuo veterinario o il pronto soccorso più vicino, prima che compaiano i segni. Usa il calcolatore di tossicità per stimare l'esposizione e documentare quella conversazione, mai per decidere di non cercare assistenza.",
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Codice blu — RCP',
+  'cpr.open.hint': 'Timer dei cicli, metronomo, dosi in base al peso e registro eventi',
 };

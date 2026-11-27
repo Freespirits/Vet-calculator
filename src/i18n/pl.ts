@@ -240,4 +240,8 @@ export const pl: Record<TKey, string> = {
   'faq.q6': 'Co zrobić przy podejrzeniu zatrucia?',
   'faq.a6':
     'Natychmiast skontaktuj się ze swoim lekarzem weterynarii lub najbliższą lecznicą całodobową, zanim pojawią się objawy. Kalkulatora toksyczności używaj do oszacowania ekspozycji i wsparcia tej rozmowy — nigdy do rezygnacji z wizyty.',
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Kod niebieski — RKO',
+  'cpr.open.hint': 'Minutnik cykli, metronom, dawki według masy ciała i dziennik zdarzeń',
 };

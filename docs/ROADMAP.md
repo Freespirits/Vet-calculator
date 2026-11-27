@@ -41,6 +41,18 @@ identity — rather than bolting on unrelated features. Phases are ordered by
 - **Risk-gauge shimmer** — critical/emergency results glow and breathe
   (Phase 3 item 4); reduced-motion safe.
 
+## Phase 0.75 — shipped (critical-care tools)
+
+- **Code Blue (CPR aid)** — `#/cpr`, opened from a red button above the tabs:
+  2-minute cycle clock with pause timer, 100–120/min metronome, weight-based
+  doses and shock energies cited to the 2024 RECOVER Guidelines by
+  recommendation number, clinic-entered crash cart (no pre-filled vial
+  strengths), time-stamped event log with a copyable record. Gated by a
+  professional-use acknowledgment. Supersedes the "per-weight emergency (CPR)
+  drug sheet" part of Phase 1 item 4. It deliberately does not reproduce the
+  RECOVER algorithm or dosing chart — see "Use of RECOVER material" in the
+  README for the open owner decision.
+
 ## Phase 1 — content depth (extends the cited clinical core)
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:

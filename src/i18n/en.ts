@@ -243,4 +243,8 @@ export const en: Record<TKey, string> = {
   'faq.q6': 'What should I do in a suspected poisoning?',
   'faq.a6':
     'Contact your veterinarian or nearest emergency clinic immediately, before signs appear. Use the toxicity calculator to estimate the exposure and inform that conversation — never to decide against seeking care.',
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Code Blue — CPR',
+  'cpr.open.hint': 'Cycle clock, metronome, weight-based doses and event log',
 };

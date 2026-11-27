@@ -240,4 +240,8 @@ export const de: Record<TKey, string> = {
   'faq.q6': 'Was tun bei Vergiftungsverdacht?',
   'faq.a6':
     'Kontaktieren Sie sofort Ihre Tierärztin oder die nächste Notfallpraxis, noch bevor Symptome auftreten. Nutzen Sie den Toxizitätsrechner, um die Exposition abzuschätzen und dieses Gespräch zu fundieren — nie, um auf eine Behandlung zu verzichten.',
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Code Blue — Reanimation',
+  'cpr.open.hint': 'Zyklus-Timer, Metronom, gewichtsbasierte Dosen und Ereignisprotokoll',
 };

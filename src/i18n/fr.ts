@@ -248,5 +248,5 @@ export const fr: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Urgences',
   'er.title': 'Urgences et soins intensifs',
-  'er.subtitle': 'Urgences, scores cliniques et plans de fluidothérapie issus d\'études vétérinaires publiées — chaque chiffre est sourcé.',
+  'er.subtitle': 'Urgences et calculateurs cliniques issus d\'études vétérinaires publiées — chaque chiffre est sourcé.',
 };

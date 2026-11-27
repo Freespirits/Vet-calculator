@@ -67,6 +67,19 @@ identity — rather than bolting on unrelated features. Phases are ordered by
   caterpillar, and organophosphate/carbamate poisoning. The suite's registry
   is where bedside scores and the fluids planner are added.
 
+- **Bedside calculators** in the same tab — canine shock index, Feline
+  Grimace Scale, transfusion volume (dogs and cats), infusion-rate converter.
+
+### Waiting on source text (not built)
+
+- **Fluid-rate planner** — needs the 2024 AAHA Fluid Therapy Guidelines text
+  (maintenance, deficit, resuscitation and anaesthesia rates). Supersedes the
+  fluid part of Phase 1 item 4 once the text is available.
+- **Animal trauma triage score and modified Glasgow Coma Scale** — need the
+  scoring descriptors from the original papers (Rockar 1994; Platt 2001).
+- **Heatstroke severity score (Segev 2015)** — needs the paper's weighting
+  table; today the heat card only describes that the score exists.
+
 ## Phase 1 — content depth (extends the cited clinical core)
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:

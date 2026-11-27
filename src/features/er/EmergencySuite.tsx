@@ -3,19 +3,21 @@
  * that card's detail view. Selection lives in the hash route (#/er/<id>) so
  * every card is deep-linkable and shareable.
  *
- * The registry below is the single list of cards. A card is either a
- * field-emergency topic (cited statements + an interactive helper) or a
- * bedside tool; both are rendered inside TopicShell, which always shows the
+ * The registry below is the single list of cards, shown in two groups: field
+ * emergencies (cited statements + an interactive helper) and bedside
+ * calculators. Both are rendered inside TopicShell, which always shows the
  * sources and the standing "not a treatment protocol" notice.
  */
 import type { ReactNode } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { tr, type LocalizedText } from '../../types/toxins';
+import { L, tr, type LocalizedText } from '../../types/toxins';
 import { ChevronDownIcon } from '../../components/Icons';
 import { FIELD_TOPICS } from '../../emergencies/fieldFacts';
 import type { FieldTopic, FieldTopicId } from '../../emergencies/types';
 import { FactSections, TopicShell } from './TopicParts';
 import { CaterpillarWindow, CholinergicWindow, HeatGrader, ViperRiskChecklist } from './FieldHelpers';
+import { FelineGrimaceTool, InfusionTool, ShockIndexTool, TransfusionTool } from './BedsideTools';
+import { BEDSIDE_META, BEDSIDE_TOOL_IDS, type BedsideToolId } from './bedsideMeta';
 
 export interface ErEntry {
   id: string;
@@ -41,13 +43,32 @@ function FieldTopicView({ topic }: { topic: FieldTopic }) {
   );
 }
 
-export const ER_REGISTRY: ErEntry[] = FIELD_TOPICS.map((topic) => ({
+const FIELD_ENTRIES: ErEntry[] = FIELD_TOPICS.map((topic) => ({
   id: topic.id,
   name: topic.name,
   blurb: topic.blurb,
   accent: topic.accent,
   render: () => <FieldTopicView topic={topic} />,
 }));
+
+const BEDSIDE_SCREEN: Record<BedsideToolId, () => ReactNode> = {
+  'shock-index': () => <ShockIndexTool />,
+  'feline-grimace': () => <FelineGrimaceTool />,
+  transfusion: () => <TransfusionTool />,
+  infusion: () => <InfusionTool />,
+};
+
+const BEDSIDE_ENTRIES: ErEntry[] = BEDSIDE_TOOL_IDS.map((toolId) => ({
+  ...BEDSIDE_META[toolId],
+  render: BEDSIDE_SCREEN[toolId],
+}));
+
+const ER_REGISTRY: ErEntry[] = [...FIELD_ENTRIES, ...BEDSIDE_ENTRIES];
+
+const GROUP_TITLE = {
+  field: L('מצבי חירום בשטח', 'Field emergencies'),
+  bedside: L('מחשבונים ליד המיטה', 'Bedside calculators'),
+};
 
 function EntryTile({ entry, onOpen }: { entry: ErEntry; onOpen: () => void }) {
   const { lang } = useI18n();
@@ -59,6 +80,20 @@ function EntryTile({ entry, onOpen }: { entry: ErEntry; onOpen: () => void }) {
         <span className="mt-0.5 block text-xs leading-snug text-muted">{tr(entry.blurb, lang)}</span>
       </span>
     </button>
+  );
+}
+
+function EntryGroup(props: { title: LocalizedText; entries: ErEntry[]; onSelect: (id: string) => void }) {
+  const { lang } = useI18n();
+  return (
+    <section className="flex flex-col gap-2">
+      <h3 className="px-1 text-xs font-semibold uppercase tracking-wide text-muted">{tr(props.title, lang)}</h3>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {props.entries.map((entry) => (
+          <EntryTile key={entry.id} entry={entry} onOpen={() => props.onSelect(entry.id)} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -99,11 +134,8 @@ export function EmergencySuite({
         <h2 className="text-xl font-bold text-ink">{t('er.title')}</h2>
         <p className="mx-auto mt-1 max-w-md text-sm text-muted">{t('er.subtitle')}</p>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {ER_REGISTRY.map((entry) => (
-          <EntryTile key={entry.id} entry={entry} onOpen={() => onSelect(entry.id)} />
-        ))}
-      </div>
+      <EntryGroup title={GROUP_TITLE.field} entries={FIELD_ENTRIES} onSelect={onSelect} />
+      <EntryGroup title={GROUP_TITLE.bedside} entries={BEDSIDE_ENTRIES} onSelect={onSelect} />
     </div>
   );
 }

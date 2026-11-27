@@ -248,5 +248,5 @@ export const de: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Notfall',
   'er.title': 'Notfall- und Intensivmedizin',
-  'er.subtitle': 'Notfälle, klinische Scores und Infusionsplanung aus veröffentlichten veterinärmedizinischen Studien – jede Zahl mit Quelle.',
+  'er.subtitle': 'Notfälle und klinische Rechner aus veröffentlichten veterinärmedizinischen Studien – jede Zahl mit Quelle.',
 };

@@ -1,0 +1,142 @@
+/*
+ * Shared styles for the "global reach" Facebook cards:
+ *   global-reach-card.html        — figures redrawn in the Aurora-Clinic brand style
+ *   global-reach-screenshot.html  — the real Search Console screenshot, cut and framed
+ * Both are fixed 1080×1350 (Facebook 4:5 portrait) canvases, Hebrew RTL.
+ */
+  :root {
+    --bg: #070B14;
+    --text-hi: #F4F7FB;
+    --text-mid: #C3D0E3;
+    --text-lo: #8FA3C0;
+    --teal: #2DD4BF;
+    --teal-soft: #7FE9DA;
+    --violet: #8B5CF6;
+    --emerald-soft: #7DE8C0;
+    --surface: rgba(255, 255, 255, 0.055);
+    --hairline: rgba(255, 255, 255, 0.11);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; }
+  body {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text-hi);
+    font-family: 'Heebo', 'Inter', sans-serif;
+    padding: 54px 60px 46px;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Aurora glow — same two radial washes as public/og.svg. */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 700px at 12% -6%, rgba(45, 212, 191, 0.42), transparent 62%),
+      radial-gradient(900px 760px at 96% 4%, rgba(139, 92, 246, 0.42), transparent 64%),
+      radial-gradient(700px 520px at 50% 108%, rgba(16, 185, 129, 0.16), transparent 70%);
+  }
+  body > * { position: relative; }
+  .latin { font-family: 'Inter', sans-serif; }
+
+  /* Brand row */
+  .brand-row { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 800; }
+  .brand svg { width: 46px; height: 46px; }
+  .source-pill {
+    font-size: 21px; font-weight: 500; color: var(--text-mid);
+    padding: 9px 20px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--hairline);
+  }
+
+  /* Headline */
+  h1 { margin-top: 32px; font-size: 77px; font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; }
+  h1 .accent {
+    background: linear-gradient(90deg, var(--violet) 0%, var(--teal) 78%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede { margin-top: 14px; font-size: 27px; line-height: 1.36; color: var(--text-mid); max-width: 900px; }
+
+  /* Headline stat tiles */
+  .stats { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
+  .stat {
+    padding: 18px 26px 16px; border-radius: 28px;
+    background: var(--surface); border: 1px solid var(--hairline);
+  }
+  .stat-label { font-size: 24px; font-weight: 500; color: var(--text-lo); }
+  .stat-line { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .stat-change { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .stat-value { font-size: 82px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; direction: ltr; }
+  .delta {
+    display: inline-flex; align-items: center; gap: 8px; direction: ltr;
+    font-size: 25px; font-weight: 700; color: var(--emerald-soft);
+    padding: 5px 15px; border-radius: 999px;
+    background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.42);
+  }
+  .delta svg { width: 17px; height: 17px; }
+  .stat-note { font-size: 19px; color: var(--text-lo); white-space: nowrap; }
+
+  /* Top pages */
+  .pages {
+    margin-top: 22px; padding: 18px 28px 6px; border-radius: 28px;
+    background: var(--surface); border: 1px solid var(--hairline);
+  }
+  .pages-head { display: flex; align-items: baseline; justify-content: space-between; }
+  .pages-title { font-size: 28px; font-weight: 800; }
+  .pages-unit { font-size: 21px; color: var(--text-lo); }
+  .page {
+    display: grid; grid-template-columns: 56px minmax(0, 1fr) 214px; column-gap: 20px; align-items: center;
+    padding: 12px 0; border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .page:first-of-type { border-top: 0; margin-top: 4px; }
+  .lang {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 21px; font-weight: 800; letter-spacing: 0.02em; color: var(--text-hi);
+    background: linear-gradient(140deg, rgba(139, 92, 246, 0.5), rgba(45, 212, 191, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .page-title {
+    font-size: 23px; font-weight: 700; line-height: 1.3;
+    direction: ltr; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .page-title.ja { font-family: 'Noto Sans JP', sans-serif; }
+  .page-meta { margin-top: 1px; font-size: 20px; color: var(--text-lo); }
+  .page-meta .latin { direction: ltr; unicode-bidi: isolate; }
+  /* Magnitude bar: one hue, anchored to the reading-start (right) edge. */
+  .track { margin-top: 8px; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.07); }
+  .fill { height: 100%; border-radius: 4px; background: var(--teal); }
+  .page-value { display: flex; align-items: center; justify-content: space-between; gap: 14px; direction: ltr; }
+  .clicks { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; min-width: 58px; text-align: right; }
+  .tag {
+    font-family: 'Heebo', sans-serif; font-size: 20px; font-weight: 700; color: var(--teal-soft);
+    padding: 4px 14px; border-radius: 999px; min-width: 128px; text-align: center;
+    background: rgba(45, 212, 191, 0.13); border: 1px solid rgba(45, 212, 191, 0.4);
+  }
+  .tag.delta { font-family: 'Inter', sans-serif; font-size: 20px; justify-content: center; }
+
+  /* Fact chips + footer */
+  .chips { margin-top: 20px; display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 10px; }
+  .chip {
+    font-size: 21px; font-weight: 700; color: var(--text-hi); white-space: nowrap;
+    padding: 7px 16px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--hairline);
+  }
+  .chip.free { color: #06231F; background: var(--teal); border-color: var(--teal); }
+  .footer { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .url { font-size: 40px; font-weight: 800; letter-spacing: -0.01em; direction: ltr; }
+  .fineprint { font-size: 19px; line-height: 1.4; color: var(--text-lo); text-align: left; max-width: 560px; }
+
+  /* Variant B (global-reach-screenshot.html): the owner's real Search Console
+     screenshot, cut into its two panels and framed. */
+  .shots { margin-top: 28px; display: flex; flex-direction: column; gap: 20px; }
+  /* White mat around each cut so its edge content clears the rounded corners. */
+  .shot {
+    padding: 4px 18px; border-radius: 26px; background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.75), 0 0 60px -18px rgba(45, 212, 191, 0.35);
+  }
+  .shot img { display: block; width: 100%; }
+  .shot-caption { margin-top: 14px; font-size: 21px; color: var(--text-lo); text-align: center; }

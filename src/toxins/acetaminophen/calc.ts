@@ -83,7 +83,8 @@ export function computeAcetaminophen(input: ApapInput): ToxinResult {
             'Cats have no safe dose (deficient glucuronidation). One 325 mg tablet in a 4 kg cat ≈ 81 mg/kg — life-threatening.',
           )
         : L(
-            'כלב: הפטוטוקסיות >100, מתמוגלובינמיה >200, חמור ~450 מ"ג/ק"ג. הפגיעה הכבדית מתעכבת 24–48 ש׳.',
+            // Hebrew spells "above" out: a ">" inside right-to-left text is mirrored by the browser.
+            'כלב: הפטוטוקסיות מעל 100, מתמוגלובינמיה מעל 200, חמור ~450 מ"ג/ק"ג. הפגיעה הכבדית מתעכבת 24–48 ש׳.',
             'Dog: hepatotoxicity >100, methemoglobinemia >200, severe ~450 mg/kg. Hepatic injury is delayed 24–48 h.',
           ),
     emergency,

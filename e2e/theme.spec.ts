@@ -10,11 +10,12 @@
  * constant "dark" it overwrote a saved light theme on reload. That is a race,
  * so the saved-theme check loads each page several times.
  */
-import { expect, pageTheme, settled, storedValue, test } from './support';
+import { LOAD_BUDGET_MS, expect, pageTheme, settled, storedValue, test } from './support';
 
 const LOADS_PER_PAGE = 3;
 
 test('the toggle switches the theme, and the choice survives a reload', async ({ openAs }) => {
+  test.setTimeout(3 * LOAD_BUDGET_MS);
   const { page, problems } = await openAs('/en/');
   expect(await pageTheme(page)).toBe('dark');
 
@@ -35,6 +36,8 @@ test('the toggle switches the theme, and the choice survives a reload', async ({
 });
 
 test.describe('a saved light theme is still applied once the page has settled', () => {
+  test.describe.configure({ timeout: LOADS_PER_PAGE * LOAD_BUDGET_MS });
+
   for (const path of ['/', '/en/', '/ar/', '/en/#/tox/chocolate']) {
     test(`on ${path}`, async ({ openAs }) => {
       for (let load = 1; load <= LOADS_PER_PAGE; load += 1) {

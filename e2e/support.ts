@@ -54,6 +54,15 @@ type OpenAs = (path: string, visitor?: Visitor) => Promise<Visit>;
 /** How long after the second animation frame the page is given to finish follow-up work. */
 const SETTLE_PAUSE_MS = 300;
 
+/**
+ * Time allowed for one page load inside a check that loads a page several
+ * times. A load takes about 4 s on a developer machine and about 14 s on a
+ * GitHub runner, where the WebGL background is drawn without a GPU; this
+ * leaves a wide margin so a slow runner does not look like a failing check.
+ * Use it as `test.setTimeout(loads * LOAD_BUDGET_MS)`.
+ */
+export const LOAD_BUDGET_MS = 45_000;
+
 const EMPTY_SCRIPT = { status: 200, contentType: 'application/javascript', body: '' };
 const EMPTY_IMAGE = {
   status: 200,

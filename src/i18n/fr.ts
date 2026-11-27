@@ -240,4 +240,8 @@ export const fr: Record<TKey, string> = {
   'faq.q6': "Que faire en cas de suspicion d'intoxication ?",
   'faq.a6':
     "Contactez immédiatement votre vétérinaire ou la clinique d'urgence la plus proche, avant l'apparition des signes. Servez-vous du calculateur de toxicité pour estimer l'exposition et nourrir cette conversation, jamais pour renoncer à consulter.",
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Code bleu — RCP',
+  'cpr.open.hint': 'Minuteur de cycles, métronome, doses selon le poids et journal des événements',
 };

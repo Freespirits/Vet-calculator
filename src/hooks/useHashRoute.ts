@@ -8,18 +8,20 @@
  *   #/tox/chocolate   a specific toxin calculator
  *   #/plants          plant library grid
  *   #/plants/lily     a specific plant detail
+ *   #/cpr             Code Blue (CPR clock, weight-based doses, event log)
  *
  * Unknown or absent hashes resolve to the default tool with no selection.
  */
 import { useCallback, useEffect, useState } from 'react';
 
-export type ToolId = 'dosage' | 'patient' | 'toxins' | 'plants';
+export type ToolId = 'dosage' | 'patient' | 'toxins' | 'plants' | 'cpr';
 
 const TOOL_TO_SEG: Record<ToolId, string> = {
   dosage: 'dosage',
   patient: 'patient',
   toxins: 'tox',
   plants: 'plants',
+  cpr: 'cpr',
 };
 const SEG_TO_TOOL: Record<string, ToolId> = {
   dosage: 'dosage',
@@ -27,6 +29,7 @@ const SEG_TO_TOOL: Record<string, ToolId> = {
   tox: 'toxins',
   toxins: 'toxins',
   plants: 'plants',
+  cpr: 'cpr',
 };
 
 export interface HashRoute {

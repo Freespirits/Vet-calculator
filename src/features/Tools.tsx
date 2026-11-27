@@ -9,12 +9,38 @@ import { ToxinSuite } from './toxins/ToxinSuite';
 import { PatientSession } from './patient/PatientSession';
 import { PatientSessionProvider } from './patient/PatientSessionContext';
 import { PlantLibrary } from './plants/PlantLibrary';
-import { SyringeIcon, AlertTriangleIcon, PawIcon, FlowerIcon } from '../components/Icons';
+import { CodeBlue } from './cpr/CodeBlue';
+import { SyringeIcon, AlertTriangleIcon, PawIcon, FlowerIcon, HeartPulseIcon } from '../components/Icons';
+
+/**
+ * Emergency entry to Code Blue. It sits above the calculator tabs (never
+ * inside them) so it is reachable in one tap from any tool, and it is
+ * deep-linkable at #/cpr.
+ */
+function CodeBlueButton({ active, onOpen }: { active: boolean; onOpen: () => void }) {
+  const { t } = useI18n();
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-current={active ? 'page' : undefined}
+      className={`mx-auto mb-3 flex min-h-[56px] w-full max-w-md items-center gap-3 rounded-2xl border px-4 py-2.5 text-start transition-colors ${
+        active ? 'border-rose bg-rose/25' : 'border-rose/40 bg-rose/10 hover:bg-rose/20'
+      }`}
+    >
+      <HeartPulseIcon size={24} className="shrink-0 text-rose" />
+      <span className="min-w-0">
+        <span className="block text-sm font-bold text-ink">{t('cpr.open')}</span>
+        <span className="block text-xs leading-snug text-muted">{t('cpr.open.hint')}</span>
+      </span>
+    </button>
+  );
+}
 
 export function Tools() {
   const { t } = useI18n();
   const reduced = useReducedMotion();
-  // Deep-linkable: #/dosage, #/patient, #/tox/<id>, #/plants/<id>.
+  // Deep-linkable: #/dosage, #/patient, #/tox/<id>, #/plants/<id>, #/cpr.
   const { tool: routeTool, sub, navigate } = useHashRoute();
   const tool: ToolId = routeTool ?? 'dosage';
 
@@ -30,6 +56,7 @@ export function Tools() {
   return (
     <PatientSessionProvider>
     <section id="tools" className="mx-auto w-full max-w-2xl scroll-mt-20 px-4 py-10">
+      <CodeBlueButton active={tool === 'cpr'} onOpen={() => navigate('cpr')} />
       <div className="mx-auto mb-6 max-w-md">
         <SegmentedControl
           size="lg"
@@ -61,6 +88,7 @@ export function Tools() {
           {tool === 'plants' && (
             <PlantLibrary selectedId={sub} onSelect={(id) => navigate('plants', id)} />
           )}
+          {tool === 'cpr' && <CodeBlue />}
         </motion.div>
       </AnimatePresence>
     </section>

@@ -240,4 +240,8 @@ export const es: Record<TKey, string> = {
   'faq.q6': '¿Qué hago ante una sospecha de intoxicación?',
   'faq.a6':
     'Contacta de inmediato con tu veterinario o la clínica de urgencias más cercana, antes de que aparezcan signos. Usa la calculadora de toxicidad para estimar la exposición y enriquecer esa conversación, nunca para decidir no buscar atención.',
+
+  // Code Blue (CPR aid) entry point
+  'cpr.open': 'Código azul — RCP',
+  'cpr.open.hint': 'Reloj de ciclos, metrónomo, dosis por peso y registro de eventos',
 };

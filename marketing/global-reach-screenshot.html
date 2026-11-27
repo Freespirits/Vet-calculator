@@ -1,65 +1,64 @@
 <!doctype html>
 <!--
-  Source for marketing/global-reach-screenshot.png — alternative image for the
-  Hebrew Facebook post in marketing/facebook-post-global-reach.md.
+  Source for marketing/global-reach-screenshot.png, the alternative image for
+  the Hebrew Facebook post in marketing/facebook-post-global-reach.md.
 
   Shows the owner's real Google Search Console "Insights" screenshot, cut into
-  its two panels (totals, top pages) and framed in the Aurora-Clinic brand style.
-  The only retouch: the small page thumbnails are painted out, because they show
-  the product's former name and this is a Vet-Flow product. Every number, title
-  and URL is as Search Console displayed it. Use it when the authentic screenshot matters more
-  than polish; global-reach-card.html is the redrawn, sharper version.
+  its two panels (totals, top pages), in the same system as
+  global-reach-card.html. The only retouch: the small page thumbnails are
+  painted out, because they show the product's former name and this is a
+  Vet-Flow product. Every number, title and URL is as Search Console
+  displayed it.
 
   Render: 1080×1350 viewport, headless Chromium, deviceScaleFactor 2.
 -->
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<title>Vet-Flow global reach — framed screenshot</title>
+<title>המחשבון הווטרינרי של Vet-Flow: צילום מסך של נתוני החיפוש</title>
+<meta name="description" content="צילום מסך מתוך Google Search Console של המחשבון הווטרינרי של Vet-Flow, והכלים החדשים שנוספו לו.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Inter:wght@500;600;700;800&family=Noto+Sans+JP:wght@500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Hanken+Grotesk:wght@600&family=Heebo:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="global-reach-card.css">
 </head>
 <body>
 
-  <div class="brand-row">
-    <div class="brand">
-      <svg viewBox="-60 -50 120 110" aria-hidden="true" fill="#2DD4BF">
-        <ellipse cx="0" cy="22" rx="34" ry="28"/>
-        <ellipse cx="-38" cy="-12" rx="13" ry="17" transform="rotate(-18 -38 -12)"/>
-        <ellipse cx="-13" cy="-26" rx="13" ry="17" transform="rotate(-6 -13 -26)"/>
-        <ellipse cx="13" cy="-26" rx="13" ry="17" transform="rotate(6 13 -26)"/>
-        <ellipse cx="38" cy="-12" rx="13" ry="17" transform="rotate(18 38 -12)"/>
-      </svg>
-      <span class="latin">Vet-Flow</span>
-    </div>
-    <div class="source-pill">הנתונים: <span class="latin">Google Search Console</span></div>
-  </div>
+  <header class="mast">
+    <p class="wordmark ltr">Vet-Flow</p>
+    <p class="source">צילום מסך מתוך <span class="ltr">Google Search Console</span></p>
+  </header>
 
-  <h1>המחשבון הווטרינרי<br><span class="accent">חוצה גבולות ושפות</span></h1>
-  <p class="lede">כך נראים הנתונים שלנו ב־<span class="latin">Google Search Console</span> — העמודים המובילים הם בכלל לא בעברית.</p>
+  <h1>חמשת העמודים המובילים בגוגל אינם בעברית</h1>
 
-  <div class="shots">
-    <div class="shot"><img src="search-console-totals.png" alt="סך הכול: 2.39K קליקים (עלייה של 7,033%) ו־3.64K הופעות (עלייה של 9,228%)"></div>
+  <section class="sheet">
+    <div class="shot"><img src="search-console-totals.png" alt="סך הכול: 2.39K קליקים, עלייה של 7,033%, ו־3.64K הופעות, עלייה של 9,228%"></div>
     <div class="shot"><img src="search-console-top-pages.png" alt="העמודים המובילים: רוסית 50 קליקים, ספרדית 47, פולנית 40, יפנית 25, איטלקית 20"></div>
-  </div>
-  <p class="shot-caption">צילום מסך מתוך <span class="latin">Google Search Console</span></p>
+  </section>
 
-  <!-- The four tools added in PR #7 (Code Blue, MDR1 check, emergency tab, bedside calculators). -->
-  <div class="chips">
-    <span class="chip accent">חדש</span>
-    <span class="chip">קוד כחול — החייאה</span>
-    <span class="chip">בדיקת <span class="latin">MDR1</span></span>
-    <span class="chip">חירום וטיפול נמרץ</span>
-    <span class="chip">מחשבונים ליד המיטה</span>
-  </div>
-  <p class="facts"><b>חינם לגמרי</b> · 14 שפות · 130 תרופות · 14 מחשבוני רעילות · מבוסס <span class="latin">Plumb's</span>, מהדורה 10</p>
+  <!-- The four tools added in PR #7. -->
+  <section class="band">
+    <h2>חדש במחשבון</h2>
+    <ul>
+      <li>קוד כחול: עזר החייאה</li>
+      <li>בדיקת <span class="ltr">MDR1</span> במחשבון המינון</li>
+      <li>לשונית חירום וטיפול נמרץ</li>
+      <li>ארבעה מחשבונים ליד המיטה</li>
+    </ul>
+  </section>
 
-  <div class="footer">
-    <div class="url latin">vet-holim.work</div>
-    <div class="fineprint">מידע מייעץ בלבד — אינו תחליף לייעוץ וטרינרי מקצועי. השימוש באחריות המשתמש בלבד.</div>
+  <div class="facts">
+    <div class="fact"><p class="fact-value word">חינם</p><p class="fact-label">בלי הרשמה ובלי חשבון</p></div>
+    <div class="fact"><p class="fact-value">14</p><p class="fact-label">שפות</p></div>
+    <div class="fact"><p class="fact-value">130</p><p class="fact-label">תרופות</p></div>
+    <div class="fact"><p class="fact-value">14</p><p class="fact-label">מחשבוני רעילות</p></div>
   </div>
+  <p class="basis">מינוני הייחוס לפי <span class="ltr">Plumb’s Veterinary Drug Handbook</span>, מהדורה 10. המקור מצוטט ליד כל נתון.</p>
+
+  <footer class="foot">
+    <p class="url ltr">vet-holim.work</p>
+    <p class="fineprint">מידע מייעץ בלבד, אינו תחליף לייעוץ וטרינרי מקצועי. השימוש באחריות המשתמש בלבד.</p>
+  </footer>
 
 </body>
 </html>

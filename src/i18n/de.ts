@@ -244,4 +244,9 @@ export const de: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'Code Blue — Reanimation',
   'cpr.open.hint': 'Zyklus-Timer, Metronom, gewichtsbasierte Dosen und Ereignisprotokoll',
+
+  // Emergency & critical care suite
+  'tab.er': 'Notfall',
+  'er.title': 'Notfall- und Intensivmedizin',
+  'er.subtitle': 'Notfälle, klinische Scores und Infusionsplanung aus veröffentlichten veterinärmedizinischen Studien – jede Zahl mit Quelle.',
 };

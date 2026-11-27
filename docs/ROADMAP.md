@@ -60,6 +60,13 @@ identity — rather than bolting on unrelated features. Phases are ordered by
   notice on a dog's medication list and an MDR1 caution on the apomorphine
   "Treat now" row. Breed and genotype are stored on the patient session.
 
+- **Emergency & critical-care tab** (`#/er/<id>`) — four field emergencies
+  summarised from multi-country literature with a study key beside every
+  statement: heat-related illness (revised VetCompass grading, 2026), snake
+  envenomation (Israel, Europe, North America, Australia), pine processionary
+  caterpillar, and organophosphate/carbamate poisoning. The suite's registry
+  is where bedside scores and the fluids planner are added.
+
 ## Phase 1 — content depth (extends the cited clinical core)
 
 1. **Permethrin toxicity (cats)** — the highest-value missing calculator:

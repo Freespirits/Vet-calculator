@@ -244,4 +244,9 @@ export const pt: Record<TKey, string> = {
   // Code Blue (CPR aid) entry point
   'cpr.open': 'Código azul — RCP',
   'cpr.open.hint': 'Relógio de ciclos, metrónomo, doses por peso e registo de eventos',
+
+  // Emergency & critical care suite
+  'tab.er': 'Urgência',
+  'er.title': 'Urgência e cuidados intensivos',
+  'er.subtitle': 'Urgências, escalas clínicas e planeamento de fluidos a partir de estudos veterinários publicados — cada valor com a sua fonte.',
 };

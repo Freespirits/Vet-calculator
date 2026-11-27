@@ -23,6 +23,7 @@ The screenshot uses an illustrative exposure of a 10 kg dog ingesting 50 g of 70
 
 - A medication dosage calculator with weight and concentration conversion, dose-range guidance, route selection, rounding, warnings, and a transparent calculation breakdown.
 - A breed- and genotype-aware MDR1 (P-glycoprotein) check inside the dosage calculator, built on the published pharmacogenetic literature, plus a notice when two P-glycoprotein substrate drugs are on one patient's list.
+- An emergency and critical-care tab with four field emergencies — heat-related illness, snake envenomation, pine processionary caterpillar, and organophosphate/carbamate poisoning — each summarised from studies in more than one country, with the study named beside every statement.
 - Code Blue, a CPR aid for trained veterinary teams: a 2-minute cycle clock with a pause timer, a compression metronome, weight-based doses and shock energies cited from the 2024 RECOVER Guidelines, a clinic-entered crash cart for draw-up volumes, and a time-stamped event log.
 - Fourteen toxin calculators: chocolate, caffeine, grapes/raisins, xylitol, allium, macadamia, lilies, THC, acetaminophen, ibuprofen, ethylene glycol, anticoagulant rodenticide, bromethalin, and cholecalciferol.
 - A searchable toxic-plant library with credited plant photography.
@@ -70,6 +71,7 @@ src/
 ├── a11y/          accessibility provider, widget, statement, and tests
 ├── components/    shared UI, SEO, result, and treatment components
 ├── cpr/           Code Blue logic: cited CPR figures, dose sheet, code clock, record
+├── emergencies/   field-emergency evidence: heat-illness grading and cited statements
 ├── data/          drug, toxin-treatment, plant, and emergency-contact data
 ├── features/      dosage, patient-session, plant, and toxin experiences
 ├── i18n/          typed translations and language metadata
@@ -134,6 +136,19 @@ Every figure comes from one file, [`src/cpr/recoverGuideline.ts`](src/cpr/recove
 Code Blue is an independent tool. It cites published recommendations from [The RECOVER Initiative](https://recoverinitiative.org); it is not affiliated with, endorsed, or certified by that organisation, uses no RECOVER logo, and does not reproduce the RECOVER CPR algorithm or drug dosing chart (the interface links to the official versions instead).
 
 The organisation's [Brand & Intellectual Property Guidelines](https://recoverinitiative.org/brand-intellectual-property-guidelines/) state that its algorithms and dosing charts are copyrighted, may not be modified or incorporated into products, and that "product integration" counts as commercial use requiring written permission. They also permit quoting and summarising the guidelines with attribution. Whether an independent, cited calculator like this one needs permission is a judgment for the site owner and, ideally, a lawyer. Before Code Blue is published, the owner should consider asking The RECOVER Initiative for written confirmation through the request process described on that page.
+
+## Emergency and critical-care tab
+
+Opened from the fifth tab, or at `#/er/<topic>`. Each card has an interactive helper, cited statements, the full reference list, and a standing notice that it is not a treatment protocol.
+
+- **Heat-related illness** (`#/er/heat`). Ticking the signs present gives a grade — mild, moderate, or severe — under the criteria of the revised VetCompass clinical grading tool (2026). An optional presenting temperature marks the higher-risk sub-group at 41.0 °C and above. The card then shows what was observed in that paper's validation cohort for the matching group (cases and deaths), stated as cohort proportions and not as a prediction. Cooling evidence and risk factors for death from UK and Israeli studies follow.
+- **Snake envenomation** (`#/er/snake`). Findings, monitoring, and treatment evidence for Vipera palaestinae (Israel), the European adder (Sweden, Norway), pit vipers (United States), and elapids (Australia). A checklist counts the factors that were associated with death in the Israeli cohort; it is a count, not a score, because that study published no weighting.
+- **Pine processionary caterpillar** (`#/er/caterpillar`). Entering the hours since contact shows the time-to-first-oral-flushing group and the tongue-necrosis frequencies the French cohort reported for it, with Portuguese and Israeli series alongside.
+- **Organophosphate / carbamate poisoning** (`#/er/anticholinesterase`). Signs and course from Israeli, US, and South African studies, and a helper that places the time since the cholinergic crisis against the 7–96 hour window in which intermediate syndrome typically appears.
+
+No antidote or antivenom dose is given in this tab. All statements and references live in [`src/emergencies/`](src/emergencies/); a test fails if any statement lacks a listed source or any topic cites a single country.
+
+The heat-illness grading is an independent implementation of criteria published under a non-commercial, no-derivatives licence (Beard et al., *Sci Rep* 2026;16:4661, [doi:10.1038/s41598-025-34768-9](https://doi.org/10.1038/s41598-025-34768-9)). The card names the paper and says it is not the original chart. As with the RECOVER material, the owner should decide whether to ask the authors for permission before publishing.
 
 ## MDR1 (P-glycoprotein) check
 

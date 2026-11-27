@@ -17,7 +17,7 @@
  * about half locally. That is a race, so each case is loaded several times and
  * read only after the page has settled.
  */
-import { expect, pageLanguage, settled, storedValue, test, type Visitor } from './support';
+import { LOAD_BUDGET_MS, expect, pageLanguage, settled, storedValue, test, type Visitor } from './support';
 
 const LOADS_PER_CASE = 4;
 
@@ -53,6 +53,8 @@ const cases: { who: string; path: string; visitor: Visitor; expected: string }[]
 ];
 
 test.describe('<html lang dir> match the language on screen on every load', () => {
+  test.describe.configure({ timeout: LOADS_PER_CASE * LOAD_BUDGET_MS });
+
   for (const { who, path, visitor, expected } of cases) {
     test(`${path} for ${who} is ${expected}`, async ({ openAs }) => {
       const [expectedLang, expectedDir] = expected.split('/');
@@ -68,6 +70,7 @@ test.describe('<html lang dir> match the language on screen on every load', () =
 });
 
 test('the picker changes the language, and the root page then opens in it', async ({ openAs }) => {
+  test.setTimeout(2 * LOAD_BUDGET_MS);
   const { page, problems } = await openAs('/en/');
 
   await page.getByRole('button', { name: 'Select language' }).click();

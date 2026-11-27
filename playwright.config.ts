@@ -26,8 +26,9 @@ export default defineConfig({
   // No retries: several checks guard against races, and a retry would turn
   // "wrong on one load in five" into a pass.
   retries: 0,
-  // Some checks load a page several times, and the page's WebGL background is
-  // slow to draw without a GPU, so a load can take a few seconds in CI.
+  // For a check that loads a page once. Checks that load one several times
+  // set their own limit from LOAD_BUDGET_MS in e2e/support.ts: without a GPU
+  // the WebGL background is slow to draw, and a load takes ~14 s in CI.
   timeout: 60_000,
   reporter: runningInCi ? [['github'], ['html', { open: 'never' }]] : [['list']],
   use: {

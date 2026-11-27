@@ -1,0 +1,152 @@
+<!doctype html>
+<!--
+  Source for marketing/global-reach-card.png — the image attached to the
+  Hebrew Facebook post in marketing/facebook-post-global-reach.md.
+
+  It redraws, in the Aurora-Clinic brand style, the figures from the owner's
+  Google Search Console "Insights" screenshot (clicks, impressions and the five
+  top pages). Every number and page title is copied from that screenshot; no
+  figure is estimated. Pages whose previous-period value was 0 are marked "חדש"
+  (new) instead of a percentage, exactly as Search Console reports them.
+
+  Render: open at a 1080×1350 viewport (Facebook 4:5 portrait) in headless
+  Chromium with deviceScaleFactor 2 and screenshot the viewport.
+-->
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Vet-Flow global reach card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Inter:wght@500;600;700;800&family=Noto+Sans+JP:wght@500;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="global-reach-card.css">
+</head>
+<body>
+
+  <div class="brand-row">
+    <div class="brand">
+      <svg viewBox="-60 -50 120 110" aria-hidden="true" fill="#2DD4BF">
+        <ellipse cx="0" cy="22" rx="34" ry="28"/>
+        <ellipse cx="-38" cy="-12" rx="13" ry="17" transform="rotate(-18 -38 -12)"/>
+        <ellipse cx="-13" cy="-26" rx="13" ry="17" transform="rotate(-6 -13 -26)"/>
+        <ellipse cx="13" cy="-26" rx="13" ry="17" transform="rotate(6 13 -26)"/>
+        <ellipse cx="38" cy="-12" rx="13" ry="17" transform="rotate(18 38 -12)"/>
+      </svg>
+      <span class="latin">Vet-Flow</span>
+    </div>
+    <div class="source-pill">הנתונים: <span class="latin">Google Search Console</span></div>
+  </div>
+
+  <h1>המחשבון הווטרינרי<br><span class="accent">חוצה גבולות ושפות</span></h1>
+  <p class="lede">מחפשים אותנו בגוגל ברוסית, בספרדית, בפולנית, ביפנית ובאיטלקית — ומוצאים מחשבון חינמי לכלבים ולחתולים.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">כניסות מגוגל (קליקים)</div>
+      <div class="stat-line">
+        <span class="stat-value latin">2.39K</span>
+        <span class="stat-change">
+          <span class="delta latin"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>7,033%</span>
+          <span class="stat-note">מול התקופה הקודמת</span>
+        </span>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">הופעות בתוצאות החיפוש</div>
+      <div class="stat-line">
+        <span class="stat-value latin">3.64K</span>
+        <span class="stat-change">
+          <span class="delta latin"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>9,228%</span>
+          <span class="stat-note">מול התקופה הקודמת</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pages">
+    <div class="pages-head">
+      <div class="pages-title">העמודים המובילים בחיפוש</div>
+      <div class="pages-unit">קליקים</div>
+    </div>
+
+    <div class="page">
+      <div class="lang latin">RU</div>
+      <div>
+        <div class="page-title latin">Ветеринарный калькулятор доз и токсичности</div>
+        <div class="page-meta">רוסית · <span class="latin">vet-holim.work/ru</span></div>
+        <div class="track"><div class="fill" style="width: 100%"></div></div>
+      </div>
+      <div class="page-value latin">
+        <span class="tag delta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>4,900%</span>
+        <span class="clicks">50</span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="lang latin">ES</div>
+      <div>
+        <div class="page-title latin">Calculadora veterinaria: dosis y toxicidad en perros</div>
+        <div class="page-meta">ספרדית · <span class="latin">vet-holim.work/es</span></div>
+        <div class="track"><div class="fill" style="width: 94%"></div></div>
+      </div>
+      <div class="page-value latin">
+        <span class="tag">חדש</span>
+        <span class="clicks">47</span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="lang latin">PL</div>
+      <div>
+        <div class="page-title latin">Kalkulator weterynaryjny: dawki i toksyczność</div>
+        <div class="page-meta">פולנית · <span class="latin">vet-holim.work/pl</span></div>
+        <div class="track"><div class="fill" style="width: 80%"></div></div>
+      </div>
+      <div class="page-value latin">
+        <span class="tag">חדש</span>
+        <span class="clicks">40</span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="lang latin">JA</div>
+      <div>
+        <div class="page-title ja">獣医用計算ツール — 犬猫の薬用量と中毒量</div>
+        <div class="page-meta">יפנית · <span class="latin">vet-holim.work/ja</span></div>
+        <div class="track"><div class="fill" style="width: 50%"></div></div>
+      </div>
+      <div class="page-value latin">
+        <span class="tag">חדש</span>
+        <span class="clicks">25</span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="lang latin">IT</div>
+      <div>
+        <div class="page-title latin">Calcolatore veterinario: dosaggio e tossicità</div>
+        <div class="page-meta">איטלקית · <span class="latin">vet-holim.work/it</span></div>
+        <div class="track"><div class="fill" style="width: 40%"></div></div>
+      </div>
+      <div class="page-value latin">
+        <span class="tag delta"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14.5 9H10v5.5H6V9H1.5z" fill="currentColor"/></svg>1,900%</span>
+        <span class="clicks">20</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip free">חינם לגמרי</span>
+    <span class="chip">14 שפות</span>
+    <span class="chip">130 תרופות</span>
+    <span class="chip">14 מחשבוני רעילות</span>
+    <span class="chip">מבוסס <span class="latin">Plumb's</span> · מהדורה 10</span>
+  </div>
+
+  <div class="footer">
+    <div class="url latin">vet-holim.work</div>
+    <div class="fineprint">מידע מייעץ בלבד — אינו תחליף לייעוץ וטרינרי מקצועי. השימוש באחריות המשתמש בלבד.</div>
+  </div>
+
+</body>
+</html>

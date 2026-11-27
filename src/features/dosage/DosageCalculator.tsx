@@ -306,7 +306,7 @@ export function DosageCalculator() {
               <div className="text-center">
                 <div className="text-sm font-medium text-muted">{t('dose.volumeToDraw')}</div>
                 <div className="mt-1 flex items-baseline justify-center gap-2">
-                  <span className="grad-text text-result font-black">
+                  <span className="grad-text text-result font-black" data-testid="dose-volume">
                     <CountUp value={result.volumeMl} decimals={decimals} />
                   </span>
                   <span className="text-2xl font-bold text-ink/70">{t('unit.ml')}</span>

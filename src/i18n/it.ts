@@ -248,5 +248,5 @@ export const it: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Emergenza',
   'er.title': 'Emergenza e terapia intensiva',
-  'er.subtitle': 'Emergenze, punteggi clinici e pianificazione dei fluidi da studi veterinari pubblicati: ogni dato è citato.',
+  'er.subtitle': 'Emergenze e calcolatori clinici da studi veterinari pubblicati: ogni dato è citato.',
 };

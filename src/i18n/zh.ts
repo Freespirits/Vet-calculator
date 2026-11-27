@@ -242,5 +242,5 @@ export const zh: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': '急诊',
   'er.title': '急诊与重症监护',
-  'er.subtitle': '基于已发表兽医研究的急症、床旁评分与输液计划——每个数据均有出处。',
+  'er.subtitle': '基于已发表兽医研究的急症与床旁计算工具——每个数据均有出处。',
 };

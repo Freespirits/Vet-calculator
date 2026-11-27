@@ -254,7 +254,7 @@ export const he = {
   // Emergency & critical care suite
   'tab.er': 'חירום',
   'er.title': 'חירום וטיפול נמרץ',
-  'er.subtitle': 'מצבי חירום, מדדים קליניים ותכנון נוזלים ממחקרים וטרינריים שפורסמו — כל נתון עם מקור.',
+  'er.subtitle': 'מצבי חירום ומחשבונים ליד המיטה ממחקרים וטרינריים שפורסמו — כל נתון עם מקור.',
 } as const;
 
 export type TKey = keyof typeof he;

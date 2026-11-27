@@ -248,5 +248,5 @@ export const pl: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Nagłe',
   'er.title': 'Stany nagłe i intensywna terapia',
-  'er.subtitle': 'Stany nagłe, skale kliniczne i planowanie płynoterapii na podstawie opublikowanych badań weterynaryjnych — każda liczba ze źródłem.',
+  'er.subtitle': 'Stany nagłe i kalkulatory kliniczne na podstawie opublikowanych badań weterynaryjnych — każda liczba ze źródłem.',
 };

@@ -24,6 +24,7 @@ The screenshot uses an illustrative exposure of a 10 kg dog ingesting 50 g of 70
 - A medication dosage calculator with weight and concentration conversion, dose-range guidance, route selection, rounding, warnings, and a transparent calculation breakdown.
 - A breed- and genotype-aware MDR1 (P-glycoprotein) check inside the dosage calculator, built on the published pharmacogenetic literature, plus a notice when two P-glycoprotein substrate drugs are on one patient's list.
 - An emergency and critical-care tab with four field emergencies — heat-related illness, snake envenomation, pine processionary caterpillar, and organophosphate/carbamate poisoning — each summarised from studies in more than one country, with the study named beside every statement.
+- Four bedside calculators in the same tab: canine shock index, the Feline Grimace Scale, transfusion volume, and an infusion-rate converter.
 - Code Blue, a CPR aid for trained veterinary teams: a 2-minute cycle clock with a pause timer, a compression metronome, weight-based doses and shock energies cited from the 2024 RECOVER Guidelines, a clinic-entered crash cart for draw-up volumes, and a time-stamped event log.
 - Fourteen toxin calculators: chocolate, caffeine, grapes/raisins, xylitol, allium, macadamia, lilies, THC, acetaminophen, ibuprofen, ethylene glycol, anticoagulant rodenticide, bromethalin, and cholecalciferol.
 - A searchable toxic-plant library with credited plant photography.
@@ -71,6 +72,7 @@ src/
 ├── a11y/          accessibility provider, widget, statement, and tests
 ├── components/    shared UI, SEO, result, and treatment components
 ├── cpr/           Code Blue logic: cited CPR figures, dose sheet, code clock, record
+├── critical/      bedside calculators: shock index, grimace scale, transfusion, infusion
 ├── emergencies/   field-emergency evidence: heat-illness grading and cited statements
 ├── data/          drug, toxin-treatment, plant, and emergency-contact data
 ├── features/      dosage, patient-session, plant, and toxin experiences
@@ -145,6 +147,15 @@ Opened from the fifth tab, or at `#/er/<topic>`. Each card has an interactive he
 - **Snake envenomation** (`#/er/snake`). Findings, monitoring, and treatment evidence for Vipera palaestinae (Israel), the European adder (Sweden, Norway), pit vipers (United States), and elapids (Australia). A checklist counts the factors that were associated with death in the Israeli cohort; it is a count, not a score, because that study published no weighting.
 - **Pine processionary caterpillar** (`#/er/caterpillar`). Entering the hours since contact shows the time-to-first-oral-flushing group and the tongue-necrosis frequencies the French cohort reported for it, with Portuguese and Israeli series alongside.
 - **Organophosphate / carbamate poisoning** (`#/er/anticholinesterase`). Signs and course from Israeli, US, and South African studies, and a helper that places the time since the cholinergic crisis against the 7–96 hour window in which intermediate syndrome typically appears.
+
+The same tab holds four bedside calculators:
+
+- **Shock index (dogs)** (`#/er/shock-index`). Heart rate divided by systolic pressure, reported as below, at, or above the published cut-off of 1.0 (Porter et al., *J Vet Emerg Crit Care* 2013, [doi:10.1111/vec.12076](https://doi.org/10.1111/vec.12076)).
+- **Feline Grimace Scale** (`#/er/feline-grimace`). Five facial units scored 0, 1, 2, or "not possible to score"; the score is the sum divided by the maximum possible, and no score is given when more than two units cannot be scored. A score above 0.39 was the study's threshold for rescue analgesia (Evangelista et al., *Sci Rep* 2019, [doi:10.1038/s41598-019-55693-8](https://doi.org/10.1038/s41598-019-55693-8), CC BY 4.0).
+- **Transfusion volume** (`#/er/transfusion`). Dogs, packed red cells: 1.5 mL × desired PCV rise × kg, plus the donor-PCV formula when the donor PCV is entered (Short et al. 2012, [doi:10.1111/j.1476-4431.2012.00773.x](https://doi.org/10.1111/j.1476-4431.2012.00773.x)). Cats, whole blood: 2 mL × desired PCV rise × kg, shown with the authors' caveat that no formula was highly accurate (Reed et al. 2014, [doi:10.1177/1098612X13517254](https://doi.org/10.1177/1098612X13517254)).
+- **Infusion rate** (`#/er/infusion`). Converts a dose rate and a prepared concentration into mL per hour. It contains no drug doses.
+
+Not built, and why: the animal trauma triage score and the modified Glasgow Coma Scale need scoring descriptors that are only in papers that could not be read in full; a fluid-rate planner needs the 2024 AAHA Fluid Therapy Guidelines text, and that site blocks automated reading. They are waiting on the source text rather than being written from memory.
 
 No antidote or antivenom dose is given in this tab. All statements and references live in [`src/emergencies/`](src/emergencies/); a test fails if any statement lacks a listed source or any topic cites a single country.
 

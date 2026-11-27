@@ -251,5 +251,5 @@ export const en: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Emergency',
   'er.title': 'Emergency & critical care',
-  'er.subtitle': 'Field emergencies, bedside scores and fluid planning from published veterinary studies — every figure cited.',
+  'er.subtitle': 'Field emergencies and bedside calculators from published veterinary studies — every figure cited.',
 };

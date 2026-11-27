@@ -245,5 +245,5 @@ export const ja: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': '救急',
   'er.title': '救急・集中治療',
-  'er.subtitle': '発表済みの獣医学研究にもとづく救急疾患・ベッドサイドスコア・輸液計画——すべての数値に出典付き。',
+  'er.subtitle': '発表済みの獣医学研究にもとづく救急疾患とベッドサイド計算ツール——すべての数値に出典付き。',
 };

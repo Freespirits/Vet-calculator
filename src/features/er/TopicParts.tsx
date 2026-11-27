@@ -32,7 +32,8 @@ export function TopicShell({
   children,
 }: {
   name: LocalizedText;
-  regions: string[];
+  /** Countries the cited studies come from; omitted for single-study calculators. */
+  regions?: string[];
   /** Full references, in the order they should be listed. */
   sources: string[];
   children: ReactNode;
@@ -42,9 +43,11 @@ export function TopicShell({
     <div className="flex flex-col gap-4">
       <header>
         <h2 className="text-xl font-bold text-ink">{tr(name, lang)}</h2>
-        <p className="mt-1 text-xs text-muted">
-          {tr(TEXT.evidenceFrom, lang)} {regions.join(' · ')}
-        </p>
+        {regions && (
+          <p className="mt-1 text-xs text-muted">
+            {tr(TEXT.evidenceFrom, lang)} {regions.join(' · ')}
+          </p>
+        )}
       </header>
       {children}
       <SourceList sources={sources} />

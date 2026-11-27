@@ -248,5 +248,5 @@ export const tr: Record<TKey, string> = {
   // Emergency & critical care suite
   'tab.er': 'Acil',
   'er.title': 'Acil ve yoğun bakım',
-  'er.subtitle': 'Yayımlanmış veteriner çalışmalarından aciller, klinik skorlar ve sıvı planlaması — her değer kaynaklı.',
+  'er.subtitle': 'Yayımlanmış veteriner çalışmalarından aciller ve klinik hesaplayıcılar — her değer kaynaklı.',
 };

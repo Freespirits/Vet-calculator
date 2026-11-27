@@ -15,8 +15,16 @@
  * The JSON-LD block describes the page as a free WebApplication and mirrors the
  * six on-page FAQ entries as a FAQPage, in the page's own language, so answer
  * engines can quote the site without executing JavaScript.
+ *
+ * Theme: the head manager copies the <html> attributes given here onto the
+ * document in the browser too, and it does so after the theme hook has run.
+ * `data-theme` is therefore taken from the theme hook rather than written as a
+ * constant: a constant "dark" overwrote a visitor's saved light theme on every
+ * reload (the toggle showed the light state while the page stayed dark). The
+ * prerendered HTML is unchanged — the hook reports "dark" while prerendering.
  */
 import { Head } from 'vite-react-ssg';
+import { useTheme } from '../hooks/useTheme';
 import { LANGUAGES, dirOf, type Lang } from '../i18n/languages';
 import { FAQ_KEYS } from './AboutSection';
 import { he } from '../i18n/he';
@@ -150,9 +158,10 @@ export function structuredData(page: Lang): string {
 
 export function SeoHead({ page }: { page: PageLang }) {
   const m = metaFor(page);
+  const { theme } = useTheme();
   return (
     <Head>
-      <html lang={m.lang} dir={m.dir} data-theme="dark" />
+      <html lang={m.lang} dir={m.dir} data-theme={theme} />
       <meta name="google-site-verification" content="_jEDp9adv4E7AlXwWmvQf1Y6Hi-SjTLJr5LzAl4IgWU" />
       <title>{m.title}</title>
       <meta name="description" content={m.description} />

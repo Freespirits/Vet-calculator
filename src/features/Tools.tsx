@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useI18n } from '../i18n/LanguageProvider';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { useHashRoute, type ToolId } from '../hooks/useHashRoute';
+import { parseHash, useHashRoute, type ToolId } from '../hooks/useHashRoute';
 import { SegmentedControl } from '../components/primitives';
 import { DosageCalculator } from './dosage/DosageCalculator';
 import { ToxinSuite } from './toxins/ToxinSuite';
@@ -46,11 +46,11 @@ export function Tools() {
   const tool: ToolId = routeTool ?? 'dosage';
 
   // Arriving on a deep link: bring the tools into view (the URL hash has no
-  // matching element id, so the browser won't have scrolled by itself).
-  const landedOnDeepLink = useRef(routeTool !== null);
+  // matching element id, so the browser won't have scrolled by itself). The
+  // address is read here, on mount, rather than from `routeTool`: while the
+  // prerendered page hydrates, the route hook reports "no hash" on purpose.
   useEffect(() => {
-    if (!landedOnDeepLink.current) return;
-    landedOnDeepLink.current = false;
+    if (parseHash(window.location.hash).tool === null) return;
     document.getElementById('tools')?.scrollIntoView({ behavior: 'instant', block: 'start' });
   }, []);
 

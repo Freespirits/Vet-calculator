@@ -3,29 +3,36 @@
  * vite-react-ssg (react-helmet-async under the hood).
  *
  * `page` is the ROUTE language (/ = Hebrew, /<code>/ = the other thirteen),
- * deliberately not the live UI language: canonical + hreflang describe the
- * URL, and must not drift when the user flips the client-side picker.
+ * deliberately not the live UI language: title, description, canonical,
+ * hreflang and JSON-LD describe the URL, and must not drift when the user
+ * flips the client-side picker.
  *
  * The copy itself (titles, descriptions, URLs, JSON-LD) lives in seoMeta.ts.
  *
- * Theme: the head manager copies the <html> attributes given here onto the
- * document in the browser too, and it does so after the theme hook has run.
- * `data-theme` is therefore taken from the theme hook rather than written as a
- * constant: a constant "dark" overwrote a visitor's saved light theme on every
- * reload (the toggle showed the light state while the page stayed dark). The
- * prerendered HTML is unchanged — the hook reports "dark" while prerendering.
+ * The attributes on <html> are the exception: they describe what is on screen,
+ * so `lang`, `dir` and `data-theme` come from the live language and the live
+ * theme. The head manager copies them onto the document in the browser too,
+ * on an animation frame, so it often writes after the language provider and
+ * the theme hook have. When it was handed the route language and a constant
+ * "dark", whichever writer ran last won: a saved light theme was overwritten
+ * on reload, and a visitor reading the root page in English or French could
+ * get lang="he" dir="rtl" back — a left-to-right interface laid out
+ * right-to-left. The prerendered HTML is unchanged, because while prerendering
+ * the live language is the route language and the live theme is dark.
  */
 import { Head } from 'vite-react-ssg';
 import { useTheme } from '../hooks/useTheme';
+import { useI18n } from '../i18n/LanguageProvider';
 import { LANGUAGES } from '../i18n/languages';
 import { OG_LOCALE, ORIGIN, metaFor, structuredData, urlFor, type PageLang } from './seoMeta';
 
 export function SeoHead({ page }: { page: PageLang }) {
   const m = metaFor(page);
   const { theme } = useTheme();
+  const { lang, dir } = useI18n();
   return (
     <Head>
-      <html lang={m.lang} dir={m.dir} data-theme={theme} />
+      <html lang={lang} dir={dir} data-theme={theme} />
       <meta name="google-site-verification" content="_jEDp9adv4E7AlXwWmvQf1Y6Hi-SjTLJr5LzAl4IgWU" />
       <title>{m.title}</title>
       <meta name="description" content={m.description} />

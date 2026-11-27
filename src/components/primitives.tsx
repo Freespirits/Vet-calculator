@@ -38,6 +38,44 @@ export function Reveal({
 
 /* ---------- CountUp: animated numeric value ---------- */
 
+const easeOutCubic = (progress: number): number => 1 - Math.pow(1 - progress, 3);
+
+/**
+ * Counts from the previously reached number (0 at first) to `target` over
+ * `durationSeconds`, one step per animation frame, and ends on exactly
+ * `target`. Every number on the way lies between the two, so a count towards a
+ * positive value never reads as negative. While `enabled` is false nothing is
+ * animated and `target` itself is returned, so switching animations off
+ * mid-count shows the final number at once.
+ */
+function useCountingNumber(target: number, durationSeconds: number, enabled: boolean): number {
+  const [counted, setCounted] = useState(enabled ? 0 : target);
+  const reachedRef = useRef(0);
+
+  useEffect(() => {
+    if (!enabled) return;
+    const from = reachedRef.current;
+    const startedAt = performance.now();
+    let frame = 0;
+    const step = (frameTime: number) => {
+      // A frame is stamped with when it began, which can be just before `startedAt`.
+      const elapsedSeconds = Math.max(0, frameTime - startedAt) / 1000;
+      const progress = durationSeconds > 0 ? Math.min(1, elapsedSeconds / durationSeconds) : 1;
+      setCounted(from + (target - from) * easeOutCubic(progress));
+      if (progress < 1) frame = requestAnimationFrame(step);
+      else reachedRef.current = target;
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [target, durationSeconds, enabled]);
+
+  return enabled ? counted : target;
+}
+
+/**
+ * A number that counts up to `value`. With reduced motion (OS setting or
+ * "Stop animations" in the accessibility menu) the value is shown immediately.
+ */
 export function CountUp({
   value,
   decimals = 2,
@@ -50,32 +88,11 @@ export function CountUp({
   className?: string;
 }) {
   const reduced = useReducedMotion();
-  const [display, setDisplay] = useState(reduced ? value : 0);
-  const fromRef = useRef(0);
-
-  useEffect(() => {
-    if (reduced) {
-      setDisplay(value);
-      return;
-    }
-    const from = fromRef.current;
-    const start = performance.now();
-    let raf = 0;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / (duration * 1000));
-      // easeOutCubic
-      const eased = 1 - Math.pow(1 - t, 3);
-      setDisplay(from + (value - from) * eased);
-      if (t < 1) raf = requestAnimationFrame(tick);
-      else fromRef.current = value;
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [value, duration, reduced]);
+  const shown = useCountingNumber(value, duration, !reduced);
 
   return (
     <span className={`tnum ${className ?? ''}`}>
-      {display.toLocaleString(undefined, {
+      {shown.toLocaleString(undefined, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
       })}

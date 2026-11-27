@@ -134,7 +134,7 @@ export function PlantLibrary({
         p.latinName.toLowerCase().includes(q)
       );
     });
-  }, [query, filter, lang]);
+  }, [query, filter]);
 
   return (
     <div className="flex flex-col gap-4">

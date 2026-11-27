@@ -30,7 +30,7 @@ export function CholecalciferolCalculator() {
     const a = parseFloat(amount);
     if (!isFinite(w) || w <= 0 || !isFinite(a) || a <= 0) return null;
     return computeCholecalciferol({ weightKg: w, mg: a * form.factor });
-  }, [species, weightKg, amount, form]);
+  }, [weightKg, amount, form]);
 
   return (
     <ToxinScaffold

@@ -14,7 +14,7 @@
  * six on-page FAQ entries as a FAQPage, in the page's own language, so answer
  * engines can quote the site without executing JavaScript.
  */
-import { dirOf, type Lang } from '../i18n/languages';
+import type { Lang } from '../i18n/languages';
 import { FAQ_KEYS } from './AboutSection';
 import { he } from '../i18n/he';
 import { en } from '../i18n/en';
@@ -87,8 +87,6 @@ export type PageLang = Lang;
 
 export function metaFor(page: Lang) {
   return {
-    lang: page,
-    dir: dirOf(page),
     url: urlFor(page),
     locale: OG_LOCALE[page],
     title: TITLE[page],

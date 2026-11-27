@@ -1,3 +1,20 @@
+/**
+ * LanguageProvider — which of the fourteen languages the interface is in.
+ *
+ * The root page (/) is prerendered in Hebrew and leaves the language unpinned.
+ * In the browser it shows, right after hydration, the language the visitor
+ * used last (localStorage `vh.lang`); failing that the first browser language
+ * the site supports; failing that Hebrew. Every /<code>/ page is pinned to its
+ * language through `initial`, and the pinned language wins over the remembered
+ * one. The picker changes the language for this tab only.
+ *
+ * Whatever language is in use is remembered and mirrored on <html lang dir>.
+ *
+ * Hydration: the first browser render must equal the prerendered HTML, so the
+ * visitor's own language is only used once `useHydrated` reports true. It is
+ * read once, when the provider first renders — before the provider starts
+ * writing the language in use to the same storage key.
+ */
 import {
   createContext,
   useCallback,
@@ -7,6 +24,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { useHydrated } from '../hooks/useHydrated';
 import { he, type TKey } from './he';
 import { en } from './en';
 import { ar } from './ar';
@@ -75,42 +93,51 @@ function readPreferredLang(): Lang {
   return detectBrowserLang() ?? 'he';
 }
 
+/** The language after `current` in the picker order, wrapping around. */
+function nextLanguageAfter(current: Lang): Lang {
+  const position = LANGUAGES.findIndex((language) => language.code === current);
+  return LANGUAGES[(position + 1) % LANGUAGES.length].code;
+}
+
+/**
+ * The language in use: what the visitor picked in this tab, else the pinned
+ * page language, else (once hydrated) the visitor's remembered or browser
+ * language, else the prerendered Hebrew.
+ */
+function useActiveLanguage(pinned: Lang | undefined) {
+  const hydrated = useHydrated();
+  const [preferredAtLoad] = useState(readPreferredLang);
+  const [picked, setPicked] = useState<Lang | null>(null);
+  const unpicked: Lang = pinned ?? (hydrated ? preferredAtLoad : 'he');
+
+  const setLang = useCallback((next: Lang) => setPicked(next), []);
+  const toggleLang = useCallback(
+    () => setPicked((previous) => nextLanguageAfter(previous ?? unpicked)),
+    [unpicked],
+  );
+  return { lang: picked ?? unpicked, hydrated, setLang, toggleLang };
+}
+
 export function LanguageProvider({
   children,
   initial,
 }: {
   children: ReactNode;
-  /** Pin the initial language (used by the /en prerendered route). */
+  /** Pin the language (used by the prerendered /<code>/ pages). */
   initial?: Lang;
 }) {
-  // Two-pass language pick: first render always matches the prerendered HTML
-  // (Hebrew on /, pinned language on /en) so hydration never mismatches; the
-  // visitor's stored/browser preference is adopted right after mount.
-  const [lang, setLangState] = useState<Lang>(initial ?? 'he');
+  const { lang, hydrated, setLang, toggleLang } = useActiveLanguage(initial);
   const dir: Dir = dirOf(lang);
 
-  // Must run BEFORE the persistence effect below: it reads localStorage,
-  // which that effect overwrites.
+  // Remember and announce the language in use — but not during hydration,
+  // when `lang` is still the prerendered one rather than the visitor's.
   useEffect(() => {
-    if (!initial) setLangState(readPreferredLang());
-  }, [initial]);
-
-  useEffect(() => {
+    if (!hydrated) return;
     const root = document.documentElement;
     root.lang = lang;
     root.dir = dir;
     window.localStorage.setItem(STORAGE_KEY, lang);
-  }, [lang, dir]);
-
-  const setLang = useCallback((next: Lang) => setLangState(next), []);
-  const toggleLang = useCallback(
-    () =>
-      setLangState((prev) => {
-        const i = LANGUAGES.findIndex((l) => l.code === prev);
-        return LANGUAGES[(i + 1) % LANGUAGES.length].code;
-      }),
-    [],
-  );
+  }, [lang, dir, hydrated]);
 
   const t = useCallback(
     (key: TKey, vars?: Record<string, string | number>) => {

@@ -67,7 +67,8 @@ export function computeCholecalciferol(input: CholecalciferolInput): ToxinResult
       'Decontamination helps only early. Effects are delayed (24–72 h) and persist for weeks due to fat storage — ongoing monitoring is required.',
     ),
     context: L(
-      'ספים: >0.1 מ"ג/ק"ג היפרקלצמיה אפשרית, ≥2 מ"ג/ק"ג קטלני. 1 מ"ג = 40,000 יחב"ל. פיתיונות כולקלציפרול נפוצים בריכוז ~0.075% (0.75 מ"ג/גרם).',
+      // Hebrew spells "above" / "and above" out: ">" and "≥" inside right-to-left text are mirrored by the browser.
+      'ספים: מעל 0.1 מ"ג/ק"ג היפרקלצמיה אפשרית, 2 מ"ג/ק"ג ומעלה קטלני. 1 מ"ג = 40,000 יחב"ל. פיתיונות כולקלציפרול נפוצים בריכוז ~0.075% (0.75 מ"ג/גרם).',
       'Thresholds: >0.1 mg/kg possible hypercalcemia, ≥2 mg/kg potentially lethal. 1 mg = 40,000 IU. Cholecalciferol baits are commonly ~0.075% (0.75 mg/g).',
     ),
     emergency,

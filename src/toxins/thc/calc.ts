@@ -62,7 +62,7 @@ export function computeThc(input: ThcInput): ToxinResult {
       'Induce emesis only if very recent and the animal is alert; activated charcoal. Signs usually last 12–24 h, occasionally up to 72 h.',
     ),
     context: L(
-      'סימנים מתחילים סביב 0.5–2 מ"ג/ק"ג. מינון קטלני מינימלי אוראלי גבוה מאוד (>3 גרם/ק"ג), ולכן מוות נדיר. סכנה עיקרית: מאפים מרוכזים, ובמיוחד שילוב עם שוקולד או קסיליטול.',
+      'סימנים מתחילים סביב 0.5–2 מ"ג/ק"ג. מינון קטלני מינימלי אוראלי גבוה מאוד (מעל 3 גרם/ק"ג), ולכן מוות נדיר. סכנה עיקרית: מאפים מרוכזים, ובמיוחד שילוב עם שוקולד או קסיליטול.',
       'Signs begin around 0.5–2 mg/kg. The oral minimum lethal dose is very high (>3 g/kg), so death is rare. The main danger is concentrated edibles — especially combined with chocolate or xylitol.',
     ),
     emergency,

@@ -1,23 +1,10 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
+import { L, type ToxSpecies } from '../../types/toxins';
 import { ToxinScaffold } from '../../components/ToxinScaffold';
 import { SelectField, NumberField } from '../../components/forms';
-import { PillIcon } from '../../components/Icons';
 import { computeCholecalciferol, IU_PER_MG } from './calc';
-
-export const cholecalciferolMeta: ToxinMeta = {
-  id: 'cholecalciferol',
-  name: L('כולקלציפרול (ויטמין D3)', 'Cholecalciferol (vitamin D3)'),
-  blurb: L('פיתיון מכרסמים, תוספי ויטמין D', 'Rodenticide bait, vitamin-D supplements'),
-  about: L(
-    'כולקלציפרול (ויטמין D3) נמצא גם בפתיונות נגד מכרסמים וגם בתוספי תזונה לבני אדם. מנת יתר מזניקה את הסידן בדם ומסיידת את הכליות והלב; הסימנים מופיעים רק אחרי 12–36 שעות והטיפול ממושך. מרעלי המכרסמים המסוכנים ביותר לגרם.',
-    'Cholecalciferol (vitamin D3) appears both in rodent baits and in human vitamin supplements. Overdose drives blood calcium sky-high, calcifying the kidneys and heart; signs only appear after 12–36 hours and treatment is prolonged. Per gram, one of the most dangerous rodenticides.',
-  ),
-  species: ['dog', 'cat'],
-  accent: '#FACC15',
-  Icon: PillIcon,
-};
+import { cholecalciferolMeta } from './meta';
 
 /**
  * Each source maps the entered amount to milligrams of cholecalciferol.

@@ -7,7 +7,7 @@
  * fail the build rather than the next audit.
  */
 import { describe, expect, it } from 'vitest';
-import { DESCRIPTION, TITLE, structuredData } from './SeoHead';
+import { DESCRIPTION, TITLE, structuredData } from './seoMeta';
 import { SUPPORTED_LANGS } from '../i18n/languages';
 
 const TITLE_MAX = 60;

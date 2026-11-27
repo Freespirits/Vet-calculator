@@ -1,23 +1,10 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
+import { type ToxSpecies } from '../../types/toxins';
 import { ToxinScaffold } from '../../components/ToxinScaffold';
 import { SelectField, NumberField } from '../../components/forms';
-import { DropletIcon } from '../../components/Icons';
 import { computeXylitol } from './calc';
-
-export const xylitolMeta: ToxinMeta = {
-  id: 'xylitol',
-  name: L('קסיליטול', 'Xylitol'),
-  blurb: L('היפוגליקמיה ופגיעה כבדית', 'Hypoglycemia & liver injury'),
-  about: L(
-    'קסיליטול הוא ממתיק נפוץ במסטיקים וסוכריות ללא סוכר, מאפים "דיאטטיים", חלק מחמאות הבוטנים ומשחות שיניים. אצל כלבים הוא משחרר אינסולין באופן מסיבי — הסוכר בדם צונח תוך 30–60 דקות — ובמינונים גבוהים נפגע גם הכבד.',
-    'Xylitol is a sweetener in sugar-free gum and candy, "diet" baked goods, some peanut butters and toothpaste. In dogs it triggers a massive insulin release — blood sugar can crash within 30–60 minutes — and higher doses also injure the liver.',
-  ),
-  species: ['dog'],
-  accent: '#22D3EE',
-  Icon: DropletIcon,
-};
+import { xylitolMeta } from './meta';
 
 // mg of xylitol per input unit
 const PER_UNIT: Record<string, number> = { gum: 1000, g: 1000, mg: 1 };

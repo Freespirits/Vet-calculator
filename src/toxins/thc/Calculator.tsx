@@ -1,23 +1,11 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
-import { ToxinScaffold, gramsFrom } from '../../components/ToxinScaffold';
+import { L, type ToxSpecies } from '../../types/toxins';
+import { ToxinScaffold } from '../../components/ToxinScaffold';
+import { gramsFrom } from '../../lib/massUnits';
 import { SelectField, NumberField, MeasureField } from '../../components/forms';
-import { NutIcon } from '../../components/Icons';
 import { computeThc } from './calc';
-
-export const thcMeta: ToxinMeta = {
-  id: 'thc',
-  name: L('קנאביס / THC', 'Cannabis / THC'),
-  blurb: L('מאפים, פרח מיובש, תמצית', 'Edibles, dried flower, concentrate'),
-  about: L(
-    'קנאביס משפיע על חיות מחמד הרבה יותר מאשר על בני אדם. כלבים נחשפים בעיקר דרך מאפים (אדיבלס), פרח מיובש או תמציות; הסימנים: חוסר יציבות, טפטוף שתן, דופק איטי ונמנום. מאפים מסוכנים כפליים — לעיתים יש בהם גם שוקולד או קסיליטול.',
-    'Cannabis hits pets far harder than people. Dogs are exposed mostly through edibles, dried flower or concentrates; signs are wobbliness, dribbling urine, slow heart rate and drowsiness. Edibles are doubly risky — they often also contain chocolate or xylitol.',
-  ),
-  species: ['dog', 'cat'],
-  accent: '#16A34A',
-  Icon: NutIcon,
-};
+import { thcMeta } from './meta';
 
 /** Source → mg THC per gram (dried flower assumed ~15%, concentrate ~60%). */
 const FORMS = [

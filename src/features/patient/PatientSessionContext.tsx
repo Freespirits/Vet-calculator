@@ -15,6 +15,9 @@ export function PatientSessionProvider({ children }: { children: ReactNode }) {
   return <PatientSessionCtx.Provider value={value}>{children}</PatientSessionCtx.Provider>;
 }
 
+// The hook shares this file's private context object with the provider above, so the two
+// are exported together (same arrangement as useI18n in LanguageProvider).
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePatientSessionContext(): PatientSessionValue {
   const ctx = useContext(PatientSessionCtx);
   if (!ctx) {

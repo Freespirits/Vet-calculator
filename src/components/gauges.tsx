@@ -10,7 +10,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 
 export type RiskLevel = 'minimal' | 'mild' | 'moderate' | 'severe' | 'critical' | 'emergency';
 
-export const RISK_COLOR: Record<RiskLevel, string> = {
+const RISK_COLOR: Record<RiskLevel, string> = {
   minimal: '#10B981',
   mild: '#2DD4BF',
   moderate: '#F59E0B',

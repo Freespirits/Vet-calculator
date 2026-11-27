@@ -124,7 +124,7 @@ export function calculateDosage(input: CalculationInput): CalculationResult {
 
   // Step 5: Generate warnings
   warnings.push(...generateVolumeWarnings(rawVolumeMl, roundedVolumeMl));
-  warnings.push(...generateDoseWarnings(input.dosePerKg, input.doseUnit, input.species));
+  warnings.push(...generateDoseWarnings(input.dosePerKg, input.doseUnit));
 
   // Build calculation breakdown for transparency
   const breakdown: CalculationBreakdown = {
@@ -198,8 +198,7 @@ function generateVolumeWarnings(
  */
 function generateDoseWarnings(
   dosePerKg: number,
-  doseUnit: DoseUnit,
-  _species: string
+  doseUnit: DoseUnit
 ): CalculationWarning[] {
   const warnings: CalculationWarning[] = [];
 

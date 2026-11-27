@@ -1,23 +1,11 @@
 import { useMemo, useState } from 'react';
 import { useI18n } from '../../i18n/LanguageProvider';
-import { L, tr, type ToxinMeta, type ToxSpecies } from '../../types/toxins';
-import { ToxinScaffold, gramsFrom } from '../../components/ToxinScaffold';
+import { tr, type ToxSpecies } from '../../types/toxins';
+import { ToxinScaffold } from '../../components/ToxinScaffold';
+import { gramsFrom } from '../../lib/massUnits';
 import { SelectField, NumberField, MeasureField } from '../../components/forms';
-import { ChocolateIcon } from '../../components/Icons';
 import { CHOCOLATE_TYPES, chocolateTmPerG, computeChocolate } from './calc';
-
-export const chocolateMeta: ToxinMeta = {
-  id: 'chocolate',
-  name: L('שוקולד / מתילקסנטינים', 'Chocolate / Methylxanthine'),
-  blurb: L('תאוברומין וקפאין לפי סוג וכמות', 'Theobromine & caffeine by type and amount'),
-  about: L(
-    'שוקולד מכיל תאוברומין וקפאין — חומרים מעוררים שכלבים וחתולים מפרקים לאט מאוד. ככל שהשוקולד כהה ומריר יותר, כך הוא רעיל יותר לגרם. בחרו סוג והזינו כמות כדי להעריך את המינון שנבלע ואת רמת הסיכון.',
-    'Chocolate contains theobromine and caffeine — stimulants that dogs and cats metabolize very slowly. The darker the chocolate, the more toxic it is per gram. Pick the type and amount eaten to estimate the ingested dose and its risk level.',
-  ),
-  species: ['dog', 'cat'],
-  accent: '#A87B4F',
-  Icon: ChocolateIcon,
-};
+import { chocolateMeta } from './meta';
 
 export function ChocolateCalculator() {
   const { t, lang } = useI18n();
